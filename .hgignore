@@ -1,0 +1,17 @@
+
+syntax: regexp
+^data/cache$
+syntax: regexp
+^www/uploads$
+syntax: regexp
+^www/cache$
+syntax: regexp
+^.buildpath$
+syntax: regexp
+^.project$
+syntax: regexp
+^.settings$
+syntax: regexp
+^access\.log$
+syntax: regexp
+^error\.log$
