@@ -79,8 +79,8 @@ class Bootstrap {
 					$c = count($esn)-1;
 					$d = $esn[$c-1].'.'.$esn[$c];
 					switch ($d){
-						case 'shariki-my.ua': $configType = 'development'; break;
-						case 'shariki.test': $configType = 'test'; break;
+						case 'expoua-my.com': $configType = 'development'; break;
+						case 'expoua.test': $configType = 'test'; break;
 					}
 				}
 			}

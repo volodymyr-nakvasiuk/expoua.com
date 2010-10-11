@@ -153,7 +153,7 @@ MyDesktop = new Ext.app.App({
 	},
 	getStartConfig :function(){
 		return {
-			title:'CAR.UA - Menu',
+			title:'ExpoUa.COM - Menu',
 			iconCls:'user',
 			toolItems:[{
 				text:'На главную',

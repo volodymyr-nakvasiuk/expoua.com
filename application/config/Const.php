@@ -1,28 +1,28 @@
 <?php
 switch(APPLICATION_ENVIRONMENT){
 	case 'production':
-		define ( 'HOST_NAME', 'http://shariki.ua' );
-		define ( 'IMG_HOST_NAME', 'http://img1.shariki.ua' );
-		define ( 'STATIC_HOST_NAME', 'http://static.shariki.ua' );
-		define ( 'COOKIE_HOST_NAME', 'shariki.ua' );
+		define ( 'HOST_NAME', 'http://expoua.com' );
+		define ( 'IMG_HOST_NAME', 'http://img1.expoua.com' );
+		define ( 'STATIC_HOST_NAME', 'http://static.expoua.com' );
+		define ( 'COOKIE_HOST_NAME', 'expoua.com' );
 		break;
 	case 'development':
-		define ( 'HOST_NAME', 'http://shariki-my.ua' );
-		define ( 'IMG_HOST_NAME', 'http://img1.shariki-my.ua' );
-		define ( 'STATIC_HOST_NAME', 'http://static.shariki-my.ua' );
-		define ( 'COOKIE_HOST_NAME', 'shariki-my.ua' );
+		define ( 'HOST_NAME', 'http://expoua-my.com' );
+		define ( 'IMG_HOST_NAME', 'http://img1.expoua-my.com' );
+		define ( 'STATIC_HOST_NAME', 'http://static.expoua-my.com' );
+		define ( 'COOKIE_HOST_NAME', 'expoua-my.com' );
 		break;
 	case 'test':
-		define ( 'HOST_NAME', 'http://shariki.test' );
-		define ( 'IMG_HOST_NAME', 'http://img1.shariki.test' );
-		define ( 'STATIC_HOST_NAME', 'http://static.shariki.test' );
-		define ( 'COOKIE_HOST_NAME', 'shariki.test' );
+		define ( 'HOST_NAME', 'http://expoua.test' );
+		define ( 'IMG_HOST_NAME', 'http://img1.expoua.test' );
+		define ( 'STATIC_HOST_NAME', 'http://static.expoua.test' );
+		define ( 'COOKIE_HOST_NAME', 'expoua.test' );
 		break;
 	default:
-		define ( 'HOST_NAME', 'http://shariki.ua' );
-		define ( 'IMG_HOST_NAME', 'http://img1.shariki.ua' );
-		define ( 'STATIC_HOST_NAME', 'http://static.shariki.ua' );
-		define ( 'COOKIE_HOST_NAME', 'shariki.ua' );
+		define ( 'HOST_NAME', 'http://expoua.com' );
+		define ( 'IMG_HOST_NAME', 'http://img1.expoua.com' );
+		define ( 'STATIC_HOST_NAME', 'http://static.expoua.com' );
+		define ( 'COOKIE_HOST_NAME', 'expoua.com' );
 		break;
 }
 
