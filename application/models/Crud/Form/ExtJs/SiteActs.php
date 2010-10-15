@@ -41,11 +41,11 @@ class Crud_Form_ExtJs_SiteActs extends ArOn_Crud_Form_ExtJs
 		 
 		if(!empty($this->actionId)){
 			$model = Db_SiteController::getInstance();
-			$controller = $model->fetchRow($model->getPrimary()." = ".$this->_data ['action_controller_id']);
+			$controller = $model->fetchRow($model->getPrimary()." = ".$this->_data ['Db_SiteActs.action_controller_id']);
 			$module_id = $controller [ 'controller_module_id' ];
 			
 			$this->fields['sitecontroller']->addAttrib('parent_id', $module_id);
-			$this->fields['sitecontroller']->setValue($this->_data ['action_controller_id'] );
+			$this->fields['sitecontroller']->setValue($this->_data ['Db_SiteActs.action_controller_id'] );
 			$this->fields['sitemodule']->setValue($module_id);
 		}
 		$this->fields['sitecontroller']->setOptions(array());

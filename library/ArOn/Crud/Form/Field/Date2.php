@@ -34,9 +34,8 @@ class ArOn_Crud_Form_Field_Date2 extends ArOn_Crud_Form_Field {
 		$value = $date->format ( 'Y-m-d' );
 		$data = array ();
 
-		$data ['model'] = 'default';
-		$data ['data'] = array ('key' => $this->element->getName (), 'value' => $value );
-
+		$data = $this->prepareInsertData();
+		$data ['data']['value'] = $value;
 		return $data;
 	}
 

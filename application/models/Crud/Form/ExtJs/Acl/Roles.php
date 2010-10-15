@@ -1,7 +1,7 @@
 <?php
 class Crud_Form_ExtJs_Acl_Roles extends ArOn_Crud_Form_ExtJs
 {
-	protected $modelName = 'Db_AclRoles';
+	protected $modelName = array('Db_AclRoles','Db_Seo');
 	protected $_title = 'Роли';
 
 	public function init ()

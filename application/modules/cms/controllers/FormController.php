@@ -21,7 +21,7 @@ class Cms_FormController extends Abstract_Controller_CmsController {
 			$name = ucfirst($matches[1]);
 			$name = str_replace('Acl','Acl_',$name);
 			$classname = 'Crud_Form_ExtJs_'.ucfirst($name);
-			
+			if ($db_languages_id = $this->_request->getParam('db_languages_id')) Db_Lang::$globalLangId = $db_languages_id;
 			/**
 			 * @var ArOn_Crud_Form
 			 */
@@ -59,7 +59,7 @@ class Cms_FormController extends Abstract_Controller_CmsController {
 				
 					if($this->_form->isValid($params)){
 						$id = $this->_form->saveValidData();
-						if(is_array($id) && array_key_exists('error',$id)){							
+						if(is_array($id) && array_key_exists('error',$id)){
 							echo '{success: false, message: "'.$id['error'].'"}';
 							$id = false;
 						}else{

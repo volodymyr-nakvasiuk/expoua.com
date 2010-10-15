@@ -8,7 +8,7 @@ class ArOn_Crud_Form extends Zend_Form {
 	/**
 	 * @var ArOn_Db_Table
 	 */
-	protected $_model;
+	public $_model;
 
 	public $groups = array ();
 
@@ -21,6 +21,8 @@ class ArOn_Crud_Form extends Zend_Form {
 	protected $groupNames = array ();
 
 	public $actionId;
+
+	public $rowCount;
 
 	protected $_data = array ();
 	protected $_load_data = array();
@@ -65,45 +67,51 @@ class ArOn_Crud_Form extends Zend_Form {
 
 	public function __construct($actionId = null, $filter_params = false, $template = false , $options = null, $action = null, $decorate = true , $decorateClass = 'ArOn_Crud_Form_Decorator_Admin') {
 		$this->actionId = $actionId;
-		$this->filterParams = $filter_params;		
+		$this->filterParams = $filter_params;
 		$this->_decorate = $decorate;
-		$this->template = $template;		
+		$this->template = $template;
 		if($this->_decorate) {
 			$this->_decorateClass = new $decorateClass ( );
 		}
+		$this->initModel();
 		if ($this->actionId != null) {
 			$this->loadData ( $this->actionId );
 		}
 		$this->grid_id = $actionId;
 		if (! empty ( $action ))
-		$this->action = $action;
-			
-		ArOn_Crud_Tools_Register::registerData();
+			$this->action = $action;
 		
 		parent::__construct ( $options );
+		ArOn_Crud_Tools_Register::registerData();
+
 		$this->setup();
 	}
 
-	public function init() {
-		
+	public function initModel() {
+		if ($this->modelName){
+			if (!is_array($this->modelName)) $this->modelName = array($this->modelName);
+			$this->_model = array();
+			foreach ($this->modelName as $modelName){
+				$this->_model[] = ArOn_Crud_Tools_Registry::singleton ( $modelName );
+			}
+		}
+		else $this->_model = array(ArOn_Crud_Tools_Registry::singleton ( 'ArOn_Db_Table' ));
 	}
+	public function init() {
+		foreach ( $this->fields as $name => $field ) {
+			$field->setForm ( $this );
+			$field->setElementFormName($name)->setPrefixFilter($this->filterPrefix);
+			$field->setAjaxActionName($this->actionName);
+			$field->setTableName ( $this->getModelByName($field->getModelName())->info ( Zend_Db_Table::NAME ) );
+		}
+	}
+
 	
 	protected function setup(){
-		
 		$this->setAttrib ( 'module', ArOn_Crud_Grid::$ajaxModuleName );
 		$this->setAttrib ( 'id', 'form_' . $this->grid_id );
 		
 		if(empty($this->actionName)) $this->actionName = self::$ajaxActionName;
-		
-		if (! empty ( $this->modelName ))
-		$this->_model = ArOn_Crud_Tools_Registry::singleton ( $this->modelName );
-		$tableName = $this->_model->info ( Zend_Db_Table::NAME );
-		
-		foreach ( $this->fields as $name => $field ) {
-			$field->setElementFormName($name)->setPrefixFilter($this->filterPrefix);
-			$field->setAjaxActionName($this->actionName);
-			$field->setTableName ( $tableName );
-		}
 	}
 	
 	public function createForm() {
@@ -114,8 +122,6 @@ class ArOn_Crud_Form extends Zend_Form {
 		
 		foreach ( $this->fields as $name => $field ) {
 			if (is_object ( $field ) && $field instanceof ArOn_Crud_Form_Field) {
-				
-				$field->setForm ( $this );
 				
 				if ($this->template) {
 					$field->addHelper ( 'id', $this->template_id );
@@ -162,7 +168,7 @@ class ArOn_Crud_Form extends Zend_Form {
 
 		$this->updateForm ();
 
-		$this->setAction ( $this->action )->setMethod ( $this->method );				
+		$this->setAction ( $this->action )->setMethod ( $this->method );
 		$this->setData ( false, $this->_isLoadData );
 		$this->_isLoadData = false;
 		if($this->filterParams)
@@ -178,34 +184,45 @@ class ArOn_Crud_Form extends Zend_Form {
 		if($data === false) $data = $this->_data;
 		$this->_data = array ();
 		if (empty ( $this->fields )){
-			$this->_data = $data;
-			return $this; 
+			foreach ($data as $modelName=>$modelData){
+				foreach ($modelData as $modelField=>$fieldData){
+					$this->_data[$modelName.'.'.$modelField] = $fieldData;
+				}
+			}
+			return $this;
 		}
 		foreach ( $this->fields as $field ) {
 			if (!($field instanceof ArOn_Crud_Form_Field))
 				continue;
 			$dataName =  ($nameFromDbTable) ? $field->getName() : $field->getElementFormName();
 			$formName = $field->getElementFormName();
-			if (array_key_exists($dataName,$data)) {
+			$modelName = $field->getModelName();
+			if (array_key_exists($modelName,$data)) {
+				$tmpData = $data[$modelName];
+			}
+			else {
+				$tmpData = $data;
+				$dataName =($nameFromDbTable) ? $modelName.'.'.$dataName : $dataName;
+			}
+			if (array_key_exists($dataName,$tmpData)){
 				if($this->template && !in_array($formName,$this->template_fields)) continue;
-				$this->_data [$formName] = $data [$dataName];
+				$this->_data [$formName] = $tmpData[$dataName];
 				if ($field instanceof ArOn_Crud_Form_Field) {
-					$field->setValue ( $data [$dataName] );
+					$field->setValue ( $tmpData[$dataName] );
 				}
 			}
 		}
 		return $this;
 	}
 	
-	public function clearData() {		
+	public function clearData() {
 		$this->_data = array ();
 		if (empty ( $this->fields ))
 		return $this;
 		foreach ( $this->fields as $field ) {
-				if ($field instanceof ArOn_Crud_Form_Field)
-					$field->setValue ( null );
-				
-		}		
+			if ($field instanceof ArOn_Crud_Form_Field)
+				$field->setValue ( null );
+		}
 		return $this;
 	}
 	
@@ -223,20 +240,35 @@ class ArOn_Crud_Form extends Zend_Form {
 		return ArOn_Crud_Tools_Array::arraySearchRecursive($name, $filterData, false, array() , true);
 	}
 	
-	public function loadData($id, $where_key = null) {
+	public function loadData($id, $whereKey=false, $loadDb=false) {
 		if (! $this->template) {
 			$this->actionId = $id;
 			$this->grid_id = $id;
 		} else {
 			$this->template_id = $id;
 		}
-		$this->_model = ArOn_Crud_Tools_Registry::singleton ( $this->modelName );
-		if ($where_key == null) {
-			$data = $this->_model->getRowById ( $id );
-		} else {
-			$row = $this->_model->fetchRow ( "`$where_key`='$id'" );
-			$data = ($row) ? $row->toArray () : array ();
+		
+		$data = array();
+		if ($whereKey){
+			$fn = 'fetchRow';
+			$fp = array(str_replace('``', '`', "`".$whereKey."`='".$id."'"));
 		}
+		else{
+			$fn = 'getRowById';
+			$fp = array($id);
+		}
+		if ($loadDb){
+			$model = $this->getModel($loadDb);
+			$models = $model?array($model):array();
+		}
+		else {
+			$models = $this->_model;
+		}
+		foreach($models as $model){
+			$row = call_user_func_array(array($model, $fn), $fp);
+			if ($row) $data[get_class($model)] = is_array($row)?$row:$row->toArray();
+		}
+		
 		$this->_isLoadData = true;
 		$this->_load_data = $data;
 		$this->setData ( $data, true );
@@ -349,7 +381,6 @@ class ArOn_Crud_Form extends Zend_Form {
 
 	public function saveValidData() {
 		$this->preSave ();
-		$data = array ();
 		$def_data = array ();
 		$alter = array ();
 		foreach ( $this->fields as $name => $field ) {
@@ -358,31 +389,65 @@ class ArOn_Crud_Form extends Zend_Form {
 				$alter [] = $name;
 				continue;
 			}
-			if ($d ['model'] == 'default') {
-				$def_data [$d ['data'] ['key']] = $d ['data'] ['value'];
-			} elseif ($d ['model']) {
-				$data [] = array ('model' => $d ['model'], 'data' => $d ['data'] );
+			if (!is_bool($d)){
+				if ($d['model'] == 'default') $d['model'] = $this->modelName[0];
+				if (!isset($def_data[$d['model']])) $def_data[$d['model']] = array();
+				$def_data[$d['model']][$d ['data'] ['key']] = $d ['data'] ['value'];
 			}
 		}
-		if (! empty ( $this->_alternative_data ))
-			$def_data = array_merge ( $def_data, $this->_alternative_data );	
-		if (! empty ( $this->actionId )) {
-			if (! empty ( $def_data )) {
+		if (! empty ( $this->_alternative_data )){
+			foreach ($this->_alternative_data as $key=>$data){
+				if (!is_array($data)) $data = array('model'=>$this->modelName[0], 'data'=>array($key=>$data));
+				if (!isset($data['model']) || !$data['model'] || $data['model']=='default') $data['model'] = $this->modelName[0];
+				if (!isset($def_data[$data['model']])) $def_data[$data['model']] = array();
+				if (isset($data['data']) && is_array($data['data'])){
+					$def_data[$data['model']] = array_merge ( $def_data[$data['model']], $data['data']);
+				}
+			}
+		}
+		//print_r($def_data);exit;
+		if (!empty($this->actionId)) {
+			foreach ($this->_model as $model){
+				$modelName = get_class($model);
+				if (isset($def_data[$modelName])){
+					try {
+						$this->rowCount = $model->update($def_data[$modelName], $model->getAdapter()->quoteInto($model->getPrimary()."=?", $this->actionId));
+					} catch ( Exception $e ) {
+						return array ('error' => $e->getMessage() );
+					}
+				}
+			}
+		}
+		else {
+			$models = $this->_model;
+			$model = array_shift($models);
+			$modelName = get_class($model);
+			if (isset($def_data[$modelName])){
 				try {
-					$this->_model->update ( $def_data, $this->_model->getAdapter ()->quoteInto ( $this->_model->getPrimary () . " = ?", $this->actionId ) );
+					$this->actionId = $model->insert($def_data[$modelName]);
+					$this->is_new_data = true;
 				} catch ( Exception $e ) {
 					return array ('error' => $e->getMessage () );
 				}
 			}
-		} else {
-			try {
-				$this->actionId = $this->_model->insert ( $def_data );
-			} catch ( Exception $e ) {
-				return array ('error' => $e->getMessage () );
+			if ($this->actionId){
+				foreach ($models as $model){
+					$modelName = get_class($model);
+					if (isset($def_data[$modelName])){
+						try {
+							$def_data[$modelName][$model->getPrimary()] = $this->actionId;
+							$model->insert($def_data[$modelName]);
+						} catch ( Exception $e ) {
+							try {
+								$this->rowCount = $model->update($def_data[$modelName], $model->getAdapter()->quoteInto($model->getPrimary()."=?", $this->actionId));
+							} catch ( Exception $e ) {
+								return array ('error' => $e->getMessage () );
+							}
+						}
+					}
+				}
 			}
-			$this->is_new_data = true;
 		}
-
 		foreach ( $alter as $name ) {
 			$this->fields [$name]->id = $this->actionId;
 			$this->fields [$name]->getInsertData ();
@@ -397,6 +462,7 @@ class ArOn_Crud_Form extends Zend_Form {
 	public function update($id, array $data) {
 		$valid = true;
 		$errors = array ();
+		$def_data = array();
 		foreach ( $data as $name => $value ) {
 			$element = $this->getElement ( $name );
 			if (! $element) {
@@ -413,25 +479,39 @@ class ArOn_Crud_Form extends Zend_Form {
 					$alter [] = $name;
 					continue;
 				}
-				if ($d ['model'] == 'default') {
-					$data [$d ['data'] ['key']] = $d ['data'] ['value'];
+				if (!is_bool($d)){
+					if ($d['model'] == 'default') $d['model'] = $this->modelName[0];
+					if (!isset($def_data[$d['model']])) $def_data[$d['model']] = array();
+					$def_data[$d['model']][$d ['data'] ['key']] = $d ['data'] ['value'];
 				}
 			}
 		}
 		if ($valid) {
-			if (! empty ( $this->_alternative_data ))
-			$data = array_merge ( $this->_alternative_data, $data );
-			try {
-				$result = $this->_model->update ( $data, $this->_model->getAdapter ()->quoteInto ( $this->_model->getPrimary () . " = ?", $id ) );
-			} catch ( Exception $e ) {
-				return array ('error' => $e->getMessage () );
+			if (! empty ( $this->_alternative_data )){
+				foreach ($this->_alternative_data as $key=>$data){
+					if (!is_array($data)) $data = array('model'=>$this->modelName[0], 'data'=>array($key=>$data));
+					if (!isset($data['model']) || !$data['model'] || $data['model']=='default') $data['model'] = $this->modelName[0];
+					if (!isset($def_data[$data['model']])) $def_data[$data['model']] = array();
+					if (isset($data['data']) && is_array($data['data'])){
+						$def_data[$data['model']] = array_merge ( $def_data[$data['model']], $data['data']);
+					}
+				}
+			}
+			$result = 0;
+			foreach ($this->_model as $model){
+				$modelName = get_class($model);
+				if (isset($def_data[$modelName])){
+					try {
+						$result = $model->update($def_data[$modelName], $model->getAdapter()->quoteInto($model->getPrimary()."=?", $this->actionId));
+					} catch ( Exception $e ) {
+						return array ('error' => $e->getMessage() );
+					}
+				}
 			}
 			return ($result === 0) ? true : $result;
-
 		} else {
 			return array ('valid' => $errors );
 		}
-
 	}
 
 	protected function updateForm() {
@@ -479,13 +559,39 @@ class ArOn_Crud_Form extends Zend_Form {
 		return false;
 	}
 
-	public function getModel() {
-		if ($this->_model instanceof ArOn_Db_Table || $this->_model instanceof ArOn_Cache_Type_Table)
-		return $this->_model;
-		elseif ($this->modelName)
-		return ArOn_Crud_Tools_Registry::singleton ( $this->modelName );
-		else
-		return false;
+	public function getModelById($id=0) {
+		if (isset($this->_model[$id]) && ($this->_model[$id] instanceof ArOn_Db_Table || $this->_model[$id] instanceof ArOn_Cache_Type_Table)){
+			return $this->_model[$id];
+		}
+		elseif (isset($this->modelName[$id]) && $this->modelName[$id]){
+			return ArOn_Crud_Tools_Registry::singleton ( $this->modelName[$id] );
+		}
+		else return false;
+	}
+
+	public function getModelByName($name) {
+		if (($id=array_search($name, $this->modelName)) !== false){
+			return $this->getModelById($id);
+		}
+		else return false;
+	}
+
+	public function getModel($key=0) {
+		if ($key){
+			if ($model = $this->getModelByName($key)){
+				return $model;
+			}
+			else{
+				return $this->getModelById($key);
+			}
+		}
+		else {
+			return $this->getModelById(0);
+		}
+	}
+
+	public function getModelName() {
+		return $this->modelName;
 	}
 
 	public function getUrlParams() {

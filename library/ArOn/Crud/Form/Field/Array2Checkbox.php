@@ -33,10 +33,8 @@ class ArOn_Crud_Form_Field_Array2Checkbox extends ArOn_Crud_Form_Field {
 		if (is_array ( $value )) {
 			$value = implode ( ',', $value );
 		}
-		$data = array ();
-		$data ['model'] = 'default';
-		$data ['data'] = array ('key' => $this->element->getName (), 'value' => $value );
-
+		$data = $this->prepareInsertData();
+		$data ['data']['value'] = $value;
 		return $data;
 	}
 

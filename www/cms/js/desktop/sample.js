@@ -1,4 +1,4 @@
-﻿Ext.BLANK_IMAGE_URL = '/cms/js/extjs/resources/images/default/s.gif';
+Ext.BLANK_IMAGE_URL = '/cms/js/extjs/resources/images/default/s.gif';
 
 var defaultLang = 'ru';
 Ext.MessageBox.buttonText.yes = 'Да';
@@ -110,14 +110,64 @@ MyDesktop = new Ext.app.App({
 					title:'Ярлыки на рабочем столе',
 					url:'/cms/grid/shortcuts',
 					icon:'bogus'
+				}),
+				new Ext.app.Module({
+					id:'grid-win-languages',
+					title:'Языки',
+					url:'/cms/grid/languages',
+					icon:'lang'
+				}),
+				new Ext.app.Module({
+					id:'grid-win-location-regions',
+					title:'Регионы',
+					url:'/cms/grid/location-regions',
+					icon:'tabs'
+				}),
+				new Ext.app.Module({
+					id:'grid-win-location-countries',
+					title:'Страны',
+					url:'/cms/grid/location-countries',
+					icon:'tabs'
+				}),
+				new Ext.app.Module({
+					id:'grid-win-location-cities',
+					title:'Города',
+					url:'/cms/grid/location-cities',
+					icon:'tabs'
 				})
 			];
 	},
 	getMenuConfig :function(){
 		return [
 				{
+					text:'Технические данные',
+					iconCls:'setup',
+					handler:function() {
+						return false;
+					},
+					menu:{
+						items:[
+							{
+								text:'География',
+								iconCls:'geo',
+								handler:function() {
+									return false;
+								},
+								menu:{
+									items:[
+										this.getModule('grid-win-location-regions').launcher,
+										this.getModule('grid-win-location-countries').launcher,
+										this.getModule('grid-win-location-cities').launcher
+									]
+								}
+							},
+							this.getModule('grid-win-languages').launcher
+						]
+					}
+				},
+				{
 					text:'СEO',
-					iconCls:'bogus',
+					iconCls:'folder',
 					handler:function() {
 						return false;
 					},
@@ -132,7 +182,7 @@ MyDesktop = new Ext.app.App({
 				},
 				{
 					text:'Права доступа',
-					iconCls:'bogus',
+					iconCls:'folder',
 					handler:function() {
 						return false;
 					},

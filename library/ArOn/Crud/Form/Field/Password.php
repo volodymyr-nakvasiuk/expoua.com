@@ -14,14 +14,13 @@ class ArOn_Crud_Form_Field_Password extends ArOn_Crud_Form_Field {
 
 	public function getInsertData() {
 		if (! $this->saveInDataBase)
-		return false;
-		$value = $this->element->getValue ();		
+			return false;
+		$value = $this->element->getValue ();
 		if (! empty ( $value )) {
-			$data = array ();
-			$data ['model'] = 'default';
-			$data ['data'] = array ('key' => $this->getName (), 'value' => $value );
+			$data = $this->prepareInsertData();
+			$data ['data']['value'] = $value;
 			return $data;
 		}
-
+		return false;
 	}
 }

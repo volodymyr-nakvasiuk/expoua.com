@@ -46,8 +46,9 @@ class ArOn_Crud_Form_Field {
 	protected $filterPrefix;
 	protected $_formActionName;
 	protected $_width;
+	protected $_modelName;
 	
-	function __construct($name = false, $title = null, $description = null, $required = null, $notEdit = false, $width = 200) {
+	function __construct($name = false, $title = null, $description = null, $required = null, $notEdit = false, $width = 200, $modelName=false) {
 		
 		$this->name = $name;
 		$this->title = $title;
@@ -56,26 +57,33 @@ class ArOn_Crud_Form_Field {
 		$this->required = $required;
 		$this->notEdit = $notEdit;
 		$this->_width = $width;
+		$this->_modelName = $modelName;
 		$this->init ();
 	}
 
 	public function init() {
 	}
 
+	public function getModelName(){
+		return $this->_modelName;
+	}
+
 	public function setForm($form) {
 		$this->form = $form;
-		$this->formModel = $form->getModel ();
+		$formModelName = $form->getModelName();
+		if (!$this->_modelName || !in_array($this->_modelName, $formModelName)) $this->_modelName = $formModelName[0];
+		$this->formModel = $form->getModelByName ($this->_modelName);
 	}
 
 	public function createElement() {
 		$this->loadHelper ();
-		$name = ($this->elementFormName === false) ? $this->name : $this->elementFormName;		
-		$this->elementClassName = self::getMyPluginLoader ()->load ( $this->_type );		
+		$name = ($this->elementFormName === false) ? $this->name : $this->elementFormName;
+		$this->elementClassName = self::getMyPluginLoader ()->load ( $this->_type );
 		$this->element = new $this->elementClassName ( $name, array ('disableLoadDefaultDecorators' => true ) );
 		$this->element->addPrefixPath ( 'Crud_Form_Decorator', 'Crud/Form/Decorator/', 'decorator' );
-		if ($this->_type == 'radio') {
-			//		   /echo $this->element->helper;die;
-		}
+		//if ($this->_type == 'radio') {
+		//	//echo $this->element->helper;die;
+		//}
 		if($this->elementHelper)
 		$this->element->helper = $this->elementHelper;
 		if ($this->_value !== null) {
@@ -97,7 +105,7 @@ class ArOn_Crud_Form_Field {
 			$this->setFilters();
 		}
 		$getData = ($this->filterPrefix) ?  $_GET [$this->filterPrefix] : $_GET;
-		if ($this->notEdit && (! empty ( $getData [$this->name] ) || $this->form->actionId)) {
+		if (!$this->hidden && $this->notEdit && (! empty ( $getData [$this->name] ) || $this->form->actionId)) {
 			$this->element->helper = 'formNotEdit';
 		}
 		return $this->element;
@@ -158,11 +166,16 @@ class ArOn_Crud_Form_Field {
 
 	public function getInsertData() {
 		if (! $this->saveInDataBase)
-		return false;
-		$data = array ();
-		$data ['model'] = 'default';
-		$data ['data'] = array ('key' => $this->getName (), 'value' => $this->getValue () );
+			return false;
+		else
+			return $this->prepareInsertData();
+	}
 
+	protected function prepareInsertData() {
+		$data = array ();
+		$model = $this->getModelName();
+		$data ['model'] = $model?$model:'default';
+		$data ['data'] = array ('key' => $this->getName (), 'value' => $this->getValue () );
 		return $data;
 	}
 

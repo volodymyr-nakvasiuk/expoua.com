@@ -16,9 +16,9 @@ class ArOn_Crud_Form_Field_Bid extends ArOn_Crud_Form_Field {
 		if (empty ( $value ))
 		$value = null;
 
-		$data = array ();
-		$data ['model'] = 'default';
-		$data ['data'] = array ('key' => $this->element->getName (), 'value' => $value );
+		$data = $this->prepareInsertData();
+		$data ['data']['value'] = $value;
+		return $data;
 
 		return $data;
 	}

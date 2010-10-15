@@ -10,11 +10,11 @@ class Crud_Form_ExtJs_Acl_Privileges extends ArOn_Crud_Form_ExtJs
 		$this->actionName = 'acl-privileges';
 
 		$this->fields = array(
-        	'id' => new ArOn_Crud_Form_Field_Numeric('acl_privilege_id', 'Id', null, true) ,			
+        	'id' => new ArOn_Crud_Form_Field_Numeric('acl_privilege_id', 'Id', null, true) ,
 			'acl_module' => new ArOn_Crud_Form_Field_Many2One('acl_module_id','Модуль'),
         	'acl_resources' => new ArOn_Crud_Form_Field_Array2Select('acl_resource_id','Ресурс'),
 			'name' => new ArOn_Crud_Form_Field_Text('acl_privilege_name', 'Название', null, true),
-			//'acl-resources' => new ArOn_Crud_Form_Field_Many2One('acl_resource_id','Ресурс'),        	
+			//'acl-resources' => new ArOn_Crud_Form_Field_Many2One('acl_resource_id','Ресурс'),
 			'roles' => new ArOn_Crud_Form_Field_Many2Many('roles','Роли') 
 		);
 		
@@ -38,7 +38,7 @@ class Crud_Form_ExtJs_Acl_Privileges extends ArOn_Crud_Form_ExtJs
 		if(!empty($this->actionId) || ($module = $this->getFilterParam('acl_module')) ){
 			if(!empty($this->actionId)){
 				$model = Db_AclResources::getInstance();
-				$model = $model->fetchRow($model->getPrimary()." = ".$this->_data ['acl_resource_id']);
+				$model = $model->fetchRow($model->getPrimary()." = ".$this->_data ['Db_AclPrivileges.acl_resource_id']);
 				$module = $model [ 'acl_module_id' ];
 			}
 			$this->fields['acl_resources']->addAttrib('parent_id',$module);

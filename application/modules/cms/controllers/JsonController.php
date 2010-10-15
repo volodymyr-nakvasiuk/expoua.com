@@ -4,6 +4,7 @@ class Cms_JsonController extends Abstract_Controller_CmsController {
 	protected $parent_ids = array(
 		'siteController' => 'controller_module_id',
 		'siteActs' => 'action_controller_id',
+		'lang_LocationCountriesData'=>'regions_id'
 	);
 	
 	public function init(){
@@ -32,7 +33,10 @@ class Cms_JsonController extends Abstract_Controller_CmsController {
 				$data = $grid->getData();
 				$model = $grid->getModel();
 				echo $this->generateJson($data['data'],$model);
-				return true;				
+				return true;
+			}
+			if(strpos($classname,'Data') !== false){
+				//$classname = 
 			}
 			if(!class_exists($classname)) return false;
 			$model = new $classname();

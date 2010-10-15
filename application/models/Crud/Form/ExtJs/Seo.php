@@ -52,10 +52,9 @@ class Crud_Form_ExtJs_Seo extends ArOn_Crud_Form_ExtJs
 		 'model' => 'Db_controller',
 		 'category' => array('Db_Emark')
 		 );*/
-		 
 		if(!empty($this->actionId)){
 			$model = Db_SiteActs::getInstance();
-			$action = $model->fetchRow($model->getPrimary()." = ".$this->_data ['seo_action_id']);
+			$action = $model->fetchRow($model->getPrimary()." = ".$this->_data ['Db_Seo.seo_action_id']);
 			$controller_id = $action [ 'action_controller_id' ];
 			
 			$model = Db_SiteController::getInstance();
@@ -63,7 +62,7 @@ class Crud_Form_ExtJs_Seo extends ArOn_Crud_Form_ExtJs
 			$module_id = $controller [ 'controller_module_id' ];
 			
 			$this->fields['siteaction']->addAttrib('parent_id', $controller_id);
-			$this->fields['siteaction']->setValue($this->_data ['seo_action_id'] );
+			$this->fields['siteaction']->setValue($this->_data ['Db_Seo.seo_action_id'] );
 			$this->fields['sitecontroller']->addAttrib('parent_id', $module_id);
 			$this->fields['sitecontroller']->setValue($controller_id);
 			$this->fields['sitemodule']->setValue($module_id);
