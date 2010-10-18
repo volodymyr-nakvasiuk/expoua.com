@@ -197,7 +197,7 @@ class ArOn_Crud_Form extends Zend_Form {
 			$dataName =  ($nameFromDbTable) ? $field->getName() : $field->getElementFormName();
 			$formName = $field->getElementFormName();
 			$modelName = $field->getModelName();
-			if (array_key_exists($modelName,$data)) {
+			if ($modelName && array_key_exists($modelName,$data)) {
 				$tmpData = $data[$modelName];
 			}
 			else {

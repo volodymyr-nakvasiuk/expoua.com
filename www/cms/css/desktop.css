@@ -70,6 +70,10 @@ div.admin_body_box {
 	background-image: url(/cms/images/icons/fam/geo.gif ) !important;
 }
 
+.comp {
+	background-image: url(/cms/images/icons/comp.png ) !important;
+}
+
 .logout {
 	background-image: url(/cms/images/logout.gif ) !important;
 }
@@ -159,7 +163,7 @@ div.admin_body_box {
 	margin: 0;
 	padding: 0;
 	position: relative;
-	z-index: 12001;
+	z-index: 9001;
 }
 
 .x-btn-icon .ux-taskbutton-center .x-btn-text {

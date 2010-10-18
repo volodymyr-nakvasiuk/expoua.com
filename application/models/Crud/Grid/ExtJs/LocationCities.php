@@ -14,7 +14,7 @@ class Crud_Grid_ExtJs_LocationCities extends ArOn_Crud_Grid_ExtJs {
 		$this->gridActionName = 'location-cities';
 		$this->table = "Db_Lang_LocationCitiesData";
 		$this->fields = array(
-			'id' => new ArOn_Crud_Grid_Column_Numeric('Id',null,true,false,'20'),
+			'id' => new ArOn_Crud_Grid_Column_Numeric('Id',null,true,false,'50'),
 			'region' => new ArOn_Crud_Grid_Column_JoinOne("Регион",array('Db_LocationCities','Db_LocationCountries','Db_Lang_LocationRegionsData'),'name',null,false,'200'),
 			'country' => new ArOn_Crud_Grid_Column_JoinOne("Страна",array('Db_LocationCities','Db_Lang_LocationCountriesData'),'name',null,false,'200'),
 			'name' => new ArOn_Crud_Grid_Column_Default("Город",null,true,false,'200'),

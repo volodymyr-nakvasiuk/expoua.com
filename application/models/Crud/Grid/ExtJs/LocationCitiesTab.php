@@ -8,8 +8,8 @@ class Crud_Grid_ExtJs_LocationCitiesTab extends ArOn_Crud_Grid_ExtJs_TabForm
 		$this->gridTitle = 'Город';
 		$this->_tabs = array(
 			new Crud_Form_ExtJs_LocationCities($this->_params['id']),
-			//Tools_LangForm::getLangForm('Crud_Form_ExtJs_LocationCitiesData', array('actionId'=>$this->_params['id']), 1),
-			//Tools_LangForm::getLangForm('Crud_Form_ExtJs_LocationCitiesData', array('actionId'=>$this->_params['id']), 2),
+			Tools_LangForm::getLangForm('Crud_Form_ExtJs_LocationCitiesData', array('actionId'=>$this->_params['id']), 1),
+			Tools_LangForm::getLangForm('Crud_Form_ExtJs_LocationCitiesData', array('actionId'=>$this->_params['id']), 2),
 		);
 	}
 }

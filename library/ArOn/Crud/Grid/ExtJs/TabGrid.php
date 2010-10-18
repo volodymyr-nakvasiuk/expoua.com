@@ -57,11 +57,28 @@ class ArOn_Crud_Grid_ExtJs_TabGrid extends ArOn_Crud_Grid {
 	    	init: function() {
 	    		var desktop = MyDesktop.getModule('grid-win-" . $this->ajaxActionName . "').app.getDesktop();
 	    		var win = desktop.getWindow('" . $this->_win_id . "');
+	    		var win_height = 430;
+				var client_height = 480;
+				if (parseInt(navigator.appVersion)>3) {
+					if (navigator.appName==\"Netscape\") {
+						client_height = window.innerHeight;
+					}
+					if (navigator.appName.indexOf(\"Microsoft\")!=-1) {
+						client_height = document.body.offsetHeight;
+					}
+				}
+				client_height = client_height - 80;
+				if (client_height < win_height){
+					win_height = client_height;
+				}
+				if (win_height<200){
+					win_height = 200;
+				}
 	    		if(!win){
 	    			win = desktop.createWindow({
 	    				id:'" . $this->_win_id . "',
 	    				title:'" . $this->gridTitle . "',
-	    				height:550,
+	    				height:win_height,
 	    				width:" . $this->_width . ",
 	    				iconCls:'tabs',
 	    				shim:false,

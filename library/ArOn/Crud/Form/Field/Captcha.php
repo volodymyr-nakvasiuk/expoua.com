@@ -9,7 +9,7 @@ class ArOn_Crud_Form_Field_Captcha extends ArOn_Crud_Form_Field {
 		$this->loadHelper ();
 		$this->element = new $this->elementClassName ( $this->name, array (
 
-		'captcha' => array ('captcha' => 'Image', 'wordLen' => 6, 'timeout' => 300, 'font' => DOCUMENT_ROOT.'/css/fonts/arial.ttf', 'imgDir' => DOCUMENT_ROOT.'/images/captcha', 'imgUrl' => '/images/captcha' ) ) );
+		'captcha' => array ('captcha' => 'Image', 'wordLen' => 6, 'timeout' => 300, 'font' => DOCUMENT_ROOT.'/css/fonts/arial.ttf', 'imgDir' => ROOT_PATH . '/www/images/captcha', 'imgUrl' => '/images/captcha' ) ) );
 		$this->element->removeDecorator ( 'Label' );
 		$this->element->setDisableLoadDefaultDecorators ( true );
 		$this->element->addPrefixPath ( 'ArOn_Crud_Form_Decorator', 'ArOn/Crud/Form/Decorator/', 'decorator' );

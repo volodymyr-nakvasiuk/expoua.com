@@ -9,9 +9,10 @@ class Crud_Form_ExtJs_LocationCities extends Crud_Form_ExtJs_Tabitem {
 		$this->actionName = 'location-cities';
 
 		$this->fields = array(
-			'id' => new ArOn_Crud_Form_Field_Numeric('id', 'Id', null, true, true) ,
+			'id' => new ArOn_Crud_Form_Field_Numeric('id', 'Id', null, true, true),
 			'region' => new ArOn_Crud_Form_Field_Many2One('regions_id','Регион'),
 			'country' => new ArOn_Crud_Form_Field_Array2Select('countries_id','Ресурс'),
+			'geonameid' => new ArOn_Crud_Form_Field_Text('geonameid', 'http://geonames.org/', null, true),
 			'active' => new ArOn_Crud_Form_Field_Array2Select('active', 'Статус', null, true)
 		);
 		$this->fields['region']->model = 'Db_Lang_LocationRegionsData';
