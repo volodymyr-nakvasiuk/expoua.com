@@ -49,7 +49,7 @@ class ArOn_Crud_Form_Field_Percentage extends ArOn_Crud_Form_Field_Numeric {
 			$select = $this->model->select ()->where ( "`{$this->model->getTableName()}`.`{$this->parent_key}` = ?", $data [$id] )->order ( 'start_date DESC' );
 			$row = $this->model->fetchRow ( $select );
 			$last_data = ($row) ? $row->toArray () : array ();
-			$now_date = date ("Y-m-d");
+			$now_date = date ( "Y-m-d" );
 			if (empty ( $last_data )) {
 				$last_data = array ('percentage' => false, 'start_date' => false );
 			}
