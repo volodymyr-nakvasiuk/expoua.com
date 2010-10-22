@@ -140,11 +140,54 @@ MyDesktop = new Ext.app.App({
 					title:'Города',
 					url:'/cms/grid/location-cities',
 					icon:'tabs'
+				}),
+				new Ext.app.Module({
+					id:'grid-win-social-organizations',
+					title:'Социальные организации',
+					url:'/cms/grid/social-organizations',
+					icon:'tabs'
+				}),
+				new Ext.app.Module({
+					id:'grid-win-organizers',
+					title:'Организаторы',
+					url:'/cms/grid/organizers',
+					icon:'tabs'
+				}),
+				new Ext.app.Module({
+					id:'grid-win-expocenters',
+					title:'Выставочные центры',
+					url:'/cms/grid/expocenters',
+					icon:'tabs'
 				})
 			];
 	},
 	getMenuConfig :function(){
 		return [
+				{
+					text:'Сайт',
+					iconCls:'folder',
+					handler:function() {
+						return false;
+					},
+					menu:{
+						items:[
+							{
+								text:'Выставки',
+								iconCls:'folder',
+								handler:function() {
+									return false;
+								},
+								menu:{
+									items:[
+										this.getModule('grid-win-social-organizations').launcher,
+										this.getModule('grid-win-organizers').launcher,
+										this.getModule('grid-win-expocenters').launcher
+									]
+								}
+							}
+						]
+					}
+				},
 				{
 					text:'Технические данные',
 					iconCls:'setup',

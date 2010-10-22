@@ -48,7 +48,7 @@ class ArOn_Crud_Form_Field {
 	protected $_width;
 	protected $_modelName;
 	
-	function __construct($name = false, $title = null, $description = null, $required = null, $notEdit = false, $width = 200, $modelName=false) {
+	function __construct($name = false, $title = null, $description = null, $required = null, $notEdit = false, $width = 600, $modelName=false) {
 		
 		$this->name = $name;
 		$this->title = $title;

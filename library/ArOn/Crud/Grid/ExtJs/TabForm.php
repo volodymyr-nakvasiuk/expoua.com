@@ -6,6 +6,7 @@ class ArOn_Crud_Grid_ExtJs_TabForm extends ArOn_Crud_Grid_ExtJs_TabGrid {
 			buttons: [{
 				text: 'Сохранить',
 				handler: function(){
+					document.extjsforms = new Array();
 					var desktop = MyDesktop.getModule('grid-win-" . $this->ajaxActionName . "').app.getDesktop();
 					var win = desktop.getWindow('" . $this->_win_id . "');
 					var tabPanel = win.items.get(0);

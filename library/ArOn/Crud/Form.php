@@ -267,6 +267,7 @@ class ArOn_Crud_Form extends Zend_Form {
 		foreach($models as $model){
 			$row = call_user_func_array(array($model, $fn), $fp);
 			if ($row) $data[get_class($model)] = is_array($row)?$row:$row->toArray();
+			if (!$whereKey) $data[get_class($model)][$model->getPrimary()] = $id;
 		}
 		
 		$this->_isLoadData = true;
@@ -410,10 +411,21 @@ class ArOn_Crud_Form extends Zend_Form {
 			foreach ($this->_model as $model){
 				$modelName = get_class($model);
 				if (isset($def_data[$modelName])){
-					try {
-						$this->rowCount = $model->update($def_data[$modelName], $model->getAdapter()->quoteInto($model->getPrimary()."=?", $this->actionId));
-					} catch ( Exception $e ) {
-						return array ('error' => $e->getMessage() );
+					if($model->getRowById($this->actionId)){
+						try {
+							$this->rowCount = $model->update($def_data[$modelName], $model->getAdapter()->quoteInto($model->getPrimary()."=?", $this->actionId));
+						} catch ( Exception $e ) {
+							return array ('error' => $e->getMessage() );
+						}
+					}
+					else {
+						try {
+							$def_data[$modelName][$model->getPrimary()] = $this->actionId;
+							$model->insert($def_data[$modelName]);
+							$this->is_new_data = true;
+						} catch ( Exception $e ) {
+							return array ('error' => $e->getMessage () );
+						}
 					}
 				}
 			}

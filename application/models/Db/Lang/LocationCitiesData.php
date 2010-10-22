@@ -7,6 +7,7 @@ class Db_Lang_LocationCitiesData extends Db_Lang {
 	protected $_order_expr = 'id';
 
 	protected $_dependentTables = array(
+		'Db_LocationCities',
 	);
 
 	protected $_referenceMap    = array(

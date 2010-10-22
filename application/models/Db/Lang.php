@@ -1,6 +1,6 @@
 <?php
 class Db_Lang extends ArOn_Db_Table {
-	static $globalLangId = 1;
+	static $globalLangId = DEFAULT_LANG_ID;
 	public $langId = 1;
 	public $langName = 'languages_id';
 
@@ -11,7 +11,7 @@ class Db_Lang extends ArOn_Db_Table {
 
 	public function __construct($config = array(), $definition = null) {
 		$this->langId = self::$globalLangId;
-		self::$globalLangId = 1;
+		self::$globalLangId = DEFAULT_LANG_ID;
 		parent::__construct($config, $definition);
 	}
 
@@ -19,6 +19,13 @@ class Db_Lang extends ArOn_Db_Table {
 		$data[$this->langName] = $this->langId;
 		return parent::insert($data);
 	}
+
+//	public function select($alias = null){
+//		$result = parent::select($alias);
+//		$langWhere = $this->langName.'='.$this->langId;
+//		$result->where(get_class($this).'.'.$langWhere)->where($this->_name.'.'.$langWhere);
+//		return $result;
+//	}
 
 	public function update(array $data, $where){
 		$langWhere = $this->langName.'='.$this->langId;

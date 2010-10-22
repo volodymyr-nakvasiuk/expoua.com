@@ -1,20 +1,20 @@
 <?php
-class Db_Lang_LocationRegionsData extends Db_Lang {
+class Db_Lang_SocialOrganizationsData extends Db_Lang {
 	protected $_primary = 'id';
-	protected $_name = 'location_regions_data';
+	protected $_name = 'social_organizations_data';
 	protected $_name_expr = "name";
 	protected $_is_deleted = false;
 	protected $_order_expr = 'id';
 
 	protected $_dependentTables = array(
-		'Db_LocationCountries',
-		'Db_LocationRegions',
+		'Db_SocialOrganizations',
+		'Db_SocialOrganizations2Organizers',
 	);
 
 	protected $_referenceMap    = array(
 		'Module' => array(
 			'columns'           => 'id',
-			'refTableClass'     => 'Db_LocationRegions',
+			'refTableClass'     => 'Db_SocialOrganizations',
 			'refColumns'        => 'id'
 		)
 	);

@@ -8,6 +8,7 @@ class Db_Lang_LocationCountriesData extends Db_Lang {
 
 	protected $_dependentTables = array(
 		'Db_LocationCities',
+		'Db_LocationCountries',
 	);
 
 	protected $_referenceMap    = array(
