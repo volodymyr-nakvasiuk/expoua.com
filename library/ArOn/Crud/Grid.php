@@ -989,8 +989,8 @@ class ArOn_Crud_Grid extends ArOn_Crud_Cache{
 		$limit = $this->getLimit ();
 		
 		if ($page != 'all' && $limit !== 'all' && $limit !== false) {
-			$id_page = $page;			
-				
+			$id_page = $page;
+			
 			$mess_num = $limit;
 			if ($mess_num == NULL)
 			$mess_num = 10;

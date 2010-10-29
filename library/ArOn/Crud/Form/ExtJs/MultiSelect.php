@@ -63,10 +63,13 @@ class ArOn_Crud_Form_ExtJs_MultiSelect extends ArOn_Crud_Form_ExtJs_Element {
 		if($options) $this->_options = $options;
 		$options = array();
 		foreach ($this->_options as $name => $value){
+			$name = str_replace(array("\n","\r"), array("",""), $name);
 			if(is_array($value)) {
 				if(count($this->_options) > 1 || !empty($name)) $this->_group = true;
 				$group = $name;
 				foreach ($value as $name=>$val){
+					$name = str_replace(array("\n","\r"), array("",""), $name);
+					$val = str_replace(array("\n","\r"), array("",""), $val);
 					$val = addslashes($val);
 					if (!$val || $val == '-' || $val == -1){
 						$this->_clearAllRender = true;
@@ -76,6 +79,7 @@ class ArOn_Crud_Form_ExtJs_MultiSelect extends ArOn_Crud_Form_ExtJs_Element {
 					$options[] = $option;
 				}
 			}else{
+				$value = str_replace(array("\n","\r"), array("",""), $value);
 				$value = addslashes($value);
 				if (!$value || $value == '-' || $value == -1){
 					$this->_clearAllRender = true;

@@ -73,6 +73,8 @@ class ArOn_Crud_Form_ExtJs_SelectAutoLoad extends ArOn_Crud_Form_ExtJs_Element {
 		if($options) $this->_options = $options;
 		$options = array();
 		foreach ($this->_options as $name => $value){
+			$name = str_replace(array("\n","\r"), array("",""), $name);
+			$value = str_replace(array("\n","\r"), array("",""), $value);
 			$option = "['" . $name . "', '" . $value . "']";
 			$options[] = $option;
 		}

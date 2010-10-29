@@ -9,6 +9,7 @@ class Db_Lang_OrganizersData extends Db_Lang {
 	protected $_dependentTables = array(
 		'Db_Organizers',
 		'Db_SocialOrganizations2Organizers',
+		'Db_Brands',
 	);
 
 	protected $_referenceMap    = array(

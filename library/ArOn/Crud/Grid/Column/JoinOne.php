@@ -30,7 +30,7 @@ class ArOn_Crud_Grid_Column_JoinOne extends ArOn_Crud_Grid_Column {
 			$this->row_id = $row [$this->key . "_id"];
 			$value = $this->createActionLink ( $value, @$row [$this->gridTitleField] );
 		}
-		if ($this->options && $value) {
+		if ($this->options && $value!==null) {
 			if (isset($this->options [$value] )) {
 				$value = $this->options [$value];
 			}

@@ -75,7 +75,6 @@ class Crud_Form_ExtJs_Organizers extends Crud_Form_ExtJs_Tabitem {
 			'model' => 'Db_Lang_SocialOrganizationsData',
 			'workingModel' => 'Db_SocialOrganizations2Organizers'
 		);
-		//$this->fields['roles']->optionName = "CONCAT_WS(', ',model_name,concat(price_value,'$'),price_year)";
 		$this->fields['social_organizations']->setElementHelper('formMultiSelect');
 		$this->fields['social_organizations']->setExplode(',');
 

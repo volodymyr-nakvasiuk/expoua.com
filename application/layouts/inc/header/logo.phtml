@@ -1,3 +1,30 @@
-<div class="header_logo_content">
-	<a href="/"><img src="/img/logo_8.png" alt="Шарики по-киевски" title="Шарики по-киевски"/></a>
+<div class="header_lang_box">
+<?php
+	foreach ($this->langArray as $lang){
+		if ($this->lang->getlocale()==$lang['code']){
+			$selected = ' selected';
+			$pre_lang = '<span>';
+			$pos_lang = '</span>';
+		}
+		else {
+			$selected = '';
+			$pre_lang = '<a href="'.str_replace($this->lang->getlocale(),$lang['code'],$this->requestUri).'">';
+			$pos_lang = '</a>';
+		}
+?>
+		<div class="<?php echo $lang['code'].$selected;?>">
+			<div class="flag">
+			</div>
+			<div class="title">
+				<?php echo $pre_lang.$lang['abbr'].$pos_lang;?>
+			</div>
+		</div>
+<?php
+	}
+?>
 </div>
+<a href="/">
+	<div class="header_logo_box">
+		<div class="header_logo_stat"><span><?php echo $this->statistics['event_count']?></span> <?php echo $this->lang->plural('record total', 'records total', $this->statistics['event_count']);?></div>
+	</div>
+</a>

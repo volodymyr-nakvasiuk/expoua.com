@@ -1,0 +1,59 @@
+.user_buttons_box {
+	float:none;
+	clear:both;
+}
+.user_links_box {
+	float:none;
+	clear:both;
+	margin: 5px 0 0 15px;
+}
+.user_button_logon {
+	float: left;
+	clear: none;
+	padding-left: 15px;
+	background: url(/img/enter_ico.gif) no-repeat 0 4px;
+	color: #0054a6;
+}
+.user_button_reg {
+	float: left;
+	clear: none;
+	padding-left: 15px;
+	background: url(/img/user_ico.png) no-repeat 0 4px;
+	margin-left: 20px;
+	color: #0054a6;
+}
+.user_button_logon a,
+.user_button_reg a {
+	color: #0054a6;
+	font-weight: bold;
+	font-size: 14px;
+}
+.user_links {
+	float: none;
+	clear: both;
+}
+.user_link_save {
+	float: right;
+	clear: none;
+	margin-right: 20px;
+	color: #0054a6;
+}
+.user_link_save a {
+	color: #0054a6;
+}
+.user_link_subscribe {
+	float:none;
+	clear:both;
+	color: #999999;
+}
+.user_link_subscribe a {
+	color: #999999;
+}
+.user_link_favorites {
+	float: left;
+	clear: none;
+	color: #999999;
+}
+.user_link_favorites a {
+	color: #999999;
+}

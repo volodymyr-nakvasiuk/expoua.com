@@ -158,6 +158,36 @@ MyDesktop = new Ext.app.App({
 					title:'Выставочные центры',
 					url:'/cms/grid/expocenters',
 					icon:'tabs'
+				}),
+				new Ext.app.Module({
+					id:'grid-win-brands-categories',
+					title:'Категории',
+					url:'/cms/grid/brands-categories',
+					icon:'tabs'
+				}),
+				new Ext.app.Module({
+					id:'grid-win-brands-subcategories',
+					title:'Подкатегории',
+					url:'/cms/grid/brands-subcategories',
+					icon:'tabs'
+				}),
+				new Ext.app.Module({
+					id:'grid-win-brands',
+					title:'Бренды',
+					url:'/cms/grid/brands',
+					icon:'tabs'
+				}),
+				new Ext.app.Module({
+					id:'grid-win-periods',
+					title:'Периоды проведения выставок',
+					url:'/cms/grid/periods',
+					icon:'tabs'
+				}),
+				new Ext.app.Module({
+					id:'grid-win-events',
+					title:'События',
+					url:'/cms/grid/events',
+					icon:'tabs'
 				})
 			];
 	},
@@ -179,9 +209,24 @@ MyDesktop = new Ext.app.App({
 								},
 								menu:{
 									items:[
+										this.getModule('grid-win-expocenters').launcher,
 										this.getModule('grid-win-social-organizations').launcher,
 										this.getModule('grid-win-organizers').launcher,
-										this.getModule('grid-win-expocenters').launcher
+										{
+											text:'Управление брендами',
+											iconCls:'folder',
+											handler:function() {
+												return false;
+											},
+											menu:{
+												items:[
+													this.getModule('grid-win-brands-categories').launcher,
+													this.getModule('grid-win-brands-subcategories').launcher,
+													this.getModule('grid-win-brands').launcher
+												]
+											}
+										}//,
+										//this.getModule('grid-win-events').launcher
 									]
 								}
 							}
@@ -210,7 +255,8 @@ MyDesktop = new Ext.app.App({
 									]
 								}
 							},
-							this.getModule('grid-win-languages').launcher
+							this.getModule('grid-win-languages').launcher,
+							this.getModule('grid-win-periods').launcher
 						]
 					}
 				},

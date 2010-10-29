@@ -1,0 +1,45 @@
+.main_menu_item {
+	clear: none;
+	float: left;
+	line-height: 30px;
+	vertical-align: middle;
+	height: 30px;
+	padding: 0 15px;
+}
+.main_menu_item a{
+	color: #ffffff;
+	text-decoration: none;
+	font-size: 14px;
+}
+.main_menu_item a:HOVER {
+	text-decoration: underline !important;
+}
+.main_menu .selected {
+	background: url(/img/main_menu_bg.gif) repeat-x;
+}
+.main_menu .selected a{
+	color: #0054a6;
+}
+.user_menu_button {
+	float:right !important;
+	margin: 4px 80px 0 0 !important;;
+	width: 116px !important;;
+	height: 21px !important;;
+	background: url(/img/user_menu_btn.png) no-repeat !important;
+	padding:0;
+	text-align:center !important;;
+	line-height:21px;
+	vertical-align:middle;
+	position:relative;
+}
+.user_menu_button a {
+	color: #333333 !important;;
+	font-size: 11px !important;
+	text-decoration: underline !important;
+	left:32px;
+	position:absolute;
+	top:-1px;
+}
+.user_menu_button a:HOVER {
+	text-decoration: none !important;
+}

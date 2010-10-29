@@ -1,0 +1,23 @@
+.sub_menu_item {
+	clear: none;
+	float: left;
+	line-height: 18px;
+	vertical-align: middle;
+	height: 18px;
+	padding: 0 10px;
+	margin: 5px 0 4px;
+	border-left: solid 1px #bac8d3;
+}
+.sub_menu_item a{
+	color: #0054a6;
+}
+.sub_menu_item a:HOVER {
+	color:#0081ff;
+}
+.sub_menu .last {
+	border-right: solid 1px #bac8d3;
+}
+.sub_menu .selected a{
+	font-weight: bold;
+	text-decoration: none;
+}

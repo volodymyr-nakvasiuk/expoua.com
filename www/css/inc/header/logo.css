@@ -1,0 +1,57 @@
+.header_lang_box {
+	float:none;
+	clear:both;
+}
+.header_lang_box .ru,
+.header_lang_box .en{
+	float:left;
+	clear:none;
+	width:50px;
+	height:20px;
+}
+.header_lang_box .selected{
+	background: url(/img/lang_back.gif) no-repeat;
+}
+.header_lang_box .ru .flag,
+.header_lang_box .en .flag {
+	float:left;
+	clear:none;
+	width:15px;
+	height: 10px;
+	margin: 5px 3px;
+}
+.header_lang_box .ru .title,
+.header_lang_box .en .title {
+	float:left;
+	clear:none;
+	color:#0054a6;
+	margin: 2px 3px;
+}
+.header_lang_box .ru .title a,
+.header_lang_box .ru .title span,
+.header_lang_box .en .title a,
+.header_lang_box .en .title span{
+	color:#0054a6;
+}
+.header_lang_box .ru .flag{
+	background: url(/img/flag_ru.png) no-repeat;
+}
+.header_lang_box .en .flag{
+	background: url(/img/flag_en.png) no-repeat;
+}
+.header_logo_box {
+	float:none;
+	clear:both;
+	background: url(/img/logo.png) no-repeat;
+	width: 221px;
+	height: 61px;
+	margin-top: 20px;
+}
+.header_logo_stat {
+	color: #c7c7c7;
+	margin: 40px 0 0 52px;
+}
+.header_logo_stat span{
+	color: #0054a6;
+	font-weight: bold;
+}

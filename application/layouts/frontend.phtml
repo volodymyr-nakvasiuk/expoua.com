@@ -1,57 +1,56 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!doctype html>
+<html lang="en" class="no-js">
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=IE8"/>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<?php echo $this->magicHeadLink();?>
+	<meta http-equiv="X-UA-Compatible" content="IE=IE8"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<!--[if IE]><![endif]-->
 
-<?php echo $this->magicHeadScript();?>
+	<?php echo $this->magicHeadLink();?>
 
-<?php echo $this->headTitle(); ?>
+	<?php echo $this->magicHeadScript();?>
 
-<?php echo $this->headMeta(); ?>
+	<?php echo $this->headTitle(); ?>
 
-<script type="text/javascript">
-if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)){
-	var ieversion=new Number(RegExp.$1);
-	if (ieversion<=7){
-		var a = document.getElementsByTagName("link");
-		var h;
-		for (var i in a){
-			if (typeof a[i] == 'object'){
-				if(a[i]['rel'].indexOf("style") != -1){
-					h = a[i]['href'];
-					a[i].setAttribute("href", h.replace(/\.css$/g, "_ie.css"));
-					break;
+	<?php echo $this->headMeta(); ?>
+
+	<script type="text/javascript">
+		if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)){
+			var ieversion=new Number(RegExp.$1);
+			if (ieversion<=7){
+				var a = document.getElementsByTagName("link");
+				var h;
+				for (var i in a){
+					if (typeof a[i] == 'object'){
+						if(a[i]['rel'].indexOf("style") != -1){
+							h = a[i]['href'];
+							a[i].setAttribute("href", h.replace(/\.css$/g, "_ie.css"));
+							break;
+						}
+					}
 				}
 			}
 		}
-	}
-}
-var host_name = '<?php echo $this->http_host;?>';
-var main_host_name = '<?php echo HOST_NAME;?>';
-var cookie_host_name = '<?php echo COOKIE_HOST_NAME;?>';
-var phpParams = <?php echo Zend_Json_Encoder::encode($this->jsParams);?>;
-</script>
+		var host_name = '<?php echo $this->http_host;?>';
+		var main_host_name = '<?php echo HOST_NAME;?>';
+		var cookie_host_name = '<?php echo COOKIE_HOST_NAME;?>';
+		var phpParams = <?php echo Zend_Json_Encoder::encode($this->jsParams);?>;
+	</script>
+
+	<script src="http://ws.expopromoter.local/bns/v2/" language="javascript" type="text/javascript"></script>
 </head>
-<body>
+<!--[if lt IE 7 ]> <body class="ie6"> <![endif]-->
+<!--[if IE 7 ]>    <body class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <body class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <body class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <body> <!--<![endif]-->
 <?php if (VIEW_EXTRAINFO_MODE=='on'){?>
 <div style="display:none;"><?php echo $this->fullAction?></div>
 <?php }?>
-<div class="all_site_body_box">
-<div id="loader" style="display: none;"></div>
-
-<div id="loading" style="display: none;">
-	<div class="loading-indicator">
-	</div>
-</div>
-
-<div id="x-desktop">
-<div id="site-desktop">
-<div class="desktop_site_box" id="site-box">
-<div class="all_site_box">
-	<?php if (!empty($this->layouts['head'])){?>
-		<div class="site_header">
+<div id="siteBox">
+	<div id="container">
+		<?php /* ========== head ========== */?>
+		<?php if (!empty($this->layouts['head'])){?>
+		<div id="head">
 			<?php
 				foreach ($this->layouts['head'] as $class => $path) {
 					echo '<div class="'.$class.'">'.$this->render($path.'.phtml').'</div>';
@@ -59,97 +58,113 @@ var phpParams = <?php echo Zend_Json_Encoder::encode($this->jsParams);?>;
 			?>
 			<div class="helper"></div>
 		</div>
-		<div class="site_hr"></div>
-	<?php }?>
-	
-	<?php if (!empty($this->layouts['menu'])){?>
-		<div class="site_menu_box">
+		<div class="clr"></div>
+		<?php }?>
+
+		<?php /* ========== topRow ========== */?>
+		<?php if (!empty($this->layouts['topRow'])){?>
+		<div id="topRow">
+			<?php
+				foreach ($this->layouts['top'] as $class => $path) {
+			echo '<div class="'.$class.'">'.$this->render($path.'.phtml').'</div>';
+		}
+			?>
+		</div>
+		<div class="clr"></div>
+		<?php } ?>
+
+		<?php /* ========== menu ========== */?>
+		<?php if (!empty($this->layouts['menu'])){?>
+		<div id="menu">
 			<?php
 				foreach ($this->layouts['menu'] as $class => $path) {
 					echo '<div class="'.$class.'">'.$this->render($path.'.phtml').'</div>';
 				}
 			?>
 		</div>
-		<div class="site_hr"></div>
-	<?php }?>
-	
-	<?php if (!empty($this->layouts['top'])){?>
-		<div class="center_top_box">
+		<div class="clr"></div>
+		<?php }?>
+
+		<?php /* ========== top ========== */?>
+		<?php if (!empty($this->layouts['top'])){?>
+		<div id="top">
 			<?php
 				foreach ($this->layouts['top'] as $class => $path) {
 					echo '<div class="'.$class.'">'.$this->render($path.'.phtml').'</div>';
 				}
 			?>
 		</div>
-		<div class="site_hr"></div>
-	<?php } ?>
-	
-	<div class="site_content_box">
-		<?php
-			echo $this->layout()->content;
-			if (!empty($this->layouts['center'])){
-				foreach ($this->layouts['center'] as $class => $path) {
-					echo '<div class="'.$class.'">'.$this->render($path.'.phtml').'</div>';
-				}
+		<div class="clr"></div>
+		<?php } ?>
+		
+		<div id="main">
+			<?php /* ========== content ========== */?>
+			<div id="content">
+				<?php
+					echo $this->layout()->content;
+					if (!empty($this->layouts['center'])){
+				?>
+						<div id="center">
+				<?php
+						foreach ($this->layouts['center'] as $class => $path) {
+							echo '<div class="'.$class.'">'.$this->render($path.'.phtml').'</div>';
+						}
+				?>
+						</div>
+						<div class="clr"></div>
+				<?php
+					}
+				?>
+				<?php echo $this->HTMLscript ?>
+			</div>
+			<div class="clr"></div>
+
+			<?php /* ========== right ========== */?>
+			<?php if (!empty($this->layouts['right'])){?>
+			<div id="right">
+				<?php
+					foreach ($this->layouts['top'] as $class => $path) {
+				echo '<div class="'.$class.'">'.$this->render($path.'.phtml').'</div>';
 			}
-		?>
-		<?php echo $this->HTMLscript?>
+				?>
+			</div>
+			<div class="clr"></div>
+			<?php } ?>
+		</div>
 	</div>
-	<div class="site_hr"></div>
-	
-	<?php if (!empty($this->layouts['bottom'])){?>
-		<div class="site_bottom_box">
-		<?php
-			foreach ($this->layouts['bottom'] as $class => $path) {
-				echo '<div class="'.$class.'">'.$this->render($path.'.phtml').'</div>';
-			}
-		?>
-		</div>
-		<div class="site_hr"></div>
-	<?php }?>
-	
-	<?php if (!empty($this->layouts['bottomRow'])){?>
-		<div class="site_bottom_row">
-		<?php
-			foreach ($this->layouts['bottomRow'] as $class => $path) {
-				echo '<div class="'.$class.'">'.$this->render($path.'.phtml').'</div>';
-			}
-		?>
-		</div>
-	<?php }?>
 </div>
-</div>
-</div>
-</div>
-</div>
-<?php /*
+
 <script type="text/javascript">
 <?php foreach ($this->googleSiteTracker as $trackerName => $trackerId){ ?>
 	_gaq.push(['<?php echo $trackerName?>._setAccount', '<?php echo $trackerId;?>']);
 	_gaq.push(['<?php echo $trackerName?>._setDomainName', 'none']);
 	_gaq.push(['<?php echo $trackerName?>._trackPageview']);
-	_gaq.push(['<?php echo $trackerName?>._addIgnoredOrganic', 'car.ua']);
-	_gaq.push(['<?php echo $trackerName?>._addIgnoredOrganic', 'car ua']);
-	_gaq.push(['<?php echo $trackerName?>._addIgnoredOrganic', 'http://car.ua/']);
-	_gaq.push(['<?php echo $trackerName?>._addIgnoredOrganic', 'http://car.ua']);
+	//_gaq.push(['<?php echo $trackerName?>._addIgnoredOrganic', 'expoua.com']);
+	//_gaq.push(['<?php echo $trackerName?>._addIgnoredOrganic', 'expo ua']);
+	//_gaq.push(['<?php echo $trackerName?>._addIgnoredOrganic', 'expoua']);
+	//_gaq.push(['<?php echo $trackerName?>._addIgnoredOrganic', 'expoua com']);
+	//_gaq.push(['<?php echo $trackerName?>._addIgnoredOrganic', 'http://expoua.com/']);
+	//_gaq.push(['<?php echo $trackerName?>._addIgnoredOrganic', 'http://expoua.com']);
 <?php } ?>
 
+<?php /*
 window.yandex_metrika_callback = function() {
 	window.yaCounter59577 = new Ya.Metrika(59577, null, 1);
 }
-
+*/ ?>
 $(window).load(function(){
 	var s = document.getElementsByTagName('script')[0];
-	
+
 	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
 	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 	s.parentNode.insertBefore(ga, s);
-
+<?php /*
 	var ya = document.createElement('script'); ya.type = 'text/javascript'; ya.async = true;
 	ya.src = ((document.location.protocol=='https:')?'https:':'http:') + '//mc.yandex.ru/metrika/watch.js';
 	s.parentNode.insertBefore(ya, s);
+*/ ?>
 });
 </script>
-*/?>
+
 </body>
 </html>

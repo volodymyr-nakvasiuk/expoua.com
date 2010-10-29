@@ -68,15 +68,19 @@ class ArOn_Crud_Form_ExtJs_Select extends ArOn_Crud_Form_ExtJs_Element {
 		if($options) $this->_options = $options;
 		$options = array();
 		foreach ($this->_options as $name => $value){
+			$name = str_replace(array("\n","\r"), array("",""), $name);
 			if(is_array($value)) {
 				$this->_group = true;
 				$group = $name;
 				foreach ($value as $name=>$val){
+					$name = str_replace(array("\n","\r"), array("",""), $name);
+					$val = str_replace(array("\n","\r"), array("",""), $val);
 					$val = addslashes($val);
 					$option = "['" . $name . "', '" . $val . "', '" . $group . "']";
 					$options[] = $option;
 				}
 			}else{
+				$value = str_replace(array("\n","\r"), array("",""), $value);
 				$value = addslashes($value);
 				$option = "['" . $name . "', '" . $value . "']";
 				$options[] = $option;

@@ -1,4 +1,19 @@
-div.menu_main_box {
+#menu {
+	width: 980px;
+	height: 57px;
+	clear: both;
+	float: none;
+	font-family: arial;
+}
+.main_menu {
+	width: 980px;
+	height: 30px;
+	clear: both;
+	float: none;
+}
+.sub_menu {
+	width: 980px;
+	height: 27px;
 	clear: both;
 	float: none;
 }

@@ -52,9 +52,9 @@ class Bootstrap {
 		self::setupCache();
 		self::setupFrontController ();
 		self::setupErrorHandler ();
+		self::setupTranslation();
 		self::setupView ();
 		self::setupSessions ();
-		//self::setupTranslation();
 		self::setupRoutes ();
 		self::setupAcl ();
 		self::setupController ();
@@ -340,10 +340,6 @@ class Bootstrap {
 		$options = array ('scan' => Zend_Translate::LOCALE_FILENAME, 'disableNotices' => true );
 		$translate = new Zend_Translate ( 'gettext', self::$root . '/application/languages/', 'auto', $options );
 		Zend_Registry::set ( 'Zend_Translate', $translate );
-
-		if (self::$frontController) {
-			self::$frontController->registerPlugin ( new ArOn_Controller_Plugin_Language ( ) );
-		}
 	}
 
 	public static function setupRoutes() {

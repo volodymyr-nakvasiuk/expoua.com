@@ -1,0 +1,8 @@
+.header_banner {
+	float: left;
+	clear: none;
+	margin: 15px 0 0 10px;
+	border: solid 1px #bac8d3;
+	width: 200px;
+	height: 100px;
+}

@@ -9,6 +9,7 @@ class Db_Organizers extends ArOn_Db_Table {
 	protected $_dependentTables = array(
 		'Db_Lang_OrganizersData',
 		'Db_SocialOrganizations2Organizers',
+		'Db_Brands',
 	);
 
 	protected $_referenceMap    = array(

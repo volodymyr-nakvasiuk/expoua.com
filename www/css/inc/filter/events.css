@@ -1,0 +1,41 @@
+.filter_left {
+	width: 6px;
+	height: 34px;
+	clear: none;
+	float: left;
+	background: url(/img/filter_left_bg.gif) no-repeat;
+}
+.filter_center {
+	width: 968px;
+	height: 34px;
+	clear: none;
+	float: left;
+	background: url(/img/color_92a8bc_1x1.gif) repeat-x 0 100% #cde3fc;
+}
+.filter_right {
+	width: 6px;
+	height: 34px;
+	clear: none;
+	float: left;
+	background: url(/img/filter_right_bg.gif) no-repeat;
+}
+.filter_item {
+	clear: none;
+	float: left;
+	margin: 5px 0 0 10px
+}
+.filter_item input.text {
+	border:1px solid #7F9DB9;
+	color:#999999;
+	padding:2px 5px;
+	width: 270px;
+}
+.filter_item select {
+	border:1px solid #7F9DB9;
+	color:#000000;
+	padding:1px 0 1px 5px;
+	width: 430px;
+}
+.filter_item span {
+	color: #0054a6;
+}

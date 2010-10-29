@@ -1,0 +1,23 @@
+<div class="filter_left">
+</div>
+<div class="filter_center">
+	<div class="filter_item">
+		<input class="text" type="text" value="<?php echo $this->lang->translate('search by keyword...');?>" onfocus="javascript:if(this.value=='<?php echo $this->lang->translate('search by keyword...');?>')this.value='';" onblur="javascript:if(this.value=='')this.value='<?php echo $this->lang->translate('search by keyword...');?>';" />
+	</div>
+	<div class="filter_item">
+		<select>
+			<option><?php echo $this->lang->translate('Category');?></option>
+			{foreach from=$getExhibitionCategoriesList.data item=el}
+			<option>{$el.name}</option>
+			{/foreach}
+		</select>
+	</div>
+	<div class="filter_item bottom_dashed_box">
+		<span class="bottom_dashed"><?php echo $this->lang->translate('Advanced Search');?></span>
+	</div>
+	<div class="filter_item fr">
+		<input class="button" type="submit" value="<?php echo $this->lang->translate('Search');?>"/>
+	</div>
+</div>
+<div class="filter_right">
+</div>

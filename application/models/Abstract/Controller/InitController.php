@@ -15,6 +15,21 @@ class Abstract_Controller_InitController extends Zend_Controller_Action {
 	protected $auth = false;
 	
 	protected $_actionId = false;
+
+	protected $_langArray = array(
+		array(
+			'name'=>'Русский',
+			'abbr'=>'рус',
+			'code'=>'ru',
+			'locale'=>'ru_RU',
+		),
+		array(
+			'name'=>'English',
+			'abbr'=>'eng',
+			'code'=>'en',
+			'locale'=>'en_US',
+		),
+	);
 	
 	/**
 	 * Redirector - defined for code completion
@@ -32,20 +47,38 @@ class Abstract_Controller_InitController extends Zend_Controller_Action {
 	public function __call($f, $a){}
 	
 	public function init(){
-		$uri = $this->_request->getRequestUri();
-		if (strpos($uri, '//')){
-			$count = 1;
-			while ($count) $uri = str_replace("//", "/", $uri, $count);
-			$this->_redirect($uri);
-		}
+		$this->_setupURI();
+		
 		parent::init();
 		$this->_redirector = $this->_helper->getHelper('Redirector');
-		
+
 		$this->initSession();
 		$this->initViewParams();
 		//ArOn_Core_Debug::getGenerateTime('params');
 		$this->initActionId();
 		//ArOn_Core_Debug::getGenerateTime('action');
+	}
+
+	protected function _setupURI(){
+		$redirect = false;
+		$uri = $this->_request->getRequestUri();
+		if (strpos($uri, '//')!==false){
+			$redirect = true;
+			$count = 1;
+			while ($count) $uri = str_replace("//", "/", $uri, $count);
+		}
+		$lang = $this->_request->getParam('lang');
+		if ($lang!==null){
+			$isLang = false;
+			foreach ($this->_langArray as $l) if ($lang == $l['code']){$isLang=true;break;}
+			if (!$isLang){
+				$redirect = true;
+				$uri = str_replace("//", "/", '/'.$this->_langArray[0]['code'].$uri.'/');
+			}
+		}
+		//exit((($redirect)?'Have':'No').' redirect to '.$uri);
+		if ($redirect) $this->_redirect($uri);
+		$this->view->lang->setLocale($lang);
 	}
 	
 	protected function initSession(){
@@ -65,8 +98,10 @@ class Abstract_Controller_InitController extends Zend_Controller_Action {
 									$this->_request->getControllerName().' - '.
 									$this->_request->getActionName();
 		$this->view->http_host = 'http://'.str_replace('forum.','',$_SERVER["HTTP_HOST"]);
-		$this->view->fullUrl = $this->view->http_host.$this->_request->getRequestUri();
+		$this->view->requestUri = $this->_request->getRequestUri();
+		$this->view->fullUrl = $this->view->http_host.$this->view->requestUri;
 		$this->view->doctype('XHTML1_STRICT');
+		$this->view->langArray = $this->_langArray;
 	}
 	
 	protected function initActionId(){

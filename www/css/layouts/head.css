@@ -1,12 +1,22 @@
-div.header_logo_box {
-	width: 343px;
-	height: 68px;
-	margin: 47px 0 0 100px;
-	float:left;
-	clear: none;
+#head {
+	width:980px;
+	height: 125px;
+	float: none;
+	clear: both;
 }
-div.header_contacts_box {
-	margin: 0 100px 0 0;
-	float:right;
+.header_left_box {
+	float:left;
+	clear:none;
+	margin-top: 10px;
+}
+.header_banner_box {
+	float: left;
 	clear: none;
+	margin-left: 70px;
+}
+.header_user_box {
+	float: right;
+	clear: none;
+	margin: 35px 60px 0 0 ;
+	font-family: arial;
 }

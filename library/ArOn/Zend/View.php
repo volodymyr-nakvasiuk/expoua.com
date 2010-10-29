@@ -4,7 +4,13 @@ class ArOn_Zend_View extends Zend_View {
 	protected $_minifyTypes = array();
 	protected $_minify = array();
 	public $lastTmplt = '';
-	
+	public $lang = null;
+
+	public function __construct($config = array()){
+		parent::__construct($config);
+		$this->lang = Zend_Registry::get('Zend_Translate');
+	}
+
 	public function setMinify($resourseExts = 'html', $minifyPath = '', $resourseType = ''){
 		$resourseType = strtoupper($resourseType);
 		if ($minifyPath){

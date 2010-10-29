@@ -36,10 +36,10 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 		
 		//ArOn_Core_Debug::getGenerateTime('frontendInit');
 		
-		//$this->view->googleSiteTracker = array(
-		//	'firstTracker'  => 'UA-9867935-1',
+		$this->view->googleSiteTracker = array(
+			'firstTracker'  => 'UA-978984-3',
 		//	'secondTracker' => 'UA-9867935-2',
-		//);
+		);
 	}
 	
 	protected function initSeo(){
@@ -171,62 +171,40 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 		$this->initLayouts();
 		$this->initMenu();
 		$this->setupLayouts();
-		//$this->initStatistics();
+		$this->initStatistics();
 	}
 	
 	protected function initMenu(){
 		$this->view->menuLinks = array(
-			'main'=>array(
-				'url'=>HOST_NAME.'/',
-				'title'=>'Главная',
+			'events'=>array(
+				'lang'=>array('ru','en'),
+				'url'=>HOST_NAME.'/events/region-Europe-11/country-Ukraine-52/',
+				'title'=>$this->view->lang->translate('Trade shows'),
+				'submenu'=>array(
+				),
 			),
-			'services'=>array(
-				'url'=>HOST_NAME.'/services/',
-				'title'=>'Услуги',
+			'online'=>array(
+				'lang'=>array('ru','en'),
+				'url'=>HOST_NAME.'/',
+				'title'=>$this->view->lang->translate('Trade show Online: Companies, Products, Services'),
+				'submenu'=>array(),
 			),
 			'gallery'=>array(
-				'url'=>HOST_NAME.'/gallery/',
-				'title'=>'Галерея',
+				'lang'=>array('ru','en'),
+				'url'=>HOST_NAME.'/',
+				'title'=>$this->view->lang->translate('Trade shows videos'),
+				'submenu'=>array(),
 			),
 			'market'=>array(
-				'url'=>HOST_NAME.'/market/',
-				'title'=>'Розничная<br/>торговля',
-			/*
+				'lang'=>array('ru'),
+				'url'=>HOST_NAME.'/',
+				'title'=>$this->view->lang->translate('Business tours'),
 				'submenu'=>array(
-					'market_balloons'=>array(
-						'url'=>HOST_NAME.'/market/balloons/',
-						'title'=>'Шары',
-					),
-					'market_accessories'=>array(
-						'url'=>HOST_NAME.'/market/accessories/',
-						'title'=>'Аксессуары',
-					),
-					'market_carnival'=>array(
-						'url'=>HOST_NAME.'/market/carnival/',
-						'title'=>'Костюмы и карнавальные аксессуары',
-					),
-					'market_package'=>array(
-						'url'=>HOST_NAME.'/market/package/',
-						'title'=>'Упаковка',
-					),
+					//'market_balloons'=>array(
+					//	'url'=>HOST_NAME.'/market/balloons/',
+					//	'title'=>'Шары',
+					//),
 				),
-			*/
-			),
-			'news'=>array(
-				'url'=>HOST_NAME.'/news/',
-				'title'=>'Новости',
-			),
-			'feedback'=>array(
-				'url'=>HOST_NAME.'/feedback/',
-				'title'=>'Отзывы',
-			),
-			'team'=>array(
-				'url'=>HOST_NAME.'/team/',
-				'title'=>'Наша команда',
-			),
-			'contacts'=>array(
-				'url'=>HOST_NAME.'/contacts/',
-				'title'=>'Контактная<br/>информация',
 			),
 		);
 	}
@@ -246,14 +224,22 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 		$this->view->layouts = array();
 		
 		$this->view->layouts['head'] = array(
-			"header_logo_box"=>array('inc/header/logo', 100),
+			"header_left_box"=>array('inc/header/logo', 100),
+			"header_banner_box"=>array('inc/header/banner', 100),
+			"header_user_box"=>array('inc/header/user', 100),
 		);
+
+		$this->view->layouts['topRow'] = array();
 		
 		$this->view->layouts['menu'] = array(
+			'main_menu'=>array('inc/menu/main', 100),
+			'sub_menu'=>array('inc/menu/sub', 100),
 		);
-		
-		$this->view->layouts['top'] = array();
-		$this->view->layouts['left'] = array();
+
+		$this->view->layouts['top'] = array(
+			'filter'=>array('inc/filter/events', 100),
+		);
+		$this->view->layouts['right'] = array();
 		$this->view->layouts['center'] = array();
 		$this->view->layouts['bottomRow'] = array();
 		$this->view->layouts['bottom'] = array();
@@ -282,12 +268,8 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 		$statistics = new Init_Statistics();
 		
 		$this->view->statistics = array();
-		$this->view->statistics['count_today_old'] = $statistics->getTodayOldCount();
-		//$this->view->statistics['count_today_new'] = $statistics->getTodayNewCount();
-		$this->view->statistics['count_all_old']   = $statistics->getAllOldCount();
-		//$this->view->statistics['count_all_new']   = $statistics->getAllNewCount();
-		//$this->view->statistics['online_users']    = $statistics->getOnlineUsersCount();
-		//$this->view->statistics['all_users']       = $statistics->getAllUsersCount();
+		//$this->view->statistics['today_count'] = $statistics->getTodayCount();
+		$this->view->statistics['event_count'] = $statistics->getEventsCount();
 	}
 	
 	public function resetUser(){

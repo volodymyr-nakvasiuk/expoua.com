@@ -1,0 +1,12 @@
+<?php foreach ($this->menuLinks as $menu=>$menuLink){ if(!in_array($this->lang->getLocale(),$menuLink['lang'])) continue;?>
+	<div class="main_menu_item<?php echo $this->activeMenu==$menu?' selected':'';?>">
+		<a href="<?php echo $menuLink['url'];?>" title="<?php echo $this->lang->translate($menuLink['title']);?>"><?php echo $this->lang->translate($menuLink['title']);?></a>
+	</div>
+<?php } ?>
+<div class="user_menu_button main_menu_item">
+	<a href="/client/" title="<?php echo $this->lang->translate('My Office');?>"><?php echo $this->lang->translate('My Office');?></a>
+</div>
+<script type="text/javascript">
+	var activeMainMenu = activeMainMenu || false;
+	activeMainMenu = <?php echo $this->activeMenu?"'".$this->activeMenu."'":'false';?>;
+</script>
