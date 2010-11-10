@@ -22,12 +22,14 @@ class Abstract_Controller_InitController extends Zend_Controller_Action {
 			'abbr'=>'рус',
 			'code'=>'ru',
 			'locale'=>'ru_RU',
+			'id'=>1,
 		),
 		array(
 			'name'=>'English',
 			'abbr'=>'eng',
 			'code'=>'en',
 			'locale'=>'en_US',
+			'id'=>2,
 		),
 	);
 	
@@ -68,9 +70,16 @@ class Abstract_Controller_InitController extends Zend_Controller_Action {
 			while ($count) $uri = str_replace("//", "/", $uri, $count);
 		}
 		$lang = $this->_request->getParam('lang');
+		$langId = 2;
 		if ($lang!==null){
 			$isLang = false;
-			foreach ($this->_langArray as $l) if ($lang == $l['code']){$isLang=true;break;}
+			foreach ($this->_langArray as $l){
+				if ($lang == $l['code']){
+					$isLang=true;
+					$langId = $l['id'];
+					break;
+				}
+			}
 			if (!$isLang){
 				$redirect = true;
 				$uri = str_replace("//", "/", '/'.$this->_langArray[0]['code'].$uri.'/');
@@ -78,6 +87,7 @@ class Abstract_Controller_InitController extends Zend_Controller_Action {
 		}
 		//exit((($redirect)?'Have':'No').' redirect to '.$uri);
 		if ($redirect) $this->_redirect($uri);
+		define ('DEFAULT_LANG_ID', $langId);
 		$this->view->lang->setLocale($lang);
 	}
 	
@@ -99,6 +109,7 @@ class Abstract_Controller_InitController extends Zend_Controller_Action {
 									$this->_request->getActionName();
 		$this->view->http_host = 'http://'.str_replace('forum.','',$_SERVER["HTTP_HOST"]);
 		$this->view->requestUri = $this->_request->getRequestUri();
+		$this->view->requestUrl = Tools_View::clearAllUrlParams($this->view->requestUri);
 		$this->view->fullUrl = $this->view->http_host.$this->view->requestUri;
 		$this->view->doctype('XHTML1_STRICT');
 		$this->view->langArray = $this->_langArray;
@@ -108,8 +119,7 @@ class Abstract_Controller_InitController extends Zend_Controller_Action {
 		$extra = '';
 		$extraAction = array(
 		);
-		$uri = explode("?",$this->_request->getRequestUri());
-		$matches = explode('/', $uri[0]);
+		$matches = explode('/', $this->view->requestUrl);
 		if (isset($matches[3]) && in_array($matches[3], $extraAction)!==false){
 			$extra = '/'.$matches[3];
 		}

@@ -1,0 +1,66 @@
+<?php
+	//$regions = Zend_Registry::get("regions".Tools_Events::$cacheSuffix['id']);
+	$countries = Zend_Registry::get("countries".Tools_Events::$cacheSuffix['id']);
+	$cities = Zend_Registry::get("cities".Tools_Events::$cacheSuffix['id']);
+	$l = $this->lang->getLocale();
+?>
+<div class="events_index_box fl">
+	<div class="events_index_title cl">
+		<?php echo $this->lang->translate('Exhibitions');?>
+	</div>
+	<div class="events_index_content cl">
+	<?php
+		foreach($this->data['data'] as $item){ $url="/".$l."/event/card/".$item['id']."-".Tools_View::getUrlAlias($item['brands_name'], true)."/";
+	?>
+		<div class="events_index_item cl">
+			<div class="events_index_item_title">
+				<a href="<?php echo $url;?>">
+					<?php echo $item['brands_name'];?>
+				</a>
+			</div>
+			<div class="events_index_item_content_box cl">
+				<div class="events_index_item_logo fl">
+					<a href="<?php echo $url;?>">
+						<img src="http://ws.expopromoter.com/file/event_logo.php?id=<?php echo $item['id'];?>&lang=<?php echo DEFAULT_LANG_ID;?>"/>
+					</a>
+				</div><div class="events_index_item_content fl">
+					<div class="events_index_item_info_box cl">
+						<div class="events_index_item_info fl">
+							<div class="events_index_item_info_date cl">
+								<?php
+									echo
+										Tools_Events::date($l, 'd F',   strtotime($item['date_from']))
+										.' &mdash; '.
+										Tools_Events::date($l, 'd F Y', strtotime($item['date_to']))
+										;
+								?>
+							</div>
+							<div class="events_index_item_info_location cl">
+								<?php
+									echo
+									$countries[$item['regions_id']][$item['countries_id']]['name_'.$l]
+									.', '.
+									$cities[$item['regions_id']][$item['countries_id']][$item['cities_id']]['name_'.$l];
+								?>
+							</div>
+						</div>
+						<?php if ($item['free_tickets']){?>
+							<div class="events_index_item_free_ticket fr">
+								<a href="#"><?php echo $this->lang->translate('Free ticket for buyer');?></a>
+							</div>
+						<?php }?>
+					</div>
+					<div class="events_index_item_description cl">
+						<?php $d=mb_substr(strip_tags($item['description']), 0, 220, 'UTF-8'); echo $d.(mb_strlen($d, 'UTF-8')!=mb_strlen($item['description'], 'UTF-8')?'...':''); ?>
+					</div>
+				</div>
+			</div>
+		</div>
+	<?php
+		}
+	?>
+	</div>
+	<div class="paging clr">
+		<?php echo Tools_View::getPages($this->requestUri, $this->data['array_pages'], 'p'); ?>
+	</div>
+</div>

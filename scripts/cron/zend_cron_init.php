@@ -1,7 +1,7 @@
 <?php
 define ('ConfigType', 'cron');
 require_once('../../init.php');
-echo APPLICATION_ENVIRONMENT."\r\n\r\n";
+echo '//'.APPLICATION_ENVIRONMENT."\r\n\r\n";
 Bootstrap::setupSelfConst();
 Bootstrap::setupPhpIni();
 Bootstrap::setupRegistry ();

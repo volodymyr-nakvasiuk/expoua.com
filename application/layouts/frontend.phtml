@@ -33,10 +33,9 @@
 		var host_name = '<?php echo $this->http_host;?>';
 		var main_host_name = '<?php echo HOST_NAME;?>';
 		var cookie_host_name = '<?php echo COOKIE_HOST_NAME;?>';
+		var lang_id = '<?php echo $this->lang->getLocale();?>';
 		var phpParams = <?php echo Zend_Json_Encoder::encode($this->jsParams);?>;
 	</script>
-
-	<script src="http://ws.expopromoter.local/bns/v2/" language="javascript" type="text/javascript"></script>
 </head>
 <!--[if lt IE 7 ]> <body class="ie6"> <![endif]-->
 <!--[if IE 7 ]>    <body class="ie7"> <![endif]-->
@@ -101,17 +100,27 @@
 			<?php /* ========== content ========== */?>
 			<div id="content">
 				<?php
+					if (!empty($this->layouts['left'])){
+				?>
+				<div id="left">
+				<?php
+	 					foreach ($this->layouts['left'] as $class => $path) {
+							echo '<div class="'.$class.'">'.$this->render($path.'.phtml').'</div>';
+						}
+				?>
+				</div>
+				<?php
+					}
 					echo $this->layout()->content;
 					if (!empty($this->layouts['center'])){
 				?>
-						<div id="center">
+				<div id="center">
 				<?php
 						foreach ($this->layouts['center'] as $class => $path) {
 							echo '<div class="'.$class.'">'.$this->render($path.'.phtml').'</div>';
 						}
 				?>
-						</div>
-						<div class="clr"></div>
+				</div>
 				<?php
 					}
 				?>

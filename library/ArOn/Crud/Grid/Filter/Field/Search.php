@@ -34,7 +34,7 @@ class ArOn_Crud_Grid_Filter_Field_Search extends ArOn_Crud_Grid_Filter_Field {
 						if(array_key_exists('path',$filterSetting))
 							$tmp_filters [] = new ArOn_Db_Filter_Path ( $filterSetting ['path'], new ArOn_Db_Filter_Search ( $filterSetting ['filters'], $value ) );
 						elseif(array_key_exists('cache',$filterSetting)){
-							$cfilter = new ArOn_Db_Filter_Cache ($value, $filterSetting ['field'], $filterSetting ['cache'] ,$filterSetting ['criteria']);							
+							$cfilter = new ArOn_Db_Filter_Cache ($value, $filterSetting ['field'], $filterSetting ['cache'] ,$filterSetting ['criteria']);
 							if(true === $cfilter->isCached()){
 								$tmp_filters [] = $cfilter;
 								break; 
@@ -67,7 +67,7 @@ class ArOn_Crud_Grid_Filter_Field_Search extends ArOn_Crud_Grid_Filter_Field {
 			foreach ($tmp_values as $value){
 				$values [] = $this->subParseValue($value);
 			}
-			return $values;			
+			return $values;
 		}
 		else{
 			return array($this->subParseValue($value));
@@ -77,7 +77,7 @@ class ArOn_Crud_Grid_Filter_Field_Search extends ArOn_Crud_Grid_Filter_Field {
 	protected function subParseValue($value){
 		$values = array();
 		if(strpos($value,',') !== false){
-			return explode(',',$value);			
+			return explode(',',$value);
 		}
 		else{
 			return array($value);

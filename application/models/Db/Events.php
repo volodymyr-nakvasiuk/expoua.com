@@ -42,5 +42,10 @@ class Db_Events extends ArOn_Db_Table {
 			'refTableClass'     => 'Db_Lang_ExpocentersData',
 			'refColumns'        => 'id'
 		),
+		'Module' => array(
+			'columns'           => 'id',
+			'refTableClass'     => 'Db_Lang_EventsData',
+			'refColumns'        => 'id'
+		),
 	);
 }

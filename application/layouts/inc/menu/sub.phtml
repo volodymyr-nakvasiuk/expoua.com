@@ -1,30 +1,13 @@
-<?php /*
-{if ($user_params.controller=='ServiceCompanies' && $user_params.servcompcat == 12172) || $user_params.controller=='TourOrder'}
-<div class="sub_menu_item{if $user_params.controller == 'TourOrder'} selected{/if}">
-	<a href="{getURL controller='TourOrder'}" title="{#topLinksTourOrder#}">{#topLinksTourOrder#}</a>
+<?php
+	if ($this->activeMenu){
+	foreach ($this->menuLinks[$this->activeMenu]['submenu'] as $menu=>$menuLink){
+?>
+<div class="sub_menu_item<?php echo $this->activeSubmenu==$menu?' selected':'';?>">
+	<a href="<?php echo $menuLink['url'];?>" title="<?php echo $this->lang->translate($menuLink['title']);?>"><?php echo $this->lang->translate($menuLink['title']);?></a>
 </div>
-<div class="last sub_menu_item{if $user_params.controller == 'ServiceCompanies' && ($user_params.servcompcat == 12172 || $getServiceCompany.data.categoryId == 12172)} selected{/if}">
-	<a href="{getURL controller='ServiceCompanies' servcompcat='12172'}" title="{#topLinksExhibitionTours#}">{#topLinksExhibitionTours1#}</a>
-</div>
-{else}
-<div class="sub_menu_item{if (($user_params.controller == 'Exhibition' || $user_params.controller == 'Mainpage') && ($user_params.region == $smarty.const.TARGETING_REGION && $user_params.country == $smarty.const.TARGETING_COUNTRY)) || (($user_params.controller == 'Event') && ($getExhibition.data.regionId == $smarty.const.TARGETING_REGION && $getExhibition.data.countryId == $smarty.const.TARGETING_COUNTRY))} selected{/if}">
-	<a href="{getURL controller='Exhibition' region=$smarty.const.TARGETING_REGION country=$smarty.const.TARGETING_COUNTRY}" title="{#headerTitle1#}">{#headerTitle1#}</a>
-</div>
-
-<div class="sub_menu_item{if (($user_params.controller == 'Exhibition' || $user_params.controller == 'Mainpage') && !($user_params.region == $smarty.const.TARGETING_REGION && $user_params.country == $smarty.const.TARGETING_COUNTRY)) || (($user_params.controller == 'Event') && !($getExhibition.data.regionId == $smarty.const.TARGETING_REGION && $getExhibition.data.countryId == $smarty.const.TARGETING_COUNTRY))} selected{/if}">
-	<a href="{getURL controller='Exhibition' country='all'}" title="{#topLinksExhibitions#}">{#topLinksExhibitions#}</a>
-</div>
-
-<div class="sub_menu_item{if $user_params.controller == 'News'} selected{/if}">
-	<a href="{getURL controller='News'}" title="{#topLinksNews#}">{#topLinksNews#}</a>
-</div>
-
-<div class="sub_menu_item{if $user_params.controller == 'ExpoCenters'} selected{/if}">
-	<a href="{getURL controller='ExpoCenters'}" title="{#topLinksExpoCenters#}">{#topLinksExpoCenters#}</a>
-</div>
-
-<div class="last sub_menu_item{if $user_params.controller == 'ServiceCompanies' && $user_params.servcompcat != 12172} selected{/if}">
-	<a href="{getURL controller='ServiceCompanies' mode='welcome'}" title="{#topLinksServiceCompanies#}">{#topLinksServiceCompanies#}</a>
-</div>
-{/if}
-*/ ?>
+<?php } ?>
+<script type="text/javascript">
+	var activeSubMenu = activeSubMenu || false;
+	activeSubMenu = <?php echo $this->activeSubmenu?"'".$this->activeSubmenu."'":'false';?>;
+</script>
+<?php } ?>

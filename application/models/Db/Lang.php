@@ -1,7 +1,7 @@
 <?php
 class Db_Lang extends ArOn_Db_Table {
 	static $globalLangId = DEFAULT_LANG_ID;
-	public $langId = 1;
+	public $langId = DEFAULT_LANG_ID;
 	public $langName = 'languages_id';
 
 	static function getInstance($className = false,$debug = false){

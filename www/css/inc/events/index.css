@@ -1,0 +1,73 @@
+.events_index_box{
+	width: 510px;
+	margin-top:20px;
+}
+.events_index_title, .events_index_title a{
+	font-size:14px;
+	font-weight:bold;
+	font-family:Arial;
+	color: #0054a6;
+}
+.events_index_content{
+}
+.events_index_item{
+	border-bottom: 1px dashed #cccccc;
+	padding-bottom:10px;
+}
+.events_index_item_title, .events_index_item_title a{
+	font-size:14px;
+	font-weight:bold;
+	font-family:Arial;
+	color: #dd5500;
+}
+.events_index_item_title{
+	margin-top:15px;
+}
+.events_index_item_content_box{
+	margin-top:10px;
+}
+.events_index_item_logo{
+	background: url(/img/events_logo_bg.png) no-repeat;
+	border: 1px solid #c2d1de;
+	width:78px;
+	height:78px;
+	vertical-align:middle;
+	line-height:78px;
+	text-align:center;
+}
+.events_index_item_logo img{
+	vertical-align:middle;
+}
+.events_index_item_content{
+	margin-left:10px;
+	width:420px;
+}
+.events_index_item_info_box{
+}
+.events_index_item_info{
+}
+.events_index_item_info_date{
+	font-size:12px;
+	font-weight:bold;
+	color: #000000;
+	margin-top:5px;
+}
+.events_index_item_info_location{
+	font-size:12px;
+	font-weight:bold;
+	color: #999999;
+	margin-top:10px;
+}
+.events_index_item_free_ticket a{
+	color: #0d74c4;
+	background:url("/img/free_ticket_ico.gif") no-repeat 0 1px scroll;
+	padding-left: 20px;
+}
+
+.events_index_item_free_ticket{
+	margin-top:7px;
+}
+.events_index_item_description{
+	margin-top:15px;
+	text-align:justify;
+}

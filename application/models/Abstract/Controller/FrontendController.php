@@ -21,7 +21,7 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 		//	$referal->addReferal($this->_request->getParam('reff'));
 		//	$this->_redirect('/');	
 		//}
-		
+
 		self::$currentAuth = ArOn_Acl_Auth_Client_Abstract::getInstance();
 		
 		parent::init();
@@ -175,29 +175,38 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 	}
 	
 	protected function initMenu(){
+		$lang = $this->view->lang->getLocale();
 		$this->view->menuLinks = array(
 			'events'=>array(
 				'lang'=>array('ru','en'),
-				'url'=>HOST_NAME.'/events/region-Europe-11/country-Ukraine-52/',
+				'url'=>HOST_NAME.'/'.$lang.'/events/region-europe/country-ukraine/',
 				'title'=>$this->view->lang->translate('Trade shows'),
 				'submenu'=>array(
+					'ukr'=>array(
+						'url'=>HOST_NAME.'/'.$lang.'/events/region-europe/country-ukraine/',
+						'title'=>$this->view->lang->translate('Exhibitions in Ukraine'),
+					),
+					'all'=>array(
+						'url'=>HOST_NAME.'/'.$lang.'/events/',
+						'title'=>$this->view->lang->translate('Exhibitions in the world'),
+					),
 				),
 			),
 			'online'=>array(
 				'lang'=>array('ru','en'),
-				'url'=>HOST_NAME.'/',
+				'url'=>HOST_NAME.'/'.$lang.'/',
 				'title'=>$this->view->lang->translate('Trade show Online: Companies, Products, Services'),
 				'submenu'=>array(),
 			),
 			'gallery'=>array(
 				'lang'=>array('ru','en'),
-				'url'=>HOST_NAME.'/',
+				'url'=>HOST_NAME.'/'.$lang.'/',
 				'title'=>$this->view->lang->translate('Trade shows videos'),
 				'submenu'=>array(),
 			),
 			'market'=>array(
 				'lang'=>array('ru'),
-				'url'=>HOST_NAME.'/',
+				'url'=>HOST_NAME.'/'.$lang.'/',
 				'title'=>$this->view->lang->translate('Business tours'),
 				'submenu'=>array(
 					//'market_balloons'=>array(
@@ -214,6 +223,11 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 	}
 	
 	protected function initCache() {
+		include ROOT_PATH."/data/cache/file/rcc_csc.php";
+		foreach($globalFilterCacheArray as $key=>$data){
+			Zend_Registry::set ($key, $data);
+		}
+		unset ($globalFilterCacheArray);
 		ArOn_Crud_Tools_Register::registerData();
 	}
 	
@@ -237,10 +251,10 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 		);
 
 		$this->view->layouts['top'] = array(
-			'filter'=>array('inc/filter/events', 100),
 		);
-		$this->view->layouts['right'] = array();
+		$this->view->layouts['left'] = array();
 		$this->view->layouts['center'] = array();
+		$this->view->layouts['right'] = array();
 		$this->view->layouts['bottomRow'] = array();
 		$this->view->layouts['bottom'] = array();
 		

@@ -9,6 +9,8 @@ class Db_Brands extends ArOn_Db_Table {
 	protected $_dependentTables = array(
 		'Db_Lang_BrandsData',
 		'Db_Events',
+		'Db_Brands2Categories',
+		'Db_Brands2Subcategories',
 	);
 
 	protected $_referenceMap    = array(
@@ -30,6 +32,11 @@ class Db_Brands extends ArOn_Db_Table {
 		'OrganizerData' => array(
 			'columns'           => 'organizers_id',
 			'refTableClass'     => 'Db_Lang_OrganizersData',
+			'refColumns'        => 'id'
+		),
+		'Module' => array(
+			'columns'           => 'id',
+			'refTableClass'     => 'Db_Lang_BrandsData',
 			'refColumns'        => 'id'
 		),
 	);

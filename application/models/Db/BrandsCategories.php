@@ -10,6 +10,7 @@ class Db_BrandsCategories extends ArOn_Db_Table {
 		'Db_Lang_BrandsCategoriesData',
 		'Db_BrandsSubcategories',
 		'Db_Brands',
+		'Db_Brands2Categories',
 	);
 
 	protected $_referenceMap    = array(

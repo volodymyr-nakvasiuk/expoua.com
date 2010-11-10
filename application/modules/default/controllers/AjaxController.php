@@ -13,77 +13,50 @@ class AjaxController extends Abstract_Controller_FrontendController {
 	
 	public function init(){
 		if(!$this->_request->isXmlHttpRequest()){
-			$this->_redirect('/error/error');
+			$this->_redirect('/error/error/');
 		}
 		parent::init();
 		$this->_helper->layout->disableLayout();
+		$this->_response->setHeader('Content-type', 'application/json');
 	}
 	
 	public function postDispatch(){}
 	
-	public function searchAction(){
+	public function getAction(){
+		$data = array('success'=>false);
 		$this->_helper->viewRenderer->setNoRender();
-		if($this->_request->isPost()){
-			$params = $this->_request->getPost();
-			$search = new Init_Search($params);
-			$data = $search->getData();
-			echo Zend_Json::encode($data);
-			unset($search);
-		}
-	}
-	
-	public function getimagesAction(){
-		$id = $this->_request->getParam('model_id');
-		$this->view->data = array();
-		if(empty($id)) return false;
-		$model = Db_Model::getInstance();
-		$data = $model->getRowById($id);
-		if(empty($data['model_catalog_id'])) return false;
-		
-		$model = Db_Generation::getInstance();
-		$select = $model->select();
-		$select->where("parent_id = ".$data['model_catalog_id']);
-		$data = $model->fetchAll($select);
-		$data = $data->toArray();
-		$data_gallery = array();
-		$ids = array();
-		foreach ($data as $generation){
-			$ids[] = $generation['generation_id'];
-		}
-		if(empty($ids)) return false;
-		$model = Db_Ephotos::getInstance();
-		$select = $model->select();
-		$select->where("photos_visible = 1 AND parent_id IN (" . implode(",",$ids) .")");
-		$data_gallery = $model->fetchAll($select)->toArray();
-		foreach ($data_gallery as $key => $image){
-			$data_gallery[$key]['image'] = Tools_Bmsimages::getCatalogImage($image['parent_id'],$image['photos_name'],'middle');
-			if($data_gallery[$key]['image'] === false){
-				unset($data_gallery[$key]);
+		$cacheId = $this->_request->getParam('id');
+		$cacheNames = array_diff(array_values(Tools_Events::$filterParams),array(false));
+		if (in_array($cacheId, $cacheNames)){
+			$aliases = $this->_request->getParam('parent');
+			if ($aliases){
+				if (!is_array($aliases)) $aliases = array($aliases);
+				$cache = Zend_Registry::get($cacheId.Tools_Events::$cacheSuffix['alias']);
+				$success = true;
+				foreach($aliases as $alias){
+					if (array_key_exists($alias, $cache)){
+						$cache = $cache[$alias];
+					}
+					else {
+						$success = false;
+						break;
+					}
+				}
+				if ($success){
+					$data = array(
+						'success'=>true,
+						'data'=>array(),
+					);
+					$l = $this->view->lang->getLocale();
+					foreach($cache as $item){
+						if (isset($item['name_'.$l]) && isset($item['alias'])){
+							$data['data'][$item['alias']] = $item['name_'.$l];
+						}
+					}
+				}
 			}
-		}	
-		$this->view->data = $data_gallery;
-	}
-		
-	protected function getTestGalleryFiles($id){
-		$images = array();
-		$dir = PARSED_CATALOG_TESTS_IMAGES_PATH."/".$id;
-		//if(!file_exists($dir)) return false;
-		$dir = dir($dir);		
-		while (($file = $dir->read()) !== false)
-			if($file != "." && $file != ".." && (strpos($file,'_sm') !== false) ) {
-				$images[] = array('small' => $file,'big' => str_replace('_sm','',$file));
-			}
-		
-		$dir->close();
-		return $images;
-	}
-	
-	public function getfmodelAction(){
-		$this->view->filterParams = $this->_request->getParams();
-	}
-	
-	public function getcarsAction(){
-		$this->view->filterParams = $this->_request->getParams();
+		}
+		echo Zend_Json::encode($data);
 	}
 	
 	protected function setup(){
@@ -91,15 +64,5 @@ class AjaxController extends Abstract_Controller_FrontendController {
 	}
 	
 	public function emptyAction(){
-	}
-	
-	public function vipAction(){
-		$id = $this->_request->getParam('car_id');
-		$this->view->id = $id;
-		$form = new Crud_Form_Car($id);
-		$form->createForm();
-		$this->view->carData = $form->getRenderData();
-		$car = new Init_Car($id, $this->view->carData['type']);
-		$this->view->photos = $car->getPhotos();
 	}
 }

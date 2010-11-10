@@ -1465,7 +1465,7 @@ class ArOn_Crud_Grid extends ArOn_Crud_Cache{
 		return $this->table->delete ( $where );
 	}
 	
-	public function getGridWidth(){		
+	public function getGridWidth(){
 		if(empty($this->_width)) $this->setGridWidth();
 		return $this->_width;
 	}

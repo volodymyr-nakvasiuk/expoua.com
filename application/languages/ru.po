@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: expoua.com\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-27 14:05+0200\n"
-"PO-Revision-Date: 2010-10-27 14:07+0200\n"
+"POT-Creation-Date: 2010-11-09 19:12+0200\n"
+"PO-Revision-Date: 2010-11-09 19:13+0200\n"
 "Last-Translator: Владимир <djtheme@gmail.com>\n"
 "Language-Team: Volodymyr Nakvasiuk <volodymyr.nakvasiuk@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -17,21 +17,45 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: D:\\WebServer\\home\\expoua-my.com\\application\n"
 
-#: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/events.phtml:5
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/events.phtml:7
 msgid "search by keyword..."
 msgstr "поиск по слову..."
 
-#: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/events.phtml:9
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/events.phtml:11
+msgid "Subcategory"
+msgstr "Подтематика"
+
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/events.phtml:16
+msgid "Region"
+msgstr "Регион"
+
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/events.phtml:29
+msgid "Country"
+msgstr "Страна"
+
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/events.phtml:41
+msgid "Beginning date"
+msgstr "Дата начала"
+
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/events.phtml:44
+msgid "Ending date"
+msgstr "Дата завершения"
+
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/events.phtml:48
 msgid "Category"
 msgstr "Тематика"
 
-#: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/events.phtml:16
-msgid "Advanced Search"
-msgstr "Расширенный поиск"
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/events.phtml:61
+msgid "City"
+msgstr "Город"
 
-#: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/events.phtml:19
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/events.phtml:65
 msgid "Search"
 msgstr "Найти"
+
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/events.phtml:68
+msgid "Advanced Search"
+msgstr "Расширенный поиск"
 
 #: D:\WebServer\home\expoua-my.com\application/layouts/inc/header/logo.phtml:28
 msgid "record total"
@@ -56,23 +80,44 @@ msgstr "Подписка"
 msgid "My Office"
 msgstr "Мой кабинет"
 
+#: D:\WebServer\home\expoua-my.com\application/modules/default/views/scripts/events/index.phtml:9
+msgid "Exhibitions"
+msgstr "Выставки"
+
+#: D:\WebServer\home\expoua-my.com\application/modules/default/views/scripts/events/index.phtml:49
+msgid "Free ticket for buyer"
+msgstr ""
+
 #: D:\WebServer\home\expoua-my.com\application/modules/default/views/scripts/index/index.phtml:1
 msgid "Main page"
 msgstr "Главная страница"
 
-#: D:\WebServer\home\expoua-my.com\application/models/Abstract/Controller/FrontendController.php:182
+#: D:\WebServer\home\expoua-my.com\application/models/Abstract/Controller/FrontendController.php:183
 msgid "Trade shows"
 msgstr "Выставки"
 
-#: D:\WebServer\home\expoua-my.com\application/models/Abstract/Controller/FrontendController.php:189
+#: D:\WebServer\home\expoua-my.com\application/models/Abstract/Controller/FrontendController.php:187
+msgid "Exhibitions in Ukraine"
+msgstr ""
+
+#: D:\WebServer\home\expoua-my.com\application/models/Abstract/Controller/FrontendController.php:191
+msgid "Exhibitions in the world"
+msgstr ""
+
+#: D:\WebServer\home\expoua-my.com\application/models/Abstract/Controller/FrontendController.php:198
 msgid "Trade show Online: Companies, Products, Services"
 msgstr "Выставка онлайн: Компании, товары, услуги"
 
-#: D:\WebServer\home\expoua-my.com\application/models/Abstract/Controller/FrontendController.php:195
+#: D:\WebServer\home\expoua-my.com\application/models/Abstract/Controller/FrontendController.php:204
 msgid "Trade shows videos"
 msgstr "Видео выставок"
 
-#: D:\WebServer\home\expoua-my.com\application/models/Abstract/Controller/FrontendController.php:201
+#: D:\WebServer\home\expoua-my.com\application/models/Abstract/Controller/FrontendController.php:210
 msgid "Business tours"
 msgstr "Бизнес-туры"
 
+#~ msgid " - beginning date - "
+#~ msgstr " - дата начала - "
+
+#~ msgid " - ending date - "
+#~ msgstr " - дата завершения - "

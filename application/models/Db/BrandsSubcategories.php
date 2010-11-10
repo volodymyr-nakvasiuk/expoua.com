@@ -8,6 +8,7 @@ class Db_BrandsSubcategories extends ArOn_Db_Table {
 
 	protected $_dependentTables = array(
 		'Db_Lang_BrandsSubcategories',
+		'Db_Brands2Subcategories',
 	);
 
 	protected $_referenceMap    = array(

@@ -8,7 +8,7 @@
 		}
 		else {
 			$selected = '';
-			$pre_lang = '<a href="'.str_replace($this->lang->getlocale(),$lang['code'],$this->requestUri).'">';
+			$pre_lang = '<a href="'.str_replace('/'.$this->lang->getlocale().'/','/'.$lang['code'].'/',$this->requestUri).'">';
 			$pos_lang = '</a>';
 		}
 ?>

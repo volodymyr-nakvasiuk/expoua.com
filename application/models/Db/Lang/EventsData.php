@@ -9,13 +9,14 @@ class Db_Lang_EventsData extends Db_Lang {
 	protected $_dependentTables = array(
 		'Db_Brands',
 		'Db_EventsCommon',
+		'Db_Events',
 	);
 
 	protected $_referenceMap    = array(
-		'Module' => array(
-			'columns'           => 'id',
-			'refTableClass'     => 'Db_Events',
-			'refColumns'        => 'id'
-		)
+		//'Module' => array(
+		//	'columns'           => 'id',
+		//	'refTableClass'     => 'Db_Events',
+		//	'refColumns'        => 'id'
+		//)
 	);
 }
