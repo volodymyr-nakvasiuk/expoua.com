@@ -243,22 +243,23 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 			"header_user_box"=>array('inc/header/user', 100),
 		);
 
-		$this->view->layouts['topRow'] = array();
-		
 		$this->view->layouts['menu'] = array(
 			'main_menu'=>array('inc/menu/main', 100),
 			'sub_menu'=>array('inc/menu/sub', 100),
 		);
 
-		$this->view->layouts['top'] = array(
-		);
+		$this->view->layouts['top'] = array();
 		$this->view->layouts['left'] = array();
 		$this->view->layouts['center'] = array();
+		$this->view->layouts['extra'] = array();
 		$this->view->layouts['right'] = array();
 		$this->view->layouts['bottomRow'] = array();
-		$this->view->layouts['bottom'] = array();
+		$this->view->layouts['bottom'] = array(
+			'footer_box'=>array('inc/bottom/footer', 100),
+		);
 		
 		$this->setMeta();
+		$this->view->test = 0;
 	}
 	
 	protected function setMeta(){

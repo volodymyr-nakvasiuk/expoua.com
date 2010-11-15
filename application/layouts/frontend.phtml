@@ -60,18 +60,6 @@
 		<div class="clr"></div>
 		<?php }?>
 
-		<?php /* ========== topRow ========== */?>
-		<?php if (!empty($this->layouts['topRow'])){?>
-		<div id="topRow">
-			<?php
-				foreach ($this->layouts['top'] as $class => $path) {
-			echo '<div class="'.$class.'">'.$this->render($path.'.phtml').'</div>';
-		}
-			?>
-		</div>
-		<div class="clr"></div>
-		<?php } ?>
-
 		<?php /* ========== menu ========== */?>
 		<?php if (!empty($this->layouts['menu'])){?>
 		<div id="menu">
@@ -104,42 +92,85 @@
 				?>
 				<div id="left">
 				<?php
-	 					foreach ($this->layouts['left'] as $class => $path) {
-							echo '<div class="'.$class.'">'.$this->render($path.'.phtml').'</div>';
-						}
+					foreach ($this->layouts['left'] as $class => $path) {
+						echo '<div class="'.$class.'">'.$this->render($path.'.phtml').'</div>';
+					}
 				?>
 				</div>
 				<?php
 					}
+				?>
+				<?php /* ========== body ========== */?>
+				<div id="body">
+				<?php
 					echo $this->layout()->content;
+					if (!empty($this->layouts['body'])){
+						foreach ($this->layouts['body'] as $class => $path) {
+							echo '<div class="'.$class.'">'.$this->render($path.'.phtml').'</div>';
+						}
+					}
+				?>
+				</div>
+				<?php
 					if (!empty($this->layouts['center'])){
 				?>
 				<div id="center">
 				<?php
-						foreach ($this->layouts['center'] as $class => $path) {
-							echo '<div class="'.$class.'">'.$this->render($path.'.phtml').'</div>';
-						}
+					foreach ($this->layouts['center'] as $class => $path) {
+						echo '<div class="'.$class.'">'.$this->render($path.'.phtml').'</div>';
+					}
 				?>
 				</div>
 				<?php
 					}
 				?>
+
+				<?php /* ========== extra ========== */?>
+				<?php if (!empty($this->layouts['extra'])){?>
+				<div id="extra">
+					<?php
+	 					foreach ($this->layouts['extra'] as $class => $path) {
+							echo '<div class="'.$class.'">'.$this->render($path.'.phtml').'</div>';
+						}
+					?>
+				</div>
+				<?php } ?>
 				<?php echo $this->HTMLscript ?>
 			</div>
-			<div class="clr"></div>
 
 			<?php /* ========== right ========== */?>
 			<?php if (!empty($this->layouts['right'])){?>
 			<div id="right">
 				<?php
-					foreach ($this->layouts['top'] as $class => $path) {
-				echo '<div class="'.$class.'">'.$this->render($path.'.phtml').'</div>';
-			}
+					foreach ($this->layouts['right'] as $class => $path) {
+						echo '<div class="'.$class.'">'.$this->render($path.'.phtml').'</div>';
+					}
 				?>
 			</div>
-			<div class="clr"></div>
 			<?php } ?>
 		</div>
+		<div class="clr"></div>
+		<?php /* ========== bottomRow ========== */?>
+		<?php if (!empty($this->layouts['bottomRow'])){?>
+		<div id="bottomRow">
+			<?php
+   				foreach ($this->layouts['bottomRow'] as $class => $path) {
+					echo '<div class="'.$class.'">'.$this->render($path.'.phtml').'</div>';
+				}
+			?>
+		</div>
+		<div class="clr"></div>
+		<?php } ?>
+		<?php /* ========== bottom ========== */?>
+		<?php if (!empty($this->layouts['bottom'])){?>
+		<div id="bottom">
+			<?php
+   				foreach ($this->layouts['bottom'] as $class => $path) {
+					echo '<div class="'.$class.'">'.$this->render($path.'.phtml').'</div>';
+				}
+			?>
+		</div>
+		<?php } ?>
 	</div>
 </div>
 

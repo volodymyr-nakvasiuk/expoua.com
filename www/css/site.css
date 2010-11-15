@@ -143,20 +143,69 @@ body, html {
 	width:980px;
 	margin: 0 auto;
 }
+#head {
+	clear: both;
+	float: none;
+	width: 100%;
+}
+#menu {
+	clear: both;
+	float: none;
+	width: 100%;
+}
+#top {
+	clear: both;
+	float: none;
+	width: 100%;
+}
 #main {
 	clear: both;
 	float: none;
-	width:980px;
+	width: 100%;
+	margin-top:20px;
 }
 #content {
 	clear: none;
 	float: left;
 	width:720px;
 }
+#left {
+	clear: none;
+	float: left;
+	width:194px;
+	margin-left:16px;
+}
+#body {
+	clear: none;
+	float: left;
+}
+#center {
+	clear: none;
+	float: right;
+	width:195px;
+	margin-left:15px;
+}
+#extra {
+	clear: none;
+	float: left;
+}
 #right {
 	clear: none;
 	float: right;
 	width:250px;
+	margin-left:10px;
+}
+#bottomRow {
+	clear: both;
+	float: none;
+	width: 100%;
+	margin-top:20px;
+}
+#bottom {
+	clear: both;
+	float: none;
+	width: 100%;
+	margin-top:20px;
 }
 /*end front*/
 .paging {
@@ -183,4 +232,38 @@ body, html {
 	border:1px solid #0054a6;
 }
 .paging span img {
+}
+div.rc_t {
+	background: url(/img/site/ln.png) 0 0 repeat-x;
+}
+div.rc_r {
+	background: url(/img/site/ln.png) 100% 0 repeat-y;
+}
+div.rc_b {
+	background: url(/img/site/ln.png) 0 100% repeat-x;
+}
+div.rc_l {
+	background: url(/img/site/ln.png) 0 0 repeat-y;
+}
+div.rc_tr {
+	background: url(/img/site/tr.png) 100% 0 no-repeat;
+}
+div.rc_br {
+	background: url(/img/site/br.png) 100% 100% no-repeat;
+}
+div.rc_bl {
+	background: url(/img/site/bl.png) 0 100% no-repeat;
+}
+div.rc_tl {
+	background: url(/img/site/tl.png) 0 0 no-repeat;
+}
+.lf {
+	background: url(/img/index/left_f.png) no-repeat 0 0 scroll transparent;
+	width: 6px;
+	height: 28px;
+}
+.rf {
+	background: url(/img/index/right_f.png) no-repeat 0 0 scroll transparent;
+	width: 6px;
+	height: 28px;
 }
