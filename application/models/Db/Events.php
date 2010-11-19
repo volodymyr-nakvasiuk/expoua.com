@@ -8,7 +8,7 @@ class Db_Events extends ArOn_Db_Table {
 
 	protected $_dependentTables = array(
 		'Db_Lang_EventsData',
-		'Db_EventsCommon',
+		//'Db_EventsCommon',
 	);
 
 	protected $_referenceMap    = array(
@@ -45,6 +45,11 @@ class Db_Events extends ArOn_Db_Table {
 		'Module' => array(
 			'columns'           => 'id',
 			'refTableClass'     => 'Db_Lang_EventsData',
+			'refColumns'        => 'id'
+		),
+		'Common' => array(
+			'columns'           => 'id',
+			'refTableClass'     => 'Db_EventsCommon',
 			'refColumns'        => 'id'
 		),
 	);

@@ -1,4 +1,6 @@
-(function($) {
+js.module("inc.event.card");
+js.include("jquery.ui.tabs");
+/*
 $(function() {
   $('div.tabs').each(function() {
     $(this).find('div.tab').each(function(i) {
@@ -11,4 +13,4 @@ $(function() {
     });
   });
 })
-})(jQuery)
+*/

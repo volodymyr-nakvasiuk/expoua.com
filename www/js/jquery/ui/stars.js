@@ -1,3 +1,311 @@
 js.module("jquery.ui.stars");
 js.include("jquery.min");
-(function(A){A.widget("ui.stars",{_init:function(){var B=this,E=this.options,F=0;E.isSelect=E.inputType=="select";this.$form=A(this.element).closest("form");this.$selec=E.isSelect?A("select",this.element):null;this.$rboxs=E.isSelect?A("option",this.$selec):A(":radio",this.element);this.$stars=this.$rboxs.map(function(I){var J={value:this.value,title:(E.isSelect?this.text:this.title)||this.value,isDefault:(E.isSelect&&this.defaultSelected)||this.defaultChecked};if(I==0){E.split=typeof E.split!="number"?0:E.split;E.val2id=[];E.id2val=[];E.id2title=[];E.name=E.isSelect?B.$selec.get(0).name:this.name;E.disabled=E.disabled||(E.isSelect?A(B.$selec).attr("disabled"):A(this).attr("disabled"))}if(J.value==E.cancelValue){E.cancelTitle=J.title;return null}E.val2id[J.value]=F;E.id2val[F]=J.value;E.id2title[F]=J.title;if(J.isDefault){E.checked=F;E.value=E.defaultValue=J.value;E.title=J.title}var H=A("<div/>").addClass(E.starClass);var K=A("<a/>").attr("title",E.showTitles?J.title:"").text(J.value);if(E.split){var G=(F%E.split);var L=Math.floor(E.starWidth/E.split);H.width(L);K.css("margin-left","-"+(G*L)+"px")}F++;return H.append(K).get(0)});E.items=F;E.isSelect?this.$selec.remove():this.$rboxs.remove();this.$cancel=A("<div/>").addClass(E.cancelClass).append(A("<a/>").attr("title",E.showTitles?E.cancelTitle:"").text(E.cancelValue));E.cancelShow&=!E.disabled&&!E.oneVoteOnly;E.cancelShow&&this.element.append(this.$cancel);this.element.append(this.$stars);if(E.checked===undefined){E.checked=-1;E.value=E.defaultValue=E.cancelValue;E.title=""}this.$value=A('<input type="hidden" name="'+E.name+'" value="'+E.value+'" />');this.element.append(this.$value);this.$stars.bind("click.stars",function(H){if(!E.forceSelect&&E.disabled){return false}var G=B.$stars.index(this);E.checked=G;E.value=E.id2val[G];E.title=E.id2title[G];B.$value.attr({disabled:E.disabled?"disabled":"",value:E.value});C(G,false);B._disableCancel();!E.forceSelect&&B.callback(H,"star")}).bind("mouseover.stars",function(){if(E.disabled){return false}var G=B.$stars.index(this);C(G,true)}).bind("mouseout.stars",function(){if(E.disabled){return false}C(B.options.checked,false)});this.$cancel.bind("click.stars",function(G){if(!E.forceSelect&&(E.disabled||E.value==E.cancelValue)){return false}E.checked=-1;E.value=E.cancelValue;E.title="";B.$value.val(E.value).attr({disabled:"disabled"});D();B._disableCancel();!E.forceSelect&&B.callback(G,"cancel")}).bind("mouseover.stars",function(){if(B._disableCancel()){return false}B.$cancel.addClass(E.cancelHoverClass);D();B._showCap(E.cancelTitle)}).bind("mouseout.stars",function(){if(B._disableCancel()){return false}B.$cancel.removeClass(E.cancelHoverClass);B.$stars.triggerHandler("mouseout.stars")});this.$form.bind("reset.stars",function(){!E.disabled&&B.select(E.defaultValue)});A(window).unload(function(){B.$cancel.unbind(".stars");B.$stars.unbind(".stars");B.$form.unbind(".stars");B.$selec=B.$rboxs=B.$stars=B.$value=B.$cancel=B.$form=null});function C(G,I){if(G!=-1){var J=I?E.starHoverClass:E.starOnClass;var H=I?E.starOnClass:E.starHoverClass;B.$stars.eq(G).prevAll("."+E.starClass).andSelf().removeClass(H).addClass(J);B.$stars.eq(G).nextAll("."+E.starClass).removeClass(E.starHoverClass+" "+E.starOnClass);B._showCap(E.id2title[G])}else{D()}}function D(){B.$stars.removeClass(E.starOnClass+" "+E.starHoverClass);B._showCap("")}this.select(E.value);E.disabled&&this.disable()},_disableCancel:function(){var C=this.options,B=C.disabled||C.oneVoteOnly||(C.value==C.cancelValue);if(B){this.$cancel.removeClass(C.cancelHoverClass).addClass(C.cancelDisabledClass)}else{this.$cancel.removeClass(C.cancelDisabledClass)}this.$cancel.css("opacity",B?0.5:1);return B},_disableAll:function(){var B=this.options;this._disableCancel();if(B.disabled){this.$stars.filter("div").addClass(B.starDisabledClass)}else{this.$stars.filter("div").removeClass(B.starDisabledClass)}},_showCap:function(B){var C=this.options;if(C.captionEl){C.captionEl.text(B)}},value:function(){return this.options.value},select:function(D){var C=this.options,B=(D==C.cancelValue)?this.$cancel:this.$stars.eq(C.val2id[D]);C.forceSelect=true;B.triggerHandler("click.stars");C.forceSelect=false},selectID:function(D){var C=this.options,B=(D==-1)?this.$cancel:this.$stars.eq(D);C.forceSelect=true;B.triggerHandler("click.stars");C.forceSelect=false},enable:function(){this.options.disabled=false;this._disableAll()},disable:function(){this.options.disabled=true;this._disableAll()},destroy:function(){this.options.isSelect?this.$selec.appendTo(this.element):this.$rboxs.appendTo(this.element);this.$form.unbind(".stars");this.$cancel.unbind(".stars").remove();this.$stars.unbind(".stars").remove();this.$value.remove();this.element.unbind(".stars").removeData("stars")},callback:function(C,B){var D=this.options;D.callback&&D.callback(this,B,D.value,C);D.oneVoteOnly&&!D.disabled&&this.disable()}});A.extend(A.ui.stars,{version:"2.1.1",getter:"value",defaults:{inputType:"radio",split:0,disabled:false,cancelTitle:"Cancel Rating",cancelValue:0,cancelShow:true,oneVoteOnly:false,showTitles:false,captionEl:null,callback:null,starWidth:16,cancelClass:"ui-stars-cancel",starClass:"ui-stars-star",starOnClass:"ui-stars-star-on",starHoverClass:"ui-stars-star-hover",starDisabledClass:"ui-stars-star-disabled",cancelHoverClass:"ui-stars-cancel-hover",cancelDisabledClass:"ui-stars-cancel-disabled"}})})(jQuery);
+/*!
+ * jQuery UI Stars v2.1.1
+ * http://plugins.jquery.com/project/Star_Rating_widget
+ *
+ * Copyright (c) 2009 Orkan (orkans@gmail.com)
+ * Dual licensed under the MIT and GPL licenses.
+ * http://docs.jquery.com/License
+ *
+ * $Rev: 114 $
+ * $Date:: 2009-06-12 #$
+ * $Build: 32 (2009-06-12)
+ *
+ * Depends:
+ *  ui.core.js
+ *
+ */
+(function($) {
+
+$.widget("ui.stars",
+{
+  _init: function() {
+    var self = this, o = this.options, id = 0;
+
+    o.isSelect = o.inputType == "select";
+    this.$form = $(this.element).closest("form");
+    this.$selec = o.isSelect ? $("select", this.element)  : null;
+    this.$rboxs = o.isSelect ? $("option", this.$selec)   : $(":radio", this.element);
+
+    /*
+     * Map all inputs from $rboxs array to Stars elements
+     */
+    this.$stars = this.$rboxs.map(function(i)
+    {
+      var el = {
+        value:      this.value,
+        title:      (o.isSelect ? this.text : this.title) || this.value,
+        isDefault:  (o.isSelect && this.defaultSelected) || this.defaultChecked
+      };
+
+      if(i==0) {
+        o.split = typeof o.split != "number" ? 0 : o.split;
+        o.val2id = [];
+        o.id2val = [];
+        o.id2title = [];
+        o.name = o.isSelect ? self.$selec.get(0).name : this.name;
+        o.disabled = o.disabled || (o.isSelect ? $(self.$selec).attr("disabled") : $(this).attr("disabled"));
+      }
+
+      /*
+       * Consider it as a Cancel button?
+       */
+      if(el.value == o.cancelValue) {
+        o.cancelTitle = el.title;
+        return null;
+      }
+
+      o.val2id[el.value] = id;
+      o.id2val[id] = el.value;
+      o.id2title[id] = el.title;
+
+      if(el.isDefault) {
+        o.checked = id;
+        o.value = o.defaultValue = el.value;
+        o.title = el.title;
+      }
+
+      var $s = $("<div/>").addClass(o.starClass);
+      var $a = $('<a/>').attr("title", o.showTitles ? el.title : "").text(el.value);
+
+      /*
+       * Prepare division settings
+       */
+      if(o.split) {
+        var oddeven = (id % o.split);
+        var stwidth = Math.floor(o.starWidth / o.split);
+        $s.width(stwidth);
+        $a.css("margin-left", "-" + (oddeven * stwidth) + "px");
+      }
+
+      id++;
+      return $s.append($a).get(0);
+    });
+
+    /*
+     * How many Stars?
+     */
+    o.items = id;
+
+    /*
+     * Remove old content
+     */
+    o.isSelect ? this.$selec.remove() : this.$rboxs.remove();
+
+    /*
+     * Append Stars interface
+     */
+    this.$cancel = $("<div/>").addClass(o.cancelClass).append( $("<a/>").attr("title", o.showTitles ? o.cancelTitle : "").text(o.cancelValue) );
+    o.cancelShow &= !o.disabled && !o.oneVoteOnly;
+    o.cancelShow && this.element.append(this.$cancel);
+    this.element.append(this.$stars);
+
+    /*
+     * Initial selection
+     */
+    if(o.checked === undefined) {
+      o.checked = -1;
+      o.value = o.defaultValue = o.cancelValue;
+      o.title = "";
+    }
+
+    this.$value = $('<input type="hidden" name="'+o.name+'" value="'+o.value+'" />');
+    this.element.append(this.$value);
+
+
+    /*
+     * Attach stars event handler
+     */
+    this.$stars.bind("click.stars", function(e) {
+      if(!o.forceSelect && o.disabled) return false;
+
+      var i = self.$stars.index(this);
+      o.checked = i;
+      o.value = o.id2val[i];
+      o.title = o.id2title[i];
+      self.$value.attr({disabled: o.disabled ? "disabled" : "", value: o.value});
+
+      fillTo(i, false);
+      self._disableCancel();
+
+      !o.forceSelect && self.callback(e, "star");
+    })
+    .bind("mouseover.stars", function() {
+      if(o.disabled) return false;
+      var i = self.$stars.index(this);
+      fillTo(i, true);
+    })
+    .bind("mouseout.stars", function() {
+      if(o.disabled) return false;
+      fillTo(self.options.checked, false);
+    });
+
+
+    /*
+     * Attach cancel event handler
+     */
+    this.$cancel.bind("click.stars", function(e) {
+      if(!o.forceSelect && (o.disabled || o.value == o.cancelValue)) return false;
+
+      o.checked = -1;
+      o.value = o.cancelValue;
+      o.title = "";
+      self.$value.val(o.value).attr({disabled: "disabled"});
+
+      fillNone();
+      self._disableCancel();
+
+      !o.forceSelect && self.callback(e, "cancel");
+    })
+    .bind("mouseover.stars", function() {
+      if(self._disableCancel()) return false;
+      self.$cancel.addClass(o.cancelHoverClass);
+      fillNone();
+      self._showCap(o.cancelTitle);
+    })
+    .bind("mouseout.stars", function() {
+      if(self._disableCancel()) return false;
+      self.$cancel.removeClass(o.cancelHoverClass);
+      self.$stars.triggerHandler("mouseout.stars");
+    });
+
+
+    /*
+     * Attach onReset event handler to the parent FORM
+     */
+    this.$form.bind("reset.stars", function(){
+      !o.disabled && self.select(o.defaultValue);
+    });
+
+
+    /*
+     * Clean up to avoid memory leaks in certain versions of IE 6
+     */
+    $(window).unload(function(){
+      self.$cancel.unbind(".stars");
+      self.$stars.unbind(".stars");
+      self.$form.unbind(".stars");
+      self.$selec = self.$rboxs = self.$stars = self.$value = self.$cancel = self.$form = null;
+    });
+
+
+    /*
+     * Star selection helpers
+     */
+    function fillTo(index, hover) {
+      if(index != -1) {
+        var addClass = hover ? o.starHoverClass : o.starOnClass;
+        var remClass = hover ? o.starOnClass    : o.starHoverClass;
+        self.$stars.eq(index).prevAll("." + o.starClass).andSelf().removeClass(remClass).addClass(addClass);
+        self.$stars.eq(index).nextAll("." + o.starClass).removeClass(o.starHoverClass + " " + o.starOnClass);
+        self._showCap(o.id2title[index]);
+      }
+      else fillNone();
+    };
+    function fillNone() {
+      self.$stars.removeClass(o.starOnClass + " " + o.starHoverClass);
+      self._showCap("");
+    };
+
+
+    /*
+     * Finally, set up the Stars
+     */
+    this.select(o.value);
+    o.disabled && this.disable();
+
+  },
+
+  /*
+   * Private functions
+   */
+  _disableCancel: function() {
+    var o = this.options, disabled = o.disabled || o.oneVoteOnly || (o.value == o.cancelValue);
+    if(disabled)  this.$cancel.removeClass(o.cancelHoverClass).addClass(o.cancelDisabledClass);
+    else          this.$cancel.removeClass(o.cancelDisabledClass);
+    this.$cancel.css("opacity", disabled ? 0.5 : 1);
+    return disabled;
+  },
+  _disableAll: function() {
+    var o = this.options;
+    this._disableCancel();
+    if(o.disabled)  this.$stars.filter("div").addClass(o.starDisabledClass);
+    else            this.$stars.filter("div").removeClass(o.starDisabledClass);
+  },
+  _showCap: function(s) {
+    var o = this.options;
+    if(o.captionEl) o.captionEl.text(s);
+  },
+
+  /*
+   * Public functions
+   */
+  value: function() {
+    return this.options.value;
+  },
+  select: function(val) {
+    var o = this.options, e = (val == o.cancelValue) ? this.$cancel : this.$stars.eq(o.val2id[val]);
+    o.forceSelect = true;
+    e.triggerHandler("click.stars");
+    o.forceSelect = false;
+  },
+  selectID: function(id) {
+    var o = this.options, e = (id == -1) ? this.$cancel : this.$stars.eq(id);
+    o.forceSelect = true;
+    e.triggerHandler("click.stars");
+    o.forceSelect = false;
+  },
+  enable: function() {
+    this.options.disabled = false;
+    this._disableAll();
+  },
+  disable: function() {
+    this.options.disabled = true;
+    this._disableAll();
+  },
+  destroy: function() {
+    this.options.isSelect ? this.$selec.appendTo(this.element) : this.$rboxs.appendTo(this.element);
+    this.$form.unbind(".stars");
+    this.$cancel.unbind(".stars").remove();
+    this.$stars.unbind(".stars").remove();
+    this.$value.remove();
+    this.element.unbind(".stars").removeData("stars");
+  },
+  callback: function(e, type) {
+    var o = this.options;
+    o.callback && o.callback(this, type, o.value, e);
+    o.oneVoteOnly && !o.disabled && this.disable();
+  }
+});
+
+$.extend($.ui.stars, {
+  version: "2.1.1",
+  getter: "value",
+  defaults: {
+    inputType: "radio", // radio|select
+    split: 0,
+    disabled: false,
+    cancelTitle: "Cancel Rating",
+    cancelValue: 0,
+    cancelShow: true,
+    oneVoteOnly: false,
+    showTitles: false,
+    captionEl: null,
+    callback: null, // function(ui, type, value, event)
+
+    /*
+     * CSS classes
+     */
+    starWidth: 16,
+    cancelClass: 'ui-stars-cancel',
+    starClass: 'ui-stars-star',
+    starOnClass: 'ui-stars-star-on',
+    starHoverClass: 'ui-stars-star-hover',
+    starDisabledClass: 'ui-stars-star-disabled',
+    cancelHoverClass: 'ui-stars-cancel-hover',
+    cancelDisabledClass: 'ui-stars-cancel-disabled'
+  }
+});
+
+})(jQuery);

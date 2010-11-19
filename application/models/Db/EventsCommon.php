@@ -7,6 +7,7 @@ class Db_EventsCommon extends ArOn_Db_Table {
 	protected $_order_expr = 'id';
 
 	protected $_dependentTables = array(
+		'Db_Events'
 	);
 
 	protected $_referenceMap    = array(

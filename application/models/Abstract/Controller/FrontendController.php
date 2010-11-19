@@ -194,7 +194,7 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 			),
 			'online'=>array(
 				'lang'=>array('ru','en'),
-				'url'=>HOST_NAME.'/'.$lang.'/',
+				'url'=>HOST_NAME.'/'.$lang.'/companies/',
 				'title'=>$this->view->lang->translate('Trade show Online: Companies, Products, Services'),
 				'submenu'=>array(),
 			),

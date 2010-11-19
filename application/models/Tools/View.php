@@ -41,13 +41,14 @@ class Tools_View{
 	}
 
 	static function getUrlAlias($name, $transliteration=false){
+		$md5 = md5(date('Y-m-d-').$name);
 		if ($transliteration) $name = self::getTransliteration(mb_strtolower($name,'UTF-8'));
 		$name = preg_replace('/[^a-zA-Z]+/','-',$name);
 		$name = str_replace('-',' ',$name);
 		$name = trim($name);
 		$name = str_replace(' ','-',$name);
 		while (strpos($name,'--')!==false) $name = str_replace('--','-',$name);
-		if (!$name) $name = rand(100000,999999);
+		if (!$name) $name = $md5;
 		return strtolower($name);
 	}
 	

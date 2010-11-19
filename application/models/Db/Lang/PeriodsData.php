@@ -8,6 +8,7 @@ class Db_Lang_PeriodsData extends Db_Lang {
 
 	protected $_dependentTables = array(
 		'Db_Periods',
+		'Db_EventsCommon',
 	);
 
 	protected $_referenceMap    = array(

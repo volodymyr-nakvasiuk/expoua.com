@@ -155,7 +155,6 @@ $(function() {
 		//showOtherMonths: true,
 		numberOfMonths:1,
 		onSelect: function( selectedDate ) {
-			console.log(selectedDate);
 			var option = this.id == "filter_from" ? "minDate" : "maxDate", instance = $( this ).data( "datepicker" );
 			date = $.datepicker.parseDate(
 				instance.settings.dateFormat || $.datepicker._defaults.dateFormat,
