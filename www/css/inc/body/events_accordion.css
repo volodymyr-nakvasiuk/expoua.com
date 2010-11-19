@@ -1,0 +1,47 @@
+.body_events_accordion_box .title_box div {
+	line-height: 25px;
+	font-size:18px;
+	color: #ff5500;
+}
+.body_events_accordion_box .title_box .lnk a {
+	padding-left: 15px;
+	background: url(/img/index/calendar_ico.png) no-repeat 0 center scroll transparent;
+	font-size: 11px;
+	color: #0d74c4;
+	text-decoration: underline;
+	margin: 0 12px;
+}
+.body_events_accordion_box .title_box .add a {
+	padding-left: 25px;
+	color: #ff5500;
+	background: url(/img/index/add_ex.png) no-repeat 0 center scroll transparent;
+	text-decoration: underline;
+}
+.body_events_accordion_box .title_box .add a:hover,
+.body_events_accordion_box .title_box .lnk a:hover {
+	text-decoration: none
+}
+.body_events_accordion_content {
+	padding-top: 10px;
+}
+.body_events_accordion_content .accordion_title_box {
+	background: #000000;
+	padding: 5px;
+	cursor: pointer;
+}
+.body_events_accordion_content .accordion_title_box .title {
+	color: #ffffff;
+	font-size: 14px;
+	text-decoration: underline;
+}
+.body_events_accordion_content .accordion_title_box .desc {
+	color: #ffffff;
+}
+.body_events_accordion_content .accordion_title_box .date {
+	margin-top: 5px;
+	color: #ffcc00;
+}
+.body_events_accordion_content .img_box img {
+	width: 510px;
+	height: 365px;
+}

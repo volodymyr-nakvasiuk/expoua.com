@@ -1,0 +1,22 @@
+.body_companies_content {
+	padiing: 10px;
+	border-top: 1px dashed #92a8bc;
+}
+.body_companies_company_box {
+	width: 120px;
+	text-align: center;
+	padding: 5px 3px;
+}
+.body_companies_company_box img {
+	width: 120px;
+	height: 120px;
+	clear: both;
+	float: none;
+}
+.body_companies_company_box a {
+	color: #0054a6;
+	text-decoration: underline;
+}
+.body_companies_company_box a:hover {
+	text-decoration: none;
+}
