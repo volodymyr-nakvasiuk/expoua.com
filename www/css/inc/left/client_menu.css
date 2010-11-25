@@ -4,9 +4,13 @@
 .companies_client_left_menu_one_link_box a {
     color: #7599bc;
     font-size:12px;
+    float: left;
+    clear: none;
 }
 .companies_client_left_menu_one_link_box span {
     color: #dd5500;
+    float: left;
+    clear: none;
 }
 .companies_client_left_menu_one_link_del {
     width: 11px;

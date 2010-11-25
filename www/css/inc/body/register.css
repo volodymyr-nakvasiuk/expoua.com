@@ -1,0 +1,87 @@
+.companies_register_title {
+    font-size: 18px;
+    color: #0054a6;
+    padding: 5px 10px;
+}
+.companies_register_main_box {
+    width: 718px;
+    padding: 10px 0;
+    border: 1px solid #d2e2f2;
+    background-color: #f8fafc;
+    margin-top: 10px;
+}
+.companies_register_main_box_one_row {
+    width: 510px;
+    margin-top: 5px;
+}
+.companies_register_main_box_one_row input,
+.companies_register_main_box_one_row select {
+    width: 290px;
+    height: 18px;
+    float: left;
+    clear: none;
+}
+.companies_register_main_box_text_val {
+    color:#333333;
+    font-size:12px;
+    line-height:20px;
+    margin-left:40px;
+    margin-right:10px;
+    text-align:right;
+    width:150px;
+}
+.companies_register_main_box_radio {}
+.companies_register_main_box_radio span,
+.companies_register_main_box_radio input {
+    width: auto;
+    float: left;
+    clear: none;
+}
+.companies_register_main_box_radio span {
+    line-height: 20px;
+}
+.companies_register_main_box_one_row_lnks a  {
+    text-decoration: none;
+    color: #0054a6;
+    display: block;
+    line-height: 15px;
+}
+.companies_register_main_box_one_row_span {
+    width: 430px;
+    margin-left: 200px;
+    color: #666666;
+}
+.companies_register_main_box_one_row_photo {
+    width: 510px;
+    margin-top: 5px;
+}
+.companies_register_main_box_one_row_photo #input_form,
+.companies_register_main_box_one_row_photo #input_btn {
+    width: 210px;
+    float: left;
+    clear: none;
+}
+.companies_register_main_box_one_row_photo #input_btn {
+    width: auto;
+    margin-left: 10px;
+}
+.companies_register_main_box_checkbox_box {
+    width: 290px;
+}
+.companies_register_main_box_one_checkbox_row {}
+.companies_register_main_box_one_checkbox_row input {
+    width: auto;
+    float: left;
+    clear: none;
+}
+.companies_register_main_box_one_checkbox_row span {
+    float: left;
+    clear: none;
+    line-height: 22px;
+}
+.big_submit_button {
+    width: 150px;
+    height: 35px;
+    font-size: 14px;
+    margin-top: 15px;
+}
