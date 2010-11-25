@@ -1,0 +1,69 @@
+.all_companies_client_anons_box {width: 505px;}
+.companies_client_add_box {
+    margin-top: 5px;
+}
+.companies_client_add_box a {
+    color: #999999;
+    margin-left:5px;
+}
+.companies_client_add_ico {
+    width: 14px;
+    height: 14px;
+    background: url(/img/client/add_green.png) no-repeat 0 center scroll;
+}
+.companies_client_anons_control_box {
+    border: 1px solid #bfcedc;
+    background-color: #ebf6ff;
+    padding: 5px;
+    margin-top:10px;
+}
+.companies_client_anons_control_box input {
+    float: left;
+    clear: none;
+}
+.companies_client_anons_control_box select {
+    float: right;
+    clear: none;
+    width: 220px;
+}
+.companies_client_anons_box_vip {
+    background-color: #fef9df;
+}
+.companies_client_one_anons_box {
+    border-bottom: 1px dashed #cccccc;
+    padding: 10px;
+}
+.companies_client_one_anons_box_title {
+    line-height: 30px;
+    margin-left:30px;
+}
+.companies_client_one_anons_box_title a {
+    color: #dd5500;
+    font-size: 14px;
+    font-weight: bold;
+}
+.companies_client_one_anons_box_info {}
+.companies_client_one_anons_box_info_left_col {}
+.companies_client_one_anons_box_info_left_col input {}
+.companies_client_one_anons_box_info_center_col {
+    margin-left:10px;
+    width:300px;
+}
+.companies_client_one_anons_box_info_center_col_one_row {
+    font-size: 12px;
+}
+.companies_client_one_anons_box_info_center_col .field_name {
+    color: #999999;
+}
+.companies_client_one_anons_box_info_center_col .value {
+    margin-left: 5px;
+    color: #333333;
+}
+
+.companies_client_one_anons_box_info_right_col {
+    margin-top: 30px
+}
+.companies_client_one_anons_box_info_right_col a {
+    color: #0054a6;
+    margin-left: 15px;
+}

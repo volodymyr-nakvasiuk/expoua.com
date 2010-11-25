@@ -1,25 +1,4 @@
-.lf {
-	background: url(/img/index/left_f.png) no-repeat 0 0 scroll transparent;
-	width: 6px;
-	height: 28px;
-}
-.rf {
-	background: url(/img/index/right_f.png) no-repeat 0 0 scroll transparent;
-	width: 6px;
-	height: 28px;
-}
-.center_events_news_title {
-	background: url(/img/index/center_f.png) repeat-x 0 0 scroll transparent;
-	height: 28px;
-	width: 183px;
-}
-.center_events_news_title span{
-	margin-left: 10px;
-	line-height: 28px;
-	color: #0054a6;
-	font-weight:bold;
-	font-size:12px;
-}
+
 .center_events_news_content_box {
 	border: 1px solid #bfcedc;
 	padding: 10px;

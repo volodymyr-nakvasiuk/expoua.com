@@ -257,13 +257,36 @@ div.rc_bl {
 div.rc_tl {
 	background: url(/img/site/tl.png) 0 0 no-repeat;
 }
+
+div.rc_br_trans {
+	background: url(/img/site/br_trans.png) 100% 100% no-repeat;
+}
+div.rc_bl_trans {
+	background: url(/img/site/bl_trans.png) 0 100% no-repeat;
+}
+
 .lf {
-	background: url(/img/index/left_f.png) no-repeat 0 0 scroll transparent;
+	background: url(/img/site/left_f.png) no-repeat 0 0 scroll transparent;
 	width: 6px;
 	height: 28px;
 }
 .rf {
-	background: url(/img/index/right_f.png) no-repeat 0 0 scroll transparent;
+	background: url(/img/site/right_f.png) no-repeat 0 0 scroll transparent;
 	width: 6px;
 	height: 28px;
+}
+.center_f {
+	background: url(/img/site/center_f.png) repeat-x 0 0 scroll transparent;
+	height: 28px;
+	width: 183px;
+}
+.center_f span{
+	margin-left: 10px;
+	line-height: 28px;
+	color: #0054a6;
+	font-weight:bold;
+	font-size:12px;
+}
+.inner_left_nav_box {
+    padding: 10px;
 }
