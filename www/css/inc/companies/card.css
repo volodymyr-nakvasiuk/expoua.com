@@ -1,0 +1,177 @@
+.all_companies_card_content_box {
+	margin: 10px;
+	color: #999999;
+}
+.all_companies_card_content_box div {
+	position: relative;
+}
+
+.all_companies_card_content_box a {
+	text-decoration: underline;
+	color: #999999;
+}
+.all_companies_card_content_box a:hover {
+	text-decoration: none;
+}
+.companies_card_crumbs {
+	padding: 5px 0;
+}
+.companies_card_desc_box {}
+.companies_card_desc_box .left_col {
+	width: 510px;
+}
+.companies_card_desc_box .right_col {
+	width: 190px;
+}
+.companies_card_title_box {
+	color: #dd5500;
+	font-size: 18px;
+	line-height: 18px;
+	padding: 5px 0 10px;
+	font-weight: bold;
+}
+.companies_card_title_box span {float:left;clear:none;}
+.companies_card_title_box a {
+	font-size: 11px;
+	color: #999999;
+	float: left;
+	clear: none;
+}
+.companies_card_title_box div.fav_ico {
+	background: url(/img/index/star.png) no-repeat;
+	width: 12px;
+	height: 11px;
+	margin:5px 2px 0 10px;
+}
+.companies_card_main_info {}
+.companies_card_main_info img {
+	width: 130px;
+	height: 130px;
+	margin-right: 10px;
+	float: left;
+	clear: none;
+}
+.companies_card_info {
+	font-size: 12px;
+}
+.companies_card_info .text{
+	text-align: right;
+	width: 50px;
+}
+.companies_card_info .contact .place{
+	color: #333333;
+	font-weight: bold;
+}
+.companies_card_info .contact .address{
+	color: #333333;
+	width: 200px;
+}
+.rc_t {	background: url(/img/index/ln.png) 0 0 repeat-x; }
+.rc_r {	background: url(/img/index/ln.png) 100% 0 repeat-y; }
+.rc_b {	background: url(/img/index/ln.png) 0 100% repeat-x; }
+.rc_l {	background: url(/img/index/ln.png) 0 0 repeat-y; }
+.rc_tr {	background: url(/img/index/tr.png) 100% 0 no-repeat; }
+.rc_br {	background: url(/img/index/br.png) 100% 100% no-repeat; }
+.rc_bl {	background: url(/img/index/bl.png) 0 100% no-repeat; }
+.rc_tl {	background: url(/img/index/tl.png) 0 0 no-repeat; }
+.companies_card_outer {
+	background: #ebf6ff;
+}
+.companies_card_inner {
+	padding: 10px;
+}
+.companies_card_right_lnk_row {
+	margin-top: 5px;
+}
+.companies_card_right_lnk_row a {
+	font-size: 12px;
+	margin-left: 5px;
+	color: #0054a6 !important;
+}
+.companies_card_send_msg_ico,
+.companies_card_star_ico,
+.companies_card_map_ico {
+	background: url(/img/companies/send_msg_ico.png) no-repeat center center;
+	width: 17px;
+	height: 16px;
+}
+.companies_card_star_ico {  background: url(/img/companies/top_company_star.png) no-repeat center center;}
+.companies_card_map_ico {  background: url(/img/companies/map_ico.png) no-repeat center center; }
+.subscribe_box {
+	padding: 10px 0;
+	width: 100%;
+}
+
+.companies_card_something .left_border,
+.companies_card_something .right_border{
+	width: 5px;
+	height: 35px;
+}
+.companies_card_something .left_border {    background: url(/img/card/subscribe_left.png) no-repeat; }
+.companies_card_something .right_border{    background: url(/img/card/subscribe_right.png) no-repeat; }
+.companies_card_something .body_center {
+	background: #eff0f1;
+	line-height: 35px;
+	width: 690px;
+}
+.companies_card_something .body_center a {
+	float: left;
+	margin-left: 10px;
+	clear: none;
+}
+.companies_card_something .body_center span {
+	margin-right: 10px;
+	float: right;
+	clear: none;
+}
+.adm_msg_box {
+	background: #f1f6fb;
+	border: 1px solid #d2e2f2;
+	margin-top: 10px;
+}
+.adm_msg_title {
+	text-align: center;
+	color: #0054a6;
+	font-size: 14px;
+	margin-top: 10px;
+}
+.adm_msg_content {
+	padding: 10px;
+}
+.adm_msg_content input,select {
+	margin-bottom: 5px;
+	width: 290px;
+	height: 15px;
+	float: left;
+	clear: none;
+}
+.adm_msg_content select {height: 20px;}
+.adm_msg_content_left {
+	width: 340px;
+	margin-left: 10px;
+	float: left;
+	clear: none;
+}
+.adm_msg_content span {
+	font-size: 12px;
+	line-height: 20px;
+	color: #666666;
+	float: left;
+	clear: none;
+}
+.adm_msg_content em {
+	color: #red;
+}
+.adm_msg_content_right {
+	width: 315px;
+}
+.adm_msg_content_submit input {
+	float: right;
+	clear: none;
+	width: 58px;
+	height: 20px;
+	margin-right: 20px;
+}
+.card_tabs_box {
+	margin-top: 10px;
+}

@@ -1,5 +1,6 @@
 js.module("jquery.ui.tabs");
 js.include("jquery.ui.core");
+js.include("jquery.ui.widget");
 /*
  * jQuery UI Tabs 1.8.6
  *

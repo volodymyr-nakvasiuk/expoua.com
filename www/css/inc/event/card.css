@@ -1,52 +1,46 @@
 /*                          GENERAL STYLES                              */
 div.all_card_content_box {
-    margin: 10px;
-    color: #999999;
+	margin: 10px;
+	color: #999999;
 }
 div.all_card_content_box div {
-    position: relative;
+	position: relative;
 }
-
 div.all_card_content_box a {
-    text-decoration: underline;
-    color: #999999;
+	text-decoration: underline;
+	color: #999999;
 }
 div.all_card_content_box a:hover {
-    text-decoration: none;
+	text-decoration: none;
 }
 div.card_crumbs {
-    padding: 5px 0;
+	padding: 5px 0;
 }
-
-
-
-
-
 div.card_desc_box {}
 div.card_desc_box div.left_col {}
 
 
 div.card_desc_box div.right_col {
-    width: 190px;
+	width: 190px;
 }
 div.right_tab {
-    z-index: 1;
+	z-index: 1;
 }
 div.card_right_tabs_body_box {
-    background: none repeat scroll 0 0 #EBF6FF;
-    border: 1px solid #BFCEDC;
-    top: -1px;
-    z-index: 0;
-    padding: 10px;
+	background: none repeat scroll 0 0 #EBF6FF;
+	border: 1px solid #BFCEDC;
+	top: -1px;
+	z-index: 0;
+	padding: 10px;
 }
 div.card_right_tab_row {
-    margin-top: 5px;
+	margin-top: 5px;
 }
 div.card_right_tab_row a {
-    color: #0054a6;
-    line-height: 29px;
-    float:left;
-    clear:none;
+	color: #0054a6;
+	line-height: 29px;
+	float:left;
+	clear:none;
 }
 div.card_right_tab_ico,
 div.take_part,
@@ -54,83 +48,78 @@ div.business_tour,
 div.aero_tiket,
 div.tiket
 {
-    width: 32px;
-    height: 29px;
-    margin-right: 5px;
+	width: 32px;
+	height: 29px;
+	margin-right: 5px;
 }
 div.take_part {   background:url(/img/card/tabs/take_part.png) no-repeat center center scroll transparent; }
 div.tiket {   background:url(/img/card/tabs/card_tiket.png) no-repeat center center scroll transparent; }
 div.business_tour {   background:url(/img/card/tabs/business_tour.png) no-repeat center center scroll transparent; }
 div.aero_tiket {   background:url(/img/card/tabs/aero_tiket.png) no-repeat center center scroll transparent; }
-
-
-
 div.subscribe_box {
-    padding: 10px 0;
-    width: 100%;
+	padding: 10px 0;
+	width: 100%;
 }
 
 div.subscribe_box div.left_border,
 div.subscribe_box div.right_border{
-    width: 5px;
-    height: 35px;
+	width: 5px;
+	height: 35px;
 }
 div.subscribe_box div.left_border {    background: url(/img/card/subscribe_left.png) no-repeat; }
 div.subscribe_box div.right_border{    background: url(/img/card/subscribe_right.png) no-repeat; }
 div.subscribe_box div.body_center {
-    background: #eff0f1;
-    line-height: 35px;
-    width: 690px;
+	background: #eff0f1;
+	line-height: 35px;
+	width: 690px;
 }
 div.subscribe_box div.body_center span {
-    float: left;
-    clear: none;
+	float: left;
+	clear: none;
 }
 div.subscribe_box div.body_center input {
-    margin-top: 11px;
-    float: left;
-    clear: none;
+	margin-top: 11px;
+	float: left;
+	clear: none;
 }
 div.subscribe_box div.body_right_field input {
-    width: 140px;
-    height:15px;
-    margin-right:5px;
-    margin-top:7px;
+	width: 140px;
+	height:15px;
+	margin-right:5px;
+	margin-top:7px;
 }
 div.subscribe_box div.body_right_btn input {
-    width: 29px;
-    height: 20px;
-    margin-right:5px;
-    margin-top:7px;
+	width: 29px;
+	height: 20px;
+	margin-right:5px;
+	margin-top:7px;
 }
-
-
 div.card_title_box {
-    color: #dd5500;
-    font-size: 18px;
-    line-height: 18px;
-    padding: 5px 0 10px;
+	color: #dd5500;
+	font-size: 18px;
+	line-height: 18px;
+	padding: 5px 0 10px;
 }
 div.card_title_box span {float:left;clear:none;}
 div.card_title_box a {
-    font-size: 11px;
-    color: #999999;
-    float: left;
-    clear: none;
+	font-size: 11px;
+	color: #999999;
+	float: left;
+	clear: none;
 }
 div.card_title_box div.fav_ico {
-    background: url(/img/index/star.png) no-repeat;
-    width: 12px;
-    height: 11px;
-    margin:5px 2px 0 10px;
+	background: url(/img/index/star.png) no-repeat;
+	width: 12px;
+	height: 11px;
+	margin:5px 2px 0 10px;
 }
 div.card_main_info {}
 div.card_main_info img {
-    width: 130px;
-    height: 130px;
-    margin-right: 10px;
-    float: left;
-    clear: none;
+	width: 130px;
+	height: 130px;
+	margin-right: 10px;
+	float: left;
+	clear: none;
 }
 div.card_main_info_desc {}
 
@@ -141,368 +130,328 @@ div.span_box a {color: #0054a6;}
 div.card_main_info_desc div.date {color: #dd5500; font-size: 14px;}
 div.card_main_info_desc div.place {color: #000000; font-size: 14px;}
 
-
-
 div.recommendation_box {}
 div.one_recommendation_box {
-  margin: 5px;
-  text-align: center;
-  width: 105px;
+	margin: 5px;
+	text-align: center;
+	width: 105px;
 }
 div.one_recommendation_box img{
- width: 105px;
- height: 105px;
- clear: both;
- float: none;
+	width: 105px;
+	height: 105px;
+	clear: both;
+	float: none;
 }
 div.one_recommendation_box a { color: #0054a6; }
 
-
-
 div.adm_msg_box {
-  background: #f1f6fb;
-  border: 1px solid #d2e2f2;
-    margin-top: 10px;
+	background: #f1f6fb;
+	border: 1px solid #d2e2f2;
 }
 div.adm_msg_title {
-  text-align: center;
-  color: #0054a6;
-  font-size: 14px;
-  margin-top: 10px;
+	text-align: center;
+	color: #0054a6;
+	font-size: 14px;
+	margin-top: 10px;
 }
 div.adm_msg_content {
-  padding: 10px;
+	padding: 0;
 }
 div.adm_msg_content input,select {
-  margin-bottom: 5px;
-  width: 290px;
-  height: 15px;
-  float: left;
-  clear: none;
+	margin-bottom: 5px;
+	width: 290px;
+	height: 15px;
+	float: left;
+	clear: none;
 }
 div.adm_msg_content select {height: 20px;}
 div.adm_msg_content_left {
-  width: 340px;
-  margin-left: 10px;
-  float: left;
-  clear: none;
+	width: 340px;
+	float: left;
+	clear: none;
 }
 div.adm_msg_content span {
-  font-size: 12px;
-  line-height: 20px;
-  color: #666666;
-  float: left;
-  clear: none;
+	font-size: 12px;
+	line-height: 20px;
+	color: #666666;
+	float: left;
+	clear: none;
 }
 div.adm_msg_content em {
-  color: #red;
+	color: red;
 }
 div.adm_msg_content_right {
-  width: 315px;
+	width: 315px;
 }
 div.adm_msg_content_submit input {
-  float: right;
-  clear: none;
-  width: 58px;
-  height: 20px;
-  margin-right: 20px;
+	float: right;
+	clear: none;
+	width: 58px;
+	height: 20px;
+	margin-right: 20px;
 }
-
-
-
 
 /*                          END GENERAL STYLES                              */
 /*                          GENERAL TAB STYLES                          */
-div.card_tabs_box {}
-div.tab { cursor: pointer; }
 div.tab div { z-index: 1; }
 div.card_tabs_box div.tab_left {
-    background: url(/img/card/tabs/card_unactive_left.png) no-repeat;
-    width: 4px;
-    height:25px;
+	background: url(/img/card/tabs/card_unactive_left.png) no-repeat;
+	width: 4px;
+	height:25px;
 }
 div.card_tabs_box div.tab_center {
-    background: #ebf6ff;
-    line-height: 24px;
-    padding: 0 5px;
-    border-top: 1px solid #bfcedc;
-    border-bottom: 1px solid #bfcedc;
-    font-size: 14px;
-    color: #0054a6;
+	background: #ebf6ff;
+	line-height: 24px;
+	padding: 0 5px;
+	border-top: 1px solid #bfcedc;
+	border-bottom: 1px solid #bfcedc;
+	font-size: 14px;
+	color: #0054a6;
 }
 div.card_tabs_box div.tab_right {
-    background: url(/img/card/tabs/card_unactive_right.png) no-repeat;
-    width: 4px;
-    height:25px;
+	background: url(/img/card/tabs/card_unactive_right.png) no-repeat;
+	width: 4px;
+	height:25px;
 }
-div.card_tabs_box div.current div.tab_left {
-    background: url(/img/card/tabs/card_active_left.png) no-repeat;
-    width: 4px;
-    height:25px;
-    border-bottom: 1px solid #ffffff;
-}
-div.card_tabs_box div.current div.tab_center {
-    background: #ffffff;
-    line-height: 24px;
-    font-size: 14px;
-    color: #0054a6;
-    border-top: 1px solid #bfcedc;
-    border-bottom: 1px solid #ffffff;
-    padding: 0 5px;
-
-}
-div.card_tabs_box div.current div.tab_right {
-    background: url(/img/card/tabs/card_active_right.png) no-repeat;
-    width: 4px;
-    height:25px;
-        border-bottom: 1px solid #ffffff;
-}
-div.card_tabs_body_box {
-    border: 1px solid #bfcedc;
-    top: -1px;
-    z-index:0;
-}
-.box {  display: none; }
-.box.visible {  display: block; }
-div.card_tabs_body_box {padding: 15px;}
 /*                          END GENERAL TAB STYLES                          */
 
 
 /*                          FILES TAB                                   */
 div.card_files_tab {}
 div.card_files_title_box div.files_title {
-    color: #333333;
+	color: #333333;
 }
 div.document_info_box {
-    width: 100px;
-    text-align: center;
-    color: #999999;
+	width: 100px;
+	text-align: center;
+	color: #999999;
 }
 div.word_ico {
-    background: url(/img/card/tabs/files_word_ico.png) no-repeat;
-    width: 16px;
-    height: 16px;
-    margin-right: 5px;
+	background: url(/img/card/tabs/files_word_ico.png) no-repeat;
+	width: 16px;
+	height: 16px;
+	margin-right: 5px;
 }
 div.excel_ico {
-    background: url(/img/card/tabs/files_excel_ico.png) no-repeat;
-    width: 16px;
-    height: 16px;
-    margin-right: 5px;
+	background: url(/img/card/tabs/files_excel_ico.png) no-repeat;
+	width: 16px;
+	height: 16px;
+	margin-right: 5px;
 }
 div.pdf_ico {
-    background: url(/img/card/tabs/files_pdf_ico.png) no-repeat;
-    width: 16px;
-    height: 16px;
-    margin-right: 5px;
+	background: url(/img/card/tabs/files_pdf_ico.png) no-repeat;
+	width: 16px;
+	height: 16px;
+	margin-right: 5px;
 }
 div.card_news_one_row {
-    padding: 10px 0;
-    border-bottom: 1px dashed #c5c5c5;
+	padding: 10px 0;
+	border-bottom: 1px dashed #c5c5c5;
 }
 div.card_news_one_row a {
-    color: #0054a6;
-    font-size: 12px;
-    text-decoration: underline;
+	color: #0054a6;
+	font-size: 12px;
+	text-decoration: underline;
 }
 div.card_news_one_row a:hover { text-decoration: none; }
 /*                         END FILES TAB                                   */
 
 /*                         HOSTELS TAB                                   */
-div.card_hostel_tab {
-  padding: 10px;
+div.card_hostels_tab {
+	padding: 10px;
 }
 div.card_one_hostel_tab {
-  margin-top: 10px;
- }
+	margin-top: 10px;
+}
 div.card_one_hostel_tab img {
-  width: 105px;
-  height: 105px;
-  float: left;
-  clear: none;
+	width: 105px;
+	height: 105px;
+	float: left;
+	clear: none;
 
 }
-div.card_hostel_tab_desc_box {
-  margin-left: 10px;
-  width: 200px;
+div.card_hostels_tab_desc_box {
+	margin-left: 10px;
+	width: 200px;
 }
 div.card_hostel_name a {
-  color: #0054a6;
-  font-size: 14px;
-  font-weight: bold;
+	color: #0054a6;
+	font-size: 14px;
+	font-weight: bold;
 }
 div.card_hostel_address {
-  font-size: 12px;
-  color: #333333;
+	font-size: 12px;
+	color: #333333;
 }
 div.contents_btn {
-  background: url(/img/card/contents_btn.png) no-repeat;
-  width: 78px;
-  height: 19px;
-  margin: 10px 0;
+	background: url(/img/card/contents_btn.png) no-repeat;
+	width: 78px;
+	height: 19px;
+	margin: 10px 0;
 }
 /*                        END HOSTELS TAB                                   */
 /*                        MAP TAB                                   */
 #map {
-    width: 685px;
-    height:440px;
-    background:#999999;
+	width: 685px;
+	height:440px;
+	background:#999999;
 }
 /*                        END MAP TAB                                   */
 
 /*                          NEWS PAD                                */
 div.card_news_tab {
-  padding: 10px 10px 0;
+	padding: 10px 10px 0;
 }
 div.card_one_news {}
 div.card_one_news_desc {
-  border-right: 1px solid #bfcedc;
-  min-height: 110px;
-  width: 560px;
+	border-right: 1px solid #bfcedc;
+	min-height: 110px;
+	width: 560px;
 }
 div.card_one_news_desc_title a {
-  color: #0054a6;
-  font-weight: bold;
-  font-size: 14px;
+	color: #0054a6;
+	font-weight: bold;
+	font-size: 14px;
 }
 div.card_one_news_desc_text {
-  color: #666666;
-  font-size: 12px;
+	color: #666666;
+	font-size: 12px;
 }
 div.card_one_news_date {
-  line-height: 110px;
-  font-size: 10px;
-  margin-left:20px;
+	line-height: 110px;
+	font-size: 10px;
+	margin-left:20px;
 }
 /*                         END NEWS PAD                                */
 /*                          PAGINATOR                                */
 div.paginator {
-  margin: 10px;
+	margin: 10px;
 }
 div.paginator  div.one_page {
-  width: 18px;
-  text-align: center;
-  line-height: 18px;
-  color: #666666;
-  font-size: 12px;
+	width: 18px;
+	text-align: center;
+	line-height: 18px;
+	color: #666666;
+	font-size: 12px;
 }
 div.paginator div.selected {
-  background: #0054a6;
-  color: #ffffff;
+	background: #0054a6;
+	color: #ffffff;
 }
 /*                          END PAGINATOR                                */
 /*                          DESCRIPTION TAB                                */
-div.card_descr_tab {
-  color: #333333;
-  font-size: 12px
+div.card_description_tab {
+	color: #333333;
+	font-size: 12px
 }
-div.card_descr_tab div.title{
-  margin: 10px 0;
-  font-weight: bold;
-  color: #0054a6;
+div.card_description_tab div.title{
+	margin: 10px 0;
+	font-weight: bold;
+	color: #0054a6;
 }
-div.card_descr_tab div.text {}
-div.card_descr_tab p {
-  margin-top: 10px;
+div.card_description_tab div.text {
+}
+div.card_description_tab p {
+	margin-top: 10px;
 }
 /*                          END DESCRIPTION TAB                                  */
 /*                          PHOTO TAB                                */
 div.card_photo_tab {}
 div.main_photo_box img{
-  width: 680px;
-  height: 520px;
-  margin: 10px 0;
+	width: 680px;
+	height: 520px;
+	margin: 10px 0;
 }
 div.card_photo_tab_nav {
-  margin-top:10px;
-  overflow-x:auto !important;
-  height: 105px;
+	margin-top:10px;
+	overflow-x:auto !important;
+	height: 105px;
 }
 div.card_photo_tab_nav ul {
-  margin-left: 0px;
+	margin-left: 0px;
 }
 div.card_photo_tab_nav ul li {
-  float: left;
-  clear: none;
+	float: left;
+	clear: none;
 }
 div.card_photo_tab_nav ul li a img {
-  width: 110px;
-  height: 85px;
-  margin-right: 10px;
+	width: 110px;
+	height: 85px;
+	margin-right: 10px;
 }
 /*                          END PHOTO TAB                                */
 /*                          VIDEO TAB                                   */
 div.video_tab_one_row{
-  margin-bottom: 10px;
+	margin-bottom: 10px;
 }
 div.video_tab_one_row object {
-  width: 120px;
-  height: 90px;
-  float: left;
-  clear: none;
+	width: 120px;
+	height: 90px;
+	float: left;
+	clear: none;
 }
 div.video_tab_desc_box{
-  width: 520px;
-  margin-left: 10px;
+	width: 520px;
+	margin-left: 10px;
 }
 div.video_tab_desc_title a {
-  font-size:14px;
-  font-weight: bold;
-  color:#0054a6;
+	font-size:14px;
+	font-weight: bold;
+	color:#0054a6;
 }
 div.video_tab_desc_box span {
-  font-size: 10px;
-  margin-right: 10px;
+	font-size: 10px;
+	margin-right: 10px;
 }
 div.video_tab_desc_text {
-  color: #666666;
-  font-size: 12px;
-  margin-top:5px;
+	color: #666666;
+	font-size: 12px;
+	margin-top:5px;
 }
 /*                          END VIDEO TAB                                   */
 /*                       NEWS_FULL TAB                           */
-  div.news_full_header {
-  font-size: 18px;
-  color: #dd5500;
-  margin: 10px 0;
-  }
-  div.news_full span {
-    color: #666666;
-  }
-  div.news_full span p {
-    margin-top: 10px;
-  }
-  div.news_full a {
-    color: #999999;
-  }
+div.news_full_header {
+	font-size: 18px;
+	color: #dd5500;
+	margin: 10px 0;
+}
+div.news_full span {
+	color: #666666;
+}
+div.news_full span p {
+	margin-top: 10px;
+}
+div.news_full a {
+	color: #999999;
+}
 
 /*                      END NEWS_FULL TAB                           */
 /*                      VIDEO_FULL TAB                           */
-      div.card_video_full {
-        width: 510px;
-      }
-      div.card_video_full a {
-        color: #999999;
-      }
-      div.card_video_title {
-        font-size: 18px;
-        color: #dd5500;
-        text-decoration: underline;
-      }
-      div.card_video_full object {
-        width: 510px;
-        height: 415px;
-      }
-      div.video_info_box {}
-      div.video_info_box div.left {}
-      div.video_info_box div.right { width: auto; }
-      div.video_info_box_left a{
-        color: #0054a6;
-      }
-      div.video_info_box div.right_col {}
-      div.video_full_tab_text {
-        color: #666666;
-        font-size: 12px;
-        margin-top:10px;
-      }
+div.card_video_full {
+	width: 510px;
+}
+div.card_video_full a {
+	color: #999999;
+}
+div.card_video_title {
+	font-size: 18px;
+	color: #dd5500;
+	text-decoration: underline;
+}
+div.card_video_full object {
+	width: 510px;
+	height: 415px;
+}
+div.video_info_box {}
+div.video_info_box div.left {}
+div.video_info_box div.right { width: auto; }
+div.video_info_box_left a{
+	color: #0054a6;
+}
+div.video_info_box div.right_col {}
+div.video_full_tab_text {
+	color: #666666;
+	font-size: 12px;
+	margin-top:10px;
+}
 /*                      END VIDEO_FULL TAB                           */

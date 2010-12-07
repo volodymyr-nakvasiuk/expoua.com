@@ -1,5 +1,9 @@
 js.module("inc.event.card");
 js.include("jquery.ui.tabs");
+$(function() {
+	$('#tabs').tabs();
+});
+
 /*
 $(function() {
   $('div.tabs').each(function() {

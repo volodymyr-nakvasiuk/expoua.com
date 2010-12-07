@@ -1,0 +1,50 @@
+<div class="adm_msg_title cl">Отправить сообщение организатору мероприятия</div>
+<div class="adm_msg_content">
+
+	<div class="adm_msg_content_left fl">
+		<span>Название компании:</span><span style="color: red">*</span>
+		<input type="text">
+		<span>Контактное лицо:</span><span style="color: red">*</span>
+		<input type="text">
+		<span>Телефон:</span><span style="color: red">*</span><div class="clr"></div>
+		<input type="text" style="width: 200px;"><div class="clr"></div>
+		<span>E-mail:</span><span style="color: red">*</span><div class="clr"></div>
+		<input type="text" style="width: 200px;"><div class="clr"></div>
+		<span>Страна:</span><span style="color: red">*</span><div class="clr"></div>
+		<select>
+			<option>-- выбирете страну-- </option>
+			<?php //foreach(){?>
+				<option>-- выбирете страну-- </option>
+			<?php //} ?>
+		</select>
+		<div class="clr"></div>
+		<span>Адрес:</span><span style="color: red">*</span><div class="clr"></div>
+		<input type="text"><div class="clr"></div>
+		<span>Цель Вашего запроса:</span><div class="clr"></div>
+		<input type="radio" style="width: 13px; height: 15px;"><span> для посещения </span>
+		<input type="radio" style="width: 13px; height: 15px;"><span> для возможного участия </span>
+		<input type="radio" style="width: 13px; height: 15px;"><span> другое </span>
+	</div>
+	<style>
+		div.capt {}
+		div.capt_img img {
+			width: 100px;
+			height: 50px;
+			margin-top: 5px;
+		}
+	</style>
+	<div class="adm_msg_content_right fl">
+		<span>Ваш вопрос:</span><span style="color: red">*</span><div class="clr"></div>
+		<textarea rows="10" cols="55" name="text"></textarea>
+		<div class="capt fl">
+			<span>Код подтверждения:</span><span style="color: red">*</span><div class="clr"></div>
+			<input type="text" style="width: 75px;">
+		</div>
+		<div class="capt_img fr">
+			<img src="/img/card/capt.png">
+		</div>
+	</div>
+	<div class="adm_msg_content_submit cl">
+		<input type="button" value="Submit">
+	</div>
+</div>

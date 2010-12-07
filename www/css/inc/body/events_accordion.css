@@ -45,3 +45,42 @@
 	width: 510px;
 	height: 365px;
 }
+
+.body_events_accordion_boxes {padding-top: 10px;}
+.body_events_accordion_one_box {}
+.body_events_accordion_one_box .lb {
+	background: url(/img/index/left_b.png) no-repeat 0 0 scroll transparent;
+	width: 7px;
+	height: 46px;
+}
+.body_events_accordion_one_box .rb {
+	background: url(/img/index/right_b.png) no-repeat 0 0 scroll transparent;
+	width: 7px;
+	height: 46px;
+}
+.body_events_accordion_box_content {
+	width: 486px;
+	min-height: 36px;
+	background: #ffe9bc;
+	border-bottom: 1px solid #d2b77f;
+	padding: 5px;
+}
+.body_events_accordion_box_content_left_col {}
+.body_events_accordion_box_content_left_col .title {
+	color: #dd5500;
+	text-decoration: underline;
+	font-weight:bold;
+	font-size: 14px;
+}
+.body_events_accordion_box_content_left_col .date {
+	color: #000000;
+	font-size: 11px;
+}
+.body_events_accordion_box_content_right_col {}
+.body_events_accordion_box_content_right_col .city {}
+.body_events_accordion_box_content_right_col  a {
+	background: url(/img/index/star.png) no-repeat 0 center scroll transparent;
+	padding-left: 15px;
+	color: #0d74c4;
+	font-size: 11px;
+}

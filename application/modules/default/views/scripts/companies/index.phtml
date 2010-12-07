@@ -1,15 +1,11 @@
 /* BODY BLOCK */
 <div class="companies_index_main_content_box cl">
 	<div class="title cl">Выствки онлайн</div>
+	<?php foreach($this->data as $category){ $this->allCount += $category['c'];?>
 	<div class="lnk cl">
-		<a href="index.phtml#">ИТ, Телекоммуникации, Электроника, Телерадиовещание</a><em>(1759)</em>
+		<a href="#"><?php echo $category['name'];?></a> <em>(<?php echo $category['c'];?>)</em>
 	</div>
-	<div class="lnk cl">
-		<a href="index.phtml#">Недвижимость, Финансы, Банки</a><em>(343)</em>
-	</div>
-	<div class="lnk cl">
-		<a href="index.phtml#">Безопасность, Оборона </a><em>(549)</em>
-	</div>
+	<?php } ?>
 </div>
 /*END BODY BLOCK*/
 
@@ -55,7 +51,7 @@
 <div style="margin-top: 50px; width: 196px; clear: both; float: none;">
 	<div class="add_comp_box">
 		<a href="index.phtml#">Добавить компанию</a>
-		<em>67584</em>&nbsp;<span>компаний в базе</span>
+		<em><?php echo $this->allCount;?></em> <span>компаний в базе</span>
 	</div>
 	<div class="companies_index_center_top_comp_box cl">
 

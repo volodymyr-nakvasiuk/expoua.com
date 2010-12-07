@@ -123,281 +123,33 @@ echo '<br/>'.strtotime($item['date_from']);
 </div>
 
 <div class="card_tabs_box cl">
-<div class="tabs cl">
-	<div class="tab current fl">
-		<div class="tab_left fl"></div>
-		<div class="tab_center fl">Описание</div>
-		<div class="tab_right fl"></div>
-	</div>
-	<div class="tab fl">
-		<div class="tab_left fl"></div>
-		<div class="tab_center fl">Новости</div>
-		<div class="tab_right fl"></div>
-	</div>
-	<div class="tab fl">
-		<div class="tab_left fl"></div>
-		<div class="tab_center fl">Видео</div>
-		<div class="tab_right fl"></div>
-	</div>
-	<div class="tab fl">
-		<div class="tab_left fl"></div>
-		<div class="tab_center fl">Фото</div>
-		<div class="tab_right fl"></div>
-	</div>
-	<div class="tab fl">
-		<div class="tab_left fl"></div>
-		<div class="tab_center fl">Гостинницы</div>
-		<div class="tab_right fl"></div>
-	</div>
-	<div class="tab fl">
-		<div class="tab_left fl"></div>
-		<div class="tab_center fl">Файлы</div>
-		<div class="tab_right fl"></div>
-	</div>
-	<div class="tab fl">
-		<div class="tab_left fl"></div>
-		<div class="tab_center fl">Карта</div>
-		<div class="tab_right fl"></div>
-	</div>
-	<div class="tab fr">
-		<div class="tab_left fl"></div>
-		<div class="tab_center fl">Сообщение</div>
-		<div class="tab_right fl"></div>
-	</div>
-</div>
-<div class="card_tabs_body_box cl">
-<div class="box visible card_descr_tab">
-	<p>Специализированная выставка-ярмарка "Мир детства и школы" 11-14 августа 2010 года  компания  «Выставочный Мир» при поддержке Киевской торгово-промышленной палаты проводят Специализированную выставку-ярмарку «Мир детства и школы». Место проведения -  Киевский Дворец детей и юношества, ул. И.Мазепы, 13.</p>
-	<p>«Мир детства и школы» – это выставка-ярмарка, которая проводится в преддверии  нового учебного года и представляет весь спектр необходимых товаров и услуг для малышей, учеников и студентов. Выставка объединит предприятия и организации, которые работают на рынке детских товаров и услуг. Для родителей выставка-ярмарка предоставит возможность приобрести все необходимое для детей и подростков.</p>
-	<div class="title">Тематические разделы:</div>
-	<ul type="circle">
-		<li>Школьная форма</li>
-		<li>Школьные портфели, сумки</li>
-		<li>Книги, учебники, периодика и издательства</li>
-		<li>Одежда и обувь для детей дошкольного и школьного возраста</li>
-		<li>Одежда и обувь для спорта и отдыха</li>
-		<li>Спортивный инвентарь</li>
-		<li>Канцелярские товары</li>
-		<li>Игры и игрушки</li>
+<div class="cl" id="tabs">
+<?php
+	$tabs = array(
+		'description'=>$this->lang->translate('Description'),
+		'news'=>$this->lang->translate('News'),
+		'video'=>$this->lang->translate('Video'),
+		'photo'=>$this->lang->translate('Photo'),
+		'hotels'=>$this->lang->translate('Hotels'),
+		'files'=>$this->lang->translate('Files'),
+		'map'=>$this->lang->translate('Map'),
+		'messages'=>$this->lang->translate('Get additional information'),
+	);
+?>
+	<ul>
+		<?php
+			$tabsContent = '';
+			foreach ($tabs as $tab_id=>$tab_title){
+				$tabsContent .= '<div class="card_card_tab_box card_'.$tab_id.'_tab" id="'.$tab_id.'">'.$this->render('/event/tabs/'.$tab_id.'.phtml').'</div>';
+		?>
+			<li><a href="#<?php echo $tab_id;?>"><?php echo $tab_title;?></a></li>
+		<?php
+			}
+		?>
 	</ul>
+	<?php echo $tabsContent; ?>
 </div>
-<div class="box card_news_tab">
-	<div class="card_one_news cl">
-		<div class="card_one_news_desc fl">
-			<div class="card_one_news_desc_title cl">
-				<a href="#">
-					Выставка «Крым. Стройиндустрия. Энергосбережение. Осень – 2010» состоится в Симферополе
-				</a>
-			</div>
-			<div class="card_one_news_desc_text cl">
-				С 28 по 30 октября 2010 года в  г. Симферополе по адресу: ул. Киевская, 115, СК "Дружба" (ДКП), проводится 17–я межрегиональная специализированная выставка «Крым. Стройиндустрия. Энергосбережение. Осень – 2010». Она стала эффективным маркетинговым инструментом для многих предприятий, работающих в строительной и энергетической отраслях промышленности.
-			</div>
-		</div>
-		<div class="card_one_news_date fl">21.12.2010</div>
-	</div>
-	<div class="paginator cl">
-		<div class="one_page fl">1</div>
-		<div class="one_page selected fl">2</div>
-		<div class="one_page fl">3</div>
-		<div class="one_page fl">4</div>
-		<div class="one_page fl">5</div>
-	</div>
-
-	<div class="news_full cl">
-		&rarr;<a href="#">назад к списку новостей</a>
-		<div class="news_full_header cl">Мир детства и школы </div>
-        <span>
-          <p>В Украине впервые состоится конференция такого уровня: в течение двух дней признанные специалисты крупнейших мировых компаний представят свое видение и отношение к наиболее обсуждаемым вопросам и новейшим тенденциям в сфере информационных и телекоммуникационных технологий. Активное участие в формировании программы конференции принимают представители международной организации UMTS Forum.Лейтмотивом двухдневной конференции станет обсуждение преимуществ и рисков построения ИТ инфраструктуры предприятий на основе облачных технологий.</p>
-          <p>В ходе первой сессии «Виртуализация и облачные вычисления» будут представлены новейшие концепции организации интеллектуального (разумного) подхода к производству и доставке товаров, предоставлению услуг потребителю. Участники сессии представят свои варианты ответов на вопрос: «Какой максимально эффективный подход к интеграции инфраструктуры и организации управления в виртуализованных средах?».</p>
-          <p>Во второй сессии «Унифицированные коммуникации» прозвучат презентации о решении задач снижения стартовых капитальных затрат посредством построения системы унифицированных коммуникаций. Что такое «унифицированные коммуникации как услуга» (UCaaS); какую роль могут сыграть унифицированные коммуникации для увеличения эффективности и производительности сотрудников, улучшения взаимодействия с клиентами, поставщиками и партнерами, эффективности ИТ управления и снижения операционных затрат.</p>
-        </span>
-	</div>
-
-</div>
-<div class="box card_video_tab">
-	<div class="video_tab_one_row cl">
-		<object type="image" data="/img/card/video_ico.png">
-		</object>
-		<div class="video_tab_desc_box fl">
-			<div class="video_tab_desc_title cl">
-				<a href="#">Furniture China</a>
-			</div>
-			<span>Загружено 23.07.2010</span><span>Продолжительность: 4:49</span><span>Размер - 10.06 MБ</span>
-			<div class="video_tab_desc_text cl">Furniture China is a professional international furniture exhibition with an excellent reputation for more than 16 years, launched in 1993.</div>
-		</div>
-	</div>
-	<div class="video_tab_one_row cl">
-		<object type="image" data="/img/card/video_ico.png">
-		</object>
-		<div class="video_tab_desc_box fl">
-			<div class="video_tab_desc_title cl">
-				<a href="#">Furniture China</a>
-			</div>
-			<span>Загружено 23.07.2010</span>Продолжительность: 4:49<span></span><span>Размер - 10.06 MБ</span>
-			<div class="video_tab_desc_text cl">Furniture China is a professional international furniture exhibition with an excellent reputation for more than 16 years, launched in 1993.</div>
-		</div>
-	</div>
-
-	<div class="card_video_full cl">
-		&rarr;<a href="#">назад к списку видеороликов</a>
-		<div class="card_video_title cl">Дневник выставки "Автосалон. Крым." - 2010</div>
-		<object type="image" data = "/img/card/big_video_ico.png"></object>
-		<div class="cl">
-			<div class="video_info_box_left fl">
-				<span>Выставка:</span><a href="#">Крым. Автосалон</a><div class="clr"></div>
-				<span>Место проведения:</span><span style="color: #333333;">Симферополь, Украина</span><div class="clr"></div>
-				<span>Дата съемки:</span><span style="color: #333333;"> 18.06.2010</span><div class="clr"></div>
-			</div>
-			<div class="right fr">
-				<span>Загружено:</span><span style="color: #333333;">14.07.2010 </span><div class="clr"></div>
-				<span>Размер:</span><span style="color: #333333;"> 21 мб</span><div class="clr"></div>
-			</div>
-		</div>
-		<div class="video_full_tab_text cl">
-			В Украине впервые состоится конференция такого уровня: в течение двух дней признанные специалисты крупнейших мировых компаний представят свое видение и отношение к наиболее обсуждаемым вопросам и новейшим тенденциям в сфере информационных и телекоммуникационных технологий.
-		</div>
-
-	</div>
-
-	<div class="subscribe_box cl">
-		<div class="left_border fl"></div>
-		<div class="body_center fl" style="width: 500px;">
-			<div class="insert_code fl">
-				<span>Код для вставки:</span>
-				<input type="text" style="width: 270px; margin: 8px 15px;">
-				<a href="#">скопировать в буфер</a>
-			</div>
-		</div>
-		<div class="right_border fl"></div>
-	</div>
-
-
-</div>
-<div class="box card_photo_tab">
-	<span>Всего фотографий: 45</span>&nbsp;&nbsp;&nbsp;<span>Загружено 23.07.2010</span>
-	<div class="main_photo_box cl">
-		<img src="/img/card/test.png">
-	</div>
-	<center><span>Демонстрации авторских работ специалистов зеленого хозяйства.</span></center>
-	<div class="card_photo_tab_nav cb">
-		<ul style="width: 825px;">
-			<li>
-				<a href="#">
-					<img src="/img/card/test.png">
-				</a>
-			</li>
-			<li>
-				<a href="#">
-					<img src="/img/card/test.png">
-				</a>
-			</li>
-			<li>
-				<a href="#">
-					<img src="/img/card/test.png">
-				</a>
-			</li>
-			<li>
-				<a href="#">
-					<img src="/img/card/test.png">
-				</a>
-			</li>
-			<li>
-				<a href="#">
-					<img src="/img/card/test.png">
-				</a>
-			</li>
-			<li>
-				<a href="#">
-					<img src="/img/card/test.png">
-				</a>
-			</li>
-		</ul>
-	</div>
-</div>
-<div class="box card_hostel_tab">
-
-	<div class="card_one_hostel_tab fl">
-		<img src="/img/card/test.png">
-		<div class="card_hostel_tab_desc_box fl">
-			<div class="card_hostel_name cl">
-				<a href="#">Fast Food – Индустрия быстрого питания</a>
-			</div>
-			<div class="card_hostel_address cl">м. Львів, Проспект Свободи, 45</div>
-			<a href="#"><div class="contents_btn cl"></div></a>
-			<span>Цена проживания за сутки: </span><div class="clr"></div>
-			<span>мин: &nbsp;</span><span style="color: #dd5500">800.00 (грн.)</span><div class="clr"></div>
-			<span>макс:&nbsp; </span><span style="color: #dd5500">2250.00 (грн.) </span>
-		</div>
-	</div>
-
-	<div class="card_one_hostel_tab fl">
-		<img src="/img/card/test.png">
-		<div class="card_hostel_tab_desc_box fl">
-			<div class="card_hostel_name cl">
-				<a href="#">Fast Food – Индустрия быстрого питания</a>
-			</div>
-			<div class="card_hostel_address cl">м. Львів, Проспект Свободи, 45</div>
-			<a href="#"><div class="contents_btn cl"></div></a>
-			<span>Цена проживания за сутки: </span><div class="clr"></div>
-			<span>мин: &nbsp;</span><span style="color: #dd5500">800.00 (грн.)</span><div class="clr"></div>
-			<span>макс:&nbsp; </span><span style="color: #dd5500">2250.00 (грн.) </span>
-		</div>
-	</div>
-
-	<div class="card_one_hostel_tab fl">
-		<img src="/img/card/test.png">
-		<div class="card_hostel_tab_desc_box fl">
-			<div class="card_hostel_name cl">
-				<a href="#">Fast Food – Индустрия быстрого питания</a>
-			</div>
-			<div class="card_hostel_address cl">м. Львів, Проспект Свободи, 45</div>
-			<a href="#"><div class="contents_btn cl"></div></a>
-			<span>Цена проживания за сутки: </span><div class="clr"></div>
-			<span>мин: &nbsp;</span><span style="color: #dd5500">800.00 (грн.)</span><div class="clr"></div>
-			<span>макс:&nbsp; </span><span style="color: #dd5500">2250.00 (грн.) </span>
-		</div>
-	</div>
-
-</div>
-<div class="box card_files_tab">
-	<div class="card_files_title_box cl">
-		<div class="document_info_box files_title fl"> Документы </div>
-		<div class="document_info_box files_title fr"> Загружен </div>
-		<div class="document_info_box files_title fr"> Формат </div>
-	</div>
-	<div class="card_news_one_row cb">
-		<div class="word_ico fl"></div>
-		<a href="#">Пресс-релиз.doc</a>
-		<div class="document_info_box fr">21.01.2010</div>
-		<div class="document_info_box fr">doc</div>
-	</div>
-	<div class="card_news_one_row cb">
-		<div class="excel_ico fl"></div>
-		<a href="#">Таблица выставочных площадей.exl</a>
-		<div class="document_info_box fr">21.01.2010</div>
-		<div class="document_info_box fr">doc</div>
-	</div>
-	<div class="card_news_one_row cb">
-		<div class="pdf_ico fl"></div>
-		<a href="#">Пакет документов для заяки об учатсии в выставке.pdf</a>
-		<div class="document_info_box fr">21.01.2010</div>
-		<div class="document_info_box fr">doc</div>
-	</div>
-	<div class="card_news_one_row cb">
-		<div class="pdf_ico fl"></div>
-		<a href="#">Схема проезда на выставку.pdf</a>
-		<div class="document_info_box fr">21.01.2010</div>
-		<div class="document_info_box fr">doc</div>
-	</div>
-</div>
-<div class="box card_map_tab">
-	<div id="map">
-	</div>
-	<div class="box card_adm_msg_tab">
-		Adm_Msg
-	</div>
-</div>
-</div>
+<?php /*
 <div class="card_title_box cl">Где остановится? Expoua.com рекомендует:</div>
 <div class="recommendation_box cl">
 	<?php for($i=0; $i<6; $i++) {?>
@@ -407,55 +159,11 @@ echo '<br/>'.strtotime($item['date_from']);
 	</div>
 	<?php } ?>
 </div>
-
-
-<div class="adm_msg_box cl">
-	<div class="adm_msg_title cl">Отправить сообщение организатору мероприятия</div>
-	<div class="adm_msg_content">
-
-		<div class="adm_msg_content_left fl">
-			<span>Название компании:</span><span style="color: red">*</span>
-			<input type="text">
-			<span>Контактное лицо:</span><span style="color: red">*</span>
-			<input type="text">
-			<span>Телефон:</span><span style="color: red">*</span><div class="clr"></div>
-			<input type="text" style="width: 200px;"><div class="clr"></div>
-			<span>E-mail:</span><span style="color: red">*</span><div class="clr"></div>
-			<input type="text" style="width: 200px;"><div class="clr"></div>
-			<span>Страна:</span><span style="color: red">*</span><div class="clr"></div>
-			<select><option>-- выбирете страну-- </option></select><div class="clr"></div>
-			<span>Адрес:</span><span style="color: red">*</span><div class="clr"></div>
-			<input type="text"><div class="clr"></div>
-			<span>Цель Вашего запроса:</span><div class="clr"></div>
-			<input type="radio" style="width: 13px; height: 15px;"><span> для посещения </span>
-			<input type="radio" style="width: 13px; height: 15px;"><span> для возможного участия </span>
-			<input type="radio" style="width: 13px; height: 15px;"><span> другое </span>
-		</div>
-		<style>
-			div.capt {}
-			div.capt_img img {
-				width: 100px;
-				height: 50px;
-				margin-top: 5px;
-			}
-		</style>
-		<div class="adm_msg_content_right fl">
-			<span>Ваш вопрос:</span><span style="color: red">*</span><div class="clr"></div>
-			<textarea rows="10" cols="55" name="text"></textarea>
-			<div class="capt fl">
-				<span>Код подтверждения:</span><span style="color: red">*</span><div class="clr"></div>
-				<input type="text" style="width: 75px;">
-			</div>
-			<div class="capt_img fr">
-				<img src="/img/card/capt.png">
-			</div>
-		</div>
-		<div class="adm_msg_content_submit cl">
-			<input type="button" value="Submit">
-		</div>
-	</div>
+*/ ?>
 </div>
-</div>
+
+
+
 <pre>
 <?php
 	print_r($this->data);

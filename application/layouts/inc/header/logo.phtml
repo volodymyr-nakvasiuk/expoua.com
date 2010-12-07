@@ -1,7 +1,8 @@
 <div class="header_lang_box">
 <?php
+	$l = $this->lang->getlocale();
 	foreach ($this->langArray as $lang){
-		if ($this->lang->getlocale()==$lang['code']){
+		if ($l==$lang['code']){
 			$selected = ' selected';
 			$pre_lang = '<span>';
 			$pos_lang = '</span>';
@@ -23,7 +24,7 @@
 	}
 ?>
 </div>
-<a href="/">
+<a href="/<?php echo $l;?>/">
 	<div class="header_logo_box">
 		<div class="header_logo_stat"><span><?php echo $this->statistics['event_count']?></span> <?php echo $this->lang->plural('record total', 'records total', $this->statistics['event_count']);?></div>
 	</div>
