@@ -17,3 +17,5 @@ syntax: regexp
 ^error\.log$
 syntax: regexp
 ^.idea$
+syntax: regexp
+.svn$
