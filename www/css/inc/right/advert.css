@@ -2,18 +2,6 @@
 	width:100%;
 	height: 28px;
 }
-.right_advert_title {
-	background: url(/img/index/center_f.png) repeat-x 0 0 scroll transparent;
-	height: 28px;
-	width: 238px;
-}
-.right_advert_title span{
-	margin-left: 10px;
-	line-height: 28px;
-	color: #0054a6;
-	font-weight:bold;
-	font-size:12px;
-}
 .right_advert_content_box {
 	border: 1px solid #bfcedc;
 	padding: 10px;

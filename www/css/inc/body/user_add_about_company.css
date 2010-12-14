@@ -1,0 +1,53 @@
+.add_about_company_box {
+    background-color: #f8fafc;
+    border: 1px solid #d2e2f2;
+    margin-bottom: 10px;
+}
+.add_about_company_inner_box {
+    margin: 20px;
+}
+.add_about_company_inner_title {
+    font-size: 18px;
+    color: #0054a6;
+}
+.add_about_company_logo_text_box {
+    margin-left: 5px;
+}
+.add_about_company_inner_box_text span {
+    color: #999999;
+    font-size: 12px;
+    line-height: 18px;
+}
+.add_about_company_inner_box_text span em {
+    color: #ff0000;
+}
+.add_about_company_inner_box input {
+    height: 18px;
+}
+.add_about_company_inner_box textarea {
+    width: 460px;
+    height: 200px;
+}
+.add_about_company_inner_box select {  height: 20px;   border:solid 1px #7f9db9;}
+.add_about_company_input_big {   width: 460px; border:solid 1px #7f9db9;}
+.add_about_company_input_middle {   width: 350px; border:solid 1px #7f9db9;}
+.add_about_company_input_small {   width: 290px; border:solid 1px #7f9db9;}
+
+.add_about_company_logo_box {}
+.add_about_company_logo_box img {
+    width: 80px;
+    height: 80px;
+    float: left;
+    clear: none;
+    margin-top: 18px;
+}
+.add_about_company_logo_input_box {}
+.add_about_company_logo_input_box .input_text {   width: 290px; }
+.add_about_company_logo_input_box .input_button { width: 80px; height: 25px; margin-left: 5px; }
+#about_sbmt {
+    width: 140px;
+    height: 55px;
+    font-size: 18px;
+    color: #333333;
+    margin: 20px auto;
+}

@@ -1,0 +1,217 @@
+.tour_order_top_info_box {
+    background-color: #fcf4dc;
+    border: 1px solid #fedd7a;
+}
+.tour_order_top_info_text_box {
+    margin: 10px;
+    font-size: 12px;
+    color: #336699;
+}
+.tour_order_step_title {
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 18px;
+    color: #0054a6;
+}
+.tour_order_operators_box {
+    margin-top: 10px;
+}
+.tour_order_one_operator_box {
+    border-bottom: 1px dashed #999999;
+    line-height: 27px;
+}
+.tour_order_one_operator_box input {
+    margin: 7px 5px;
+    float: left;
+    clear: none;
+}
+.tour_order_one_operator_box a {
+    float: left;
+    clear: none;
+    color: #0072bc;
+}
+.tour_order_one_operator_box span {
+    float: right;
+    clear: none;
+    color: #999999;
+}
+.tour_order_operators_box .sel {
+    background-color: #cde3fc;
+    border-bottom: 0;
+}
+.tour_order_tour_data_box {
+    background-color: #f8fafc;
+    border: 1px solid #d2e2f2;
+    margin-top: 10px;
+}
+.tour_order_tour_data_inner_box {
+    margin: 10px 10px 10px 0;
+}
+.tour_order_tour_data_inner_title {
+    font-weight: bold;
+    font-size: 12px;
+    margin-top: 10px;
+    color: #000000;
+}
+.tour_order_tour_data_dest_box {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.tour_order_tour_data_dest {
+    margin-top: 5px;
+}
+.tour_order_tour_data_dest select {
+    width: 145px;
+    height: 20px;
+    margin-right: 10px;
+    float: left;
+    clear: none;
+}
+.tour_order_tour_data_dest input {
+    width: 145px;
+    height: 16px;
+    float: left;
+    clear: none;
+}
+.tour_order_tour_data_dest span {
+    color: #999999;
+    margin-right: 5px;
+    float: left;
+    clear: none;
+    line-height: 18px;
+}
+.tour_order_tour_data_params_box {
+    margin: 10px 10px 0 10px;
+}
+.tour_order_tour_data_params_date {
+    width: 150px;
+}
+.tour_order_tour_data_params_date input {
+    float: left;
+    clear: none;
+    border:solid 1px #7f9db9;
+    width: 145px;
+    height: 16px;
+    background: url(/img/calendar.png) no-repeat 99% 2px;
+    margin-top: 5px;
+}
+.tour_order_tour_data_params_count {
+    width: 120px;
+    margin-left: 50px;
+}
+.tour_order_tour_data_params_count span {
+    color: #333333;
+    line-height: 16px;
+    width: 50px;
+    float: left;
+     margin-top: 5px;
+    clear: none;
+}
+.tour_order_tour_data_params_count input {
+    float: left;
+    clear: none;
+    width: 60px;
+    height: 16px;
+    border:solid 1px #7f9db9;
+    margin-top: 5px;
+}
+.tour_order_tour_data_params_stars {
+    width: 90px;
+    margin-left: 50px;
+    text-align: center;
+}
+.tour_order_tour_data_params_stars img {
+    width: 16px;
+    height: 16px;
+    margin-right: 2px;
+    margin-top: 10px;
+    float: left;
+    clear: none;
+}
+.tour_order_tour_data_params_stars span {
+    color: #333333;
+    width: 90px;
+    margin-top: 5px;
+    float: left;
+    clear: none;
+}
+.tour_order_tour_data_params_cat {
+    margin-left: 50px;
+}
+.tour_order_tour_data_params_cat_row {}
+.tour_order_tour_data_params_cat_row input {
+    float: left;
+    clear: none;
+}
+.tour_order_tour_data_params_cat_row span {
+    float: left;
+    clear: none;
+    color: #333333;
+    line-height: 16px;
+}
+.tour_order_tour_data_adv_params_box {
+    margin: 10px;
+}
+.tour_order_tour_data_adv_params_col {
+    width: 200px;
+    margin-right: 20px;
+}
+.tour_order_tour_data_adv_params_col_row {}
+.tour_order_tour_data_adv_params_col_row span {
+    color: #333333;
+    float: left;
+    clear: none;
+    line-height: 16px;
+}
+.tour_order_tour_data_adv_params_col_row input {
+    float: left;
+    clear: none;
+    margin-left: 0px;
+}
+.tour_order_tour_contact_form_box {
+    margin: 10px;
+}
+.tour_order_tour_contact_form_left_col {
+    font-size: 12px;
+    width: 300px
+}
+.tour_order_tour_contact_form_left_col_row span {
+    color: #666666;
+    float: left;
+    clear: none;
+    margin-top: 5px;
+}
+.tour_order_tour_contact_form_left_col_row span em {
+    color: #ff0000;
+}
+.tour_order_tour_contact_form_left_col_row input {
+    width: 290px;
+    height: 16px;
+    border:solid 1px #7f9db9;
+    float: left;
+    clear: none;
+}
+.tour_order_tour_contact_form_left_col_row select {
+    width: 290px;
+    height: 20px;
+    border:solid 1px #7f9db9;
+    float: left;
+    clear: none;
+}
+.tour_order_tour_contact_form_left_col_row textarea {
+    width: 290px;
+    height: 150px;
+    border:solid 1px #7f9db9;
+    float: left;
+    clear: none;
+}
+#sbmbtn {
+    width: 140px;
+    height: 55px;
+    font-size: 18px;
+    color: #333333;
+    margin: 20px auto;
+}
+
+
+
