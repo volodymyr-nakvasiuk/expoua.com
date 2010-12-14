@@ -38,3 +38,6 @@ define ( 'UPLOAD_IMAGES_PATH', DOCUMENT_ROOT.'/uploads/images');
 define ( 'TMP_UPLOAD_PATH', DOCUMENT_ROOT.'/uploads/tmp');
 define ( 'UPLOAD_CMS_IMAGES_PATH', DOCUMENT_ROOT.'/cms/images');
 define ( 'UPLOAD_CLIENT_IMAGES_PATH', DOCUMENT_ROOT.'/uploads/client/images');
+
+define ( 'TAB_DEFAULT_ACTION', 'page');
+define ( 'TAB_DEFAULT_ID', 1);

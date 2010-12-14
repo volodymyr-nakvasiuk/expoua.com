@@ -1,4 +1,4 @@
-<?php foreach ($this->menuLinks as $menu=>$menuLink){ if(!in_array($this->lang->getLocale(),$menuLink['lang'])) continue;?>
+<?php $l = $this->lang->getLocale(); foreach ($this->menuLinks as $menu=>$menuLink){ if(!in_array($l,$menuLink['lang'])) continue;?>
 	<div class="main_menu_item<?php echo $this->activeMenu==$menu?' selected':'';?>">
 		<a href="<?php echo $menuLink['url'];?>" title="<?php echo $this->lang->translate($menuLink['title']);?>"><?php echo $this->lang->translate($menuLink['title']);?></a>
 	</div>

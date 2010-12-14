@@ -5,9 +5,7 @@
 	$cities = Zend_Registry::get("cities".Tools_Events::$cacheSuffix['id']);
 	$l = $this->lang->getLocale();
 	$link = '/'.$l.'/';
-	echo $t = time();
-echo '<br/>'.strtotime($item['date_to']);
-echo '<br/>'.strtotime($item['date_from']);
+	$t = time();
 	if ($t>strtotime($item['date_to'].' 23:59:59')){
 		$period = $this->lang->translate('The exhibition has been already closed');
 	}
@@ -128,11 +126,11 @@ echo '<br/>'.strtotime($item['date_from']);
 	$tabs = array(
 		'description'=>$this->lang->translate('Description'),
 		'news'=>$this->lang->translate('News'),
-		'video'=>$this->lang->translate('Video'),
-		'photo'=>$this->lang->translate('Photo'),
-		'hotels'=>$this->lang->translate('Hotels'),
-		'files'=>$this->lang->translate('Files'),
-		'map'=>$this->lang->translate('Map'),
+		//'video'=>$this->lang->translate('Video'),
+		//'photo'=>$this->lang->translate('Photo'),
+		//'hotels'=>$this->lang->translate('Hotels'),
+		//'files'=>$this->lang->translate('Files'),
+		//'map'=>$this->lang->translate('Map'),
 		'messages'=>$this->lang->translate('Get additional information'),
 	);
 ?>
@@ -142,7 +140,7 @@ echo '<br/>'.strtotime($item['date_from']);
 			foreach ($tabs as $tab_id=>$tab_title){
 				$tabsContent .= '<div class="card_card_tab_box card_'.$tab_id.'_tab" id="'.$tab_id.'">'.$this->render('/event/tabs/'.$tab_id.'.phtml').'</div>';
 		?>
-			<li><a href="#<?php echo $tab_id;?>"><?php echo $tab_title;?></a></li>
+			<li class="tab_title_<?php echo $tab_id;?>"><a href="#<?php echo $tab_id;?>"><?php echo $tab_title;?></a></li>
 		<?php
 			}
 		?>

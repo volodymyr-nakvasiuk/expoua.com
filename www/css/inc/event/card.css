@@ -190,9 +190,11 @@ div.adm_msg_content_submit input {
 	height: 20px;
 	margin-right: 20px;
 }
-
 /*                          END GENERAL STYLES                              */
 /*                          GENERAL TAB STYLES                          */
+.ui-tabs .ui-tabs-nav li {
+	margin-right: 1px !important;
+}
 div.tab div { z-index: 1; }
 div.card_tabs_box div.tab_left {
 	background: url(/img/card/tabs/card_unactive_left.png) no-repeat;
@@ -212,6 +214,9 @@ div.card_tabs_box div.tab_right {
 	background: url(/img/card/tabs/card_unactive_right.png) no-repeat;
 	width: 4px;
 	height:25px;
+}
+li.tab_title_messages {
+	float:right !important;
 }
 /*                          END GENERAL TAB STYLES                          */
 
