@@ -10,7 +10,7 @@ class Crud_Grid_EventNews extends ArOn_Crud_Grid {
 
 	public function init() {
 		$this->trash = false;
-		$this->gridTitle = 'Новости выставок';
+		$this->gridTitle = 'Новости выставки';
 
 		$this->gridActionName = 'news';
 		$this->table = "Db_EventNews";
@@ -45,7 +45,7 @@ class Crud_Grid_EventNews extends ArOn_Crud_Grid {
 			)),
 			'brands_id' => new ArOn_Crud_Grid_Filter_Field_Value('brands_id','ID',ArOn_Db_Filter_Field::EQ),
 		);
-		//$this->_params['active'] = 1;
+		$this->_params['active'] = 1;
 		$this->_params['languages_id'] = DEFAULT_LANG_ID;
 
 		parent::init();

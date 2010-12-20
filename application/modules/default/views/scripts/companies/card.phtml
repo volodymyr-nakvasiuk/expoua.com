@@ -1,32 +1,55 @@
+<?php
+	$item = $this->data;
+	$regions = Zend_Registry::get("regions".Tools_Events::$cacheSuffix['id']);
+	$countries = Zend_Registry::get("countries".Tools_Events::$cacheSuffix['id']);
+	$cities = Zend_Registry::get("cities".Tools_Events::$cacheSuffix['id']);
+	//$categories = Zend_Registry::get("categories".Tools_Events::$cacheSuffix['id']);
+	$l = $this->lang->getLocale();
+	$link = '/'.$l.'/';
+?>
 <div class="all_companies_card_content_box cl">
 <div class="companies_card_crumbs cl">
-	<a href="#">Выставки в Украине</a>
-	&rarr;
-	<a href="#">Мир детства и школы</a>
+	<?php $link.='companies/search/'; $name=$this->lang->translate('Companies');?>
+	<a href="<?php echo $link;?>"><?php echo $name;?></a>&nbsp;&rarr;&nbsp;
+	<?php $link.='region-europe/'; $name=$regions[$item['regions_id']]['name_'.$l];?>
+	<a href="<?php echo $link;?>"><?php echo $name;?></a>&nbsp;&rarr;&nbsp;
+	<?php $link.='country-ukraine/'; $name=$countries[$item['regions_id']][$item['countries_id']]['name_'.$l];?>
+	<a href="<?php echo $link;?>"><?php echo $name;?></a>&nbsp;&rarr;&nbsp;
+	<?php $link.='city-kiev/'; $name=$cities[$item['regions_id']][$item['countries_id']][$item['cities_id']]['name_'.$l];?>
+	<a href="<?php echo $link;?>"><?php echo $name;?></a>&nbsp;&rarr;&nbsp;
+	<?php $link='/'.$l.'/companies/card/'.$item['id'].'-'.Tools_View::getUrlAlias($item['name'], true).'/'; $name=$item['name']; ?>
+	<a href="<?php echo $link;?>"><?php echo $name;?></a>
 </div>
 <div class="companies_card_desc_box cl">
 	<div class="left_col fl">
 
 		<div class="companies_card_title_box cl">
-			<span>IT-Catalogue</span>
+			<span><?php  echo $item['name'];?></span>
 		</div>
 		<div class="companies_card_main_info cb">
 			<img src="/img/index/itcatalog.png">
 			<div class="companies_card_info fl">
-				<div class="text fl">Адрес:</div>
+				<div class="text fl"><?php echo $this->lang->translate('Address'); ?>:</div>
 				<div class="contact fl">
-					<div class="place cl">&nbsp;Украина, Харьков</div>
-					<div class="address cl">&nbsp;ул. Тобольская 42-А, офис 424</div>
+					<div class="place cl">&nbsp;
+<?php
+	echo
+		$countries[$item['regions_id']][$item['countries_id']]['name_'.$l]
+		.', '.
+		$cities[$item['regions_id']][$item['countries_id']][$item['cities_id']]['name_'.$l];
+?>
+					</div>
+					<div class="address cl">&nbsp;<?php echo $item['adress'];?></div>
 				</div>
 				<div class="clr"></div>
-				<div class="text fl">Тел.:</div>
+				<div class="text fl"><?php echo $this->lang->translate('Phone'); ?>:</div>
 				<div class="contact fl">
-					<div class="address cl">&nbsp;+38 (057) 728 10 19</div>
+					<div class="address cl">&nbsp;<?php echo $item['phone'];?></div>
 				</div>
 				<div class="clr"></div>
-				<div class="text fl">Факс.:</div>
+				<div class="text fl"><?php echo $this->lang->translate('Fax'); ?>:</div>
 				<div class="contact fl">
-					<div class="address cl">&nbsp;+38 (057) 728 10 21</div>
+					<div class="address cl">&nbsp;<?php echo $item['fax'];?></div>
 				</div>
 			</div>
 		</div>
@@ -66,6 +89,7 @@
 
 
 <div class="card_tabs_box cl">
+<?php /*
 <div class="tabs cl">
 	<div class="tab current fl">
 		<div class="tab_left fl"></div>
@@ -98,29 +122,33 @@
 		<div class="tab_right fl"></div>
 	</div>
 </div>
+ */ ?>
 <div class="card_tabs_body_box cl">
-
-<style>
-	.companies_card_review_box {
-		color: #333333;
+	<div class="cl" id="tabs">
+		<ul>
+<?php
+	$tabsContent = '';
+	$activeTabId = false;
+	$tabIndex = 0;
+	foreach ($this->tabsData as $tab_id=>$tab_data){
+		if ($tab_data['active']) $activeTabId = $tabIndex;
+		$tabsContent .= '<div class="companies_card_tab_box companies_card_'.$tab_id.'_tab" id="'.$tab_id.'">'.$this->render('/companies/tabs/'.$tab_id.'.phtml').'</div>';
+		?>
+		<li class="tab_title_<?php echo $tab_id;?>"><a href="#<?php echo $tab_id;?>"><?php echo $tab_data['title'];?></a></li>
+		<?php
+				$tabIndex++;
 	}
-	.companies_card_review_box .title {
-		font-size: 18px;
-	}
-	.companies_card_review_box .text {
-		margin-top: 10px;
-		font-size: 12px;
-		text-align: justify;
-	}
-</style>
-
-<div class="box visible card_descr_tab">
-	<div class="companies_card_review_box cl">
-		<div class="title cl">IT-Catalogue это самая большая база Интернет компаний</div>
-		<div class="text cl">IT-Catalogue это самая большая база Интернет компаний, которые работают в Украине. Основной целью портала является публикация данных об Интернет услугах, которые на данный момент предоставляются в Украине. IT-Catalogue должен быть полезен как для украинских так и для зарубежных клиентов, потому что сайт был создан на двух языках — Английском и Русском. Если Вы ищете хостинг провайдера, услуги по разработке программного обеспечения, поставщиков программного и аппаратного обеспечения и так далее на Украине, Вы сможете найти эту информацию в IT-Catalogue , не посещая большое количество бесполезных для вас и вашего бизнеса сайтов. Если Вы владелец или менеджер компании, которая предоставляет услуги в сети интернет, Вам стоит завести профиль в IT Catalogue и размещать там информацию о вашей компании, тогда предполагаемые клиенты или партнеры смогут найти информацию о вас и связаться с вами для деловых взаимоотношений. На данный момент в базе IT Catalogue около 2000 компаний, которые предоставляют интернет услуги в Украине, если вы не смогли найти свою компанию в списке, не расстраивайтесь, используйте опцию Добавить компанию на нашем сайте и если мы посчитаем, что предоставленная информация соответствует нашим требованиям мы с радостью добавим Вашу компанию в IT-Catalogue. Если Ваша компания уже внесена в нашу базу, пожалуйста свяжитесь с нами, чтобы мы могли предоставить вам данные для доступа к профилю и его редактирования.</div>
+	?>
+		</ul>
+		<?php echo $tabsContent; ?>
 	</div>
 </div>
-
+<script type="text/javascript">
+	$(function() {
+		$('#tabs').tabs(<?php echo $activeTabId?'{"selected":'.$activeTabId.'}':'';?>);
+	});
+</script>
+<?php /*
 <style>
 	.companies_card_news_tab {
 		padding: 10px 10px 0;
@@ -407,5 +435,7 @@
 			<input type="button" value="Submit">
 		</div>
 	</div>
+ */
+		?>
 </div>
 </div>

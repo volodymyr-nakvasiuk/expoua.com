@@ -175,3 +175,15 @@
 .card_tabs_box {
 	margin-top: 10px;
 }
+
+.companies_card_description_box {
+	color: #333333;
+}
+.companies_card_description_box .title {
+	font-size: 18px;
+}
+.companies_card_description_box .text {
+	margin-top: 10px;
+	font-size: 12px;
+	text-align: justify;
+}

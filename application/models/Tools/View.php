@@ -102,6 +102,56 @@ class Tools_View{
 		if ($urlDecode) $url = urldecode($url);
 		return $url;
 	}
+
+	static function parseUrlByTemplate($url, $template){
+		$paramsArray = array();
+		$parse_url = parse_url($url);
+		$urlParts = explode('/', trim($parse_url['path'], '/'));
+		$templateParts = explode('/', $template);
+		foreach($templateParts as $index=>$tPart){
+			if ($tPart{0}==':'){
+				if ($urlParts[$index]){
+					$paramsArray[substr($tPart, 1)] = $urlParts[$index];
+				}
+				else {
+					break;
+				}
+			}
+			elseif (!($tPart===$urlParts[$index])) {
+				break;
+			}
+		}
+		return $paramsArray;
+	}
+
+	static function setUrlByTemplate($url, $paramsArray){
+		$template = $url['template'];
+		list($url, $query) = explode('?', $url['url'].'?');
+
+		$urlParamsValues = self::parseUrlByTemplate($url, $template);
+		$urlParamsValues = array_merge($urlParamsValues, $paramsArray);
+		$templateParts = explode('/', $template);
+		$url = '/';
+		foreach($templateParts as $tPart){
+			if ($tPart{0}==':'){
+				$key = substr($tPart, 1);
+				if (array_key_exists($key, $urlParamsValues)){
+					$url .= $urlParamsValues[$key];
+				}
+				else {
+					break;
+				}
+			}
+			else {
+				$url .= $tPart;
+			}
+			$url .= '/';
+		}
+		if ($query){
+			$url .= '?'.$query;
+		}
+		return $url;
+	}
 	
 	static function clearUrlParam($url, $clearArray) {
 		$parse_url = parse_url($url);
@@ -154,58 +204,67 @@ class Tools_View{
 		return $url;
 	}
 	
-	static function getPages($url, $arrayPages, $pageParamName) {
+	static function getPages($url, $arrayPages, $pageParamName, $setup=array()) {
+		$setup = array_merge(array(
+			'urlFunctionName'=>'setUrlParam',
+			'imgTag'=>array('start'=>'<span>', 'end'=>'</span>'),
+			'linkTag'=>array('start'=>'<span class="page_link">', 'end'=>'</span>'),
+			'selectedTag'=>array('start'=>'<span class="page_now">', 'end'=>'</span>'),
+			'first'=>'/img/l_end.gif', 'prev'=>'/img/l_page.gif', 'next'=>'/img/r_page.gif', 'last'=>'/img/r_end.gif',
+		), $setup);
+		$fnk = $setup['urlFunctionName'];
 		$str = '';
-		if ($arrayPages['first']){
-			$link  = self::setUrlParam($url, $pageParamName, $arrayPages['first']);
-			$first = '<span><a href="'.$link.'"><img src="'.STATIC_HOST_NAME.'/img/l_end.gif"/></a></span>';
-		}
-		else {
-			$first = '<span><img src="'.STATIC_HOST_NAME.'/img/l_end.gif"/></span>';
-		}
-		unset($arrayPages['first']);
-		if ($arrayPages['prev']){
-			$link   = self::setUrlParam($url, $pageParamName, $arrayPages['prev']);
-			$prev   = '<span><a href="'.$link.'"><img src="'.STATIC_HOST_NAME.'/img/l_page.gif"/></a></span>';
-			//$prev_w = '<span><a href="'.$link.'">назад</a></span>';
-		}
-		else {
-			$prev   = '<span><img src="'.STATIC_HOST_NAME.'/img/l_page.gif"/></span>';
-			//$prev_w = '<span>назад</span>';
-		}
-		unset($arrayPages['prev']);
-		if ($arrayPages['next']){
-			$link   = self::setUrlParam($url, $pageParamName, $arrayPages['next']);
-			$next   = '<span><a href="'.$link.'"><img src="'.STATIC_HOST_NAME.'/img/r_page.gif"/></a></span>';
-			//$next_w = '<span><a href="'.$link.'">вперед</a></span>';
-		}
-		else {
-			$next   = '<span><img src="'.STATIC_HOST_NAME.'/img/r_page.gif"/></span>';
-			//$next_w = '<span>вперед</span>';
-		}
-		unset($arrayPages['next']);
-		if ($arrayPages['last']){
-			$link = self::setUrlParam($url, $pageParamName, $arrayPages['last']);
-			$last = '<span><a href="'.$link.'"><img src="'.STATIC_HOST_NAME.'/img/r_end.gif"/></a></span>';
-		}
-		else {
-			$last = '<span><img src="'.STATIC_HOST_NAME.'/img/r_end.gif"/></span>';
-		}
-		unset($arrayPages['last']);
-		$str .= //$prev_w.
-				$first.$prev;
-		foreach($arrayPages as $page=>$status){
-			if ($status == 'now'){
-				$str .= '<span class="page_now">'.$page.'</span>';
+		if ($setup['first']){
+			if ($arrayPages['first']){
+				$link  = self::$fnk($url, array($pageParamName=>$arrayPages['first']));
+				$first = $setup['imgTag']['start'].'<a href="'.$link.'"><img src="'.STATIC_HOST_NAME.$setup['first'].'"/></a>'.$setup['imgTag']['end'];
 			}
 			else {
-				$link = self::setUrlParam($url, $pageParamName, $page);
-				$str .= '<span class="page_link"><a href="'.$link.'">'.$page.'</a></span>';
+				$first = $setup['imgTag']['start'].'<img src="'.STATIC_HOST_NAME.$setup['first'].'"/>'.$setup['imgTag']['end'];
+			}
+		}
+		unset($arrayPages['first']);
+		if ($setup['prev']){
+			if ($arrayPages['prev']){
+				$link   = self::$fnk($url, array($pageParamName=>$arrayPages['prev']));
+				$prev   = $setup['imgTag']['start'].'<a href="'.$link.'"><img src="'.STATIC_HOST_NAME.$setup['prev'].'"/></a>'.$setup['imgTag']['end'];
+			}
+			else {
+				$prev   = $setup['imgTag']['start'].'<img src="'.STATIC_HOST_NAME.$setup['prev'].'"/>'.$setup['imgTag']['end'];
+			}
+		}
+		unset($arrayPages['prev']);
+		if ($setup['next']){
+			if ($arrayPages['next']){
+				$link   = self::$fnk($url, array($pageParamName=>$arrayPages['next']));
+				$next   = $setup['imgTag']['start'].'<a href="'.$link.'"><img src="'.STATIC_HOST_NAME.$setup['next'].'"/></a>'.$setup['imgTag']['end'];
+			}
+			else {
+				$next   = $setup['imgTag']['start'].'<img src="'.STATIC_HOST_NAME.$setup['next'].'"/>'.$setup['imgTag']['end'];
+			}
+		}
+		unset($arrayPages['next']);
+		if ($setup['last']){
+			if ($arrayPages['last']){
+				$link = self::$fnk($url, array($pageParamName=>$arrayPages['last']));
+				$last = $setup['imgTag']['start'].'<a href="'.$link.'"><img src="'.STATIC_HOST_NAME.$setup['last'].'"/></a>'.$setup['imgTag']['end'];
+			}
+			else {
+				$last = $setup['imgTag']['start'].'<img src="'.STATIC_HOST_NAME.$setup['last'].'"/>'.$setup['imgTag']['end'];
+			}
+		}
+		unset($arrayPages['last']);
+		$str .= $first.$prev;
+		foreach($arrayPages as $page=>$status){
+			if ($status == 'now'){
+				$str .= $setup['selectedTag']['start'].$page.$setup['selectedTag']['end'];
+			}
+			else {
+				$link = self::$fnk($url, array($pageParamName=>$page));
+				$str .= $setup['linkTag']['start'].'<a href="'.$link.'">'.$page.'</a>'.$setup['linkTag']['end'];
 			} 
 		}
-		$str .= $next.$last
-				//.$next_w
-				;
+		$str .= $next.$last;
 		return($str);
 	}
 }

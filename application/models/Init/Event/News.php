@@ -1,34 +1,7 @@
 <?php
-class Init_Event_News {
+class Init_Event_News extends Init_EventTab {
 
-	static $tab_name     = 'news';
-	protected $_data     = false;
-	protected $_brandsId  = false;
-	protected $_isActive = false;
-	protected $_action   = false;
-	protected $_actionId = false;
-
-	public function __construct($brands_id, $tab, $tab_action, $tab_id){
-		$this->_brandsId  = $brands_id;
-		$this->_isActive = (self::$tab_name==$tab);
-		$this->_action   = $this->_isActive?$tab_action:TAB_DEFAULT_ACTION;
-		$this->_actionId = $this->_isActive?$tab_id:TAB_DEFAULT_ID;
-	}
-	
-	protected function _setData(){
-		$this->_data = array(
-			'active' => $this->_isActive,
-			'action' => $this->_action,
-			'id'     => $this->_actionId,
-			'error'  => true,
-			'data'   => array(),
-		);
-		$action = $this->_action.'Action';
-		if (method_exists($this, $action)){
-			$data = $this->$action();
-			$this->_data = array_merge($this->_data, $data);
-		}
-	}
+	static $tab_name = 'news';
 
 	protected function pageAction(){
 		$filter = array(
@@ -37,16 +10,18 @@ class Init_Event_News {
 			'limit'=>5,
 		);
 		$grid = new Crud_Grid_EventNews(null, $filter);
-		echo '<pre>';
-		print_r($grid->getData());
-		exit('ok');
+		return $grid->getData();
 	}
 
 	protected function cardAction(){
-	}
-	
-	public function getData(){
-		if (!$this->_data) $this->_setData();
-		return $this->_data;
+		$grid = new Crud_Grid_EventOneNews(null, array('id'=>$this->_actionId, 'limit'=>1));
+		$data = $grid->getData();
+		if (isset($data['data'][0])){
+			$data['data'] = $data['data'][0];
+		}
+		else {
+			$data = array('data'=>array(), 'error'=>true);
+		}
+		return $data;
 	}
 }

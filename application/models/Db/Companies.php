@@ -8,10 +8,20 @@ class Db_Companies extends ArOn_Db_Table {
 
 	protected $_dependentTables = array(
 		'Db_Lang_CompaniesData',
-		'Db_Companies2BrandsCategories',
+		'Db_Companies2Categories',
 	);
 
 	protected $_referenceMap    = array(
+		'City' => array(
+			'columns'           => 'cities_id',
+			'refTableClass'     => 'Db_LocationCities',
+			'refColumns'        => 'id'
+		),
+		'CityData' => array(
+			'columns'           => 'cities_id',
+			'refTableClass'     => 'Db_Lang_LocationCitiesData',
+			'refColumns'        => 'id'
+		),
 		'Module' => array(
 			'columns'           => 'id',
 			'refTableClass'     => 'Db_Lang_CompaniesData',

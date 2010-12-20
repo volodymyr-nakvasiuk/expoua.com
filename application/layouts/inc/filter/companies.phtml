@@ -1,0 +1,62 @@
+<?php $l = $this->lang->getLocale();?>
+<div class="filter_sub" id="filter_sub" vis="0">
+	<div class="filter_left">
+	</div>
+	<div class="filter_center">
+		<div class="filter_item">
+			<input class="text" type="text" name="search" emptyval="<?php echo $this->lang->translate('search by keyword...');?>" onfocus="javascript:if(this.value==$(this).attr('emptyval'))this.value='';" onblur="javascript:if(this.value=='')this.value=$(this).attr('emptyval');" />
+		</div>
+		<div class="filter_item">
+			<select id="filter_region" name="region">
+				<option value=""><?php echo $this->lang->translate('Region');?></option>
+				<?php
+					$cache = Zend_Registry::get("regions".Tools_Events::$cacheSuffix['alias']);
+					foreach ($cache as $alias=>$item){
+				?>
+						<option value="<?php echo $alias;?>"><?php echo $item['name_'.$l];?></option>
+				<?php
+		  			}
+				?>
+			</select>
+		</div>
+		<div class="filter_item">
+			<select id="filter_country" name="country" disabled="disabled">
+				<option value=""><?php echo $this->lang->translate('Country');?></option>
+			</select>
+		</div>
+	</div>
+	<div class="filter_right">
+	</div>
+</div>
+<div class="filter_main">
+	<div class="filter_left">
+	</div>
+	<div class="filter_center">
+		<div class="filter_item">
+			<select id="filter_category" name="category">
+				<option value=""><?php echo $this->lang->translate('Category');?></option>
+				<?php
+					$cache = Zend_Registry::get("categories".Tools_Events::$cacheSuffix['alias']);
+					foreach ($cache as $alias=>$item){
+				?>
+						<option value="<?php echo $alias;?>"><?php echo $item['name_'.$l];?></option>
+				<?php
+					}
+				?>
+			</select>
+		</div>
+		<div class="filter_item">
+			<select id="filter_city" name="city" disabled="disabled">
+				<option value=""><?php echo $this->lang->translate('City');?></option>
+			</select>
+		</div>
+		<div class="filter_item submit_box">
+			<input id="filter_button" class="button" type="button" value="<?php echo $this->lang->translate('Search');?>"/>
+		</div>
+		<div class="filter_item bottom_dashed_box fr">
+			<span>&darr;</span><span class="bottom_dashed" id="sub_filter_flipper""><?php echo $this->lang->translate('Advanced Search');?></span><span>&darr;</span>&nbsp;
+		</div>
+	</div>
+	<div class="filter_right">
+	</div>
+</div>

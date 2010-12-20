@@ -41,3 +41,4 @@ define ( 'UPLOAD_CLIENT_IMAGES_PATH', DOCUMENT_ROOT.'/uploads/client/images');
 
 define ( 'TAB_DEFAULT_ACTION', 'page');
 define ( 'TAB_DEFAULT_ID', 1);
+define ( 'DEFAULT_ROUTE', ':lang/:controller/:action/:id/:tab/:tab_action/:tab_id');

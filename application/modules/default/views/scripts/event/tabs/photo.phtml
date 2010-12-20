@@ -1,8 +1,27 @@
+<?php /*
 <span>Всего фотографий: 45</span>&nbsp;&nbsp;&nbsp;<span>Загружено 23.07.2010</span>
 <div class="main_photo_box cl">
 	<img src="/img/card/test.png">
 </div>
-<center><span>Демонстрации авторских работ специалистов зеленого хозяйства.</span></center>
+*/ ?>
+<div class="photoslider" id="photoSliderBox"></div>
+<?php
+	$tabData = $this->tabsData[Init_Event_Gallery::$tab_name];
+	$ids = array();
+	foreach ($tabData['data'] as $item){
+		$ids[] = $item['id'];
+	}
+?>
+<script type="text/javascript">
+	$(document).ready(function(){
+		FOTO.Slider.baseURL = 'http://admin.expopromoter.com/data/images/events/<?php echo $tabData['event_id'];?>/gallery/';
+		var ids = new Array(<?php echo implode(', ', $ids);?>);
+		FOTO.Slider.importBucketFromIds('photoSliderBox',ids);
+		FOTO.Slider.reload('photoSliderBox');
+		//FOTO.Slider.enableSlideshow('photoSliderBox');
+	});
+</script>
+<?php /*<center><span>Демонстрации авторских работ специалистов зеленого хозяйства.</span></center>
 <div class="card_photo_tab_nav cb">
 	<ul style="width: 825px;">
 		<li>
@@ -37,3 +56,4 @@
 		</li>
 	</ul>
 </div>
+*/ ?>

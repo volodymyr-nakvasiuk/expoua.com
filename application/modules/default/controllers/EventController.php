@@ -27,9 +27,40 @@ class EventController extends Abstract_Controller_FrontendController {
 				if ($this->view->data['countries_id']==52){
 					$this->view->activeSubmenu = 'ukr';
 				}
-				$this->view->tabs = array();
-				$news = new Init_Event_News($this->view->data['brands_name_id'], $tab, $tab_action, $tab_id);
-				$this->view->tabs[Init_Event_News::$tab_name] = $news->getData();
+				/*
+				$tabs = array(
+					'description'=>$this->lang->translate('Description'),
+					'news'=>$this->lang->translate('News'),
+					//'video'=>$this->lang->translate('Video'),
+					'photo'=>$this->lang->translate('Photo'),
+					//'hotels'=>$this->lang->translate('Hotels'),
+					'files'=>$this->lang->translate('Files'),
+					//'map'=>$this->lang->translate('Map'),
+					'messages'=>$this->lang->translate('Get additional information'),
+				);
+				*/
+
+				$this->view->tabsData = array();
+
+				$tabObject = new Init_Event_Description($this->view->data['brands_name_id'],$this->view->data['id'], $tab, $tab_action, $tab_id, $this->view->data['description']);
+				$tabObject->tab_title = $this->view->lang->translate('Description');
+				$this->view->tabsData[Init_Event_Description::$tab_name] = $tabObject->getData();
+
+				$tabObject = new Init_Event_News($this->view->data['brands_name_id'],$this->view->data['id'], $tab, $tab_action, $tab_id);
+				$tabObject->tab_title = $this->view->lang->translate('News');
+				$this->view->tabsData[Init_Event_News::$tab_name] = $tabObject->getData();
+
+				$tabObject = new Init_Event_Gallery($this->view->data['brands_name_id'],$this->view->data['id'], $tab, $tab_action, $tab_id);
+				$tabObject->tab_title = $this->view->lang->translate('Photo');
+				$this->view->tabsData[Init_Event_Gallery::$tab_name] = $tabObject->getData();
+
+				$tabObject = new Init_Event_Files($this->view->data['brands_name_id'],$this->view->data['id'], $tab, $tab_action, $tab_id);
+				$tabObject->tab_title = $this->view->lang->translate('Files');
+				$this->view->tabsData[Init_Event_Files::$tab_name] = $tabObject->getData();
+
+				$tabObject = new Init_Event_Messages($this->view->data['brands_name_id'],$this->view->data['id'], $tab, $tab_action, $tab_id);
+				$tabObject->tab_title = $this->view->lang->translate('Get additional information');
+				$this->view->tabsData[Init_Event_Messages::$tab_name] = $tabObject->getData();
 			}
 			else {
 				$this->_forward('error', 'error');
@@ -40,12 +71,6 @@ class EventController extends Abstract_Controller_FrontendController {
 			$this->_forward('error', 'error');
 			return;
 		}
-	}
-
-	public function newsAction(){
-	}
-
-	public function newsDetailsAction(){
 	}
 
 	public function venuesAction(){

@@ -1,1 +1,4 @@
-<?php echo $this->data['description'];?>
+<?php
+	$item = $this->tabsData[Init_Event_Description::$tab_name]['data'];
+ 	echo $item['content'];
+?>
