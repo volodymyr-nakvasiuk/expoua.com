@@ -229,6 +229,13 @@ class Bootstrap {
 	public static function setupConfiguration() {
 		$config = new Zend_Config_Ini ( self::$root . '/application/config/main.ini', APPLICATION_ENVIRONMENT );
 		self::$registry->configuration = $config;
+
+		self::$registry->configurations = array();
+		$extras = array('banners');
+		foreach ($extras as $extra){
+			$config = new Zend_Config_Ini ( self::$root . '/application/config/main.ini', APPLICATION_ENVIRONMENT.'_'.$extra );
+			self::$registry->configurations[$extra] = $config;
+		}
 	}
 
 	public static function setupFrontController() {
@@ -309,6 +316,12 @@ class Bootstrap {
 		self::$registry->database = Zend_Db::factory ( $config->db->adapter, $config->db->toArray () );
 		self::$registry->database->query("SET CHARACTER SET 'utf8'");
 		self::$registry->database->query("SET NAMES 'utf8'");
+
+		foreach (self::$registry->configurations as $extra=>$config){
+			self::$registry->databases[$extra] = Zend_Db::factory ( $config->db->adapter, $config->db->toArray () );
+			self::$registry->databases[$extra]->query("SET CHARACTER SET 'utf8'");
+			self::$registry->databases[$extra]->query("SET NAMES 'utf8'");
+		}
 		
 		if (APPLICATION_CACHE_MODE == 'off'){
 			ArOn_Cache_Type_Db::$tableBackhend = ArOn_Cache_Type_Abstract::FILE;
