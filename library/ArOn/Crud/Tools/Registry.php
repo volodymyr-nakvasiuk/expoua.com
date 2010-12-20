@@ -6,7 +6,7 @@ class ArOn_Crud_Tools_Registry extends Zend_Registry {
 		}*/		
 		if(class_exists($className) === false) return false;
 		if(method_exists($className, 'getInstance')){
-			$fn = $className ."::" . "getInstance";
+			$fn = array($className, "getInstance");
 			$class = call_user_func($fn,$className);
 		}else{
 			$class = new $className;
