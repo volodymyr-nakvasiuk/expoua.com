@@ -1,0 +1,65 @@
+#content,
+#body {
+	width: 100% !important;
+}
+.sqares_outer_box {
+	width: 978px;
+}
+.small_sq {
+	background: url(/img/sqares/sm_expo.png) no-repeat 0 0 scroll;
+	width: 60px;
+	height: 60px;
+	position: absolute;
+}
+.mid_sq {
+	background: url(/img/sqares/mid_expo.png) no-repeat 0 0 scroll;
+	width: 130px;
+	height: 129px;
+	position: absolute;
+}
+.big_sq {
+	background: url(/img/sqares/big_expo.png) no-repeat 0 0 scroll;
+	width: 255px;
+	height: 255px;
+	position: absolute;
+}
+
+.exhib_cat_back_lnk a { color: #999999;}
+.exhib_cat_content_box {margin: 10px 0;}
+.exhib_cat_title_box {}
+.exhib_cat_title_box .title{
+	color: #dd5500;
+	font-size: 20px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+.exhib_cat_title_box a {
+	margin-left: 20px;
+	float: left;
+	clear: none;
+}
+.add_comp_box {
+	background: url(/img/index/add_ex.png) no-repeat 0 0px scroll;
+	padding-left: 30px;
+}
+.add_comp_box a {
+	color: #dd5500;
+	font-size: 14px;
+	display: block;
+	font-weight: bold;
+}
+.add_comp_box em {
+	color: #0054a6;
+	font-style: normal;
+}
+.sqares_outer_box {
+	border: 1px solid #a9d6ec;
+	background-color: #ebf6ff;
+}
+.sqares_inner_box {
+	margin: 5px;
+	background-color: #fff;
+	border: 1px solid #a9d6ec;
+	position: relative;
+	height: 500px;
+}

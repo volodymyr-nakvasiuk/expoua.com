@@ -8,6 +8,7 @@
 		protected $_url = false;
 		protected $_lang = false;
 		protected $_filterData = false;
+		protected $_urlParts = array('events');
 		static $filterParams = array(
 			'region'=>'regions',
 			'country'=>'countries',
@@ -45,7 +46,7 @@
 			}
 			list($data['params'], $data['filter']) = self::setupFilter($data['params']);
 			$data['filter']['p'] = $this->_p;
-			$data['url'] = self::createFilterUrl($data['params'], $this->_lang);
+			$data['url'] = $this->createFilterUrl($data['params'], $this->_lang);
 			
 			$this->_filterData = $data;
 		}
@@ -126,8 +127,8 @@
 			return array($fData, $gData);
 		}
 
-		static function createFilterUrl($data, $lang){
-			$url = array('events');
+		public function createFilterUrl($data, $lang){
+			$url = $this->_urlParts;
 			foreach (self::$filterParams as $paramName=>$cacheName){
 				if (isset($data[$paramName])) $url[] =  $paramName.'-'.$data[$paramName];
 			}

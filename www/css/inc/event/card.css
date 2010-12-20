@@ -231,13 +231,13 @@ div.document_info_box {
 	text-align: center;
 	color: #999999;
 }
-div.word_ico {
+div.doc_ico {
 	background: url(/img/card/tabs/files_word_ico.png) no-repeat;
 	width: 16px;
 	height: 16px;
 	margin-right: 5px;
 }
-div.excel_ico {
+div.xls_ico {
 	background: url(/img/card/tabs/files_excel_ico.png) no-repeat;
 	width: 16px;
 	height: 16px;
@@ -367,6 +367,7 @@ div.main_photo_box img{
 	height: 520px;
 	margin: 10px 0;
 }
+/*
 div.card_photo_tab_nav {
 	margin-top:10px;
 	overflow-x:auto !important;
@@ -383,6 +384,104 @@ div.card_photo_tab_nav ul li a img {
 	width: 110px;
 	height: 85px;
 	margin-right: 10px;
+}
+*/
+.photoslider {
+
+}
+
+.photoslider_nav {
+	position: relative;
+	/*border: solid black 1px;*/
+	overflow: hidden;
+	height: 142px;
+	width: 655px;
+	margin: auto;
+}
+
+.photoslider_thumbBar {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	display: block;
+	margin: 0px;
+	padding: 0px;
+	height:142px;
+}
+
+.photoslider_thumb {
+	position: relative;
+	/*border: solid black 1px;*/
+	float: left;
+	margin: 5px;
+	cursor: pointer;
+	height:110px;
+	line-height:110px;
+	vertical-align: middle;
+}
+
+.photoslider_thumb img {
+	display:-moz-inline-box;
+	display:inline-block;
+	vertical-align: middle;
+	zoom:1;
+	//display:inline;
+	margin: 5px;
+}
+
+.photoslider_clear {
+	clear: both;
+}
+
+.photoslider_main  {
+	position: relative;
+	padding-bottom: 5px;
+	cursor:pointer;
+}
+
+.photoslider_main img {
+	position: relative;
+	border: solid #000 10px;
+	display: block;
+	margin: auto;
+}
+
+.photoslider_caption {
+	font-weight: bold;
+	text-align: center;
+}
+
+.photoslider_control {
+	display: none;
+	text-align: center;
+	font-weight: bold;
+	padding-top: 10px;
+	margin: auto;
+	height: 30px;
+	width: 52px;
+}
+
+.photoslider_play, .photoslider_stop {
+	width: 18px;
+	height: 19px;
+	margin: auto;
+	padding: 3px;
+	cursor: pointer;
+	text-align: center;
+	border: solid #fff 1px;
+	float: left;
+}
+
+.photoslider_play {
+	background: url('/img/play_pause.gif') no-repeat 0px 0px;
+}
+
+.photoslider_stop {
+	background: url('/img/play_pause.gif') no-repeat -25px 0px;
+}
+
+.slideshow_disabled {
+	border-bottom: solid #919191 2px;
 }
 /*                          END PHOTO TAB                                */
 /*                          VIDEO TAB                                   */

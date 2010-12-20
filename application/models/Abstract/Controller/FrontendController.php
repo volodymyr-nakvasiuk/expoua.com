@@ -196,16 +196,29 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 				'lang'=>array('ru','en'),
 				'url'=>HOST_NAME.'/'.$lang.'/companies/',
 				'title'=>$this->view->lang->translate('Trade show Online: Companies, Products, Services'),
-				'submenu'=>array(),
+				'submenu'=>array(
+					'online'=>array(
+						'url'=>HOST_NAME.'/'.$lang.'/companies/online/',
+						'title'=>$this->view->lang->translate('Online trade show'),
+					),
+					'categories'=>array(
+						'url'=>HOST_NAME.'/'.$lang.'/companies/',
+						'title'=>$this->view->lang->translate('Companies catalog by categories'),
+					),
+					'search'=>array(
+						'url'=>HOST_NAME.'/'.$lang.'/companies/search/',
+						'title'=>$this->view->lang->translate('All companies'),
+					),
+				),
 			),
 			'gallery'=>array(
 				'lang'=>array('ru','en'),
-				'url'=>HOST_NAME.'/'.$lang.'/',
+				'url'=>'http://tv.expoua.com/Tv/lang/'.$lang.'/',
 				'title'=>$this->view->lang->translate('Trade shows videos'),
 				'submenu'=>array(),
 			),
 			'market'=>array(
-				'lang'=>array('ru'),
+				'lang'=>array(),
 				'url'=>HOST_NAME.'/'.$lang.'/',
 				'title'=>$this->view->lang->translate('Business tours'),
 				'submenu'=>array(

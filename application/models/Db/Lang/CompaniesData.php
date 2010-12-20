@@ -11,10 +11,10 @@ class Db_Lang_CompaniesData extends Db_Lang {
 	);
 
 	protected $_referenceMap    = array(
-		'Module' => array(
-			'columns'           => 'id',
-			'refTableClass'     => 'Db_Companies',
-			'refColumns'        => 'id'
-		)
+		//'Module' => array(
+		//	'columns'           => 'id',
+		//	'refTableClass'     => 'Db_Companies',
+		//	'refColumns'        => 'id'
+		//)
 	);
 }
