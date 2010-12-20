@@ -231,7 +231,7 @@ class Bootstrap {
 		self::$registry->configuration = $config;
 
 		self::$registry->configurations = array();
-		$extras = array('banners');
+		$extras = array();//'banners');
 		foreach ($extras as $extra){
 			$config = new Zend_Config_Ini ( self::$root . '/application/config/main.ini', APPLICATION_ENVIRONMENT.'_'.$extra );
 			self::$registry->configurations[$extra] = $config;

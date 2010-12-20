@@ -19,3 +19,5 @@ syntax: regexp
 ^.idea$
 syntax: regexp
 .svn$
+syntax: regexp
+^library/Classer
