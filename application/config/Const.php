@@ -13,10 +13,10 @@ switch(APPLICATION_ENVIRONMENT){
 		define ( 'COOKIE_HOST_NAME', 'expoua-my.com' );
 		break;
 	case 'test':
-		define ( 'HOST_NAME', 'http://expoua.test' );
-		define ( 'IMG_HOST_NAME', 'http://img1.expoua.test' );
-		define ( 'STATIC_HOST_NAME', 'http://static.expoua.test' );
-		define ( 'COOKIE_HOST_NAME', 'expoua.test' );
+		define ( 'HOST_NAME', 'http://test.expoua.com' );
+		define ( 'IMG_HOST_NAME', 'http://img1.test.expoua.com' );
+		define ( 'STATIC_HOST_NAME', 'http://static.test.expoua.com' );
+		define ( 'COOKIE_HOST_NAME', 'test.expoua.com' );
 		break;
 	default:
 		define ( 'HOST_NAME', 'http://expoua.com' );

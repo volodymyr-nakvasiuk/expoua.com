@@ -38,14 +38,13 @@ class ArOn_Loader_Cache {
 		if(!class_exists('Zend_Json',false))
 			require_once 'Zend/Json.php';
 		if(self::$cacheDir === false){
-    		throw new Zend_Exception('Directory for classer cache file not set');
-    	}
+			throw new Zend_Exception('Directory for classer cache file not set');
+		}
 		$this->mode = $mode;
-		
 		
 		if(self::$cacheDir === false){
 			throw new Exception('Cache directory not set');
-		}		
+		}
 		$this->_stmpInstance();
 		$this->_logsInstance();
 		$this->_statsInstance();
@@ -55,48 +54,46 @@ class ArOn_Loader_Cache {
 		$classer .= "/" . $this->_stmp->get_file_name();
 		$this->_stmp->close();
 		$this->_logs->close();
-		$this->_logs->close();
+		$this->_stats->close();
 		if(file_exists($classer) && is_file($classer))
 			include_once ($classer);
-		
 	}
 	
 	/**
-     * Singleton instance
-     *
-     * @return ArOn_Loader_Cache
-     */
-    public static function getInstance($mode = false)
-    {
-        if (null === self::$_instance || $mode == 'new') {        	
-            self::$_instance = new self($mode);
-        }
+	 * Singleton instance
+	 *
+	 * @return ArOn_Loader_Cache
+	 */
+	public static function getInstance($mode = false)
+	{
+		if (null === self::$_instance || $mode == 'new') {
+			self::$_instance = new self($mode);
+		}
+		return self::$_instance;
+	}
 
-        return self::$_instance;
-    }
-    
-    protected function _newInstance(){
-    	return new self();
-    }
-	
-    public function createClasser(){
-    	
-    	if($this->_stats === null){
-    		$this->_statsInstance();
-    	}
-    	$this->_stats->close();
-    	$this->mode = 'new';
-    	$this->_stmpInstance();
-    	self::$autoSave = true;
-    	foreach ($this->_classerLog ['objects'] as $key => $object){
-    		$this->_classerLog ['objects'][$key]['active'] =  0;
-    		$this->load($object['class']);
-    	}
-    	$this->_updateLog = false;
-    	$this->mode = false;
-    	self::$autoSave = false;
-    }
-    
+	protected function _newInstance(){
+		return new self();
+	}
+
+	public function createClasser(){
+
+		if($this->_stats === null){
+			$this->_statsInstance();
+		}
+		$this->_stats->close();
+		$this->mode = 'new';
+		$this->_stmpInstance();
+		self::$autoSave = true;
+		foreach ($this->_classerLog ['objects'] as $key => $object){
+			$this->_classerLog ['objects'][$key]['active'] =  0;
+			$this->load($object['class']);
+		}
+		$this->_updateLog = false;
+		$this->mode = false;
+		self::$autoSave = false;
+	}
+
 	public function load($className){
 		$activeClassName = $className;
 		if(array_key_exists($activeClassName,$this->_classerLog ['objects'])){
@@ -104,7 +101,7 @@ class ArOn_Loader_Cache {
 		}
 		if((class_exists($activeClassName,false) || interface_exists($activeClassName,false)) && $this->mode !== 'new'){
 			return;
-		}			
+		}
 		
 		$className = str_replace ( '_', '/', $className ) . '.php';
 		//var_dump($this->_classerLog);
@@ -120,11 +117,11 @@ class ArOn_Loader_Cache {
 		return $this->save($activeClassName);
 	}
 	
-	public function save($className){	
-			
+	public function save($className){
+
 		$activeClassName = $className;
 		$className = str_replace ( '_', '/', $className ) . '.php';
-			require_once $className;		
+			require_once $className;
 		
 		$extends = class_parents($activeClassName,false);
 		$implements = class_implements($activeClassName,false);
@@ -139,7 +136,7 @@ class ArOn_Loader_Cache {
 	protected function _addNewLogCountClass($activeClassName,$activeClassDir){
 		$class = array(	'class' => $activeClassName,
 						'class_path' => $activeClassDir."/",
-						'active' => 0,						
+						'active' => 0,
 						'count' => 1
 		);
 		$this->_classerLog ['objects'] [$activeClassName] = $class;
@@ -165,7 +162,7 @@ class ArOn_Loader_Cache {
 		$activeClassName = $className;
 		$className = str_replace ( '_', '/', $className ) . '.php';
 		$activeClassFile = new ArOn_Loader_Data_File($className, false, true);
-		if($activeClassFile->isFile() === false)			
+		if($activeClassFile->isFile() === false)
 			return false;
 		$activeClassFile->pointer_set_start(0);
 		$activeClassDir = $activeClassFile->get_path();
@@ -179,7 +176,7 @@ class ArOn_Loader_Cache {
 		$this->_stmp->reopen('write');
 		$this->_stmp->pointer_set_end(0);
 		$pointer['start'] = $this->_stmp->pointer_get();
-		$this->_stmp->addData($data);		
+		$this->_stmp->addData($data);
 		$pointer['end'] = $this->_stmp->pointer_get();
 		$this->_stmp->close();
 		$this->_addNewLogClass($pointer,$activeClassName,$activeClassFile->get_path() ,$activeClassFile->get_time());
@@ -197,8 +194,8 @@ class ArOn_Loader_Cache {
 		$data[] = "*   Created:  ". date("F j, Y, G:i:s", $time ) ;
 		$data[] = "*";
 		$data[] = "*/";
-		while (($line = $activeClassFile->read_line()) !== false){			
-			if(($line = $this->trim($line))){				
+		while (($line = $activeClassFile->read_line()) !== false){
+			if(($line = $this->trim($line))){
 				$data[] = $line;
 			}
 		}
@@ -218,7 +215,7 @@ class ArOn_Loader_Cache {
 			if(class_exists($extend))
 				continue;
 			if(interface_exists($extend))
-				continue;			
+				continue;
 			$this->_extendLoad1($extend);
 		}
 	}
@@ -234,12 +231,12 @@ class ArOn_Loader_Cache {
 		$clone = $this->_newInstance();
 		$clone->load($className);
 		unset($clone);
-		self::$active = false;		
+		self::$active = false;
 		$this->_stmpInstance();
 		$this->_logsInstance();
 	}
 	
-	protected function _checkFolder($path){		
+	protected function _checkFolder($path){
 		if(self::$allowDir === false) return true;
 		$path = str_replace("\\","/",$path);
 		if(strpos($path,self::$allowDir) !== false)
@@ -253,8 +250,8 @@ class ArOn_Loader_Cache {
 		if(strpos($string,"<?php") === 0){
 			$string = substr($string,5);
 		}
-		$pos = strpos($string,"?>");		
-		if($pos !== false && $pos === (strlen($string)-2)){			
+		$pos = strpos($string,"?>");
+		if($pos !== false && $pos === (strlen($string)-2)){
 			$string = substr($string,0,-2);
 		}
 		/*if(($pos = strpos($string,"//")) !== false){
@@ -264,7 +261,7 @@ class ArOn_Loader_Cache {
 		}*/
 		if($string == "")
 			return false;
-		return $string;	
+		return $string;
 	}
 	
 	protected function _logsInstance(){
@@ -274,7 +271,7 @@ class ArOn_Loader_Cache {
 			$this->_classerLog ['constructs'] = 0;
 			$this->_classerLog ['objects'] = array();
 			if(file_exists(self::$cacheDir.'/'.$filename))
-				unlink(self::$cacheDir.'/'.$filename);			
+				unlink(self::$cacheDir.'/'.$filename);
 		}
 		$this->_logs = new ArOn_Loader_Data_File(self::$cacheDir.'/'.$filename);
 		
@@ -290,7 +287,7 @@ class ArOn_Loader_Cache {
 	}
 	
 	protected function _statsInstance(){
-		$filename = "classer.stats";		
+		$filename = "classer.stats";
 		$this->_stats = new ArOn_Loader_Data_File(self::$cacheDir.'/'.$filename);
 		
 		$this->_stats->pointer_set_start(0);
@@ -341,7 +338,7 @@ class ArOn_Loader_Cache {
 	}
 	
 	public function __destruct(){
-		if($this->_updateLog)		
+		if($this->_updateLog)
 			$this->_rewriteLog();
 		$this->_stmp  = null;
 		$this->_stats = null;
@@ -352,6 +349,4 @@ class ArOn_Loader_Cache {
 		$dir = str_replace("\\","/",$dir);
 		self::$allowDir = $dir;
 	} 
-	
-	
 }

@@ -80,7 +80,7 @@ class Bootstrap {
 					$d = $esn[$c-1].'.'.$esn[$c];
 					switch ($d){
 						case 'expoua-my.com': $configType = 'development'; break;
-						case 'expoua.test': $configType = 'test'; break;
+						case 'expoua.com': if ($c>1 && $esn[$c-2]=='test'){ $configType = 'test'; } break;
 					}
 				}
 			}
