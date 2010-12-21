@@ -230,8 +230,8 @@ class Bootstrap {
 		$config = new Zend_Config_Ini ( self::$root . '/application/config/main.ini', APPLICATION_ENVIRONMENT );
 		self::$registry->configuration = $config;
 
-		self::$registry->configurations = array();
-		$extras = array();//'banners');
+		self::$registry->configurations = array('default'=>$config);
+		$extras = array('banners');
 		foreach ($extras as $extra){
 			$config = new Zend_Config_Ini ( self::$root . '/application/config/main.ini', APPLICATION_ENVIRONMENT.'_'.$extra );
 			self::$registry->configurations[$extra] = $config;
@@ -317,11 +317,13 @@ class Bootstrap {
 		self::$registry->database->query("SET CHARACTER SET 'utf8'");
 		self::$registry->database->query("SET NAMES 'utf8'");
 
+		$databases = array();
 		foreach (self::$registry->configurations as $extra=>$config){
-			self::$registry->databases[$extra] = Zend_Db::factory ( $config->db->adapter, $config->db->toArray () );
-			self::$registry->databases[$extra]->query("SET CHARACTER SET 'utf8'");
-			self::$registry->databases[$extra]->query("SET NAMES 'utf8'");
+			$databases[$extra] = Zend_Db::factory ( $config->db->adapter, $config->db->toArray () );
+			$databases[$extra]->query("SET CHARACTER SET 'utf8'");
+			$databases[$extra]->query("SET NAMES 'utf8'");
 		}
+		Zend_Registry::set ('databases', $databases);
 		
 		if (APPLICATION_CACHE_MODE == 'off'){
 			ArOn_Cache_Type_Db::$tableBackhend = ArOn_Cache_Type_Abstract::FILE;

@@ -31,6 +31,7 @@ class CompaniesController extends Abstract_Controller_FrontendController {
 	}
 
 	public function cardAction(){
+		$this->view->activeSubmenu = 'search';
 		$id = explode('-', $this->_request->getParam('id',''));
 		$id = (int)$id[0];
 		if ($id){
@@ -80,5 +81,9 @@ class CompaniesController extends Abstract_Controller_FrontendController {
 			$this->_forward('error', 'error');
 			return;
 		}
+	}
+
+	public function onlineAction(){
+		$this->view->activeSubmenu = 'online';
 	}
 }

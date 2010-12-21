@@ -1,0 +1,1 @@
+ {include file="controllers_frontend/`$user_params.controller`/edit.tpl"}

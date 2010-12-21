@@ -1,0 +1,1 @@
+{include file="common/generalUpdate.tpl" action="list"}

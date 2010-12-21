@@ -16,6 +16,7 @@ class Crud_Grid_EventNews extends ArOn_Crud_Grid {
 		$this->table = "Db_EventNews";
 		$this->fields = array(
 			'id' => new ArOn_Crud_Grid_Column_Numeric('Id',null,true,false,'50'),
+			'events_id' => new ArOn_Crud_Grid_Column_Numeric('Id',null,true,false,'50'),
 			'date_public' => new ArOn_Crud_Grid_Column_Default("Дата",null,true,false,'100'),
 			'date_created' => new ArOn_Crud_Grid_Column_Default("Дата создания",null,true,false,'100'),
 			//'languages_id' => new ArOn_Crud_Grid_Column_JoinOne("Язык новости",array('Db_Lang_EventNewsData'),'languages_id',null,false,'200'),
@@ -44,6 +45,7 @@ class Crud_Grid_EventNews extends ArOn_Crud_Grid {
 				),
 			)),
 			'brands_id' => new ArOn_Crud_Grid_Filter_Field_Value('brands_id','ID',ArOn_Db_Filter_Field::EQ),
+			'events_id' => new ArOn_Crud_Grid_Filter_Field_Value('events_id','ID',ArOn_Db_Filter_Field::EQ),
 		);
 		$this->_params['active'] = 1;
 		$this->_params['languages_id'] = DEFAULT_LANG_ID;

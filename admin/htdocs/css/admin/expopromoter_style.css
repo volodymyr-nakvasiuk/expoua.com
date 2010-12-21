@@ -1,0 +1,1209 @@
+@import url("http://ws.expopromoter.com/bns/v2pbl/pbl_banners_partners_style.css");
+
+
+body {
+  margin: 0;
+  padding: 0;
+
+  font-family: Tahoma, Arial, sans-serif;
+  font-size: 12px;
+  color: #474747;
+  text-align: center;
+
+  background: #fff;
+}
+
+h1 {
+  margin: 0 0 10px 0;
+  padding: 0;
+
+  font-size: 108%;
+  text-transform: uppercase;
+  color: #D9364E;
+}
+
+h2 {
+  margin: 0.6em 0;
+  padding: 0;
+
+  font-size: 105%;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+h3 {
+  margin: 0.6em 0;
+  padding: 3px 10px;
+
+  font-size: 105%;
+  font-weight: normal;
+  font-family: "Century Gothic", Tahoma, sans-serif;
+  text-transform: uppercase;
+  color: #FFF;
+  background-color: #CDD2D7;
+}
+
+hr {
+  height: 1px;
+  border: 0 none;
+  border-top: 1px solid #AEADB2;
+  color: #AEADB2;
+}
+
+form {
+  margin: 0;
+  vertical-align: middle;
+}
+
+input, textarea, select {
+  border: 1px solid #D27C88;
+  background: #FFF;
+}
+
+input[type=button], input[type=submit], button {
+  color: #fff;
+  background: #858994;
+  border: 1px solid #858994;
+}
+
+table {
+  empty-cells: show;
+}
+
+td, p, div {
+  font-family: Tahoma, Arial, sans-serif;
+  font-size: 100%;
+}
+
+
+a img {
+  border: 0 none;
+}
+
+
+.descr {
+  margin: 1em 0;
+  padding: 0;
+
+  font-size: 105%;
+  color: #D9364E;
+}
+
+.form-table {
+  width: 100%;
+
+  border: 0 none;
+}
+
+.form-table td, .form-table th {
+  padding: 2px 0;
+
+  border: 0 none;
+
+  text-align: left;
+}
+
+
+table.selected_table {
+  border: 1px dotted #f4f4f4;
+  background: #edf6ff;
+}
+
+a {
+  color: #0243A7;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #4b5e66;
+  text-decoration: underline;
+}
+
+
+#wrapper {
+/*   position: relative; */
+
+  margin: 10px 50px 0 50px;
+  padding: 10px 0 0 0;
+
+  min-width: 950px;
+
+  text-align: left;
+
+  background: transparent url(../../images/admin/expopromoter_delimiter1.gif) repeat-x 0 0;
+}
+
+
+#wrapper0 {
+  margin: 0 50px;
+  min-width: 950px;
+
+  text-align: left;
+}
+
+
+#wrapper1 {
+  margin: 0;
+  min-width: 950px;
+
+  text-align: left;
+
+  border-top: 1px solid #dadee4;
+}
+
+
+#header {
+  position: relative;
+  height: 110px;
+
+  margin: 20px 0 0 0;
+  padding: 0;
+}
+
+
+#adstat {
+  margin: 0 200px;
+  padding: 0 20px 0 20px;
+
+  height: 95px;
+
+  font-size: 140%;
+
+  border-left: 3px solid #B4C3D7;
+  border-right: 3px solid #B4C3D7;
+}
+
+
+#logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 167px;
+  height: 77px;
+
+  background: transparent url(../../images/admin/expopromoter_logo.gif) no-repeat 0 0;
+}
+
+#logo span {
+  display: none;
+}
+
+
+#languages {
+  position: absolute;
+  top: 82px;
+  left: 0;
+
+  text-align: center;
+
+  width: 167px;
+}
+
+#languages a {
+  color: #474747;
+  text-decoration: none;
+}
+
+#languages a:hover {
+  color: #474747;
+  text-decoration: underline;
+}
+
+#languages a.current {
+  color: #CF3752;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+#languages a.current:hover {
+  color: #CF3752;
+  text-decoration: underline;
+}
+
+
+#auth {
+  position: absolute;
+  top: 20px;
+  right: 0;
+
+  width: 190px;
+
+  text-align: center;
+}
+
+
+#auth h3 {
+  margin: 2px 0;
+  padding: 0;
+
+  font-size: 80%;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #D33B4A;
+  background: none;
+}
+
+#auth .row {
+  margin: 3px 0;
+  padding: 0 0 3px 12px;
+
+  font-size: 80%;
+  font-weight: normal;
+  background: none;
+
+  background: url(../../images/admin/expopromoter_list_pin.gif) no-repeat 0 4px;
+}
+
+
+#topmenu {
+  margin: 0;
+  padding: 0 30px;
+
+  height: 50px;
+
+  color: #717c9f;
+  font-weight: bold;
+  font-size: 110%;
+
+  background: #eef2f4 url(../../images/admin/expopromoter_top_menu_bg.gif) repeat-x 0 0;
+  border-top: 1px solid #f3f5f7;
+
+  overflow: hidden;
+}
+
+
+#topmenu ul {
+  display: block;
+  float: left;
+
+  min-width: 950px;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+#topmenu li {
+  display: block;
+  float: left;
+
+  margin: 0;
+  padding: 18px 0 18px 20px;
+
+  list-style: none;
+
+/*  background: #DDD;	*/
+}
+
+#topmenu li.first {
+  padding: 18px 40px 18px 20px;
+  border-right: 2px solid #FFF;
+}
+
+#topmenu li a {
+  display: block;
+
+  padding: 0 0 0 10px;
+
+  color: #3c5ea9;
+  text-decoration: none;
+  letter-spacing: 1px;
+
+  background: transparent url(../../images/admin/expopromoter_menu_pin.gif) no-repeat 0 50%;
+}
+
+#topmenu li.first a {
+  padding: 0;
+  background: 0 none;
+}
+
+#topmenu li a:hover {
+  color: #3c5ea9;
+  text-decoration: underline;
+}
+
+#topmenu li a.current {
+  color: #d9364e;
+  text-decoration: none;
+}
+
+#topmenu li a.current:hover {
+  color: #d9364e;
+  text-decoration: underline;
+}
+
+
+#top-container {
+  border: 1px solid #AAAFBB;
+}
+
+#top-container td {
+  padding: 0;
+}
+
+#filter-container {
+  padding: 10px 20px;
+}
+
+
+#menu-container {
+  width: 200px;
+
+  background-color: #ECECEC;
+}
+
+
+#filter {
+  margin: 0;
+/*  padding: 5px 10px 5px 20px;*/
+  background: #b2bac5 url(../../images/admin/expopromoter_zebra.gif) 0 0;
+}
+
+#filter td {
+  padding: 10px;
+}
+
+
+
+#hmenu {
+  margin: 0;
+  padding: 0;
+
+  width: 100%;
+  
+  border-collapse: collapse;
+  border: 10px solid #ECECEC;
+}
+
+
+#hmenu td {
+  margin: 0;
+  padding: 0;
+  
+  background: #ECECEC;
+  border-left: 1px solid #AAAFBB;
+  border-right: 1px solid #AAAFBB;
+}
+
+
+#hmenu td .item {
+  margin: 0;
+  padding: 3px 10px;
+  
+  font-weight: bold;
+  
+/*   background: #DFDFDF; */
+/*   border-bottom: 1px solid #AAAFBB; */
+}
+
+
+#hmenu a {
+  color: #444444;
+  text-decoration: none;
+}
+
+#hmenu a:hover {
+  color: #555555;
+  text-decoration: underline;
+}
+
+#hmenu .current a {
+  color: #CF3752;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+#hmenu .current a:hover {
+  color: #CF3752;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+#hmenu ul {
+  margin: 0 0 5px 0;
+  padding: 0;
+  
+  list-style: none;
+}
+
+#hmenu li {
+  margin: 0;
+  padding: 2px 10px 2px 22px;
+  
+  list-style: none;
+
+  background: transparent url(../../images/admin/expopromoter_redarrow.gif) no-repeat 12px 7px;
+
+/*   border-bottom: 1px solid #AAAFBB; */
+}
+
+
+
+
+
+
+#menu {
+  float: right;
+  width: 200px;
+
+  margin-top: 20px;
+
+  background-color: #ECECEC;
+  border: 1px solid #AAAFBB;
+  border-left: 0px none;
+}
+
+#right-column
+{
+  float: right;
+  width: 200px;
+}
+
+
+#menu-container #menu {
+  margin-top: 0 !important;
+
+  float: none !important;
+/*  position: static !important;*/
+  border: 0px none !important;
+}
+
+
+#menu ul {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+#menu li {
+  margin: 0;
+  padding: 5px 10px 5px 20px;
+  background: #ECECEC url(../../images/admin/expopromoter_redarrow.gif) no-repeat 10px 9px;
+  border-left: 1px solid #AAAFBB;
+}
+
+#menu li ul li {
+  margin: 0;
+  padding: 5px 10px 5px 10px;
+  background: transparent;
+  border: 0 none;
+}
+
+
+
+#menu li.current {
+  background: #FFFFFF url(../../images/admin/expopromoter_redarrow.gif) no-repeat 10px 9px;
+  border-top: 1px solid #AAAFBB;
+  border-bottom: 1px solid #AAAFBB;
+  border-left: 0 none;
+}
+
+#menu li.current ul li {
+  background: transparent url(../../images/admin/expopromoter_redarrow.gif) no-repeat 0 9px;
+  border: 0 none;
+}
+
+#menu li.first {
+  border-top: 0 none;
+}
+
+#menu li.last {
+  border-bottom: 0 none;
+}
+
+#menu li a {
+  color: #444444;
+  text-decoration: none;
+}
+
+#menu li a:hover {
+  color: #555555;
+  text-decoration: underline;
+}
+
+#menu li.current a {
+  color: #CF3752;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+#menu li.current a:hover {
+  color: #CF3752;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+#menu li ul li a {
+  color: #444444 !important;
+  font-weight: normal !important;
+  text-decoration: none !important;
+}
+
+#menu li ul li a:hover {
+  color: #555555 !important;
+  font-weight: normal !important;
+  text-decoration: underline !important;
+}
+
+#menu li.current ul li.current a {
+  color: #CF3752 !important;
+  text-decoration: none !important;
+}
+
+#menu li.current ul li.current a:hover {
+  color: #CF3752 !important;
+  text-decoration: underline !important;
+}
+
+
+
+
+#content {
+  margin: 0 225px 0 0;
+  padding: 20px 0;
+
+  min-height: 500px;
+  //height: 500px;
+}
+
+
+
+#static-content {
+  margin: 0 225px 0 0;
+  padding: 0;
+
+  min-height: 500px;
+  //height: 500px;
+}
+
+#static-content h2 {
+  margin-top: 30px;
+
+  text-transform: none;
+}
+
+#static-content #breadcrumbs {
+  margin: 0 0 20px 0;
+}
+
+
+#card-content {
+  margin: 0;
+  padding: 0;
+
+  min-height: 500px;
+  //height: 500px;
+}
+
+
+
+
+#footer {
+  clear: both;
+
+  margin: 2px 0 0 0;
+  padding: 5px;
+
+  color: #738194;
+
+  background: #e8e8e8;
+}
+
+#footer a {
+  color: #738194;
+  text-decoration: none;
+}
+
+#footer a:hover {
+  color: #888888;
+  text-decoration: underline;
+}
+
+
+
+#footer-menu {
+  margin: 0 0 10px 0;
+  padding: 10px;
+
+  color: #D9D9D9;
+  background: #738194;
+}
+
+#footer-menu a {
+  color: #D9D9D9;
+  text-decoration: none;
+}
+
+#footer-menu a:hover {
+  color: #DEDEDE;
+  text-decoration: underline;
+}
+
+
+
+.list {
+  margin: 0 0 1em 0;
+  border-collapse: collapse;
+
+  border-top: 1px solid #7e8498;
+}
+
+.list td, .list th, .elist td, .elist th {
+  padding: 2px 5px;
+
+  font-size: 12px;
+
+  border-bottom: 1px solid #7e8498;
+}
+
+.list th, .list th div, .elist th, .elist th div {
+  color: #333;
+
+  font-weight: bold;
+  text-align: left;
+
+  background: #ddd;
+}
+
+
+
+
+.elist {
+  margin: 5px 0;
+
+  border-top: 1px solid #7e8498;
+}
+
+
+
+.elist tr {
+  background: url('../images/doted2.gif') repeat-x left bottom;
+}
+
+.elist tr.featured {
+  background: #ECECEC url('../images/doted2.gif') repeat-x left bottom;
+}
+
+.elist td tr {
+  background-image: none !important;
+}
+
+.elist td {
+  padding: 0px 0px;
+}
+
+
+.elist div {
+  text-align: left;
+  padding: 0 0 0 10px;
+}
+
+
+.elist .logo {
+  padding: 5px !important;
+  width: 100px;
+  text-align: center;
+}
+
+
+.elist .logo img {
+  border: 0 none;
+}
+
+
+.elist .body {
+  text-align: left;
+  padding: 5px 0 !important;
+}
+
+
+
+.elist .bordered {
+  text-align: left;
+  padding: 0 0 0 20px !important;
+  border-left: 1px solid #DAD9D9;
+}
+
+
+.elist .date {
+  margin: 2px 0;
+  padding: 0 0 5px 12px !important;
+  background: url(../../images/admin/expopromoter_list_pin.gif) no-repeat 0 4px;
+}
+
+
+.elist .location {
+  padding: 0 0 5px 12px !important;
+  background: url(../../images/admin/expopromoter_list_pin.gif) no-repeat 0 4px;
+}
+
+
+.elist .buttons {
+  float: right;
+  width: 80px;
+  padding: 0 !important;
+  margin: 0 0 0 20px;
+}
+
+
+.elist .description {
+  padding: 0 0 5px 0 !important;
+}
+
+
+
+.elist h3 {
+  color: #EF4447;
+
+  font-size: 108%;
+  font-weight: bold;
+
+  margin: 0 0 10px 0 !important;
+  padding: 0 !important;
+  background: none !important;
+}
+
+.elist h3 a {
+  border-bottom: 1px dotted #5490BA;
+  text-decoration: none;
+}
+
+.elist h3 a:hover {
+  border-bottom: none;
+  color: #fff;
+  text-decoration: none;
+  background: #4459A5;
+}
+
+.elist .news_btn {
+  display: block;
+  float: right;
+
+  margin: 0 10px 0 0;
+  padding: 0;
+
+  width: 22px;
+  height: 22px;
+
+  background: transparent url(../../images/admin/expopromoter_news_btns.gif) no-repeat 0 0;
+}
+
+.elist .video_btn {
+  display: block;
+  float: right;
+
+  margin: 0 10px 0 0;
+  padding: 0;
+
+  width: 22px;
+  height: 22px;
+
+  background: transparent url(../../images/admin/expopromoter_video_btns.gif) no-repeat 0 0;
+}
+
+.elist .disabled {
+  background-position: 0 -22px !important;
+}
+
+
+.elist .buttons span {
+  display: none;
+}
+
+
+.descr {
+  padding: 5px 10px;
+}
+
+
+.aligned {
+  margin: 0 0 10px 30px;
+}
+
+
+
+.msg_answer {
+  position: relative;
+
+  margin: 0 0 5px 0;
+  padding: 10px 10px 10px 30px;
+
+  background: #EFEFEF;
+}
+
+.msg_question {
+  position: relative;
+
+  margin: 0 0 5px 0;
+  padding: 10px 10px 10px 10px;
+
+  background: #DEDEDE;
+}
+
+.msg_header {
+  font-weight: bold;
+  font-size: 95%;
+  color: #666;
+}
+
+.msg_tagline {
+  margin: -10px -10px 5px -10px;
+  padding: 2px;
+
+  font-size: 80%;
+  color: #FFF !important;
+
+  background: #777;
+}
+
+.msg_answer .msg_tagline {
+  margin: -10px -10px 5px -30px !important;
+}
+
+
+
+#langbar {
+  margin: 10px 0;
+}
+
+#langbar td {
+  border-bottom: 1px solid #CF3752; /*#AEADB2;*/
+}
+
+#langbar td.active {
+  color: #CF3752;
+  font-weight: bold;
+
+  background: #FFFFFF url(../../images/admin/expopromoter_tab_gradient.gif) repeat-x 0 0;
+  border: 1px solid #CF3752;
+  border-bottom: 1px solid #FFFFFF;
+}
+
+
+
+.list tr.odd td {
+  background-color: #ffffff;
+  height: 19px;
+  padding: 2px 5px;
+}
+
+.list tr.even td {
+  background-color: #ffffff;
+  height: 19px;
+  padding: 2px 5px;
+}
+
+.list tr.marked td {
+  background-color: #FEEBEA;
+/*
+  height: 19px;
+  padding: 2px 5px;
+*/
+}
+
+.important {
+  color: #CF3752;
+  font-weight: bold;
+  font-size: 102%;
+}
+
+
+.list-of-choices {
+  margin: 0 0 5px 0;
+  padding: 0;
+
+  width: 92%;
+
+  list-style: none;
+
+  border-top: 1px solid #BBB;
+  border-left: 1px solid #BBB;
+}
+
+.list-of-choices li {
+  margin: 0;
+  padding: 2px 10px;
+
+  list-style: none;
+
+  border-bottom: 1px solid #BBB;
+  border-right: 1px solid #BBB;
+  background: #EDEDED;
+}
+
+
+.grey_hilight {
+  border-top: 1px solid #CCCCCC !important;
+  color: #CF3752 !important;
+/*   background: #FFFFFF !important; */
+}
+
+.yellow_hilight {
+  border-top: 1px solid #CCCCCC !important;
+  color: #5B9900 !important;
+/*   background: #FFFFFF !important; */
+}
+
+.green_hilight {
+  color: #ffffff !important;
+  background: #a6d964 !important;
+}
+
+.red_hilight {
+  border-top: 1px solid #CCCCCC !important;
+  color: #ffc000 !important;
+/*   background: #FFFFFF !important; */
+}
+
+.blue_hilight {
+  border-top: 1px solid #CCCCCC !important;
+  color: #4B7EB2 !important;
+/*   background: #FFFFFF !important; */
+}
+
+
+
+
+.nav {
+  list-style:none;
+  padding:5px 0 5px 0;
+  margin:0;
+
+  height: 20px;
+}
+
+
+
+.nav li {
+  float:left;
+
+  padding:0 9px;
+
+  border-left:solid 1px #C6C1B6;
+}
+
+
+.nav li a, .nav li a:hover {
+  color:#000;
+}
+
+
+.nav span {
+  border-left:none !important;
+  color: #FE9300;
+  font-weight: bold;
+}
+
+
+
+
+#breadcrumbs {
+  margin: 0 0 10px 0;
+
+  font-size: 90%;
+  line-height: 12px;
+}
+
+#breadcrumbs a {
+  padding: 0 25px 0 0;
+
+  text-decoration: none;
+
+  background: #FFFFFF url(../../images/admin/expopromoter_breadcrumbs_pin.gif) no-repeat 100% 50%;
+}
+
+#breadcrumbs a {
+  text-decoration: underline;
+}
+
+#breadcrumbs span {
+  padding: 0 25px 0 0;
+}
+
+
+
+
+#card_header1 {
+  background: #a4acb9 url(../../images/admin/expopromoter_card_title_bg.gif) repeat-x 0 0;
+  border-bottom: 1px solid #d9364e;
+}
+
+#card_header1 h1 {
+  margin: 0;
+  padding: 10px 30px;
+
+  color: #FFF;
+  font-size: 120%;
+  font-weight: bold;
+  text-transform: uppercase;
+
+  background: transparent url(../../images/admin/expopromoter_card_title_expo.gif) no-repeat 98% 0;
+}
+
+
+#card_header2 {
+  margin: 1px 0;
+  padding: 10px;
+
+  width: 100%;
+
+  background: #e6e9ec;
+  border: 1px solid #aaafbb;
+}
+
+
+#card_header3 {
+  border-left: 1px solid #d5dbe4;
+}
+
+
+
+#card_header1 h1 a {
+  color: #FFF;
+  text-decoration: none;
+}
+
+#card_header1 h1 a:hover {
+  color: #FFF;
+  text-decoration: underline;
+}
+
+
+
+
+#nav-menu {
+  position: relative;
+
+  margin: 0;
+  padding: 0 30px;
+
+  height: 36px;
+
+  color: #717c9f;
+  font-weight: bold;
+  font-size: 105%;
+  letter-spacing: 1px;
+
+  background: #eef2f4 url(../../images/admin/expopromoter_nav_menu_bg.gif) repeat-x 0 0;
+  border-top: 1px solid #f3f5f7;
+}
+
+
+#nav-menu ul {
+  display: block;
+  float: left;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+#nav-menu li {
+  display: block;
+  float: left;
+
+  margin: 0;
+  padding: 12px 50px 12px 0;
+
+  list-style: none;
+}
+
+#nav-menu li a {
+  display: block;
+
+  padding: 0 0 0 10px;
+
+  color: #3c5ea9;
+  text-decoration: none;
+
+  background: transparent url(../../images/admin/expopromoter_menu_pin.gif) no-repeat 0 50%;
+}
+
+#nav-menu li.first a {
+  padding: 0;
+  background: 0 none;
+}
+
+#nav-menu li a:hover {
+  color: #3c5ea9;
+  text-decoration: underline;
+}
+
+#nav-menu li a.current {
+  color: #d9364e;
+  text-decoration: none;
+}
+
+#nav-menu li a.current:hover {
+  color: #d9364e;
+  text-decoration: underline;
+}
+
+#nav-menu li#org-entrance {
+  display: block;
+  float: none;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  width: 220px;
+
+  margin: 0;
+  padding: 12px 0 12px 0;
+
+  list-style: none;
+}
+
+
+
+#card-content h2 {
+  margin: 10px 0;
+  padding: 5px 30px;
+
+  font-size: 108%;
+  text-transform: uppercase;
+  color: #D9364E;
+
+  border-top: 1px solid #7e8498;
+  border-bottom: 1px solid #7e8498;
+}
+
+#card-content .description {
+  padding: 0 0 10px 30px;
+  line-height: 1.4;
+}
+
+#card-content .elist {
+  border-top: 0 none;
+}
+
+#card-content .elist .body, #card-content .elist .logo {
+  padding-left: 30px !important;
+}
+
+
+
+#player {
+  margin: 0 0 10px 30px;
+  padding: 5px;
+
+  width: 540px;
+
+  background: #f8fafb;
+}
+
+
+.current_page {
+  font-weight: bold;
+  color: #D9364E;
+
+  text-decoration: none;
+}
+
+
+

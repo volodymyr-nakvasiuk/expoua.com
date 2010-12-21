@@ -1,0 +1,93 @@
+<HTML>
+ <HEAD>
+  <TITLE>Shelby</TITLE>
+  <META http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <SCRIPT language="javascript" type="text/javascript" src="tiny_mce/tiny_mce_popup.js"></SCRIPT>
+  <SCRIPT language="javascript" type="text/javascript" src="jquery.js"></SCRIPT>
+  <SCRIPT language="javascript" type="text/javascript" src="jqExtensions/ajaxfileupload.js"></SCRIPT>
+
+  <SCRIPT type="text/javascript" language="javascript">
+	var obj_shelby = tinyMCE.getWindowArg("obj_instance");
+	var obj_image_win = tinyMCE.getWindowArg("window_obj");
+	var name_image_input = tinyMCE.getWindowArg("input");
+
+	function init() {
+		var obj_data = document.getElementById('data');
+
+		obj_shelby.dataObj = obj_data;
+
+		obj_shelby.createTable(obj_shelby.imagesListParent);
+	}
+
+	function ajaxFileUpload() {
+		var url = obj_shelby.imagesUploadUrl;
+		//starting setting some animation when the ajax starts and completes
+
+		$("#loading").ajaxStart(function() {
+			$(this).show();
+		}).ajaxComplete(function() {
+			$(this).hide();
+			obj_shelby.createTable(obj_shelby.imagesListParent);
+		});
+
+		if (obj_shelby.imagesListParent!='') {
+			url += 'parent/' + obj_shelby.imagesListParent + '/';
+		}
+
+		$.ajaxFileUpload (
+			{
+				url:url,
+				secureuri:false,
+				fileElementId:'upload',
+				dataType: 'html',
+				success: function (data, status) {
+					if(typeof(data.error) != 'undefined') {
+						if(data.error != '') {
+							alert(data.error);
+						} else {
+							alert(data.msg);
+						}
+					}
+				},
+				error: function (data, status, e) {
+					alert(e);
+				}
+			}
+		)
+
+		return false;
+	}
+
+	function selectEntry(name, parent) {
+
+		url = tinyMCE.getWindowArg("images_base_path") + parent.replace(/:/g, "/") + name;
+
+		// insert information now
+		obj_image_win.document.getElementById(name_image_input).value = url;
+
+		obj_image_win.showPreviewImage(url);
+
+		// close popup window
+		tinyMCEPopup.close();
+	}
+
+  </SCRIPT>
+ </HEAD>
+<BODY onload="tinyMCEPopup.executeOnLoad('init();')">
+
+<DIV id="data"><a href="#" onclick="obj_shelby.createTable();">Начало</a> Загрузка...</DIV>
+
+    <fieldset>
+    <legend>Загрузить файл</legend>
+    <ol style="padding:0px;">
+      <li>
+			<center><img id="loading" src="../images/admin/loadingAnimation.gif" style="display:none;"></center>
+        <label for="upload">Файл:</label>
+        <input name="myFile3" id="upload"  type="file" />
+      </li>
+    </ol>
+    </fieldset>
+    <input type="button" value="Загрузить" onclick="ajaxFileUpload();" />
+
+</BODY>
+</HTML>

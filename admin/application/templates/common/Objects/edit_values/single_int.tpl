@@ -1,0 +1,1 @@
+<INPUT type="text" size="10" name="object_value[{$element.id}]" value="{$element.value}">

@@ -34,7 +34,7 @@ pre, code, kbd, samp { font-family: monospace, sans-serif; }
 body, select, input, textarea { color:#666; }
 h1,h2,h3,h4,h5,h6 { font-weight: bold; text-rendering: optimizeLegibility; }
 html { -webkit-font-smoothing: antialiased; }
-a:hover, a:active { outline: none; }
+a:hover, a:active, a:visited, a:link { outline: none; }
 a, a:active, a:visited { color:#0054a6; text-decoration:underline;}
 a:hover { text-decoration:none; }
 ul { margin-left:30px; }

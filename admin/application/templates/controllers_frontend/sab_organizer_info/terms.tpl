@@ -1,0 +1,6 @@
+<div class="txt">
+<h1>Условия размещения информации о выставке в ExpoPromoter</h1>
+
+    <table width="100%" border="0" class="list"><tbody><tr><th>&nbsp;</th><th>&nbsp;</th><th>125 USD<br></th><th>250 USD<br></th></tr><tr><td>1.</td><td>Название</td><td>Рус.</td><td>Рус./англ.</td></tr><tr><td>2.</td><td>Даты</td><td>Рус.</td><td>Рус./англ.</td></tr><tr><td>3.</td><td>Описание</td><td>Рус.</td><td>Рус./англ.</td></tr><tr><td>4.</td><td>Место проведения</td><td>Рус.</td><td>Рус./англ.</td></tr><tr><td>5.</td><td>Тел./факс организатора</td><td>+</td><td>&nbsp;&nbsp; &nbsp; &nbsp;+</td></tr><tr><td>6.</td><td>Формы заказов / запросов</td><td>+</td><td>&nbsp;&nbsp; &nbsp; &nbsp;+</td></tr><tr><td>7.</td><td>Адрес сайта выставки</td><td>+</td><td>&nbsp;&nbsp; &nbsp; &nbsp;+</td></tr><tr><td>8.</td><td>Новости</td><td>Рус.</td><td>Рус./англ.</td></tr><tr><td>9.</td><td>Логотип в списке</td><td>+</td><td>&nbsp;&nbsp; &nbsp; &nbsp;+</td></tr><tr><td>10.</td><td>Фотогалерея</td><td>+</td><td>&nbsp;&nbsp; &nbsp; &nbsp;+</td></tr><tr><td>11.</td><td>Видео сюжет</td><td>+</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +<br></td></tr></tbody></table>  
+
+</div>

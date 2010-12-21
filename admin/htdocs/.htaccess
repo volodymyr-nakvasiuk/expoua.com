@@ -1,0 +1,8 @@
+RewriteEngine on
+
+RewriteRule ^/?((ru|en)/sab_organizer_.*) http://event.expopromoter.com/$1 [L,R=permanent]
+#RewriteRule ^/?((ru|en)/sab_banners_.*) http://advertise.expopromoter.com/$1 [L,R=permanent]
+
+RewriteCond %{SCRIPT_FILENAME} !-f
+
+RewriteRule !\.(js|ico|gif|jpg|png|css)$ index.php

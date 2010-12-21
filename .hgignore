@@ -21,3 +21,4 @@ syntax: regexp
 .svn$
 syntax: regexp
 ^library/Classer
+.*/Thumbs.db$

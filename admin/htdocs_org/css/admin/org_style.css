@@ -1,0 +1,105 @@
+td.wb {
+  background:url(http://admin.expopromoter.com/images/admin/bul.gif) no-repeat left center;
+  vertical-align:middle;
+  padding-left:20px !important;
+}
+
+
+.org-content .wb2 {
+  background:url(http://admin.expopromoter.com/images/admin/bul.gif) no-repeat left center;
+  vertical-align:middle;
+  padding-left:20px;
+  font-family: Tahoma,Arial,sans-serif;
+  font-size: 8pt;
+  color: #66a8f3;
+  margin-left:0px;
+}
+.org-content p {
+  margin-left:20px;
+}
+
+A.topMenu, A.topMenu:link {
+  text-align:center;
+  vertical-align:middle;
+  display:block;
+  color: #6d6d6d;
+  font-size: 12px;
+  width:100%;
+  height:30px;
+  font-weight:bold;
+  padding-top: 3px;
+  background:#f2f2f2;
+  border-bottom:4px solid #e8e8e8;
+}
+
+A.topMenu:hover {
+  color: #ffffff;
+  text-decoration: none;
+  background: #a6d964;
+  background:#cde4ff;
+  border-bottom:4px solid #a6ceff;
+}
+
+A.topMenu-active,A.topMenu:hover {
+  color: #000000;
+  text-decoration: none;
+  background:#cde4ff;
+  border-bottom:4px solid #a6ceff;
+  text-align:center;
+  vertical-align:middle;
+  display:block;
+  font-size: 12px;
+  width:100%;
+  height:30px;
+  font-weight:bold;
+  padding-top: 3px;
+}
+
+table.list tr.odd td {
+  background-color: #ffffff;
+  color: #4b7eb2;
+  height: 19px;
+  padding: 2px 5px;
+  border-top: 1px solid #CCCCCC;
+}
+
+table.list tr.even td {
+/*	border-top: 1px solid #CCCCCC; */
+  background-color: #ffffff;
+  color: #4b7eb2;
+  height: 19px;
+  padding: 2px 5px;
+}
+
+.grey_hilight {
+  border-top: 1px solid #CCCCCC !important;
+  color: #e30000 !important;
+  background: #FFFFFF !important;
+}
+
+.yellow_hilight {
+  border-top: 1px solid #CCCCCC !important;
+  color: #5B9900 !important;
+  background: #FFFFFF !important;
+}
+
+.green_hilight {
+  color: #ffffff !important;
+  background: #a6d964 !important;
+}
+
+.red_hilight {
+  border-top: 1px solid #CCCCCC !important;
+  color: #ffc000 !important;
+  background: #FFFFFF !important;
+}
+
+.blue_hilight {
+  border-top: 1px solid #CCCCCC !important;
+  color: #4B7EB2 !important;
+  background: #FFFFFF !important;
+}
+
+h1 {
+  color: #66a8f3;
+}

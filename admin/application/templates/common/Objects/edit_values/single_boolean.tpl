@@ -1,0 +1,2 @@
+<INPUT type="checkbox"{if $element.value==1} checked{/if} onclick="Shelby_Backend.objects_multi_checkbox('object_value_{$element.id}', this.checked);">
+<INPUT type="hidden" name="object_value[{$element.id}]" id="object_value_{$element.id}" value="{if $element.value==1}1{else}0{/if}">
