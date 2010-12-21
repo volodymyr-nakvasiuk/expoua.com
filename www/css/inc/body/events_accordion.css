@@ -24,11 +24,6 @@
 .body_events_accordion_content {
 	padding-top: 10px;
 }
-.body_events_accordion_content .accordion_title_box {
-	background: #000000;
-	padding: 5px;
-	cursor: pointer;
-}
 .body_events_accordion_content .accordion_title_box .title {
 	color: #ffffff;
 	font-size: 14px;
@@ -46,28 +41,17 @@
 	height: 365px;
 }
 
-.body_events_accordion_boxes {padding-top: 10px;}
+.body_events_accordion_boxes {}
 .body_events_accordion_one_box {}
-.body_events_accordion_one_box .lb {
-	background: url(/img/index/left_b.png) no-repeat 0 0 scroll transparent;
-	width: 7px;
-	height: 46px;
-}
-.body_events_accordion_one_box .rb {
-	background: url(/img/index/right_b.png) no-repeat 0 0 scroll transparent;
-	width: 7px;
-	height: 46px;
-}
 .body_events_accordion_box_content {
-	width: 486px;
+	margin: 5px;
 	min-height: 36px;
-	background: #ffe9bc;
-	border-bottom: 1px solid #d2b77f;
-	padding: 5px;
+	width: 498px;
 }
-.body_events_accordion_box_content_left_col {}
-.body_events_accordion_box_content_left_col .title {
-	color: #dd5500;
+.body_events_accordion_box_content_left_col {margin-left: 30px;}
+.body_events_accordion_box_content_left_col .title,
+.body_events_accordion_box_content_left_col .title a{
+	color: #dd5500 !important;
 	text-decoration: underline;
 	font-weight:bold;
 	font-size: 14px;
@@ -80,7 +64,83 @@
 .body_events_accordion_box_content_right_col .city {}
 .body_events_accordion_box_content_right_col  a {
 	background: url(/img/index/star.png) no-repeat 0 center scroll transparent;
-	padding-left: 15px;
+	padding: 0 0 0 15px !important;
 	color: #0d74c4;
 	font-size: 11px;
+}
+
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default {
+	border: 1px solid #d2b77f;
+	background: #ffe9bc url(/css/jquery/cupertino/images/ui-bg_glass_80_ffe9bc_1x45.png) 50% 50% repeat-x;
+	font-weight: bold;
+	color: #0d74c4;
+}
+.ui-state-default a,
+.ui-state-default a:link,
+.ui-state-default a:visited {
+	color: #0d74c4;
+	text-decoration: none;
+}
+.ui-state-hover,
+.ui-widget-content .ui-state-hover,
+.ui-widget-header .ui-state-hover,
+.ui-state-focus,
+.ui-widget-content .ui-state-focus,
+.ui-widget-header .ui-state-focus {
+	border: 1px solid #e4cc90;
+	background: #fff4d1 url(/css/jquery/cupertino/images/ui-bg_glass_100_fff4d1_1x45.png) 50% 50% repeat-x;
+	font-weight: bold;
+	color: #0b66af;
+}
+.ui-state-hover a,
+.ui-state-hover a:hover {
+	color: #0b66af;
+	text-decoration: none;
+}
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active {
+	border: 1px solid #bda270;
+	background: #ffd9a7 url(/css/jquery/cupertino/images/ui-bg_glass_50_ffd9a7_1x45.png) 50% 50% repeat-x;
+	font-weight: bold;
+	color: #0f84d8;
+}
+.ui-state-active a,
+.ui-state-active a:link,
+.ui-state-active a:visited {
+	color: #0f84d8;
+	text-decoration: none;
+}
+.ui-accordion .ui-accordion-header a {
+	padding:0;
+}
+.body_events_accordion_content .accordion_title_box {
+	cursor: pointer;
+	background: rgb(0, 0, 0); /* fallback color */
+	background: rgba(0, 0, 0, 0.7);
+	position: absolute;
+	bottom: 2px;
+	left: 0;
+	width: 100%;
+}
+.accordion_body {
+	padding:0 !important;
+	position:relative;
+}
+.accordion_body img {
+	position: relative;
+	width: 100%; /* for IE 6 */
+}
+.accordion_body .title,
+.accordion_body .date,
+.accordion_body .desc {
+	margin: 0 0 0 10px;
+}
+.accordion_body a,
+.accordion_body a:hover,
+.accordion_body a:link,
+.accordion_body a:visited{
+	color:#ffffff !important;
 }
