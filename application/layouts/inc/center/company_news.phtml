@@ -1,13 +1,18 @@
+<?php
+	$l = $this->lang->getLocale();
+?>
 <div class="center_companies_news_head cl">
 	<div class="lf fl"></div>
 	<div class="center_f fl"><span><?php echo $this->lang->translate('Companies news');?></span></div>
 	<div class="rf fl"></div>
 </div>
 <div class="center_companies_news_content_box cl">
+	<?php foreach($this->layoutsData['center']['center_companies_news_box']['data'] as $item){ ?>
 	<div class="center_companies_news_one_row">
 		<div class="center_companies_news_text_box">
-			<span class="date">28.07.2010</span><br/>
-			<a href="#">Пресс-релиз выставки «Мир детства и школы»</a>
+			<span class="date"><?php echo date('d.m.Y', strtotime($item['date_public']));?></span><br/>
+			<a href="/<?php echo $l;?>/companies/card/<?php echo $item['companies_id']; ?>/<?php echo Init_Companies_News::$tab_name; ?>/card/<?php echo $item['id']; ?>/"><?php echo $item['name']; ?></a>
 		</div>
 	</div>
+	<?php } ?>
 </div>

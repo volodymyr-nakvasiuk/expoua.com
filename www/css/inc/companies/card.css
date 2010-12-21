@@ -66,14 +66,6 @@
 	color: #333333;
 	width: 200px;
 }
-.rc_t {	background: url(/img/index/ln.png) 0 0 repeat-x; }
-.rc_r {	background: url(/img/index/ln.png) 100% 0 repeat-y; }
-.rc_b {	background: url(/img/index/ln.png) 0 100% repeat-x; }
-.rc_l {	background: url(/img/index/ln.png) 0 0 repeat-y; }
-.rc_tr {	background: url(/img/index/tr.png) 100% 0 no-repeat; }
-.rc_br {	background: url(/img/index/br.png) 100% 100% no-repeat; }
-.rc_bl {	background: url(/img/index/bl.png) 0 100% no-repeat; }
-.rc_tl {	background: url(/img/index/tl.png) 0 0 no-repeat; }
 .companies_card_outer {
 	background: #ebf6ff;
 }
@@ -186,4 +178,49 @@
 	margin-top: 10px;
 	font-size: 12px;
 	text-align: justify;
+}
+.companies_card_news_tab {
+	padding: 10px 10px 0;
+}
+.companies_card_one_news {
+	margin-top: 15px;
+}
+.companies_card_one_news img {
+	float: left;
+	clear: none;
+	height: 50px;
+	width: 54px;
+	margin-top: 7px;
+}
+.companies_card_one_news_desc {
+	margin-left:10px;
+	width:500px;
+}
+.companies_card_one_news_desc_title a {
+	color: #0054a6;
+	font-weight: bold;
+	margin-top: 10px;
+	font-size: 14px;
+}
+.companies_card_one_news_desc_text {
+	color: #333333;
+	font-size: 12px;
+}
+.companies_card_news_date {
+	font-size: 10px;
+	color: #999999;
+}
+div.news_full_header {
+	font-size: 18px;
+	color: #dd5500;
+	margin: 10px 0;
+}
+div.news_full span {
+	color: #666666;
+}
+div.news_full span p {
+	margin-top: 10px;
+}
+div.news_full a {
+	color: #999999;
 }

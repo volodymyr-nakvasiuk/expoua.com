@@ -290,3 +290,17 @@ div.rc_bl_trans {
 .inner_left_nav_box {
     padding: 10px;
 }
+div.paginator {
+	margin: 10px;
+}
+div.paginator  div.one_page {
+	width: 18px;
+	text-align: center;
+	line-height: 18px;
+	color: #666666;
+	font-size: 12px;
+}
+div.paginator div.selected {
+	background: #0054a6;
+	color: #ffffff;
+}

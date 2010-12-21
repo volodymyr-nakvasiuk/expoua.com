@@ -21,9 +21,12 @@ class Crud_Grid_CompanyNews extends ArOn_Crud_Grid {
 			//'logo' => new ArOn_Crud_Grid_Column_Numeric("Дата создания",null,true,false,'100'),
 			//'languages_id' => new ArOn_Crud_Grid_Column_JoinOne("Язык новости",array('Db_Lang_EventNewsData'),'languages_id',null,false,'200'),
 			'name' => new ArOn_Crud_Grid_Column_JoinOne("Название новости",array('Db_Lang_CompanyNewsData'),'name',null,false,'200'),
-			'content' => new ArOn_Crud_Grid_Column_JoinOne("Описание новости",array('Db_Lang_CompanyNewsData'),'preambula',null,false,'200'),
+			'content' => new ArOn_Crud_Grid_Column_JoinOne("Описание новости",array('Db_Lang_CompanyNewsData'),'content',null,false,'200'),
 			//'content' => new ArOn_Crud_Grid_Column_JoinOne("Текст новости",array('Db_Lang_EventNewsData'),'content',null,false,'200'),
 			//'active' => new ArOn_Crud_Grid_Column_JoinOne("Активна ли новость на этом языке",array('Db_Lang_EventNewsData'),'active',null,false,'200'),
+			'logo' => new ArOn_Crud_Grid_Column_Numeric("Дата создания",null,true,false,'100'),
+			'companies_id' => new ArOn_Crud_Grid_Column_Numeric("Дата создания",null,true,false,'100'),
+			'active' => new ArOn_Crud_Grid_Column_JoinOne("Описание новости",array('Db_Lang_CompanyNewsActive'),'active',null,false,'200'),
 		);
 
 		$this->filters->setPrefix(false);
@@ -36,8 +39,26 @@ class Crud_Grid_CompanyNews extends ArOn_Crud_Grid {
 					),
 				),
 			)),
+			'active_languages_id' => new ArOn_Crud_Grid_Filter_Field_Search('active_languages_id','Язык новости',array(
+				array(
+					'path' => array('Db_Lang_CompanyNewsActive'),
+					'filters' => array(
+						'languages_id' => ArOn_Db_Filter_Search::EQ,
+					),
+				),
+			)),
+			'active' => new ArOn_Crud_Grid_Filter_Field_Search('active','Язык новости',array(
+				array(
+					'path' => array('Db_Lang_CompanyNewsActive'),
+					'filters' => array(
+						'active' => ArOn_Db_Filter_Search::EQ,
+					),
+				),
+			)),
 			'companies_id' => new ArOn_Crud_Grid_Filter_Field_Value('companies_id','ID',ArOn_Db_Filter_Field::EQ),
 		);
+		$this->_params['active'] = 1;
+		$this->_params['active_languages_id'] = DEFAULT_LANG_ID;
 		$this->_params['languages_id'] = DEFAULT_LANG_ID;
 
 		parent::init();

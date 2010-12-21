@@ -249,7 +249,18 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 		$this->view->jsParams = array();
 		
 		$this->view->layouts = array();
-		
+		$this->view->layoutsData = array(
+			'head'=>array(),
+			'menu'=>array(),
+			'top'=>array(),
+			'left'=>array(),
+			'center'=>array(),
+			'extra'=>array(),
+			'right'=>array(),
+			'bottomRow'=>array(),
+			'bottom'=>array(),
+		);
+
 		$this->view->layouts['head'] = array(
 			"header_left_box"=>array('inc/header/logo', 100),
 			"header_banner_box"=>array('inc/header/banner', 100),

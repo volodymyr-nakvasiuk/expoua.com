@@ -1,8 +1,8 @@
 <?php
-class Db_Lang_CompanyNewsData extends Db_Lang {
+class Db_Lang_CompanyNewsActive extends Db_Lang {
 	protected $_primary = 'id';
-	protected $_name = 'companies_news_data';
-	protected $_name_expr = "name";
+	protected $_name = 'companies_news_active';
+	protected $_name_expr = "active";
 	protected $_is_deleted = false;
 	protected $_order_expr = 'id';
 

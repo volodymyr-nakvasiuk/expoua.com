@@ -1,5 +1,5 @@
 <?php
-class Db_EventNews extends ArOn_Db_Table {
+class Db_CompanyNews extends ArOn_Db_Table {
 	protected $_primary = 'id';
 	protected $_name = 'companies_news';
 	protected $_name_expr = "id";
@@ -8,6 +8,7 @@ class Db_EventNews extends ArOn_Db_Table {
 
 	protected $_dependentTables = array(
 		'Db_Lang_CompanyNewsData',
+		'Db_Lang_CompanyNewsActive',
 		//'Db_EventsCommon',
 	);
 
@@ -35,6 +36,11 @@ class Db_EventNews extends ArOn_Db_Table {
 		'Module' => array(
 			'columns'           => 'id',
 			'refTableClass'     => 'Db_Lang_CompanyNewsData',
+			'refColumns'        => 'id'
+		),
+		'Active' => array(
+			'columns'           => 'id',
+			'refTableClass'     => 'Db_Lang_CompanyNewsActive',
 			'refColumns'        => 'id'
 		),
 	);
