@@ -26,6 +26,7 @@ class Crud_Grid_Companies extends ArOn_Crud_Grid {
 			'cities_id' => new ArOn_Crud_Grid_Column_Numeric("Город",null,true,false,'50'),
 			//'active' => new ArOn_Crud_Grid_Column_Numeric('Активный',null,true,false,'50'),
 			'category' => new ArOn_Crud_Grid_Column_JoinOne('Категория', array('Db_Companies2Categories', 'Db_BrandsCategories'), null, array('id')),
+			'logo' => new ArOn_Crud_Grid_Column_Numeric("Город",null,true,false,'50'),
 		);
 		//$this->fields['active']->options = array('1'=>"+", '0'=>"-");
 

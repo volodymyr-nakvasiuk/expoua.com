@@ -34,6 +34,7 @@ class Crud_Grid_Company extends ArOn_Crud_Grid {
 			'postcode' => new ArOn_Crud_Grid_Column_Default("Дата до",null,true,false,'100'),
 			'logo' => new ArOn_Crud_Grid_Column_Default("Дата до",null,true,false,'100'),
 			'address' => new ArOn_Crud_Grid_Column_JoinOne("Название компании",array('Db_Lang_CompaniesData'),'address',null,false,'200'),
+			'logo' => new ArOn_Crud_Grid_Column_Numeric("Город",null,true,false,'50'),
 		);
 		//$this->fields['active']->options = array('1'=>"+", '0'=>"-");
 

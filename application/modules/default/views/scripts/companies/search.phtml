@@ -26,9 +26,11 @@
 				*/ ?>
 			</div>
 			<div class="one_company_content_box cl">
+				<?php if ($item['logo']){ ?>
 				<a href="<?php echo $url;?>">
 					<img src="http://admin.expopromoter.com/data/images/companies/<?php echo $item['id'];?>/logo_small.jpg"/>
 				</a>
+				<?php } ?>
 				<div class="one_company_text_box fl">
 					<div class="one_company_place cl">
 						<div class="country fl"><?php echo $countries[$item['regions_id']][$item['countries_id']]['name_'.$l]; ?>,&nbsp;</div>
