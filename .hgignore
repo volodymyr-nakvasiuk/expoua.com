@@ -21,4 +21,7 @@ syntax: regexp
 .svn$
 syntax: regexp
 ^library/Classer
+syntax: regexp
 .*/Thumbs.db$
+syntax: regexp
+^admin/application/templates_c
