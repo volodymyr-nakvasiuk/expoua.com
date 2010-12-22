@@ -4,12 +4,12 @@
 }
 .body_companies_company_box {
 	width: 120px;
+	height: 120px;
 	text-align: center;
 	padding: 5px 3px;
 }
 .body_companies_company_box img {
 	width: 120px;
-	height: 120px;
 	clear: both;
 	float: none;
 }

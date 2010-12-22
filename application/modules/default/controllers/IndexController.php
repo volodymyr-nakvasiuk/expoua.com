@@ -1,5 +1,7 @@
 <?php
 class IndexController extends Abstract_Controller_FrontendController {
+	
+	public $moduleName = 'Mainpage';
 
 	public function indexAction(){
 		/* ---------------------- Start Anton Templates ---------------------- */
@@ -27,9 +29,6 @@ class IndexController extends Abstract_Controller_FrontendController {
 		$this->view->layoutsData['center']['center_companies_news_box'] = $grid->getData();
 		$this->view->layouts['center']['center_companies_news_box'] = array('inc/center/company_news', 100);
 
-		
-		$this->view->layouts['right']['right_advert_box'] = array('inc/right/advert', 100);
-		
-		$this->view->layouts['extra']['extra_companies_goods_box'] = array('inc/extra/goods_slider', 100);
+		//$this->view->layouts['extra']['extra_companies_goods_box'] = array('inc/extra/goods_slider', 100);
 	}
 }

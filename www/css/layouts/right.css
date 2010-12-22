@@ -14,3 +14,9 @@ div.right_advert_box {
 	float:none;
 	margin-bottom:10px;
 }
+.right_banner_box {
+	float: none;
+	clear: both;
+	margin-bottom: 10px;
+	width: 250px;
+}

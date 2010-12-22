@@ -1,0 +1,6 @@
+body, html {
+	background: url(/img/body_bg_1.png) repeat-x;
+}
+#menu {
+	height: 30px;
+}

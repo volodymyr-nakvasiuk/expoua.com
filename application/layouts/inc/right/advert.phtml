@@ -4,14 +4,22 @@
 	<div class="rf fl"></div>
 </div>
 <div class="right_advert_content_box cl">
+	<?php foreach ($this->layoutsData['right']['right_advert_box'] as $item){ $url = PATH_CLICKER. $item['id'] . "_" . SITE_ID . "_" . DEFAULT_LANG_ID. "_". ($item['bt']=='normal'?"v2pbl":"v2pblg");?>
 	<div class="right_advert_one_row cl">
-		<img src="/img/index/test.png">
+		<a href="<?php echo $url;?>">
+			<img src="<?php echo ($item['bt']=='normal'?PATH_DATA_PBLBANNERS:PATH_DATA_PBLGAGBANNERS).$item['file_name'];?>">
+		</a>
 		<div class="right_advert_text_box">
-			<a href="#">Пресс-релиз выставки «Мир детства и школы»</a>
-			<span class="text cl">28.07.2010</span>
+			<a href="<?php echo $url;?>"><?php echo $item['file_alt']; ?></a>
+			<span class="text cl">
+				<a href="<?php echo $url;?>">
+					<?php echo $item['text_content']; ?>
+				</a>
+			</span>
 		</div>
 	</div>
+	<?php } ?>
 	<div align="center" style="padding: 5px;">
-		<a href="#"><?php echo $this->lang->translate("add an ad");?></a>&nbsp;|&nbsp;<a href="#"><?php echo $this->lang->translate("become a partner");?></a>
+		<a href="http://www.expopromoter.com/Static/lang/en/page/registration/type/advertiser/"><?php echo $this->lang->translate("add an ad");?></a>&nbsp;|&nbsp;<a href="http://www.expopromoter.com/Static/lang/en/page/registration/type/webPartner/"><?php echo $this->lang->translate("become a partner");?></a>
 	</div>
 </div>

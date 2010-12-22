@@ -43,5 +43,12 @@ define ( 'TAB_DEFAULT_ACTION', 'page');
 define ( 'TAB_DEFAULT_ID', 1);
 define ( 'DEFAULT_ROUTE', ':lang/:controller/:action/:id/:tab/:tab_action/:tab_id');
 define ( 'SITE_ID', 37);
+define ( 'PARTNER_ID', 536);
 define ( 'COUNTRY_ID', 52);
 define ( 'COUNTRY_ABBR', 'ukr');
+
+define ( 'PATH_CLICKER', 'http://62.149.12.130/clicker/');
+define ( 'PATH_DATA_BANNERS', 'http://62.149.12.130/bn/data/');
+define ( 'PATH_DATA_PBLBANNERS', 'http://62.149.12.130/bn/pbldata/');
+define ( 'PATH_DATA_PBLGAGBANNERS', 'http://62.149.12.130/bn/pblgdata/');
+

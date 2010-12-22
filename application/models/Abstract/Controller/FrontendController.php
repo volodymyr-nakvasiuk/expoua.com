@@ -13,6 +13,20 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 
 	protected $_statModel = false;
 	protected $_statModelId = false;
+
+	//Главная страница         = Mainpage
+	//Список выставок          = Exhibition
+	//Карточка выставки        = Event
+	//Выставочные новости      = News
+	//Выставочные центры       = ExpoCenters
+	//Выставочный сервис       = ServiceCompanies
+	//Компании                 = Companies
+	//Товары и услуги компаний = CompaniesServices
+	//Новости компаний         = CompaniesNews
+	//Сотрудники компаний      = CompaniesEmployer
+	//TV-раздел                = Tv
+	//Бизнес-туры              = TourOrder
+	public $moduleName = 'Mainpage';
 	
 	public function init(){
 		//ArOn_Core_Debug::getGenerateTime('startInit');
@@ -233,6 +247,13 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 	
 	protected function setupLayouts(){
 		$this->view->banners = array();
+
+		$this->view->layouts['right']['right_banner_box'] = array('inc/right/banner', 100);
+
+		$tool = new Tools_Banner($this->moduleName);
+		$this->view->layoutsData['right']['right_advert_box'] = $tool->getData();
+		$tool->updateBannersStat();
+		$this->view->layouts['right']['right_advert_box'] = array('inc/right/advert', 100);
 	}
 	
 	protected function initCache() {
