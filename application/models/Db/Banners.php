@@ -2,8 +2,10 @@
 class Db_Banners extends ArOn_Db_Table {
 
 	public function __construct($config = array(), $definition = null) {
-		$this->langId = self::$globalLangId;
-		self::$globalLangId = DEFAULT_LANG_ID;
+		if (!$config[self::ADAPTER]){
+			$databases = Zend_Registry::get('databases');
+			$config[self::ADAPTER] = $databases['banners'];
+		}
 		parent::__construct($config, $definition);
 	}
 	

@@ -57,6 +57,7 @@ class Crud_Grid_Companies extends ArOn_Crud_Grid {
 				),
 			)),
 			'city' => new ArOn_Crud_Grid_Filter_Field_Value('cities_id','Город',ArOn_Db_Filter_Field::EQ),
+			'logo' => new ArOn_Crud_Grid_Filter_Field_Value('logo','Город',ArOn_Db_Filter_Field::EQ),
 			'languages_id' => new ArOn_Crud_Grid_Filter_Field_Search('languages_id','Язык выставки',array(
 				array(
 					'path' => array('Db_Lang_CompaniesData'),

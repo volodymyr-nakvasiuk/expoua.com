@@ -1,3 +1,4 @@
+#2010.12.21
 ALTER TABLE `news`
 	ADD COLUMN `events_id` MEDIUMINT(8) UNSIGNED NULL DEFAULT NULL AFTER `brands_id`,
 	ADD INDEX `events_id` (`events_id`),

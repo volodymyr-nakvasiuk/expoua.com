@@ -14,10 +14,10 @@ define("DB_ADAPTER", "PDO_MYSQL");
 define("PATH_ADMIN_ROOT", 'D:/WebServer/home/expoua-my.com/admin');
 
 //Путь к Zend Framework
-define("PATH_LIBRARY_ZEND", PATH_ADMIN_ROOT . "/library");
+define("PATH_LIBRARY_ZEND", PATH_ADMIN_ROOT . "/../library");
 
 //Путь к Smarty
-define("PATH_LIBRARY_SMARTY", PATH_ADMIN_ROOT . "/library/Smarty");
+define("PATH_LIBRARY_SMARTY", PATH_ADMIN_ROOT . "/../library/Smarty");
 
 define("PATH_APPLICATION", PATH_ADMIN_ROOT . "/application");
 define("PATH_CONTROLLERS", PATH_APPLICATION . "/controllers");

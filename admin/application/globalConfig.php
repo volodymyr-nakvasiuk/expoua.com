@@ -27,10 +27,10 @@ define("SYNC_LOCAL_DATA_PATH", "http://admin.expoua.com/data");
 define("PATH_ROOT", 'D:/WebServer/home/expoua-my.com/admin');
 
 //Путь к Zend Framework
-define("PATH_LIBRARY_ZEND", PATH_ROOT . "/library");
+define("PATH_LIBRARY_ZEND", PATH_ROOT . "/../library");
 
 //Путь к Smarty
-define("PATH_LIBRARY_SMARTY", PATH_ROOT . "/library/Smarty");
+define("PATH_LIBRARY_SMARTY", PATH_ROOT . "/../library/Smarty");
 
 define("PATH_APPLICATION", PATH_ROOT . "/application");
 define("PATH_CONTROLLERS", PATH_APPLICATION . "/controllers");
