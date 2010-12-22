@@ -4,6 +4,11 @@ function getmicrotime() {
     return ((float)$usec + (float)$sec);
 }
 $time_start = getmicrotime();
+if(!function_exists('__autoload')){
+	function __autoload($className) {
+		require str_replace('_', '/', $className).'.php';
+	}
+}
 
 //Описываем функцию-обработчик ошибок, которая будет их высылать на мыло
 /*function myErrorHandler($errno, $errstr, $errfile, $errline) {
