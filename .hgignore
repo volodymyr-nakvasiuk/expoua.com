@@ -25,3 +25,7 @@ syntax: regexp
 .*/Thumbs.db$
 syntax: regexp
 ^admin/application/templates_c
+syntax: regexp
+^admin/application/globalConfig.php
+syntax: regexp
+^admin/application/wsConfig.php
