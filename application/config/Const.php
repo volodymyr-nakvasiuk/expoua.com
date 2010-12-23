@@ -44,6 +44,7 @@ define ( 'TAB_DEFAULT_ID', 1);
 define ( 'DEFAULT_ROUTE', ':lang/:controller/:action/:id/:tab/:tab_action/:tab_id');
 define ( 'SITE_ID', 37);
 define ( 'PARTNER_ID', 536);
+define ( 'PUBLISHER_ID', 2);
 define ( 'COUNTRY_ID', 52);
 define ( 'COUNTRY_ABBR', 'ukr');
 

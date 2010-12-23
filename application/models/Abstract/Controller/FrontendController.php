@@ -27,6 +27,7 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 	//TV-раздел                = Tv
 	//Бизнес-туры              = TourOrder
 	public $moduleName = 'Mainpage';
+	public $brandsCategoryId = null;
 	
 	public function init(){
 		//ArOn_Core_Debug::getGenerateTime('startInit');
@@ -250,9 +251,9 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 
 		$this->view->layouts['right']['right_banner_box'] = array('inc/right/banner', 100);
 
-		$tool = new Tools_Banner($this->moduleName);
+		$tool = new Tools_Banner(null, $this->moduleName, $this->brandsCategoryId);
 		$this->view->layoutsData['right']['right_advert_box'] = $tool->getData();
-		$tool->updateBannersStat();
+		$tool->updateStat();
 		$this->view->layouts['right']['right_advert_box'] = array('inc/right/advert', 100);
 	}
 	
