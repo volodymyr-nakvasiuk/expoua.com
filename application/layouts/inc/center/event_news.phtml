@@ -11,7 +11,7 @@
 	<div class="center_events_news_one_row">
 		<div class="center_events_news_text_box">
 			<span class="date"><?php echo date('d.m.Y', strtotime($item['date_public']));?></span><br/>
-			<a href="/<?php echo $l;?>/event/card/<?php echo $item['events_id']; ?>/<?php echo Init_Event_News::$tab_name; ?>/card/<?php echo $item['id']; ?>/"><?php echo $item['name']; ?></a>
+			<a href="<?php echo "/".$l."/event/card/".$item['events_id']."/".Init_Event_News::$tab_name."/card/".$item['id']."/";?>"><?php echo $item['name']; ?></a>
 		</div>
 	</div>
 	<?php } ?>

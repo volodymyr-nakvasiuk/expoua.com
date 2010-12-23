@@ -11,7 +11,7 @@
 	<div class="center_companies_news_one_row">
 		<div class="center_companies_news_text_box">
 			<span class="date"><?php echo date('d.m.Y', strtotime($item['date_public']));?></span><br/>
-			<a href="/<?php echo $l;?>/companies/card/<?php echo $item['companies_id']; ?>/<?php echo Init_Companies_News::$tab_name; ?>/card/<?php echo $item['id']; ?>/"><?php echo $item['name']; ?></a>
+			<a href="<?php echo "/".$l."/companies/card/".$item['companies_id']."/".Init_Companies_News::$tab_name."/card/".$item['id']."/";?>"><?php echo $item['name']; ?></a>
 		</div>
 	</div>
 	<?php } ?>

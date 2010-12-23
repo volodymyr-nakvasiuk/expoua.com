@@ -4,24 +4,28 @@ switch(APPLICATION_ENVIRONMENT){
 		define ( 'HOST_NAME', 'http://expoua.com' );
 		define ( 'IMG_HOST_NAME', 'http://img1.expoua.com' );
 		define ( 'STATIC_HOST_NAME', 'http://static.expoua.com' );
+		define ( 'ADMIN_HOST_NAME', 'http://admin.expoua.com' );
 		define ( 'COOKIE_HOST_NAME', 'expoua.com' );
 		break;
 	case 'development':
 		define ( 'HOST_NAME', 'http://expoua-my.com' );
 		define ( 'IMG_HOST_NAME', 'http://img1.expoua-my.com' );
 		define ( 'STATIC_HOST_NAME', 'http://static.expoua-my.com' );
+		define ( 'ADMIN_HOST_NAME', 'http://admin.expoua-my.com' );
 		define ( 'COOKIE_HOST_NAME', 'expoua-my.com' );
 		break;
 	case 'test':
 		define ( 'HOST_NAME', 'http://test.expoua.com' );
 		define ( 'IMG_HOST_NAME', 'http://img1.test.expoua.com' );
 		define ( 'STATIC_HOST_NAME', 'http://static.test.expoua.com' );
+		define ( 'ADMIN_HOST_NAME', 'http://admin.test.expoua.com' );
 		define ( 'COOKIE_HOST_NAME', 'test.expoua.com' );
 		break;
 	default:
 		define ( 'HOST_NAME', 'http://expoua.com' );
 		define ( 'IMG_HOST_NAME', 'http://img1.expoua.com' );
 		define ( 'STATIC_HOST_NAME', 'http://static.expoua.com' );
+		define ( 'ADMIN_HOST_NAME', 'http://admin.expoua.com' );
 		define ( 'COOKIE_HOST_NAME', 'expoua.com' );
 		break;
 }

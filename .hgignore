@@ -29,3 +29,5 @@ syntax: regexp
 ^admin/application/globalConfig.php
 syntax: regexp
 ^admin/application/wsConfig.php
+syntax: regexp
+^admin/htdocs/data

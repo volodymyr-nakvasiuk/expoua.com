@@ -13,8 +13,9 @@ class IndexController extends Abstract_Controller_FrontendController {
 		//$this->view->layouts['left']['client_menu'] = array('inc/left/client_menu', 100);
 		/* ----------------------- End Anton Templates ----------------------- */
 
-		$grid = new Crud_Grid_Events(null, array('country'=>52,'limit'=>3));
-		$this->view->layoutsData['body']['body_events_accordion_box'] = $grid->getData();
+		//$grid = new Crud_Grid_Events(null, array('country'=>52,'limit'=>3));
+		$init = new Init_Prlines($this->moduleName, $this->brandsCategoryId);
+		$this->view->layoutsData['body']['body_events_accordion_box'] = $init->getData();
 		$this->view->layouts['body']['body_events_accordion_box'] = array('inc/body/events_accordion', 100);
 
 		$grid = new Crud_Grid_Companies(null, array('country'=>52,'logo'=>1,'limit'=>8));

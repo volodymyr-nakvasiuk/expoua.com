@@ -108,7 +108,7 @@ class List_Banners_Plans extends List_Abstract {
 	 * Обновляем материализованное представление баннеров
 	 *
 	 */
-	public function updateMView() {
+	public function updateMView() { return;
 		$query = "TRUNCATE ExpoPromoter_banners.mview_banners";
 
 		self::$_db->query($query);

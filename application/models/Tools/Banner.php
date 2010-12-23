@@ -81,35 +81,41 @@ updateStat($data, $ids, $publisher_id);
 		return $this->_params;
 	}
 
-	function _setParams() {
-		$query = "
-			SELECT
-				(".
-				($this->_type?"
+	protected function _setParams() {
+		$places = array();
+		if ($this->_type){
+			$types = array();
+			for($i=1; $i<=$this->_limit; $i++) $types[] = "'".$this->_type.$i."'";
+			$query = "
 					SELECT
-						id
+						id AS places_id
 					FROM
 						places
 					WHERE
-						code='" . $this->_type . "'
-					":"NULL").
-				") AS places_id,
-				(
-					SELECT
-						id
-					FROM
-						modules
-					WHERE
-						code='" . $this->_module . "'
-				) AS modules_id
+						code IN (" . implode(', ',$types) . ")
+				;
+			";
+			$res = $this->_db->fetchAll($query);
+			foreach ($res as $data){
+				$places[] = $data['places_id'];
+			}
+		}
+
+		$query = "
+				SELECT
+					id AS modules_id
+				FROM
+					modules
+				WHERE
+					code='" . $this->_module . "'
 			;
 		";
-
 		$res = $this->_db->fetchRow($query);
+
 		$this->_params = array(
 			'lang_id' => DEFAULT_LANG_ID,
 			'publisher_id'=>PUBLISHER_ID,
-			'places_id'=>$res['places_id'],
+			'places_id'=>$places,
 			'modules_id'=>$res['modules_id'],
 			'partners_id' => PARTNER_ID,
 			'countries_id' => COUNTRY_ID,
@@ -143,13 +149,14 @@ updateStat($data, $ids, $publisher_id);
 					mview_banners
 				WHERE
 					languages_id=" . intval($this->_params['lang_id']) . "
-					AND places_id=" . intval($this->_params['places_id']) . "
+					AND places_id IN (" . implode(',', $this->_params['places_id']) . ")
 					AND (modules_id IS NULL" . ($this->_params['modules_id'] ? " OR modules_id=" . intval($this->_params['modules_id']):"") . ")" . "
 					AND (categories_id IS NULL " . ($this->_categoryId ? "OR categories_id=" . intval($this->_categoryId):"") . ")" . "
 					AND (publishers_id IS NULL OR publishers_id=" . intval($this->_params['publisher_id']) . ")
 				ORDER BY
 					ord ASC
-				LIMIT 1
+				LIMIT
+					" . $this->_limit . "
 			) AS sq
 			JOIN
 				banners AS b ON (sq.id = b.id)
@@ -159,8 +166,7 @@ updateStat($data, $ids, $publisher_id);
 				types AS t ON (b.types_id = t.id)
 			;
 		";
-
-		return $this->_db->fetchRow($query);
+		return $this->_db->fetchAll($query);
 	}
 
 	protected function _getPblBannerData() {
@@ -241,39 +247,41 @@ updateStat($data, $ids, $publisher_id);
 	}
 
 	protected function _updateBannerStat() {
-		$query = "
-			UPDATE
-				stat_shows
-			SET
-				shows=shows+1
-			WHERE
-				date_show=CURDATE()
-				AND plans_id=" . $this->_data['id'] . "
-				AND langs_id=" . $this->_params['lang_id'] . "
-				AND modules_id" . ($this->_params['modules_id'] ? "=" . $this->_params['modules_id']:" IS NULL") . "
-				AND publishers_id = " . intval($this->_params['publisher_id']);
-
-		$stmt = $this->_db->query($query);
-
-		if ($stmt->rowCount() == 0) {
+		foreach ($this->_data as $data){
 			$query = "
-				INSERT INTO
-					stat_shows (
-						date_show,
-						plans_id,
-						langs_id,
-						modules_id,
-						publishers_id
-					)
-				VALUES (
-					CURDATE(),
-					'" . $this->_data['id'] . "',
-					'" . $this->_params['lang_id'] . "', " .
-					($this->_params['modules_id'] ? "'" . $this->_params['modules_id']."'":"NULL") . ",
-					'" . intval($this->_params['publisher_id']) . "'
-				)";
+				UPDATE
+					stat_shows
+				SET
+					shows=shows+1
+				WHERE
+					date_show=CURDATE()
+					AND plans_id=" . $data['id'] . "
+					AND langs_id=" . $this->_params['lang_id'] . "
+					AND modules_id" . ($this->_params['modules_id'] ? "=" . $this->_params['modules_id']:" IS NULL") . "
+					AND publishers_id = " . intval($this->_params['publisher_id']);
 
-			$this->_db->query($query);
+			$stmt = $this->_db->query($query);
+
+			if ($stmt->rowCount() == 0) {
+				$query = "
+					INSERT INTO
+						stat_shows (
+							date_show,
+							plans_id,
+							langs_id,
+							modules_id,
+							publishers_id
+						)
+					VALUES (
+						CURDATE(),
+						'" . $data['id'] . "',
+						'" . $this->_params['lang_id'] . "', " .
+						($this->_params['modules_id'] ? "'" . $this->_params['modules_id']."'":"NULL") . ",
+						'" . intval($this->_params['publisher_id']) . "'
+					)";
+
+				$this->_db->query($query);
+			}
 		}
 	}
 
@@ -315,57 +323,4 @@ updateStat($data, $ids, $publisher_id);
 			}
 		}
 	}
-
-
-/*------------------ NOT EDITED -----------------------*/
-	function getPLineBanner($data, $lang, $lang_id) {
-		$query = "
-			SELECT
-				e.id,
-				bd.name,
-				e.period_date_from AS startDate,
-				e.period_date_to AS endDate,
-				lcntd.name AS countryName,
-				e.countryId,
-				lcd.name AS cityName,
-				e.cityId, e.news,
-				e.companies,
-				e.videos,
-				e.ads,
-				IF (
-					ec.show_list_logo=1,
-					CONCAT(
-						'http://ws.expopromoter.com/file/event_logo.php?id=',
-						e.id,
-						'&lang=',
-						bd.languages_id
-					),
-					NULL
-				) AS logo
-			FROM
-				ExpoPromoter_MViews.events_" . $lang . " AS e
-			JOIN
-				ExpoPromoter_Opt.events_common AS ec ON (e.id = ec.id)
-			JOIN
-				ExpoPromoter_Opt.brands_data AS bd ON (e.brandId = bd.id)
-			JOIN
-				ExpoPromoter_Opt.location_cities_data AS lcd ON (e.cityId = lcd.id)
-			JOIN
-				ExpoPromoter_Opt.location_countries_data AS lcntd ON (e.countryId = lcntd.id)
-			WHERE
-				bd.languages_id=lcd.languages_id
-				AND bd.languages_id=lcntd.languages_id
-				AND bd.languages_id=" . intval($lang_id) . "
-				AND e.id=" . intval($data['pline_events_id']);
-
-		$event = DB::queryRow($query);
-		if (empty($event)) {
-			exit();
-		}
-
-		$event['url'] = $data['url_clicker'];
-
-		return $event;
-	}
-
 }

@@ -255,6 +255,10 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 		$this->view->layoutsData['right']['right_advert_box'] = $tool->getData();
 		$tool->updateStat();
 		$this->view->layouts['right']['right_advert_box'] = array('inc/right/advert', 100);
+
+		$grid = new Crud_Grid_Companies(null, array('country'=>52,'limit'=>20));
+		$this->view->layoutsData['right']['right_companies_box'] = $grid->getData();
+		$this->view->layouts['right']['right_companies_box'] = array('inc/right/top_companies', 100);
 	}
 	
 	protected function initCache() {
