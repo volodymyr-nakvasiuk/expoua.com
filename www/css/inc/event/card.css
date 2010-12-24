@@ -18,8 +18,6 @@ div.card_crumbs {
 }
 div.card_desc_box {}
 div.card_desc_box div.left_col {}
-
-
 div.card_desc_box div.right_col {
 	width: 190px;
 }
@@ -191,10 +189,6 @@ div.adm_msg_content_submit input {
 }
 /*                          END GENERAL STYLES                              */
 /*                          GENERAL TAB STYLES                          */
-.ui-tabs .ui-tabs-nav li {
-	margin-right: 1px !important;
-}
-div.tab div { z-index: 1; }
 div.card_tabs_box div.tab_left {
 	background: url(/img/card/tabs/card_unactive_left.png) no-repeat;
 	width: 4px;
@@ -214,8 +208,12 @@ div.card_tabs_box div.tab_right {
 	width: 4px;
 	height:25px;
 }
+.card_tabs_box .ui-tabs .ui-tabs-panel {
+	-moz-border-radius-topright: 0;
+}
 li.tab_title_messages {
 	float:right !important;
+	margin-right:0 !important;
 }
 /*                          END GENERAL TAB STYLES                          */
 

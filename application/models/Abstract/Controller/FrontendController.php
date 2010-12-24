@@ -194,11 +194,11 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 		$this->view->menuLinks = array(
 			'events'=>array(
 				'lang'=>array('ru','en'),
-				'url'=>HOST_NAME.'/'.$lang.'/events/region-europe/country-ukraine/',
+				'url'=>HOST_NAME.'/'.$lang.'/events/'.DEFAULT_SEARCH,
 				'title'=>$this->view->lang->translate('Trade shows'),
 				'submenu'=>array(
-					'ukr'=>array(
-						'url'=>HOST_NAME.'/'.$lang.'/events/region-europe/country-ukraine/',
+					COUNTRY_ABBR=>array(
+						'url'=>HOST_NAME.'/'.$lang.'/events/'.DEFAULT_SEARCH,
 						'title'=>$this->view->lang->translate('Exhibitions in Ukraine'),
 					),
 					'all'=>array(

@@ -1,0 +1,84 @@
+<?php
+	$tabData = $this->tabsData[Init_Companies_Services::$tab_name];
+	if ($tabData['action']=='page'){
+		foreach($tabData['data'] as $item){
+			$lnk = $this->data['link'].Init_Companies_Services::$tab_name.'/card/'.$item['id'].'/';
+?>
+<div class="companies_card_one_services cl">
+	<?php if ($item['photo']){ ?>
+	<a href="<?php echo $lnk;?>">
+		<img src="http://admin.expopromoter.com/data/images/companies/<?php echo $this->data['id']; ?>/services/logo/<?php echo $item['id'];?>_small.jpg">
+	</a>
+	<?php } ?>
+	<div class="companies_card_one_services_desc fl">
+		<div class="companies_card_services_date cl"><?php echo date('d.m.Y', strtotime($item['date_modify']));?></div>
+		<div class="companies_card_one_services_desc_title cl">
+			<a href="<?php echo $lnk;?>">
+				<?php echo $item['name']; ?>
+			</a>
+		</div>
+		<div class="companies_card_one_services_desc_text cl">
+			<?php echo $item['short']; ?>
+		</div>
+	</div>
+</div>
+<?php
+		}
+?>
+	<div class="paginator cl">
+		<?php
+	echo Tools_View::getPages(
+		array(
+			'url'=>Tools_View::setUrlByTemplate(
+				array(
+					'url'=>$this->requestUri,
+					'template'=>DEFAULT_ROUTE,
+				),
+				array(
+					'tab'=>Init_Companies_Services::$tab_name,
+					'tab_action'=>'page',
+				)
+			),
+			'template'=>DEFAULT_ROUTE,
+		),
+		$this->tabsData[Init_Companies_Services::$tab_name]['array_pages'],
+		'tab_id',
+		array(
+			'urlFunctionName'=>'setUrlByTemplate',
+			'linkTag'=>array('start'=>'<div class="one_page fl">', 'end'=>'</div>'),
+			'selectedTag'=>array('start'=>'<div class="one_page selected fl">', 'end'=>'</div>'),
+			'first'=>false, 'prev'=>false, 'next'=>false, 'last'=>false,
+		)
+	);
+		?>
+	</div>
+<?php
+	}
+	elseif($tabData['action']=='card') {
+		$item = $tabData['data'];
+		$listUrl = Tools_View::setUrlByTemplate(
+			array(
+				'url'=>$this->requestUri,
+				'template'=>DEFAULT_ROUTE
+			),
+			array(
+				'tab'=>Init_Companies_Services::$tab_name,
+				'tab_action'=>'page',
+				'tab_id'=>'1',
+			)
+		);
+		?>
+	<div class="services_full cl">
+		&larr;&nbsp;<a href="<?php echo $listUrl;?>"><?php echo $this->lang->translate('back to services list');?></a>
+		<br/><br/>
+		<?php if ($item['photo']){ ?>
+		<div class="services_full_img cl">
+			<img src="http://admin.expopromoter.com/data/images/companies/<?php echo $this->data['id']; ?>/services/logo/<?php echo $item['id'];?>.jpg">
+		</div>
+		<?php } ?>
+		<div class="services_full_header cl"><?php echo $item['name'];?></div>
+		<div class="services_full_content cl"><?php echo $item['content'];?></div>
+	</div>
+	<?php
+  	}
+?>

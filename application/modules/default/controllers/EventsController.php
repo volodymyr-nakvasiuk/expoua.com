@@ -18,8 +18,8 @@ class EventsController extends Abstract_Controller_FrontendController {
 		$grid = new Crud_Grid_Events(null, $filterData['filter']);
 		$this->view->data = $grid->getData();
 
-		if ($filterData['params']['country']=='ukraine'){
-			$this->view->activeSubmenu = 'ukr';
+		if ($filterData['params']['country']==COUNTRY_SEARCH){
+			$this->view->activeSubmenu = COUNTRY_ABBR;
 		}
 	}
 

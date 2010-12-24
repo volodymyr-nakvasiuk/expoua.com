@@ -4,6 +4,6 @@
 ?>
 <?php foreach($this->layoutsData['extra']['extra_events_companies_tabs_box']['events']['data'] as $category){ ?>
 <div class="lnk cl">
-	<a href="/<?php echo $l; ?>/events/region-europe/country-ukraine/category-<?php echo $cache[$category['brands_categories_id']]['alias']; ?>/"><?php echo $category['name'];?></a> <em>(<?php echo $category['c'];?>)</em>
+	<a href="<?php echo "/".$l."/events/".DEFAULT_SEARCH."category-".$cache[$category['brands_categories_id']]['alias']."/"; ?>"><?php echo $category['name'];?></a> <em>(<?php echo $category['c'];?>)</em>
 </div>
 <?php } ?>

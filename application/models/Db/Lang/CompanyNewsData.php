@@ -13,7 +13,7 @@ class Db_Lang_CompanyNewsData extends Db_Lang {
 	protected $_referenceMap    = array(
 		//'Module' => array(
 		//	'columns'           => 'id',
-		//	'refTableClass'     => 'Db_EventNews',
+		//	'refTableClass'     => 'Db_CompanyNews',
 		//	'refColumns'        => 'id'
 		//)
 	);

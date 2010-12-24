@@ -224,3 +224,48 @@ div.news_full span p {
 div.news_full a {
 	color: #999999;
 }
+.companies_card_services_tab {
+	padding: 10px 10px 0;
+}
+.companies_card_one_services {
+	margin-top: 15px;
+}
+.companies_card_one_services img {
+	float: left;
+	clear: none;
+	height: 50px;
+	width: 54px;
+	margin-top: 7px;
+}
+.companies_card_one_services_desc {
+	margin-left:10px;
+	width:500px;
+}
+.companies_card_one_services_desc_title a {
+	color: #0054a6;
+	font-weight: bold;
+	margin-top: 10px;
+	font-size: 14px;
+}
+.companies_card_one_services_desc_text {
+	color: #333333;
+	font-size: 12px;
+}
+.companies_card_services_date {
+	font-size: 10px;
+	color: #999999;
+}
+div.services_full_header {
+	font-size: 18px;
+	color: #dd5500;
+	margin: 10px 0;
+}
+div.services_full span {
+	color: #666666;
+}
+div.services_full span p {
+	margin-top: 10px;
+}
+div.services_full a {
+	color: #999999;
+}

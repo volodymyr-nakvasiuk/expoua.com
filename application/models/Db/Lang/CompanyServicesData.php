@@ -1,19 +1,19 @@
 <?php
-class Db_Lang_CompanyNewsActive extends Db_Lang {
+class Db_Lang_CompanyServicesData extends Db_Lang {
 	protected $_primary = 'id';
-	protected $_name = 'companies_news_active';
-	protected $_name_expr = "active";
+	protected $_name = 'companies_services_data';
+	protected $_name_expr = "name";
 	protected $_is_deleted = false;
 	protected $_order_expr = 'id';
 
 	protected $_dependentTables = array(
-		'Db_CompanyNews',
+		'Db_CompanyServices',
 	);
 
 	protected $_referenceMap    = array(
 		//'Module' => array(
 		//	'columns'           => 'id',
-		//	'refTableClass'     => 'Db_CompanyNews',
+		//	'refTableClass'     => 'Db_CompanyServices',
 		//	'refColumns'        => 'id'
 		//)
 	);

@@ -51,9 +51,10 @@ define ( 'PARTNER_ID', 536);
 define ( 'PUBLISHER_ID', 2);
 define ( 'COUNTRY_ID', 52);
 define ( 'COUNTRY_ABBR', 'ukr');
+define ( 'COUNTRY_SEARCH', 'ukraine');
+define ( 'DEFAULT_SEARCH', 'region-europe/country-ukraine/');
 
 define ( 'PATH_CLICKER', 'http://62.149.12.130/clicker/');
 define ( 'PATH_DATA_BANNERS', 'http://62.149.12.130/bn/data/');
 define ( 'PATH_DATA_PBLBANNERS', 'http://62.149.12.130/bn/pbldata/');
 define ( 'PATH_DATA_PBLGAGBANNERS', 'http://62.149.12.130/bn/pblgdata/');
-

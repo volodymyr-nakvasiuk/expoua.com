@@ -58,6 +58,10 @@ class CompaniesController extends Abstract_Controller_FrontendController {
 				$tabObject->tab_title = $this->view->lang->translate('News');
 				$this->view->tabsData[Init_Companies_News::$tab_name] = $tabObject->getData();
 
+				$tabObject = new Init_Companies_Services($this->view->data['id'], $tab, $tab_action, $tab_id);
+				$tabObject->tab_title = $this->view->lang->translate('Products and services');
+				$this->view->tabsData[Init_Companies_Services::$tab_name] = $tabObject->getData();
+
 				/*
 					$tabObject = new Init_Event_Gallery($this->view->data['brands_name_id'],$this->view->data['id'], $tab, $tab_action, $tab_id);
 					$tabObject->tab_title = $this->view->lang->translate('Photo');

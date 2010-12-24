@@ -1,0 +1,21 @@
+<?php $l = $this->lang->getLocale();?>
+<div class="filter_main">
+	<div class="filter_left">
+	</div>
+	<div class="filter_center">
+		<div class="filter_item">
+			<input id="filter_search" class="text" type="text" name="search" emptyval="<?php echo $this->lang->translate('search by keyword...');?>" onfocus="javascript:if(this.value==$(this).attr('emptyval'))this.value='';" onblur="javascript:if(this.value=='')this.value=$(this).attr('emptyval');" />
+		</div>
+		<div class="filter_item">
+			<select id="filter_module" name="category">
+				<option value="/events/"><?php echo $this->lang->translate('search through exhibitions');?></option>
+				<option value="/companies/search/"><?php echo $this->lang->translate('search among companies');?></option>
+			</select>
+		</div>
+		<div class="filter_item submit_box">
+			<input id="filter_button" class="button" type="button" value="<?php echo $this->lang->translate('Search');?>"/>
+		</div>
+	</div>
+	<div class="filter_right">
+	</div>
+</div>

@@ -70,6 +70,12 @@
 		?>
 	<div class="news_full cl">
 		&larr;&nbsp;<a href="<?php echo $listUrl;?>"><?php echo $this->lang->translate('back to news list');?></a>
+		<br/><br/>
+		<?php if ($item['logo']){ ?>
+		<div class="news_full_img cl">
+			<img src="http://admin.expopromoter.com/data/images/companies/<?php echo $this->data['id']; ?>/news/logo/<?php echo $item['id'];?>.jpg">
+		</div>
+		<?php } ?>
 		<div class="news_full_header cl"><?php echo $item['name'];?></div>
 		<div class="news_full_content cl"><?php echo $item['content'];?></div>
 	</div>

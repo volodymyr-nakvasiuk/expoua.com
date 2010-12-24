@@ -90,7 +90,7 @@ $(function(){
 	$("#filter_button").click(function(){
 		var $filter =$("#top .filter");
 		var input;
-		var redirectUrl = '/'+lang_id+'/events/'
+		var redirectUrl = '/'+lang_id+'/events/';
 		for(var i in phpParams['filterParams']){
 			input = $filter.find('[name='+i+']');
 			if (input){

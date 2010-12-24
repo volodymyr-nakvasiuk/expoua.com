@@ -13,6 +13,8 @@ class IndexController extends Abstract_Controller_FrontendController {
 		//$this->view->layouts['left']['client_menu'] = array('inc/left/client_menu', 100);
 		/* ----------------------- End Anton Templates ----------------------- */
 
+		$this->view->layouts['top']['filter'] = array('inc/filter/index', 100);
+
 		//$grid = new Crud_Grid_Events(null, array('country'=>52,'limit'=>3));
 		$init = new Init_Prlines($this->moduleName, $this->brandsCategoryId);
 		$this->view->layoutsData['body']['body_events_accordion_box'] = $init->getData();
@@ -30,9 +32,10 @@ class IndexController extends Abstract_Controller_FrontendController {
 		$this->view->layoutsData['center']['center_companies_news_box'] = $grid->getData();
 		$this->view->layouts['center']['center_companies_news_box'] = array('inc/center/company_news', 100);
 
+		$this->view->layouts['extra']['extra_companies_goods_box'] = array('inc/extra/goods_slider', 100);
+
 		$init = new Init_EventsCompaniesTabs();
 		$this->view->layoutsData['extra']['extra_events_companies_tabs_box'] = $init->getData();
 		$this->view->layouts['extra']['extra_events_companies_tabs_box'] = array('inc/extra/events_companies_tabs', 100);
-		//$this->view->layouts['extra']['extra_companies_goods_box'] = array('inc/extra/goods_slider', 100);
 	}
 }

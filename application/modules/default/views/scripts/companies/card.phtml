@@ -19,6 +19,7 @@
 	<a href="<?php echo $link;?>"><?php echo $name;?></a>&nbsp;&rarr;&nbsp;
 	<?php $link='/'.$l.'/companies/card/'.$item['id'].'-'.Tools_View::getUrlAlias($item['name'], true).'/'; $name=$item['name']; ?>
 	<a href="<?php echo $link;?>"><?php echo $name;?></a>
+	<?php $this->data['link'] = $link; ?>
 </div>
 <div class="companies_card_desc_box cl">
 	<div class="left_col fl">

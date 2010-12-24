@@ -21,7 +21,7 @@
 		);
 
 		public function __construct($url, $lang, $p=1){
-			$this->_url = $url;
+			$this->_url = urldecode($url);
 			$this->_lang = $lang;
 			$this->_p = $p;
 		}
@@ -40,7 +40,7 @@
 				if (array_key_exists($paramName, self::$filterParams) && $tmp){
 					$paramValue = implode('-',$tmp);
 					if ($paramValue){
-						$data['params'][$paramName] = strtolower($paramValue);
+						$data['params'][$paramName] = mb_strtolower($paramValue, 'UTF-8');
 					}
 				}
 			}
@@ -130,7 +130,7 @@
 		public function createFilterUrl($data, $lang){
 			$url = $this->_urlParts;
 			foreach (self::$filterParams as $paramName=>$cacheName){
-				if (isset($data[$paramName])) $url[] =  $paramName.'-'.$data[$paramName];
+				if (isset($data[$paramName])) $url[] = $paramName.'-'.urlencode($data[$paramName]);
 			}
 			return '/'.$lang.'/'.implode('/',$url).'/';
 		}
