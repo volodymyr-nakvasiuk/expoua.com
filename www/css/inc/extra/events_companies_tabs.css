@@ -1,0 +1,13 @@
+.ec_tabs_body_box .lnk {
+	line-height: 20px;
+}
+.ec_tabs_body_box .lnk a {
+	color: #0d74c4;
+	font-family: Tahoma,Verdana,sans-serif;
+}
+.ec_tabs_body_box .lnk em {
+	font-family: Tahoma,Verdana,sans-serif;
+	font-size: 9px;
+	font-style: normal;
+	color: #666666;
+}

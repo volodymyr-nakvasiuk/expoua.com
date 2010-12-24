@@ -1,11 +1,9 @@
-2
-<?php /* $cache = Zend_Registry::get('categories'.Tools_Events::$cacheSuffix['id']); ?>
-<div class="companies_index_main_content_box cl">
-	<div class="title cl"><?php echo $this->lang->translate('Companies catalog by categories');?></div>
-	<?php foreach($this->data as $category){ $this->allCount += $category['c'];?>
-	<div class="lnk cl">
-		<a href="/<?php echo $this->lang->getLocale(); ?>/companies/search/region-europe/country-ukraine/category-<?php echo $cache[$category['brands_categories_id']]['alias']; ?>/"><?php echo $category['name'];?></a> <em>(<?php echo $category['c'];?>)</em>
-	</div>
-	<?php } ?>
+<?php
+	$l = $this->lang->getLocale();
+	$cache = Zend_Registry::get('categories'.Tools_Events::$cacheSuffix['id']);
+?>
+<?php foreach($this->layoutsData['extra']['extra_events_companies_tabs_box']['companies']['data'] as $category){ ?>
+<div class="lnk cl">
+	<a href="/<?php echo $l; ?>/companies/search/region-europe/country-ukraine/category-<?php echo $cache[$category['brands_categories_id']]['alias']; ?>/"><?php echo $category['name'];?></a> <em>(<?php echo $category['c'];?>)</em>
 </div>
-*/
+<?php } ?>

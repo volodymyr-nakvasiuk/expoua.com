@@ -3,10 +3,10 @@
 		<ul>
 			<?php
 			$tabsContent = '';
-			foreach ($this->ecTabsData as $tab_id=>$tab_data){
-				$tabsContent .= '<div class="ec_tab_box ec_'.$tab_id.'_tab" id="'.$tab_id.'">'.$this->run('inc/events_companies_tabs/'.$tab_id.'.phtml').'</div>';
+			foreach ($this->layoutsData['extra']['extra_events_companies_tabs_box'] as $tab_id=>$tab_data){
+				$tabsContent .= '<div class="ec_tab_box ec_'.$tab_id.'_tab" id="ec_tab_'.$tab_id.'">'.$this->render('inc/extra/events_companies_tabs/'.$tab_id.'.phtml').'</div>';
 			?>
-				<li class="tab_title_<?php echo $tab_id;?>"><a href="#<?php echo $tab_id;?>"><?php echo $tab_data['title'];?></a></li>
+				<li class="tab_title_<?php echo $tab_id;?>"><a href="#ec_tab_<?php echo $tab_id;?>"><?php echo $tab_data['title'];?></a></li>
 			<?php
 			}
 			?>

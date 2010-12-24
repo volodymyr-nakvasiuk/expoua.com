@@ -4,18 +4,20 @@
 <div class="body_companies_title_box cl">
 	<div class="text fl"><?php echo $this->lang->translate("Best companies");?></span></div>
 	<div class="add fr">
-		<a href="#"><?php echo $this->lang->translate("Add company");?></span></a>
+		<a href="#"><div class="add_ico fl">&nbsp;</div><span><?php echo $this->lang->translate("Add company");?></span></a>
 	</div>
 </div>
 <div class ="body_companies_content cl">
-<?php foreach ($this->layoutsData['body']['body_companies_box']['data'] as $item){ $url="/".$l."/companies/card/".$item['id']."-".Tools_View::getUrlAlias($item['name'], true)."/";?>
+	<?php foreach ($this->layoutsData['body']['body_companies_box']['data'] as $item){ $url="/".$l."/companies/card/".$item['id']."-".Tools_View::getUrlAlias($item['name'], true)."/";?>
 	<div class="body_companies_company_box fl">
-		<a href="<?php echo $url;?>">
-			<img src="http://admin.expopromoter.com/data/images/companies/<?php echo $item['id'];?>/logo_small.jpg"/>
-		</a>
+		<div class="body_companies_company_img_box cl">
+			<a href="<?php echo $url;?>">
+				<img src="http://admin.expopromoter.com/data/images/companies/<?php echo $item['id'];?>/logo.jpg"/>
+			</a>
+		</div>
 		<a href="<?php echo $url; ?>">
 			<?php echo $item['name'];?>
 		</a>
 	</div>
-<?php } ?>
+	<?php } ?>
 </div>

@@ -85,5 +85,7 @@ class CompaniesController extends Abstract_Controller_FrontendController {
 
 	public function onlineAction(){
 		$this->view->activeSubmenu = 'online';
+		$this->view->layoutsData['right'] = array();
+		$this->view->layouts['right'] = array();
 	}
 }

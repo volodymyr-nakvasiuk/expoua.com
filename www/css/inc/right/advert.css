@@ -18,9 +18,9 @@
 .right_advert_text_box {
 	width: 125px;
 }
-.right_advert_text_box span.text {
-	color: #999999;
-	font-size: 9px;
+.right_advert_text_box span.text a {
+	color: #333333;
+	font-size: 10px;
 	margin-left: 10px;
 }
 .right_advert_text_box a {
