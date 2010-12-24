@@ -207,6 +207,12 @@ body, html {
 	width: 100%;
 	margin-top:20px;
 }
+#bottomBox {
+	clear: both;
+	float: none;
+	width: 100%;
+	margin-top:20px;
+}
 /*end front*/
 .paging {
 	margin-top:20px;

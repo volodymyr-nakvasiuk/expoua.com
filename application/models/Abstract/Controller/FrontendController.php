@@ -285,6 +285,7 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 			'right'=>array(),
 			'bottomRow'=>array(),
 			'bottom'=>array(),
+			'bottomBox'=>array(),
 		);
 
 		$this->view->layouts['head'] = array(
@@ -304,8 +305,9 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 		$this->view->layouts['extra'] = array();
 		$this->view->layouts['right'] = array();
 		$this->view->layouts['bottomRow'] = array();
-		$this->view->layouts['bottom'] = array(
-			'footer_box'=>array('inc/bottom/footer', 100),
+		$this->view->layouts['bottom'] = array();
+		$this->view->layouts['bottomBox'] = array(
+			'all_footer_box'=>array('inc/bottom/footer', 100),
 		);
 		
 		$this->setMeta();

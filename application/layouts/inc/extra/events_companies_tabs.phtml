@@ -1,0 +1,21 @@
+<div class="ec_tabs_body_box cl">
+	<div class="cl" id="ec_tabs">
+		<ul>
+			<?php
+			$tabsContent = '';
+			foreach ($this->ecTabsData as $tab_id=>$tab_data){
+				$tabsContent .= '<div class="ec_tab_box ec_'.$tab_id.'_tab" id="'.$tab_id.'">'.$this->run('inc/events_companies_tabs/'.$tab_id.'.phtml').'</div>';
+			?>
+				<li class="tab_title_<?php echo $tab_id;?>"><a href="#<?php echo $tab_id;?>"><?php echo $tab_data['title'];?></a></li>
+			<?php
+			}
+			?>
+		</ul>
+		<?php echo $tabsContent; ?>
+	</div>
+</div>
+<script type="text/javascript">
+	$(function() {
+		$('#ec_tabs').tabs();
+	});
+</script>

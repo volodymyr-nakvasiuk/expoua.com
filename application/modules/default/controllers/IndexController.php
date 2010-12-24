@@ -30,6 +30,15 @@ class IndexController extends Abstract_Controller_FrontendController {
 		$this->view->layoutsData['center']['center_companies_news_box'] = $grid->getData();
 		$this->view->layouts['center']['center_companies_news_box'] = array('inc/center/company_news', 100);
 
+		$this->view->ecTabsData = array(
+			'events' => array(
+				'title'=>'test1'
+			),
+			'companies' => array(
+				'title'=>'test2'
+			),
+		);
+		$this->view->layouts['extra']['extra_events_companies_tabs_box'] = array('inc/extra/events_companies_tabs', 100);
 		//$this->view->layouts['extra']['extra_companies_goods_box'] = array('inc/extra/goods_slider', 100);
 	}
 }

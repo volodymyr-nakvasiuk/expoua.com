@@ -182,6 +182,16 @@
 		</div>
 		<?php } ?>
 	</div>
+	<?php /* ========== bottomBox ========== */?>
+	<?php if (!empty($this->layouts['bottomBox'])){?>
+	<div id="bottomBox">
+		<?php
+     		foreach ($this->layouts['bottomBox'] as $class => $path) {
+				echo '<div class="'.$class.'">'.$this->render($path.'.phtml').'</div>';
+			}
+		?>
+	</div>
+	<?php } ?>
 </div>
 
 <script type="text/javascript">
