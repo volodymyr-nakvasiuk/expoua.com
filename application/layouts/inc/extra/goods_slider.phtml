@@ -1,27 +1,42 @@
+<?php
+	$l = $this->lang->getLocale();
+	$onPage = 12;
+	$c = count($this->layoutsData['extra']['extra_companies_goods_box']['data']);
+?>
 <div class="rc_t extra_products_inner_content"><div class="rc_r"><div class="rc_b"><div class="rc_l">
 	<div class="rc_tl"><div class="rc_tr"><div class="rc_br"><div class="rc_bl">
-		<div class="extra_products_box cr">
+		<div class="extra_products_box cl">
 			<div class="extra_products_title cl">
-				<span>Товары и услуги компаний</span>
-				<input type="image" src="/img/index/btn_l.png"/>
-				<input type="image" src="/img/index/btn_r.png"/>
-				<em>1 из 2</em>
+				<span><?php echo $this->lang->translate('Products and services'); ?></span>
+				<a class="extra_products_prev">&nbsp;</a>
+				<a class="extra_products_next">&nbsp;</a>
+				<em>1</em><?php echo '<em>'.$this->lang->translate('of').'</em><em>'.ceil($c/$onPage).'</em>';?>
 			</div>
 		</div>
-		<div class="extra_products_images_box cr">
-			<img src="/img/index/test1.png">
-			<img src="/img/index/test1.png">
-			<img src="/img/index/test1.png">
-			<img src="/img/index/test1.png">
-			<img src="/img/index/test1.png">
-			<img src="/img/index/test1.png">
-
-			<img src="/img/index/test1.png">
-			<img src="/img/index/test1.png">
-			<img src="/img/index/test1.png">
-			<img src="/img/index/test1.png">
-			<img src="/img/index/test1.png">
-			<img src="/img/index/test1.png">
+		<div class="scrollable extra_products_body">
+			<div class="items extra_products_images_box cl">
+				<div class="page">
+<?php
+	$i=0;
+	foreach ($this->layoutsData['extra']['extra_companies_goods_box']['data'] as $item){
+?>
+		<div class="extra_products_image_box fl">
+			<a href="<?php echo '/'.$l.'/companies/card/'.$item['companies_id'].'/'.Init_Companies_Services::$tab_name.'/card/'.$item['id'].'/'; ?>">
+				<img src="http://admin.expopromoter.com/data/images/companies/<?php echo $item['companies_id']; ?>/services/logo/<?php echo $item['id'];?>.jpg">
+			</a>
+		</div>
+<?php
+		$i++;
+		if($i%$onPage==0 && $i!=$c){
+?>
+				</div>
+				<div class="page">
+<?php
+		}
+	}
+?>
+				</div>
+			</div>
 		</div>
 	</div></div></div></div>
 </div></div></div></div>

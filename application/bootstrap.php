@@ -33,6 +33,16 @@ class Bootstrap {
 	
 	public static $root = '';
 	public static $registry = null;
+	public static $dbConfigs = array('opt','banners');
+	public static $defaultDbConfig = 'opt';
+
+	public static function prepareFileName($fileName) {
+		return str_replace(
+			array('\\', '/', ':', '*', '?', '"', '<', '>', '|'),
+			'',
+			$fileName
+		);
+	}
 
 	public static function run() {
 		self::prepare ();
@@ -227,14 +237,16 @@ class Bootstrap {
 	}
 
 	public static function setupConfiguration() {
-		$config = new Zend_Config_Ini ( self::$root . '/application/config/main.ini', APPLICATION_ENVIRONMENT );
-		self::$registry->configuration = $config;
-
-		self::$registry->configurations = array('default'=>$config);
-		$extras = array('banners');
-		foreach ($extras as $extra){
-			$config = new Zend_Config_Ini ( self::$root . '/application/config/main.ini', APPLICATION_ENVIRONMENT.'_'.$extra );
-			self::$registry->configurations[$extra] = $config;
+		$dbConfigFile = self::$root . '/application/config/db/'.APPLICATION_ENVIRONMENT.'/'.self::prepareFileName(php_uname()).'.ini';
+		try {
+			foreach (self::$dbConfigs as $dbConfigName){
+				self::$registry->configurations[$dbConfigName] = new Zend_Config_Ini ( $dbConfigFile, $dbConfigName );
+			}
+			self::$registry->configuration = self::$registry->configurations[self::$defaultDbConfig];
+		}
+		catch (Zend_Config_Exception $e) {
+			header("Location: ".HOST_NAME."/config.php?m=db&e=".APPLICATION_ENVIRONMENT);
+			exit;
 		}
 	}
 

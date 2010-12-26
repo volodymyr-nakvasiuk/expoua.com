@@ -32,6 +32,9 @@ class IndexController extends Abstract_Controller_FrontendController {
 		$this->view->layoutsData['center']['center_companies_news_box'] = $grid->getData();
 		$this->view->layouts['center']['center_companies_news_box'] = array('inc/center/company_news', 100);
 
+		$grid = new Crud_Grid_CompanyOneService(null, array('photo'=>1, 'limit'=>36));
+		$grid->currentSelect->group('companies_id');
+		$this->view->layoutsData['extra']['extra_companies_goods_box'] = $grid->getData();
 		$this->view->layouts['extra']['extra_companies_goods_box'] = array('inc/extra/goods_slider', 100);
 
 		$init = new Init_EventsCompaniesTabs();

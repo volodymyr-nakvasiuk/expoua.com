@@ -29,6 +29,7 @@ class Crud_Grid_CompanyOneService extends ArOn_Crud_Grid {
 
 		$this->filters->setPrefix(false);
 		$this->filters->fields = array(
+			'photo' => new ArOn_Crud_Grid_Filter_Field_Value('photo','ID',ArOn_Db_Filter_Field::EQ),
 			'id' => new ArOn_Crud_Grid_Filter_Field_Value('id','ID',ArOn_Db_Filter_Field::EQ),
 			'languages_id' => new ArOn_Crud_Grid_Filter_Field_Search('languages_id','Язык новости',array(
 				array(

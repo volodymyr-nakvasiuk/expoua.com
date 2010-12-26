@@ -47,7 +47,7 @@ class ArOn_Crud_Grid extends ArOn_Crud_Cache{
 	/**
 	 * @var ArOn_Db_TableSelect
 	 */
-	protected $currentSelect;
+	public $currentSelect;
 
 	protected $renderTitle = true;
 

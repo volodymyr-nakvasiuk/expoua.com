@@ -31,3 +31,7 @@ syntax: regexp
 ^admin/application/wsConfig.php
 syntax: regexp
 ^admin/htdocs/data
+syntax: regexp
+^application/config/db
+syntax: regexp
+^application/config/admin

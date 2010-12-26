@@ -613,3 +613,16 @@ button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra pad
  */
 .ui-progressbar { height:2em; text-align: left; }
 .ui-progressbar .ui-progressbar-value {margin: -1px; height:100%; }
+
+/* For tools */
+.scrollable {
+	position:relative;
+	overflow:hidden;
+}
+.scrollable .items {
+	width:20000em;
+	position:absolute;
+}
+.items div {
+	float:left;
+}

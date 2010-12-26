@@ -21,6 +21,14 @@ switch(APPLICATION_ENVIRONMENT){
 		define ( 'ADMIN_HOST_NAME', 'http://admin.test.expoua.com' );
 		define ( 'COOKIE_HOST_NAME', 'test.expoua.com' );
 		break;
+	case 'cron':
+		$host = str_replace('cron.','',$_SERVER["HTTP_HOST"]);
+		define ( 'HOST_NAME', 'http://'.$host );
+		define ( 'IMG_HOST_NAME', 'http://img1.'.$host );
+		define ( 'STATIC_HOST_NAME', 'http://static.'.$host );
+		define ( 'ADMIN_HOST_NAME', 'http://admin.'.$host );
+		define ( 'COOKIE_HOST_NAME', $host );
+		break;
 	default:
 		define ( 'HOST_NAME', 'http://expoua.com' );
 		define ( 'IMG_HOST_NAME', 'http://img1.expoua.com' );
