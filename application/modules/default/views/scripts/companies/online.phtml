@@ -1,3 +1,28 @@
+<?php
+	$data = array(
+		array(
+			'id'=>1,
+			'left'=>'0',
+			'top'=>'0',
+			'width'=>'60',
+			'height'=>'60',
+		),
+		array(
+			'id'=>3,
+			'left'=>'30',
+			'top'=>'70',
+			'width'=>'130',
+			'height'=>'130',
+		),
+		array(
+			'id'=>2,
+			'left'=>'100',
+			'top'=>'220',
+			'width'=>'255',
+			'height'=>'255',
+		),
+	);
+?>
 <div class="exhib_cat_content_box fl">
 	<div class="exhib_cat_back_lnk cl">
 		&larr<a href="#">вернутся к онлайн выставке</a>
@@ -12,8 +37,10 @@
 </div>
 <div class="sqares_outer_box cl">
 	<div class="sqares_inner_box cl">
-		<div class="small_sq" style="top: 0px; left: 0px;"></div>
-		<div class="mid_sq" style="top: 70px; left: 0px;"></div>
-		<div class="big_sq" style="top: 220px; left: 0px;"></div>
+<?php foreach($data as $item){?>
+		<div class="online_sq" style="top: <?php echo $item['top']; ?>px; left: <?php echo $item['top']; ?>px; background-image: url(/img/sqares/expo_sq_<?php echo $item['width'].'x'.$item['height']; ?>.png); width: <?php echo $item['width']; ?>px; height: <?php echo $item['height']; ?>px;">
+			<div class="inner_online_sq"><?php echo $item['id']; ?></div>
+		</div>
+<?php } ?>
 	</div>
 </div>

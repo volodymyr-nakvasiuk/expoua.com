@@ -5,23 +5,14 @@
 .sqares_outer_box {
 	width: 978px;
 }
-.small_sq {
-	background: url(/img/sqares/sm_expo.png) no-repeat 0 0 scroll;
-	width: 60px;
-	height: 60px;
+.online_sq {
 	position: absolute;
+	background: no-repeat 0 0 scroll;
 }
-.mid_sq {
-	background: url(/img/sqares/mid_expo.png) no-repeat 0 0 scroll;
-	width: 130px;
-	height: 129px;
+.inner_online_sq {
 	position: absolute;
-}
-.big_sq {
-	background: url(/img/sqares/big_expo.png) no-repeat 0 0 scroll;
-	width: 255px;
-	height: 255px;
-	position: absolute;
+	bottom: 7px;
+	left: 7px;
 }
 
 .exhib_cat_back_lnk a { color: #999999;}
