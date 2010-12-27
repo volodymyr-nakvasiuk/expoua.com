@@ -238,6 +238,7 @@ class Bootstrap {
 
 	public static function setupConfiguration() {
 		$dbConfigFile = self::$root . '/application/config/db/'.APPLICATION_ENVIRONMENT.'/'.self::prepareFileName(php_uname()).'.ini';
+		self::$registry->configurations = array();
 		try {
 			foreach (self::$dbConfigs as $dbConfigName){
 				self::$registry->configurations[$dbConfigName] = new Zend_Config_Ini ( $dbConfigFile, $dbConfigName );
@@ -340,7 +341,7 @@ class Bootstrap {
 		if (APPLICATION_CACHE_MODE == 'off'){
 			ArOn_Cache_Type_Db::$tableBackhend = ArOn_Cache_Type_Abstract::FILE;
 		}
-		
+
 		Zend_Db_Table::setDefaultAdapter ( self::$registry->database );
 		
 		if(APPLICATION_ENVIRONMENT!='cron'){

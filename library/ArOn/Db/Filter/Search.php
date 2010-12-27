@@ -33,7 +33,7 @@ class ArOn_Db_Filter_Search extends ArOn_Db_Filter {
 			$field = $table->applyAlias ( $field, $alias );
 				
 			if ($criteria === self::EQ) {
-				$where [] = "$field = $exprEq";
+				$where [] = $field.(($exprEq==='NULL')?" IS NULL":" = ".$exprEq);
 			} elseif ($criteria === self::LIKE) {
 				$where [] = "$field LIKE $exprLike";
 			} elseif ($criteria === self::BEGINS) {

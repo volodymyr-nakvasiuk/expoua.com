@@ -1,46 +1,33 @@
 <?php
-	$data = array(
-		array(
-			'id'=>1,
-			'left'=>'0',
-			'top'=>'0',
-			'width'=>'60',
-			'height'=>'60',
-		),
-		array(
-			'id'=>3,
-			'left'=>'30',
-			'top'=>'70',
-			'width'=>'130',
-			'height'=>'130',
-		),
-		array(
-			'id'=>2,
-			'left'=>'100',
-			'top'=>'220',
-			'width'=>'255',
-			'height'=>'255',
-		),
-	);
+	$l = $this->lang->getLocale();
 ?>
 <div class="exhib_cat_content_box fl">
 	<div class="exhib_cat_back_lnk cl">
-		&larr<a href="#">вернутся к онлайн выставке</a>
+		<?php echo $this->lang->translate('Welcome to online trade show'); ?>
 	</div>
 	<div class="exhib_cat_title_box cl">
-		<div class="title cl">Безопасность, оборона 2010</div>
+		<div class="title cl"><?php echo $this->lang->translate('Trade show Online').date(' Y'); ?></div>
 	</div>
 </div>
 <div class="add_comp_box fr">
-	<a href="#">Добавить компанию</a>
+	<a href="#"><?php echo $this->lang->translate("Add company");?></a>
 	<em>67584</em>&nbsp;<span>компаний в базе</span>
 </div>
-<div class="sqares_outer_box cl">
-	<div class="sqares_inner_box cl">
-<?php foreach($data as $item){?>
-		<div class="online_sq" style="top: <?php echo $item['top']; ?>px; left: <?php echo $item['top']; ?>px; background-image: url(/img/sqares/expo_sq_<?php echo $item['width'].'x'.$item['height']; ?>.png); width: <?php echo $item['width']; ?>px; height: <?php echo $item['height']; ?>px;">
-			<div class="inner_online_sq"><?php echo $item['id']; ?></div>
+<?php foreach($this->data as $showRoom){?>
+<div class="sqares_outer_box cl" style="width:<?php echo $showRoom['width']+10; ?>px; height:<?php echo $showRoom['height']+10; ?>px;">
+	<div class="sqares_inner_box cl" style="width:<?php echo $showRoom['width']; ?>px; height:<?php echo $showRoom['height']; ?>px;">
+	<?php foreach($showRoom['places'] as $item){?>
+		<div class="online_sq" style="top: <?php echo $item['top']; ?>px; left: <?php echo $item['top']; ?>px; background-image: url(/img/sqares/expo_sq_<?php echo $item['width'].'x'.$item['height']; ?>.png); width: <?php echo ($item['width']+5); ?>px; height: <?php echo ($item['height']+5); ?>px;">
+			<?php if ($item['companies_id']){ $url="/".$l."/companies/card/".$item['companies_id']."-".Tools_View::getUrlAlias($item['name'], true)."/"?>
+			<a href="<?php echo $url;?>">
+			<div class="inner_online_content_box" style="width: <?php echo $item['width']; ?>px; height: <?php echo $item['height']; ?>px; line-height: <?php echo $item['height']; ?>px;">
+				<img style="width: <?php echo $item['width']; ?>px;" src="http://admin.expopromoter.com/data/images/companies/<?php echo $item['companies_id'];?>/logo.jpg"/>
+			</div>
+			</a>
+			<?php } ?>
+			<div class="inner_online_sq"><?php echo $item['showrooms_order']; ?></div>
 		</div>
-<?php } ?>
+	<?php } ?>
 	</div>
 </div>
+<?php } ?>

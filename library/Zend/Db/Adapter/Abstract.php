@@ -846,6 +846,8 @@ abstract class Zend_Db_Adapter_Abstract
             return implode(', ', $value);
         }
 
+		if ($value === 'NULL') return 'NULL';
+
         if ($type !== null && array_key_exists($type = strtoupper($type), $this->_numericDataTypes)) {
             $quotedValue = '0';
             switch ($this->_numericDataTypes[$type]) {
