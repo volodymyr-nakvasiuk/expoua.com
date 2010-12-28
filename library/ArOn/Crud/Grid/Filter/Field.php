@@ -17,6 +17,7 @@ class ArOn_Crud_Grid_Filter_Field implements ArOn_Crud_Grid_Filter_Field_Interfa
 	 * @var Zend_Form_Element
 	 */
 	protected $element;
+	protected $_width = 200;
 
 	public $table;
 
@@ -50,6 +51,7 @@ class ArOn_Crud_Grid_Filter_Field implements ArOn_Crud_Grid_Filter_Field_Interfa
 	public function createElement() {
 		$this->loadHelper ();
 		$this->element = new $this->elementClassName ( $this->formElementName, array ('disableLoadDefaultDecorators' => true ) );
+		$this->element->setAttrib ( 'width', $this->_width );
 		$this->element->setLabel ( $this->title );
 		if (@ $this->default)
 		$this->element->setValue ( $this->default );

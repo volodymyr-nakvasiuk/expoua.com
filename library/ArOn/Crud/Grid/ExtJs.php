@@ -6,7 +6,7 @@ class ArOn_Crud_Grid_ExtJs extends ArOn_Crud_Grid {
 	protected $_idProperty = 'id'; //параметр, который будет использоваться для редактирования,удаления записей из грида
 	protected $_CRUD_NAME = 'crud';	
 	protected $_associate_with   = array(); //массив связанных с данным гридом елементов
-	
+	public $renderFilterForm = true;
 	
 	protected $_region = 'center';
 	protected $_store_var = 'store';
@@ -27,6 +27,8 @@ class ArOn_Crud_Grid_ExtJs extends ArOn_Crud_Grid {
 	protected $_directionParameter = 'dir';
 	
 	protected $_baseParams = array();
+
+	private $_formTemplatePrefix = 'ArOn_Crud_Form_ExtJs_';
 	
 	//protected $_parentParamName = false;
 	
@@ -287,13 +289,17 @@ class ArOn_Crud_Grid_ExtJs extends ArOn_Crud_Grid {
 		//$start = ( $this->getPage() ) * $this->getLimit();
 		//$html .= "store.load({params:{start:" . $start . ", limit:" . $this->getLimit() . "}});\r\n";
 		
-		$html .= "var ".$this->getItem()." = new Ext.grid.GridPanel({
+		$html .= "var ".$this->getItem()." = new Ext.Panel({
+				layout: 'border',
+				width:". $this->getGridWidth() .",
+				height:550,
+				region: '".$this->_region."',".
+				($this->_is_associated?"split: true,":"").
+				"items:[
+					new Ext.grid.GridPanel({
+						split: true,
 						title:'" . $this->gridTitle . "',
-        				store: ".$this->_store_var.'_'.$this->_action_index.",";
-		$html .= "region: '".$this->_region."',";
-		if ($this->_is_associated){
-			$html .= "split: true,";
-		}
+						store: ".$this->_store_var.'_'.$this->_action_index.",";
 		$html .= " columns: [ \r\n";
 		$columns = array();
 		foreach ( $this->fieldNames as $name => $field ) {
@@ -312,10 +318,10 @@ class ArOn_Crud_Grid_ExtJs extends ArOn_Crud_Grid {
 				$column[] = "hidden: true";
 			if($render_function = $this->fieldData [$name]->getRenderFunction())
 				$column[] = "renderer: " . $render_function;
-			if($width = $this->fieldData [$name]->getWidth()){			
+			if($width = $this->fieldData [$name]->getWidth()){
 				$column[] = "width: " . $width*$this->_width_coef;
 			}
-			if($child = $this->fieldData [$name]->getAction())			
+			if($child = $this->fieldData [$name]->getAction())
 				$column[] = "childGrid: '" . $child . "'";
 			if($param_name = $this->fieldData [$name]->getParamName()){
 				$column[] = "childParam: '" . $param_name . "'";
@@ -329,24 +335,65 @@ class ArOn_Crud_Grid_ExtJs extends ArOn_Crud_Grid {
 			     //viewConfig: { forceFit: true},";
 		
 		$html .= $this->renderLinks();
-					       
-		$html .=   "
-			        width:". $this->getGridWidth() .",					
-			        height:550
-			    });
+		$html .= "region: 'center'";
+		$html .= "
+				})
+			".($this->renderFilterForm?",".$this->getFilterForm():"")."]
+		});
 			  ".(($this->renderAction)
 						? (
-						$this->getItem().".on('celldblclick', celldblclick_".$this->_action_index.");"
-						.$this->getItem().".on('cellclick', cellclick_".$this->_action_index.");"
-						.$this->getItem().".getSelectionModel().on('selectionchange', selectionchange_".$this->_action_index.");"
-						.$this->getItem().".on('keypress', keypress_".$this->_action_index.");"
+						$this->getGridItem().".on('celldblclick', celldblclick_".$this->_action_index.");"
+						.$this->getGridItem().".on('cellclick', cellclick_".$this->_action_index.");"
+						.$this->getGridItem().".getSelectionModel().on('selectionchange', selectionchange_".$this->_action_index.");"
+						.$this->getGridItem().".on('keypress', keypress_".$this->_action_index.");"
 						)
 						: "")
 						;
 		
 		return $html;
 	}
-	
+
+	public function getFilterForm (){
+		$html = "new Ext.FormPanel({
+					title:'Фильтры',
+					region: 'north',
+					collapsible:true,
+					collapsed:true,
+					labelWidth: 50,
+					split: true,
+					id: 'filterform-".$this->getItem()."',
+					name: 'filterform-".$this->getItem()."',
+					frame: true,
+					autoScroll: true,
+					bodyStyle:'padding:5px 5px 0',
+					border:false,
+				";
+
+		$extjsFormItems = array();
+		foreach ($this->filters->fields as $field){
+			$element = $field->getElement();
+			$name = substr($element->helper,4);
+			if($name == 'Submit') continue;
+			$classname = (class_exists($this->_formTemplatePrefix . $name) ) ? $this->_formTemplatePrefix . $name : $this->_formTemplatePrefix . 'Element';
+			$extjsFormItem = new $classname ( $element );
+			$extjsFormItems[] = $extjsFormItem->render();
+		}
+		$html .= "items: [ " . implode(", ",$extjsFormItems) . "],";
+		$html .= "buttons: [{
+								text: 'Применить',
+								handler: function(){
+									var fFields = ".$this->getFilterItem().".getForm().getValues();
+									".$this->_store_var.'_'.$this->_action_index.".baseParams = ".$this->_store_var.'_'.$this->_action_index.".baseParams || {};
+									for(var f in fFields){
+										".$this->_store_var.'_'.$this->_action_index.".baseParams[f] = fFields[f];
+									}
+									".$this->_store_var.'_'.$this->_action_index.".reload({params: {start:0}});
+								}
+							}]";
+		$html .= "})";
+		return $html;
+	}
+
 	public function renderCore (){
 		$this->preRender();
 		return $this->renderGrid();
@@ -354,7 +401,7 @@ class ArOn_Crud_Grid_ExtJs extends ArOn_Crud_Grid {
 	
 	public function renderBody() {
 		$html = '{';
-		$html .= 'success:true,';		
+		$html .= 'success:true,';
 		$active_row = false;
 		$data = $this->getData ();
 		$html .= 'results:' . $data['all_count'] . ',';
@@ -392,7 +439,7 @@ class ArOn_Crud_Grid_ExtJs extends ArOn_Crud_Grid {
 		
 		if ($active_row) {
 			//						$active_row = str_replace('<tr class="record','<tr class="active',$active_row);
-		//						$html = $active_row.$html;						
+		//						$html = $active_row.$html;
 		} elseif ($this->activeRow) {
 			$row_html = '';
 			$select = clone $this->currentSelect;
@@ -404,7 +451,7 @@ class ArOn_Crud_Grid_ExtJs extends ArOn_Crud_Grid {
 			$row = $this->table->fetchRow ( $select );
 			if ($row !== null) {
 				$row = $row->toArray ();
-				$row_id = @$row [$this->rowIdName];				
+				$row_id = @$row [$this->rowIdName];
 				
 			}
 		}
@@ -505,7 +552,7 @@ class ArOn_Crud_Grid_ExtJs extends ArOn_Crud_Grid {
 	
 	protected function renderAction_create (){
 		return "
-					var b = Ext.merge(".$this->getItem().".getStore().baseParams);
+					var b = Ext.merge(".$this->getGridItem().".getStore().baseParams);
 					b.id = 0;
 					if (b['dir']) delete b['dir'];
 					if (b['sort']) delete b['sort'];
@@ -523,7 +570,7 @@ class ArOn_Crud_Grid_ExtJs extends ArOn_Crud_Grid {
 	
 	protected function renderAction_edit (){
 		return "
-					var m = ".$this->getItem().".getSelectionModel().getSelections();
+					var m = ".$this->getGridItem().".getSelectionModel().getSelections();
 					if(m.length == 1) {
 						Ext.get('loader').load({
 							waitMsg:'Загрузка...',
@@ -544,7 +591,7 @@ class ArOn_Crud_Grid_ExtJs extends ArOn_Crud_Grid {
 	
 	protected function renderAction_remove (){
 		return "
-					var m = ".$this->getItem().".getSelectionModel().getSelections();
+					var m = ".$this->getGridItem().".getSelectionModel().getSelections();
 					if(m.length > 0) {
 						Ext.MessageBox.confirm('Информация', 'Вы действительно хотите удалить выбранные объекты?' , function (btn) {
 							if(btn == 'yes') {
@@ -568,7 +615,7 @@ class ArOn_Crud_Grid_ExtJs extends ArOn_Crud_Grid {
 											else if (response.message) err = '<b>Ответ от сервера:</b><hr />' + response.message;
 											Ext.MessageBox.alert('Ошибка', err);
 										} else {
-											".$this->getItem().".getSelectionModel().each(function(){
+											".$this->getGridItem().".getSelectionModel().each(function(){
 												".$this->_store_var.'_'.$this->_action_index.".remove(this.getSelected());
 											});
 											Ext.MessageBox.alert('Информация', response.message);
@@ -590,7 +637,7 @@ class ArOn_Crud_Grid_ExtJs extends ArOn_Crud_Grid {
 	
 	protected function renderAction_duplicate (){
 		return "
-					var m = ".$this->getItem().".getSelectionModel().getSelections();
+					var m = ".$this->getGridItem().".getSelectionModel().getSelections();
 					if(m.length > 0) {
 						Ext.MessageBox.confirm('Информация', 'Вы действительно хотите клонировать выбранные объекты?' , function (btn) {
 							if(btn == 'yes') {
@@ -756,12 +803,20 @@ class ArOn_Crud_Grid_ExtJs extends ArOn_Crud_Grid {
 		else
 			return @$this->default ['p'];
 	}
+
+	public function getGridItem(){
+		return $this->getItem().".items.get(0)";
+	}
+
+	public function getFilterItem(){
+		return $this->getItem().".items.get(1)";
+	}
 	
 	public function getItem(){
 		return str_replace('-', '__', $this->_item_var.'_'.$this->ajaxActionName.'_'.$this->_action_index);
 	}
 	
-	public function getWinId(){		
+	public function getWinId(){
 		return $this->_win_id;
 	}
 	
