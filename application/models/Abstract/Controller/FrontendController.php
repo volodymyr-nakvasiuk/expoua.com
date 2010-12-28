@@ -248,17 +248,6 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 	
 	protected function setupLayouts(){
 		$this->view->banners = array();
-
-		$this->view->layouts['right']['right_banner_box'] = array('inc/right/banner', 100);
-
-		$tool = new Tools_Banner(null, $this->moduleName, $this->brandsCategoryId);
-		$this->view->layoutsData['right']['right_advert_box'] = $tool->getData();
-		$tool->updateStat();
-		$this->view->layouts['right']['right_advert_box'] = array('inc/right/advert', 100);
-
-		$grid = new Crud_Grid_Companies(null, array('country'=>52,'limit'=>20));
-		$this->view->layoutsData['right']['right_companies_box'] = $grid->getData();
-		$this->view->layouts['right']['right_companies_box'] = array('inc/right/top_companies', 100);
 	}
 	
 	protected function initCache() {

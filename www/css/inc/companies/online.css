@@ -2,9 +2,6 @@
 #body {
 	width: 100% !important;
 }
-.sqares_outer_box {
-	width: 978px;
-}
 .online_sq {
 	position: absolute;
 	background: no-repeat 0 0 scroll;
@@ -13,6 +10,19 @@
 	position: absolute;
 	bottom: 7px;
 	left: 7px;
+}
+.inner_online_content_box {
+	background-color:#ffffff;
+	margin: 1px 0 0 1px;
+	vertical-align: middle;
+}
+.inner_online_content_box img {
+	display:-moz-inline-box;
+	display:inline-block;
+	vertical-align:middle;
+	zoom:1;
+	//display:inline;
+	position: relative;
 }
 
 .exhib_cat_back_lnk a { color: #999999;}
@@ -46,11 +56,11 @@
 .sqares_outer_box {
 	border: 1px solid #a9d6ec;
 	background-color: #ebf6ff;
+	width:100%;
 }
 .sqares_inner_box {
-	margin: 5px;
+	margin: 4px;
 	background-color: #fff;
 	border: 1px solid #a9d6ec;
 	position: relative;
-	height: 500px;
 }

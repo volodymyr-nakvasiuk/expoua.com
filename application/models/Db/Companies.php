@@ -9,6 +9,7 @@ class Db_Companies extends ArOn_Db_Table {
 	protected $_dependentTables = array(
 		'Db_Lang_CompaniesData',
 		'Db_Companies2Categories',
+		'Db_OnlinePlaces',
 	);
 
 	protected $_referenceMap    = array(
