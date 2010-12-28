@@ -2,7 +2,7 @@
 class Db_OnlinePlaces extends ArOn_Db_Table {
 	protected $_primary = 'id';
 	protected $_name = 'online_places';
-	protected $_name_expr = "id";
+	protected $_name_expr = "showrooms_order";
 	protected $_is_deleted = false;
 	protected $_order_expr = 'id';
 

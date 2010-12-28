@@ -317,6 +317,7 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 		->appendFile('/js/jquery/min.js')
 		->appendFile('/js/fixie.js')
 		->appendFile('/js/funcs.js')
+		->appendFile('/js/jquery/tooltip.js')
 		;
 	}
 	

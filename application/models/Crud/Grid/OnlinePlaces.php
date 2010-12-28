@@ -21,6 +21,8 @@ class Crud_Grid_OnlinePlaces extends ArOn_Crud_Grid {
 			'showrooms_order' => new ArOn_Crud_Grid_Column_Numeric("Номер в зале",null,true,false,'100'),
 			'name' => new ArOn_Crud_Grid_Column_JoinOne("Название компании",array('Db_Companies','Db_Lang_CompaniesData'),'name',null,false,'200'),
 			'description' => new ArOn_Crud_Grid_Column_JoinOne("Описание компании",array('Db_Companies','Db_Lang_CompaniesData'),'description',null,false,'200'),
+			'regions_id' => new ArOn_Crud_Grid_Column_JoinOne("Регион",array('Db_Companies', 'Db_LocationCities','Db_LocationCountries'),'regions_id',null,false,'200'),
+			'countries_id' => new ArOn_Crud_Grid_Column_JoinOne("Страна",array('Db_Companies', 'Db_LocationCities'),'countries_id',null,false,'200'),
 			'cities_id' => new ArOn_Crud_Grid_Column_JoinOne("Город",array('Db_Companies'),'cities_id',null,false,'200'),
 			'logo' => new ArOn_Crud_Grid_Column_JoinOne("Город",array('Db_Companies'),'logo',null,false,'200'),
 			'top' => new ArOn_Crud_Grid_Column_Numeric("По вертикали",null,true,false,'100'),

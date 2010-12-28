@@ -6,6 +6,7 @@ class Cms_JsonController extends Abstract_Controller_CmsController {
 		'siteActs' => 'action_controller_id',
 		'lang_LocationCountriesData'=>'regions_id',
 		'lang_LocationCitiesData'=>'countries_id',
+		'lang_Companies2Data'=>'cities_id',
 	);
 	
 	public function init(){

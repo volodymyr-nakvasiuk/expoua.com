@@ -94,5 +94,8 @@ class CompaniesController extends Abstract_Controller_FrontendController {
 
 		$init = new Init_OnlineExpo();
 		$this->view->data = $init->getData();
+
+		$statistics = new Init_Statistics();
+		$this->view->statistics['company_count'] = $statistics->getCompaniesCount();
 	}
 }

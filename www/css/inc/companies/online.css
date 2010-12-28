@@ -64,3 +64,50 @@
 	border: 1px solid #a9d6ec;
 	position: relative;
 }
+.online_tooltip {
+	width: 450px;
+	position: absolute;
+	border: 1px solid #c2d1de;
+	background-color: #ffffff;
+}
+.popup_content_box {
+	margin: 20px;
+}
+.main_content_box {
+}
+.main_top_block {}
+.main_top_block img{
+	width: 60px;
+	float: left;
+	clear: none;
+}
+.main_top_info_block {
+	margin-left: 15px;
+	width: 335px;
+}
+.main_top_info_block a {
+	font-size: 14px;
+	color: #dd5500;
+	display: block;
+}
+.main_top_info_block span {
+	display: inline-block;
+	margin-top: 7px;
+	color: #666666;
+}
+.main_top_info_block em {
+	display: inline-block;
+	margin-top: 7px;
+	color: #333333;
+	margin-left: 5px;
+	font-style: normal;
+}
+.bottom_link_box {
+	text-align: right;
+}
+.bottom_link_box a {
+	color: #0054a6;
+}
+.popup_box {
+	display:none;
+}
