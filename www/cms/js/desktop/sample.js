@@ -188,6 +188,24 @@ MyDesktop = new Ext.app.App({
 					title:'События',
 					url:'/cms/grid/events',
 					icon:'tabs'
+				}),
+				new Ext.app.Module({
+					id:'grid-win-online-showrooms',
+					title:'Залы',
+					url:'/cms/grid/online-showrooms',
+					icon:'bogus'
+				}),
+				new Ext.app.Module({
+					id:'grid-win-online-types',
+					title:'Типы стендов',
+					url:'/cms/grid/online-types',
+					icon:'bogus'
+				}),
+				new Ext.app.Module({
+					id:'grid-win-online-places',
+					title:'Размещения стендов',
+					url:'/cms/grid/online-places',
+					icon:'bogus'
 				})
 			];
 	},
@@ -227,6 +245,31 @@ MyDesktop = new Ext.app.App({
 											}
 										}//,
 										//this.getModule('grid-win-events').launcher
+									]
+								}
+							},
+							{
+								text:'Компании',
+								iconCls:'folder',
+								handler:function() {
+									return false;
+								},
+								menu:{
+									items: [
+										{
+											text:'Онлайн',
+											iconCls:'folder',
+											handler:function() {
+												return false;
+											},
+											menu:{
+												items: [
+													this.getModule('grid-win-online-showrooms').launcher,
+													this.getModule('grid-win-online-types').launcher,
+													this.getModule('grid-win-online-places').launcher
+												]
+											}
+										}
 									]
 								}
 							}

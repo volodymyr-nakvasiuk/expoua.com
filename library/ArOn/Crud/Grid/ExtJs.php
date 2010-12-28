@@ -6,7 +6,7 @@ class ArOn_Crud_Grid_ExtJs extends ArOn_Crud_Grid {
 	protected $_idProperty = 'id'; //параметр, который будет использоваться для редактирования,удаления записей из грида
 	protected $_CRUD_NAME = 'crud';	
 	protected $_associate_with   = array(); //массив связанных с данным гридом елементов
-	public $renderFilterForm = true;
+	public $renderFilterForm = false;
 	
 	protected $_region = 'center';
 	protected $_store_var = 'store';
