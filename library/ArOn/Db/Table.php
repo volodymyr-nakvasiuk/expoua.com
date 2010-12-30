@@ -107,7 +107,7 @@ class ArOn_Db_Table extends Zend_Db_Table {
 			'frontend' => $frontend,
 			'backend'  => $backend,
 			'frontendOptions' => $frontendOptions,
-			'backendOptions' => $frontendOptions,
+			'backendOptions' => $backendOptions,
 			'customFrontendNaming' => $customFrontendNaming,
 			'customBackendNaming' => $customBackendNaming,
 			'autoload' => $autoload

@@ -111,3 +111,12 @@
 .popup_box {
 	display:none;
 }
+.tooltip_close {
+	position:absolute;
+	left:435px;
+	top:2px;
+	cursor:pointer;
+	font-size:14px;
+	font-weight:bold;
+	color: #8b0000;
+}

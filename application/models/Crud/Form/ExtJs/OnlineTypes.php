@@ -14,9 +14,11 @@ class Crud_Form_ExtJs_OnlineTypes extends ArOn_Crud_Form_ExtJs
 			'name' => new ArOn_Crud_Form_Field_Text('name',"Название"),
 			'width' => new ArOn_Crud_Form_Field_Numeric('width', 'Ширина'),
 			'height' => new ArOn_Crud_Form_Field_Numeric('height', 'Высота'),
+			'size' => new ArOn_Crud_Form_Field_Array2Select('size', 'Размер логотипа', null, true),
 			'banner' => new ArOn_Crud_Form_Field_Array2Select('banner', 'Баннер', null, true),
 		);
 
+		$this->fields['size']->setOptions(array('1' => "Большой (248x248)", '2' => "Средний (123x123)", '3' => "Маленький (53x53)"));
 		$this->fields['banner']->setOptions(array('0' => "Нет", '1' => "Да"));
 
 		if(empty($this->actionId)) unset($this->fields['id']);

@@ -11,13 +11,12 @@ function tooltip_init(){
 			return $(this).parent().parent().find('.tooltip_content').html();
 		},
 		top: 5,
-		left: 5
+		left: 5,
+		keepShowed:true,
+		closeButton: ".tooltip_close"
 	});
 }
 
 $(function (){
-	//if (getcookie('info_admin') != ''){
-	//}
-	//console.log(getcookie('info_admin'));
 	tooltip_init();
 });

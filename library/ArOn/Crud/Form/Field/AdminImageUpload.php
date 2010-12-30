@@ -6,7 +6,7 @@ class ArOn_Crud_Form_Field_AdminImageUpload extends ArOn_Crud_Form_Field_ImageUp
 	protected $waterMark = array('file'=>false, 'position'=>array(4), 'mode'=>7); //mode: big(+1),middle(+2),small(+4)
 	protected $resize = array('big'=>'620x465','middle'=>'240x180','small'=>'140x105');
 
-	function __construct($name, $uploadDirectory, $fileName = '{sha}', $db_just_filename = true, $title = null, $description = null, $size = '1024000' /* limit to 100K*/,$required = null, $notEdit = false, $width = 150, $del_img_source = false, $resize=false, $waterMark = false) {
+	function __construct($name, $uploadDirectory, $fileName = '{sha}', $db_just_filename = 1, $title = null, $description = null, $size = '1024000' /* limit to 100K*/,$required = null, $notEdit = false, $width = 150, $del_img_source = false, $resize=false, $waterMark = false) {
 		parent::__construct($name, $uploadDirectory, $fileName, $title, $description, $size,$required, $notEdit);
 		$this->_db_just_filename = $db_just_filename;
 		$this->del_img_source = $del_img_source;
@@ -48,9 +48,17 @@ class ArOn_Crud_Form_Field_AdminImageUpload extends ArOn_Crud_Form_Field_ImageUp
 			$file_resize_small  = $this->uploadDirectory.'/small/' .$pathinfo['basename'];
 			$file_resize_middle = $this->uploadDirectory.'/middle/'.$pathinfo['basename'];
 			$file_resize_big    = $this->uploadDirectory.'/big/'   .$pathinfo['basename'];
-			
-			if ($this->_db_just_filename) $this->fileName = $pathinfo['basename'];
-			else $this->fileName = preg_replace('|(.*)\.(.*)$|', '$1.jpg', $this->fileName);
+
+			switch ($this->_db_just_filename) {
+				case 0:
+					$this->fileName = preg_replace('|(.*)\.(.*)$|', '$1.jpg', $this->fileName);
+				case 1:
+					$this->fileName = $pathinfo['basename'];
+				case 2:
+					$this->fileName = 1;
+				default:
+					$this->fileName = preg_replace('|(.*)\.(.*)$|', '$1.jpg', $this->fileName);
+			}
 			/* Debuger: */
 			/*
 			 echo '$file_type = '.$file_type."\n";

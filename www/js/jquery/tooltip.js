@@ -14,7 +14,9 @@ js.include("jquery.dimensions");
 			extraClass: "",
 			top: 15,
 			left: 15,
-			id: "tooltip"
+			id: "tooltip",
+			keepShowed: false,
+			closeButton: false
 		},
 		block: function () {
 			$.tooltip.blocked = !$.tooltip.blocked;
@@ -93,6 +95,7 @@ js.include("jquery.dimensions");
 		if ($.tooltip.blocked || this == current || (!this.tooltipText && !settings(this).bodyHandler)) return;
 		current = this;
 		title = this.tooltipText;
+		helper.parent.hide();
 		if (settings(this).bodyHandler) {
 			helper.title.hide();
 			var bodyContent = settings(this).bodyHandler.call(this);
@@ -116,6 +119,14 @@ js.include("jquery.dimensions");
 			helper.title.html(title).show();
 			helper.body.hide();
 		}
+		if (settings(this).closeButton){
+			$(settings(this).closeButton, helper.body).click(function(){
+				if (tID) clearTimeout(tID);
+				current = null;
+				helper.parent.hide().css("opacity", "");
+			});
+		}
+
 		if (settings(this).showURL && $(this).url()) helper.url.html($(this).url().replace('http://', '')).show();
 		else helper.url.hide();
 		helper.parent.addClass(settings(this).extraClass);
@@ -179,7 +190,8 @@ js.include("jquery.dimensions");
 		};
 	}
 	function hide(event) {
-		if ($.tooltip.blocked) return;
+		//if (tID && current == this) clearTimeout(tID);
+		if ($.tooltip.blocked || settings(this).keepShowed) return;
 		if (tID) clearTimeout(tID);
 		current = null;
 		var tsettings = settings(this);

@@ -16,7 +16,7 @@ class Init_OnlineExpo{
 
 		foreach ($this->_data as &$showRoom){
 			$grid = new Crud_Grid_OnlinePlaces(null, array('limit'=>'all', 'showrooms_id'=>$showRoom['id']));
-			$data = $grid->getData();
+			$data = $grid->getDataWithRenderValues();
 			$showRoom['places'] = $data['data'];
 		}
 	}

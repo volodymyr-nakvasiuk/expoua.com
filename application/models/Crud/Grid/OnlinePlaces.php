@@ -16,6 +16,7 @@ class Crud_Grid_OnlinePlaces extends ArOn_Crud_Grid {
 		$this->table = "Db_OnlinePlaces";
 		$this->fields = array(
 			'id' => new ArOn_Crud_Grid_Column_Numeric('Id',null,true,false,'50'),
+			//'logo' => new ArOn_Crud_Grid_Column_Numeric('Логотип',null,true,false,'50'),
 			'showrooms_id' => new ArOn_Crud_Grid_Column_Numeric("Дата создания",null,true,false,'100'),
 			'companies_id' => new ArOn_Crud_Grid_Column_Numeric("Компания",null,true,false,'100'),
 			'showrooms_order' => new ArOn_Crud_Grid_Column_Numeric("Номер в зале",null,true,false,'100'),
@@ -29,8 +30,11 @@ class Crud_Grid_OnlinePlaces extends ArOn_Crud_Grid {
 			'left' => new ArOn_Crud_Grid_Column_Numeric("По горизонтали",null,true,false,'100'),
 			'width' => new ArOn_Crud_Grid_Column_JoinOne("Ширина",array('Db_OnlineTypes'),'width',null,false,'200'),
 			'height' => new ArOn_Crud_Grid_Column_JoinOne("Высота",array('Db_OnlineTypes'),'height',null,false,'200'),
+			'size' => new ArOn_Crud_Grid_Column_JoinOne("Тип размера лого",array('Db_OnlineTypes'),'size',null,false,'200'),
 			'banner' => new ArOn_Crud_Grid_Column_JoinOne("Вставлять ли баннер",array('Db_OnlineTypes'),'banner',null,false,'200'),
 		);
+
+		$this->fields['size']->options = array('1' => "big", '2' => "middle", '3' => "small");
 
 		$this->filters->setPrefix(false);
 		$this->filters->fields = array(

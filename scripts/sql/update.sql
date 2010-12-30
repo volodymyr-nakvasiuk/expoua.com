@@ -57,3 +57,7 @@ INSERT INTO `online_places` (`id`, `showrooms_id`, `types_id`, `companies_id`, `
 	(1, 1, 1, NULL, 10, 10, 1),
 	(2, 1, 2, 64156, 100, 20, 2),
 	(3, 1, 3, NULL, 300, 100, 3);
+
+#2010.12.30
+ALTER TABLE `online_types`  CHANGE COLUMN `banner` `banner` TINYINT(1) UNSIGNED NOT NULL DEFAULT '0' AFTER `height`,  ADD COLUMN `size` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '1' AFTER `banner`;
+ALTER TABLE `online_places`  ADD COLUMN `logo` TINYINT(1) UNSIGNED NOT NULL DEFAULT '0' AFTER `id`;
