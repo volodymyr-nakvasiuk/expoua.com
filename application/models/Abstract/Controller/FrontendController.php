@@ -214,15 +214,23 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 				'submenu'=>array(
 					'online'=>array(
 						'url'=>HOST_NAME.'/'.$lang.'/companies/online/',
-						'title'=>$this->view->lang->translate('Online trade show'),
+						'title'=>$this->view->lang->translate('Online trade show plan'),
 					),
-					'categories'=>array(
-						'url'=>HOST_NAME.'/'.$lang.'/companies/',
-						'title'=>$this->view->lang->translate('Companies catalog by categories'),
-					),
+					//'categories'=>array(
+					//	'url'=>HOST_NAME.'/'.$lang.'/companies/',
+					//	'title'=>$this->view->lang->translate('Companies catalog by categories'),
+					//),
 					'search'=>array(
-						'url'=>HOST_NAME.'/'.$lang.'/companies/search/',
-						'title'=>$this->view->lang->translate('All companies'),
+						'url'=>HOST_NAME.'/'.$lang.'/companies/search/'.DEFAULT_SEARCH,
+						'title'=>$this->view->lang->translate('List of all companies'),
+					),
+					'services'=>array(
+						'url'=>HOST_NAME.'/'.$lang.'/companies/services/'.DEFAULT_SEARCH,
+						'title'=>$this->view->lang->translate('Products and services'),
+					),
+					'news'=>array(
+						'url'=>HOST_NAME.'/'.$lang.'/companies/news/'.DEFAULT_SEARCH,
+						'title'=>$this->view->lang->translate('News and press releases'),
 					),
 				),
 			),

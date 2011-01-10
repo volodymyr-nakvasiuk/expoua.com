@@ -16,6 +16,7 @@ class Crud_Grid_ExtJs_OnlineShowrooms extends ArOn_Crud_Grid_ExtJs {
 		$this->table = "Db_OnlineShowrooms";
 		$this->fields = array(
 			'id' => new ArOn_Crud_Grid_Column_Numeric('Id',null,true,false,'50'),
+			'category_name' => new ArOn_Crud_Grid_Column_JoinOne("Категория",array('Db_Lang_BrandsCategoriesData'),'name',null,false,'100'),
 			'name' => new ArOn_Crud_Grid_Column_Default("Название",null,true,false,'100'),
 			'width' => new ArOn_Crud_Grid_Column_Numeric("Ширина",null,true,false,'100'),
 			'height' => new ArOn_Crud_Grid_Column_Numeric("Высота",null,true,false,'100'),

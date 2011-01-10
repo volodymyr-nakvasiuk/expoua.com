@@ -11,5 +11,15 @@ class Db_OnlineShowrooms extends ArOn_Db_Table {
 	);
 
 	protected $_referenceMap    = array(
+		'Categories' => array(
+			'columns'           => 'brands_categories_id',
+			'refTableClass'     => 'Db_BrandsCategories',
+			'refColumns'        => 'id'
+		),
+		'CategoriesData' => array(
+			'columns'           => 'brands_categories_id',
+			'refTableClass'     => 'Db_Lang_BrandsCategoriesData',
+			'refColumns'        => 'id'
+		),
 	);
 }

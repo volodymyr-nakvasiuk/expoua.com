@@ -2,8 +2,11 @@
 class Init_OnlineExpo{
 	protected $_showRooms = false;
 	protected $_data = false;
+	protected $_filter = false;
 
-	public function __construct(){
+	public function __construct($filter){
+		if (!is_array($filter)) $filter = array('category'=>$filter);
+		$this->_filter = $filter;
 	}
 
 	public function getData(){
@@ -22,7 +25,9 @@ class Init_OnlineExpo{
 	}
 
 	protected function _setShowRooms() {
-		$grid = new Crud_Grid_OnlineShowrooms(null, array('limit'=>'all'));
+		$filter = $this->_filter;
+		$filter['limit'] = 'all';
+		$grid = new Crud_Grid_OnlineShowrooms(null, $filter);
 		$data = $grid->getData();
 		$this->_data = $data['data'];
 	}

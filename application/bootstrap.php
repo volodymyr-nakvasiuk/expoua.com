@@ -448,6 +448,14 @@ if (!function_exists('get_called_class')):
 
 endif;
 
+if (!function_exists('mb_ucfirst') && function_exists('mb_substr')):
+
+	function mb_ucfirst($str, $encoding = null) {
+		return mb_strtoupper(mb_substr($str, 0, 1, $encoding)) . mb_substr($str, 1, mb_strlen($str, $encoding), $encoding);
+	}
+
+endif;
+
 function do_dump($value,$level=0)
 {
   if ($level==-1)

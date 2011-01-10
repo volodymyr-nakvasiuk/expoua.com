@@ -10,10 +10,10 @@ function tooltip_init(){
 		bodyHandler: function() {
 			return $(this).parent().parent().find('.tooltip_content').html();
 		},
-		top: 5,
-		left: 5,
 		keepShowed:true,
-		closeButton: ".tooltip_close"
+		closeButton: ".tooltip_close",
+		top: 5,
+		left: 5
 	});
 }
 

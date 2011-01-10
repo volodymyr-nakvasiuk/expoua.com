@@ -11,6 +11,7 @@ class Db_BrandsCategories extends ArOn_Db_Table {
 		'Db_BrandsSubcategories',
 		'Db_Brands',
 		'Db_Brands2Categories',
+		'Db_OnlineShowrooms',
 	);
 
 	protected $_referenceMap    = array(

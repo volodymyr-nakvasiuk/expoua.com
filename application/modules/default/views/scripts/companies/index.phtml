@@ -6,7 +6,7 @@
 	<div class="title cl"><?php echo $this->lang->translate('Companies catalog by categories');?></div>
 	<?php foreach($this->data as $category){ $this->allCount += $category['c'];?>
 	<div class="lnk cl">
-		<a href="<?php echo "/".$l."/companies/search/".DEFAULT_SEARCH."category-".$cache[$category['brands_categories_id']]['alias']."/"; ?>"><?php echo $category['name'];?></a> <em>(<?php echo $category['c'];?>)</em>
+		<a href="<?php echo "/".$l."/companies/online/category-".$cache[$category['brands_categories_id']]['alias']."/"; ?>"><?php echo $category['name'];?></a> <em>(<?php echo $category['c'];?>)</em>
 	</div>
 	<?php } ?>
 </div>

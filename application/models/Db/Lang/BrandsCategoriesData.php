@@ -10,6 +10,7 @@ class Db_Lang_BrandsCategoriesData extends Db_Lang {
 		'Db_BrandsCategories',
 		'Db_BrandsSubcategories',
 		'Db_Brands',
+		'Db_OnlineShowrooms',
 	);
 
 	protected $_referenceMap    = array(

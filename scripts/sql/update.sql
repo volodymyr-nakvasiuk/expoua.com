@@ -61,3 +61,8 @@ INSERT INTO `online_places` (`id`, `showrooms_id`, `types_id`, `companies_id`, `
 #2010.12.30
 ALTER TABLE `online_types`  CHANGE COLUMN `banner` `banner` TINYINT(1) UNSIGNED NOT NULL DEFAULT '0' AFTER `height`,  ADD COLUMN `size` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '1' AFTER `banner`;
 ALTER TABLE `online_places`  ADD COLUMN `logo` TINYINT(1) UNSIGNED NOT NULL DEFAULT '0' AFTER `id`;
+
+#2011.01.10
+ALTER TABLE `online_showrooms`  ADD COLUMN `brands_categories_id` SMALLINT(5) UNSIGNED NULL DEFAULT NULL AFTER `id`,  ADD INDEX `brands_categories_id` (`brands_categories_id`),  ADD CONSTRAINT `online_showrooms_ibfk_1` FOREIGN KEY (`brands_categories_id`) REFERENCES `brands_categories` (`id`) ON UPDATE CASCADE ON DELETE SET NULL;
+
+UPDATE `online_showrooms` SET `brands_categories_id`=24;

@@ -16,13 +16,14 @@ class Crud_Grid_ExtJs_OnlinePlaces extends ArOn_Crud_Grid_ExtJs {
 		$this->table = "Db_OnlinePlaces";
 		$this->fields = array(
 			'id' => new ArOn_Crud_Grid_Column_Numeric('Id',null,true,false,'50'),
+			'category_name' => new ArOn_Crud_Grid_Column_JoinOne("Категория",array('Db_OnlineShowRooms','Db_Lang_BrandsCategoriesData'),'name',null,false,'100'),
+			'showrooms_name' => new ArOn_Crud_Grid_Column_JoinOne("Выставочный зал",array('Db_OnlineShowRooms'),'name',null,false,'100'),
 			'showrooms_order' => new ArOn_Crud_Grid_Column_Numeric("Номер в зале",null,true,false,'100'),
 			//'showrooms_id' => new ArOn_Crud_Grid_Column_Numeric("Дата создания",null,true,false,'100'),
 			'types_name' => new ArOn_Crud_Grid_Column_JoinOne("Тип стенда",array('Db_OnlineTypes'),'name',null,false,'100'),
 			//'types_id' => new ArOn_Crud_Grid_Column_Numeric("Дата создания",null,true,false,'100'),
-			'showrooms_name' => new ArOn_Crud_Grid_Column_JoinOne("Выставочный зал",array('Db_OnlineShowRooms'),'name',null,false,'100'),
-			//'companies_id' => new ArOn_Crud_Grid_Column_Numeric("Компания",null,true,false,'100'),
 			'companies_name' => new ArOn_Crud_Grid_Column_JoinOne("Название компании",array('Db_Companies','Db_Lang_CompaniesData'),'name',null,false,'200'),
+			//'companies_id' => new ArOn_Crud_Grid_Column_Numeric("Компания",null,true,false,'100'),
 			//'description' => new ArOn_Crud_Grid_Column_JoinOne("Описание компании",array('Db_Companies','Db_Lang_CompaniesData'),'description',null,false,'200'),
 			//'cities_id' => new ArOn_Crud_Grid_Column_JoinOne("Город",array('Db_Companies'),'cities_id',null,false,'200'),
 			//'logo' => new ArOn_Crud_Grid_Column_JoinOne("Город",array('Db_Companies'),'logo',null,false,'200'),

@@ -25,6 +25,7 @@ class Crud_Grid_OnlineShowrooms extends ArOn_Crud_Grid {
 		$this->filters->setPrefix(false);
 		$this->filters->fields = array(
 			'id' => new ArOn_Crud_Grid_Filter_Field_Value('id','ID',ArOn_Db_Filter_Field::EQ),
+			'category' => new ArOn_Crud_Grid_Filter_Field_Value('brands_categories_id','ID',ArOn_Db_Filter_Field::EQ),
 		);
 
 		parent::init();

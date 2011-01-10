@@ -51,6 +51,14 @@ class Tools_View{
 		if (!$name) $name = $md5;
 		return strtolower($name);
 	}
+
+	static function convertAlias2ClassName($alias){
+		$alias = explode('-', $alias);
+		foreach($alias as &$part){
+			$part = mb_ucfirst($part,'UTF-8');
+		}
+		return implode('', $alias);
+	}
 	
 	static function parse_str($urlParamStr){
 		$paramArr = explode('&', $urlParamStr);

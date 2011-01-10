@@ -49,6 +49,11 @@
 			$data['url'] = $this->createFilterUrl($data['params'], $this->_lang);
 			
 			$this->_filterData = $data;
+
+			$this->_setupFilterData();
+		}
+
+		protected function _setupFilterData(){
 		}
 
 		static function setupFilter($data){

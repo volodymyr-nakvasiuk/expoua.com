@@ -190,8 +190,9 @@ js.include("jquery.dimensions");
 		};
 	}
 	function hide(event) {
-		//if (tID && current == this) clearTimeout(tID);
-		if ($.tooltip.blocked || settings(this).keepShowed) return;
+		if ($.tooltip.blocked) return;
+		if (settings(this).keepShowed && helper.parent.css('display')!='none') return;
+
 		if (tID) clearTimeout(tID);
 		current = null;
 		var tsettings = settings(this);

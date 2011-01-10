@@ -25,7 +25,7 @@ class CompaniesController extends Abstract_Controller_FrontendController {
 		if ($filterData['url']!=$this->view->requestUrl) $this->_redirect($filterData['url']);
 
 		$this->view->jsParams['filter'] = $filterData['params'];
-		$this->view->jsParams['filterParams'] = Tools_Events::$filterParams;
+		$this->view->jsParams['filterParams'] = Tools_Companies::$filterParams;
 		$grid = new Crud_Grid_Companies(null, $filterData['filter']);
 		$this->view->data = $grid->getData();
 	}
@@ -92,10 +92,20 @@ class CompaniesController extends Abstract_Controller_FrontendController {
 		$this->view->layoutsData['right'] = array();
 		$this->view->layouts['right'] = array();
 
-		$init = new Init_OnlineExpo();
+		$online = new Tools_Online($this->view->requestUrl, $this->view->lang->getLocale());
+		$filterData = $online->getFilterData();
+
+		if ($filterData['url']!=$this->view->requestUrl) $this->_redirect($filterData['url']);
+
+		$this->view->jsParams['filter'] = $filterData['params'];
+		$this->view->jsParams['filterParams'] = Tools_Online::$filterParams;
+
+		$init = new Init_OnlineExpo($filterData['filter']);
 		$this->view->data = $init->getData();
 
 		$statistics = new Init_Statistics();
 		$this->view->statistics['company_count'] = $statistics->getCompaniesCount();
+
+		$this->view->menuLinks['online']['submenu']['online']['url'] = HOST_NAME.$filterData['url'];
 	}
 }
