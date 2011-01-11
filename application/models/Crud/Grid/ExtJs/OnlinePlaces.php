@@ -44,7 +44,25 @@ class Crud_Grid_ExtJs_OnlinePlaces extends ArOn_Crud_Grid_ExtJs {
 					ArOn_Db_Filter_Search::NAME => ArOn_Db_Filter_Search::LIKE,
 				)
 			),
+			'category_languages_id' => new ArOn_Crud_Grid_Filter_Field_Search('category_languages_id','Язык выставки',array(
+				array(
+					'path' => array('Db_OnlineShowRooms','Db_Lang_BrandsCategoriesData'),
+					'filters' => array(
+						'languages_id' => ArOn_Db_Filter_Search::EQ,
+					),
+				),
+			)),
+			'company_languages_id' => new ArOn_Crud_Grid_Filter_Field_Search('company_languages_id','Язык выставки',array(
+				array(
+					'path' => array('Db_Companies','Db_Lang_CompaniesData'),
+					'filters' => array(
+						'languages_id' => ArOn_Db_Filter_Search::EQ,
+					),
+				),
+			)),
 		);
+		$this->_params['category_languages_id'] = DEFAULT_LANG_ID;
+		$this->_params['company_languages_id'] = DEFAULT_LANG_ID.';NULL';
 
 		parent::init();
 	}

@@ -1,3 +1,6 @@
+js.module("jquery.ui.menu");
+js.include("jquery.ui.core");
+js.include("jquery.ui.widget");
 /*
  * jQuery UI Menu @VERSION
  * 

@@ -7,7 +7,7 @@
 		<?php echo $this->lang->translate('Welcome to online trade show'); ?>
 	</div>
 	<div class="exhib_cat_title_box cl">
-		<div class="title cl"><?php echo $this->lang->translate('Trade show Online').date(' Y'); ?></div>
+		<div class="title cl"><?php echo $this->dataTitle.date(' Y'); ?></div>
 	</div>
 </div>
 <div class="add_comp_box fr">
@@ -21,7 +21,7 @@
 		<div class="online_sq" style="top: <?php echo $item['top']; ?>px; left: <?php echo $item['left']; ?>px; background-image: url(/img/sqares/expo_sq_<?php echo $item['width'].'x'.$item['height']; ?>.png); width: <?php echo ($item['width']+5); ?>px; height: <?php echo ($item['height']+5); ?>px;">
 			<?php if ($item['companies_id']){ $url="/".$l."/companies/card/".$item['companies_id']."-".Tools_View::getUrlAlias($item['name'], true)."/"?>
 			<a target="_blank" href="<?php echo $url;?>">
-			<div class="inner_online_content_box tooltip_box" style="width: <?php echo $item['width']; ?>px; height: <?php echo $item['height']; ?>px; line-height: <?php echo $item['height']; ?>px;">
+			<div class="inner_online_content_box tooltip_box" style="width: <?php echo $item['width']; ?>px; height: <?php echo $item['height']; ?>px; line-height: <?php echo $item['height']-3; ?>px;">
 				<img style="width: <?php echo $item['width']; ?>px;" src="/uploads/images/online/<?php echo $item['size']."/".$item['companies_id'];?>.jpg"/>
 			</div>
 			</a>

@@ -4,7 +4,7 @@
 	</div>
 	<div class="filter_center">
 		<div class="filter_item">
-			<input class="text" type="text" name="search" emptyval="<?php echo $this->lang->translate('search by keyword...');?>" onfocus="javascript:if(this.value==$(this).attr('emptyval'))this.value='';" onblur="javascript:if(this.value=='')this.value=$(this).attr('emptyval');" />
+			<input id="filter_search" class="text" type="text" name="search" emptyval="<?php echo $this->lang->translate('search by keyword...');?>" onfocus="javascript:if(this.value==$(this).attr('emptyval'))this.value='';" onblur="javascript:if(this.value=='')this.value=$(this).attr('emptyval');" />
 		</div>
 		<div class="filter_item">
 			<select id="filter_subcategory" name="subcategory" disabled="disabled">

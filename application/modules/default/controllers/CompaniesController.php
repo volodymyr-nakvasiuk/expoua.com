@@ -103,9 +103,58 @@ class CompaniesController extends Abstract_Controller_FrontendController {
 		$init = new Init_OnlineExpo($filterData['filter']);
 		$this->view->data = $init->getData();
 
+		$lang = $this->view->lang->getLocale();
+		$paramName = 'category';
+		$cache = Zend_Registry::get(Tools_Events::$filterParams[$paramName].Tools_Events::$cacheSuffix['id']);
+		$content = array();
+		foreach($cache as $id=>$category){
+			$content[$category['alias']] = array(
+				'url'=>HOST_NAME.'/'.$lang.'/companies/online/'.$paramName.'-'.$category['alias'].'/',
+				'title'=>$category['name_'.$lang],
+				'selected'=>($id==$filterData['filter']['category']),
+			);
+		}
+		$this->view->dropdownMenu = array(
+			'title'=>$this->view->translate('Select online trade show'),
+			'content'=>$content,
+		);
+		$this->view->dataTitle = $cache[$filterData['filter']['category']]['name_'.$lang];
+
 		$statistics = new Init_Statistics();
 		$this->view->statistics['company_count'] = $statistics->getCompaniesCount();
 
-		$this->view->menuLinks['online']['submenu']['online']['url'] = HOST_NAME.$filterData['url'];
+		foreach($this->view->menuLinks['online']['submenu'] as &$submenu){
+			$submenu['url'] .= $paramName.'-'.$cache[$filterData['filter']['category']]['alias'].'/';
+		}
+	}
+
+	public function servicesAction(){
+		$this->view->activeSubmenu = 'services';
+		$this->view->layouts['top']['filter'] = array('inc/filter/companies_services', 100);
+
+		$services = new Tools_CompanyServices($this->view->requestUrl, $this->view->lang->getLocale(), $this->_request->getParam('p'));
+		$filterData = $services->getFilterData();
+		if ($filterData['url']!=$this->view->requestUrl) $this->_redirect($filterData['url']);
+
+		$this->view->jsParams['filter'] = $filterData['params'];
+		$this->view->jsParams['filterParams'] = Tools_CompanyServices::$filterParams;
+
+		$grid = new Crud_Grid_CompanyServices(null, $filterData['filter']);
+		$this->view->data = $grid->getData();
+	}
+
+	public function newsAction(){
+		$this->view->activeSubmenu = 'news';
+		$this->view->layouts['top']['filter'] = array('inc/filter/companies_news', 100);
+
+		$services = new Tools_CompanyNews($this->view->requestUrl, $this->view->lang->getLocale(), $this->_request->getParam('p'));
+		$filterData = $services->getFilterData();
+		if ($filterData['url']!=$this->view->requestUrl) $this->_redirect($filterData['url']);
+
+		$this->view->jsParams['filter'] = $filterData['params'];
+		$this->view->jsParams['filterParams'] = Tools_CompanyServices::$filterParams;
+
+		$grid = new Crud_Grid_CompanyNews(null, $filterData['filter']);
+		$this->view->data = $grid->getData();
 	}
 }

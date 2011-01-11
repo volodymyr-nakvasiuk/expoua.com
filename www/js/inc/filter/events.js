@@ -137,6 +137,12 @@ $(function(){
 		}
 		window.location.href = redirectUrl;
 	});
+	$("#filter_search").keypress(function(e){
+		var code = (e.keyCode ? e.keyCode : e.which);
+		if(code == 13) {
+			$("#filter_button").click();
+		}
+	}).blur();
 });
 $(window).load(function(){
 	var $filter =$("#top .filter");

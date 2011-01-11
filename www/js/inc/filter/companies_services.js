@@ -1,4 +1,4 @@
-js.module("inc.filter.companies");
+js.module("inc.filter.services");
 $(function(){
 	$("#sub_filter_flipper").click(function(){
 		var $sub = $("#filter_sub");
@@ -90,7 +90,7 @@ $(function(){
 	$("#filter_button").click(function(){
 		var $filter =$("#top .filter");
 		var input;
-		var redirectUrl = '/'+lang_id+'/companies/search/';
+		var redirectUrl = '/'+lang_id+'/companies/services/';
 		for(var i in phpParams['filterParams']){
 			input = $filter.find('[name='+i+']');
 			if (input){

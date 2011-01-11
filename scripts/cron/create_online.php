@@ -34,17 +34,19 @@ echo "<pre>";
 	$cache = Zend_Registry::get(Tools_Events::$filterParams[$paramName].Tools_Events::$cacheSuffix['id']);
 
 	$schema = array_filter(array_map('trim',explode(";", file_get_contents(ROOT_PATH."/scripts/sql/online_hall_1.sql"))), 'strlen');
-	$id = 0;
+	$index = 0;
 	foreach ($cache as $id=>$category){
-		$id++;
+		$index++;
 		$sql = "
 			INSERT INTO `online_showrooms`
 				(`id`, `brands_categories_id`, `name`, `width`, `height`, `order`)
 			VALUES
-				(".$id.", ".$category['id'].", '".Tools_View::convertAlias2ClassName($category['alias'])."-1', 968, 1340, 50)
+				(".$index.", ".$category['id'].", '".Tools_View::convertAlias2ClassName($category['alias'])."-1', 968, 1340, 50)
 		;";
 		$result = $db->getAdapter()->query($sql);
 		foreach ($schema as $sql){
-			$result = $db->getAdapter()->query(str_replace('{{showrooms_id}}', $id, $sql).';');
+			$result = $db->getAdapter()->query(str_replace('{{showrooms_id}}', $index, $sql).';');
 		}
 	}
+
+include 'sort_online_places.php';

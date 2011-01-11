@@ -1,7 +1,7 @@
 <?php
 class Crud_Form_ExtJs_OnlineShowrooms extends ArOn_Crud_Form_ExtJs
 {
-	protected $modelName = 'Db_OnlineShowrooms';
+	protected $modelName = 'Db_OnlineShowRooms';
 	protected $_title = 'Онлайн выставка - выставочный зал';
 
 	public function init ()

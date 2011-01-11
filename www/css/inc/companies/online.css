@@ -120,3 +120,6 @@
 	font-weight:bold;
 	color: #8b0000;
 }
+.sub_menu_left_item {
+	border-left: none;
+}

@@ -1,11 +1,27 @@
 <?php
+	if ($this->dropdownMenu){
+?>
+	<a href="#dropdown_menu_content" class="fg-button fg-button-icon-right ui-widget ui-state-default ui-corner-all" id="dropdown_menu_btn">
+		<span class="ui-icon ui-icon-triangle-1-s"></span>
+		<?php echo $this->dropdownMenu['title'];?>
+	</a>
+	<div id="dropdown_menu_content" class="hidden" style="position:absolute;">
+		<ul>
+		<?php foreach ($this->dropdownMenu['content'] as $menu=>$menuLink){ ?>
+			<li><a<?php echo $menuLink['selected']?' class="selected"':'';?> href="<?php echo $menuLink['url'];?>"><?php echo $menuLink['title'];?></a></li>
+		<?php } ?>
+		</ul>
+	</div>
+<?php
+	}
 	if ($this->activeMenu){
+	$index = 0;
 	foreach ($this->menuLinks[$this->activeMenu]['submenu'] as $menu=>$menuLink){
 ?>
-<div class="sub_menu_item<?php echo $this->activeSubmenu==$menu?' selected':'';?>">
-	<a href="<?php echo $menuLink['url'];?>" title="<?php echo $this->lang->translate($menuLink['title']);?>"><?php echo $this->lang->translate($menuLink['title']);?></a>
+<div class="sub_menu_item<?php echo $this->activeSubmenu==$menu?' selected':'';?><?php echo $index?'':' sub_menu_left_item';?>">
+	<a href="<?php echo $menuLink['url'];?>" title="<?php echo $menuLink['title'];?>"><?php echo $menuLink['title'];?></a>
 </div>
-<?php } ?>
+<?php $index++;} ?>
 <script type="text/javascript">
 	var activeSubMenu = activeSubMenu || false;
 	activeSubMenu = <?php echo $this->activeSubmenu?"'".$this->activeSubmenu."'":'false';?>;

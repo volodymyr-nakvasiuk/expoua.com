@@ -44,12 +44,21 @@
 	margin:5px 2px 0 10px;
 }
 .companies_card_main_info {}
-.companies_card_main_info img {
+.companies_card_info_img {
 	width: 130px;
 	height: 130px;
-	margin-right: 10px;
-	float: left;
-	clear: none;
+	vertical-align: middle;
+	line-height: 127px;
+	text-align: center;
+	border: 1px solid #cccccc;
+}
+.companies_card_info_img img {
+	display:-moz-inline-box;
+	display:inline-block;
+	vertical-align:middle;
+	zoom:1;
+	//display:inline;
+	position: relative;
 }
 .companies_card_info {
 	font-size: 12px;
@@ -93,7 +102,9 @@
 	padding: 10px 0;
 	width: 100%;
 }
-
+.companies_card_something {
+	margin-top:10px;
+}
 .companies_card_something .left_border,
 .companies_card_something .right_border{
 	width: 5px;

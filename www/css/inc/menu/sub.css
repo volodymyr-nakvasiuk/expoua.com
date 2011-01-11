@@ -6,6 +6,9 @@
 	height: 18px;
 	padding: 0 10px;
 	margin: 5px 0 4px;
+	border-right: solid 1px #bac8d3;
+}
+.sub_menu_left_item {
 	border-left: solid 1px #bac8d3;
 }
 .sub_menu_item a{
@@ -20,4 +23,20 @@
 .sub_menu .selected a{
 	font-weight: bold;
 	text-decoration: none;
+}
+.positionHelper ul li a,
+.positionHelper ul li a:active,
+.positionHelper ul li a:link,
+.positionHelper ul li a:visited{
+	font-size: 11px;
+	padding: 0.1em 1%;
+	width: 96%;
+	color: #000000;
+	font-family: Arial
+}
+.positionHelper ul li a.selected {
+	color: #0054A6;
+}
+.positionHelper ul li a:hover {
+	color: #0054A6;
 }

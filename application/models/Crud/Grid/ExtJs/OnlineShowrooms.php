@@ -13,7 +13,7 @@ class Crud_Grid_ExtJs_OnlineShowrooms extends ArOn_Crud_Grid_ExtJs {
 		$this->gridTitle = 'Онлайн выставка - выставочные залы';
 
 		$this->gridActionName = 'online-showrooms';
-		$this->table = "Db_OnlineShowrooms";
+		$this->table = "Db_OnlineShowRooms";
 		$this->fields = array(
 			'id' => new ArOn_Crud_Grid_Column_Numeric('Id',null,true,false,'50'),
 			'category_name' => new ArOn_Crud_Grid_Column_JoinOne("Категория",array('Db_Lang_BrandsCategoriesData'),'name',null,false,'100'),
@@ -32,7 +32,16 @@ class Crud_Grid_ExtJs_OnlineShowrooms extends ArOn_Crud_Grid_ExtJs {
 					ArOn_Db_Filter_Search::NAME => ArOn_Db_Filter_Search::LIKE,
 				)
 			),
+			'category_languages_id' => new ArOn_Crud_Grid_Filter_Field_Search('category_languages_id','Язык выставки',array(
+				array(
+					'path' => array('Db_Lang_BrandsCategoriesData'),
+					'filters' => array(
+						'languages_id' => ArOn_Db_Filter_Search::EQ,
+					),
+				),
+			)),
 		);
+		$this->_params['category_languages_id'] = DEFAULT_LANG_ID;
 
 		parent::init();
 	}

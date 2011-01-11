@@ -1,5 +1,5 @@
 <?php
-class Db_OnlineShowrooms extends ArOn_Db_Table {
+class Db_OnlineShowRooms extends ArOn_Db_Table {
 	protected $_primary = 'id';
 	protected $_name = 'online_showrooms';
 	protected $_name_expr = "name";

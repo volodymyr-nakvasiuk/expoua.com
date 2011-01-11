@@ -13,7 +13,7 @@ class Crud_Grid_OnlineShowrooms extends ArOn_Crud_Grid {
 		$this->gridTitle = 'Онлайн выставка';
 
 		$this->gridActionName = 'company';
-		$this->table = "Db_OnlineShowrooms";
+		$this->table = "Db_OnlineShowRooms";
 		$this->fields = array(
 			'id' => new ArOn_Crud_Grid_Column_Numeric('Id',null,true,false,'50'),
 			'name' => new ArOn_Crud_Grid_Column_Default("Название",null,true,false,'100'),
