@@ -152,7 +152,7 @@ class CompaniesController extends Abstract_Controller_FrontendController {
 		if ($filterData['url']!=$this->view->requestUrl) $this->_redirect($filterData['url']);
 
 		$this->view->jsParams['filter'] = $filterData['params'];
-		$this->view->jsParams['filterParams'] = Tools_CompanyServices::$filterParams;
+		$this->view->jsParams['filterParams'] = Tools_CompanyNews::$filterParams;
 
 		$grid = new Crud_Grid_CompanyNews(null, $filterData['filter']);
 		$this->view->data = $grid->getData();

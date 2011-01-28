@@ -6,7 +6,6 @@ class IndexController extends Abstract_Controller_FrontendController {
 	public function indexAction(){
 		/* ---------------------- Start Anton Templates ---------------------- */
 		//   //$this->view->layouts['body']['client_reg'] = array('inc/body/register', 100);
-		//$this->view->layouts['right']['right_advert_box'] = array('inc/right/advert', 100);
 		//   //$this->view->layouts['body']['companies_search_box'] = array('inc/body/companies_search', 100);
 		//   //$this->view->layouts['center']['company_news'] = array('inc/center/top_companies', 100);
 		//$this->view->layouts['body']['user_add_about_company'] = array('inc/body/user_add_about_company', 100);
@@ -15,10 +14,12 @@ class IndexController extends Abstract_Controller_FrontendController {
 
 		$this->view->layouts['top']['filter'] = array('inc/filter/index', 100);
 
+		$this->view->layouts['body']['body_events_title_box'] = array('inc/body/events_title', 100);
+
 		//$grid = new Crud_Grid_Events(null, array('country'=>52,'limit'=>3));
 		$init = new Init_Prlines($this->moduleName, $this->brandsCategoryId);
-		$this->view->layoutsData['body']['body_events_accordion_box'] = $init->getData();
-		$this->view->layouts['body']['body_events_accordion_box'] = array('inc/body/events_accordion', 100);
+		$this->view->layoutsData['body']['body_events_prlines_box'] = $init->getData();
+		$this->view->layouts['body']['body_events_prlines_box'] = array('inc/body/events_prlines', 100);
 
 		$grid = new Crud_Grid_Companies(null, array('country'=>52,'logo'=>1,'limit'=>8));
 		$this->view->layoutsData['body']['body_companies_box'] = $grid->getData();

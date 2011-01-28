@@ -2,6 +2,7 @@
 class BannerController extends Zend_Controller_Action {
 
 	public function indexAction(){
+		/*
 		$this->_helper->viewRenderer->setNoRender();
 		$this->_helper->layout->disableLayout();
 		$width = $this->_request->getParam('width');
@@ -11,6 +12,7 @@ class BannerController extends Zend_Controller_Action {
 		$banner = new Tools_Banner(HOST_NAME,HOST_NAME,$width,$height, false, false, $img, $lnk);
 		$code = $banner->getBanner();
 		echo $code;
+		*/
 		return;
 	}
 	

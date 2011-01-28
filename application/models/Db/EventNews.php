@@ -12,6 +12,16 @@ class Db_EventNews extends ArOn_Db_Table {
 	);
 
 	protected $_referenceMap    = array(
+		'Events' => array(
+			'columns'           => 'events_id',
+			'refTableClass'     => 'Db_Events',
+			'refColumns'        => 'id'
+		),
+		'EventsData' => array(
+			'columns'           => 'events_id',
+			'refTableClass'     => 'Db_Lang_EventsData',
+			'refColumns'        => 'id'
+		),
 		'Country' => array(
 			'columns'           => 'countries_id',
 			'refTableClass'     => 'Db_LocationCountries',

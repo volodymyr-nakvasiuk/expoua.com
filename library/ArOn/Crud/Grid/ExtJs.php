@@ -532,8 +532,8 @@ class ArOn_Crud_Grid_ExtJs extends ArOn_Crud_Grid {
 					});
 	    		}
 	    		else{
-	    			win.items.first().getStore().baseParams = ".$this->_store_var.'_'.$this->_action_index.".baseParams;
-	    			win.items.first().getStore().load();
+	    			win.items.first().items.first().getStore().baseParams = ".$this->_store_var.'_'.$this->_action_index.".baseParams;
+	    			win.items.first().items.first().getStore().load();
 	    		}
 	    		Ext.get('loading').hide();
 	    		".(($this->_windowBlinking)?"win.startBlinking();":"")."

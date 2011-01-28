@@ -73,7 +73,40 @@ class EventController extends Abstract_Controller_FrontendController {
 		}
 	}
 
-	public function venuesAction(){
+	public function newsAction(){
+		$this->view->activeSubmenu = 'news';
+		$this->view->layouts['top']['filter'] = array('inc/filter/events_news', 100);
+
+		$services = new Tools_EventNews($this->view->requestUrl, $this->view->lang->getLocale(), $this->_request->getParam('p'));
+		$filterData = $services->getFilterData();
+		if ($filterData['url']!=$this->view->requestUrl) $this->_redirect($filterData['url']);
+
+		$this->view->jsParams['filter'] = $filterData['params'];
+		$this->view->jsParams['filterParams'] = Tools_EventNews::$filterParams;
+
+		$grid = new Crud_Grid_EventNews(null, $filterData['filter']);
+		$this->view->data = $grid->getData();
+	}
+
+	public function newsCardAction(){
+		$this->view->activeSubmenu = 'news';
+		$id = explode('-', $this->_request->getParam('id',''));
+		$id = (int)$id[0];
+		if ($id){
+			$grid = new Crud_Grid_EventOneNews(null, array('id'=>$id, 'limit'=>1));
+			$this->view->data = $grid->getData();
+			if (isset($this->view->data['data'][0])){
+				$this->view->data = $this->view->data['data'][0];
+			}
+			else {
+				$this->_forward('error', 'error');
+				return;
+			}
+		}
+		else {
+			$this->_forward('error', 'error');
+			return;
+		}
 	}
 
 }

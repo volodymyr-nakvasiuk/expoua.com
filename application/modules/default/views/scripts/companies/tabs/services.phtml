@@ -5,11 +5,13 @@
 			$lnk = $this->data['link'].Init_Companies_Services::$tab_name.'/card/'.$item['id'].'/';
 ?>
 <div class="companies_card_one_services cl">
-	<?php if ($item['photo']){ ?>
-	<a href="<?php echo $lnk;?>">
-		<img src="http://admin.expopromoter.com/data/images/companies/<?php echo $this->data['id']; ?>/services/logo/<?php echo $item['id'];?>_small.jpg">
-	</a>
-	<?php } ?>
+	<div class="companies_card_one_services_img fl">
+		<?php if ($item['photo']){ ?>
+		<a href="<?php echo $lnk;?>">
+			<img src="http://admin.expopromoter.com/data/images/companies/<?php echo $this->data['id']; ?>/services/logo/<?php echo $item['id'];?>_small.jpg">
+		</a>
+		<?php } ?>
+	</div>
 	<div class="companies_card_one_services_desc fl">
 		<div class="companies_card_services_date cl"><?php echo date('d.m.Y', strtotime($item['date_modify']));?></div>
 		<div class="companies_card_one_services_desc_title cl">

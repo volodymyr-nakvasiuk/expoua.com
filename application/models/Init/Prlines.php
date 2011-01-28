@@ -21,7 +21,9 @@ class Init_Prlines{
 	}
 
 	protected function _setData() {
-		$tool = new Tools_Banner($this->_typeName, $this->_module, $this->_categoryId, $this->_count);
+		$types = array();
+		for($i=1; $i<=$this->_count; $i++) $types[] = "'".$this->_typeName.$i."'";
+		$tool = new Tools_Banner($types, $this->_module, $this->_categoryId, $this->_count);
 		$this->_bannersData = $tool->getData();
 		$tool->updateStat();
 
@@ -32,8 +34,13 @@ class Init_Prlines{
 			$bannerData[$banner['pline_events_id']] = $banner;
 		}
 
-		$grid = new Crud_Grid_Event(null, array('id'=>$eventsIds, 'limit'=>$this->_count));
-		$this->_data = $grid->getData();
+		if ($eventsIds){
+			$grid = new Crud_Grid_Event(null, array('id'=>$eventsIds, 'limit'=>$this->_count));
+			$this->_data = $grid->getData();
+		}
+		else {
+			$this->_data = array('data'=>array());
+		}
 
 		foreach ($this->_data['data'] as &$data){
 			$data['bannerData'] = $bannerData[$data['id']];

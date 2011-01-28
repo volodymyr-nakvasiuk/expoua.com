@@ -51,7 +51,7 @@
 						<?php }?>
 					</div>
 					<div class="events_index_item_description cl">
-						<?php $d=mb_substr(strip_tags($item['description']), 0, 220, 'UTF-8'); echo $d.(mb_strlen($d, 'UTF-8')!=mb_strlen($item['description'], 'UTF-8')?'...':''); ?>
+						<?php echo Tools_View::createShortText($item['description'], 220); ?>
 					</div>
 				</div>
 			</div>

@@ -24,6 +24,13 @@ class Crud_Grid_EventNews extends ArOn_Crud_Grid {
 			'preambula' => new ArOn_Crud_Grid_Column_JoinOne("Описание новости",array('Db_Lang_EventNewsData'),'preambula',null,false,'200'),
 			//'content' => new ArOn_Crud_Grid_Column_JoinOne("Текст новости",array('Db_Lang_EventNewsData'),'content',null,false,'200'),
 			//'active' => new ArOn_Crud_Grid_Column_JoinOne("Активна ли новость на этом языке",array('Db_Lang_EventNewsData'),'active',null,false,'200'),
+			'events_id' => new ArOn_Crud_Grid_Column_Numeric("Дата создания",null,true,false,'100'),
+
+			'regions_id' => new ArOn_Crud_Grid_Column_JoinOne("Регион",array('Db_Events', 'Db_LocationCities','Db_LocationCountries'),'regions_id',null,false,'200'),
+			'countries_id' => new ArOn_Crud_Grid_Column_JoinOne("Страна",array('Db_Events', 'Db_LocationCities'),'countries_id',null,false,'200'),
+			'cities_id' => new ArOn_Crud_Grid_Column_JoinOne("Город",array('Db_Events'),'cities_id',null,false,'200'),
+			'category' => new ArOn_Crud_Grid_Column_JoinOne('Категория', array('Db_Events', 'Db_Brands', 'Db_Brands2Categories', 'Db_BrandsCategories'), null, array('id')),
+			'subcategory' => new ArOn_Crud_Grid_Column_JoinOne('Подкатегория', array('Db_Events', 'Db_Brands', 'Db_Brands2Subcategories', 'Db_BrandsSubcategories'), null, array('id')),
 		);
 
 		$this->filters->setPrefix(false);
@@ -46,6 +53,41 @@ class Crud_Grid_EventNews extends ArOn_Crud_Grid {
 			)),
 			'brands_id' => new ArOn_Crud_Grid_Filter_Field_Value('brands_id','ID',ArOn_Db_Filter_Field::EQ),
 			'events_id' => new ArOn_Crud_Grid_Filter_Field_Value('events_id','ID',ArOn_Db_Filter_Field::EQ),
+
+			'search' => new ArOn_Crud_Grid_Filter_Field_Search('search','Язык бренда',array(
+				array(
+					'path' => array('Db_Lang_EventNewsData'),
+					'filters' => array(
+						'name' => ArOn_Db_Filter_Search::LIKE,
+					),
+				),
+			)),
+			'region' => new ArOn_Crud_Grid_Filter_Field_Search('regions_id','Регион', array(
+				array(
+					'path' => array('Db_Events', 'Db_LocationCities','Db_LocationCountries'),
+					'filters' => array(
+						'regions_id' => ArOn_Db_Filter_Search::EQ,
+					),
+				),
+			)),
+			'country' => new ArOn_Crud_Grid_Filter_Field_Search('countries_id','Страна',array(
+				array(
+					'path' => array('Db_Events', 'Db_LocationCities'),
+					'filters' => array(
+						'countries_id' => ArOn_Db_Filter_Search::EQ,
+					),
+				),
+			)),
+			'city' => new ArOn_Crud_Grid_Filter_Field_Search('cities_id','Город',array(
+				array(
+					'path' => array('Db_Events'),
+					'filters' => array(
+						'cities_id' => ArOn_Db_Filter_Search::EQ,
+					),
+				),
+			)),
+			'category' => new ArOn_Crud_Grid_Filter_Field_Select2('id','Категория', 'Db_BrandsCategories', array('Db_Events', 'Db_Brands', 'Db_Brands2Categories', 'Db_BrandsCategories')),
+			'subcategory' => new ArOn_Crud_Grid_Filter_Field_Select2('id','Подкатегория', 'Db_BrandsSubcategories', array('Db_Events', 'Db_Brands', 'Db_Brands2Subcategories', 'Db_BrandsSubcategories')),
 		);
 		$this->_params['active'] = 1;
 		$this->_params['languages_id'] = DEFAULT_LANG_ID;

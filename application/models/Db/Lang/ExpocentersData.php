@@ -11,10 +11,10 @@ class Db_Lang_ExpocentersData extends Db_Lang {
 	);
 
 	protected $_referenceMap    = array(
-		'Module' => array(
-			'columns'           => 'id',
-			'refTableClass'     => 'Db_Expocenters',
-			'refColumns'        => 'id'
-		)
+		//'Module' => array(
+		//	'columns'           => 'id',
+		//	'refTableClass'     => 'Db_Expocenters',
+		//	'refColumns'        => 'id'
+		//)
 	);
 }

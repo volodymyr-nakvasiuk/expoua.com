@@ -27,6 +27,10 @@ class Crud_Grid_CompanyNews extends ArOn_Crud_Grid {
 			'logo' => new ArOn_Crud_Grid_Column_Numeric("Дата создания",null,true,false,'100'),
 			'companies_id' => new ArOn_Crud_Grid_Column_Numeric("Дата создания",null,true,false,'100'),
 			'active' => new ArOn_Crud_Grid_Column_JoinOne("Описание новости",array('Db_Lang_CompanyNewsActive'),'active',null,false,'200'),
+
+			'regions_id' => new ArOn_Crud_Grid_Column_JoinOne("Регион",array('Db_Companies', 'Db_LocationCities','Db_LocationCountries'),'regions_id',null,false,'200'),
+			'countries_id' => new ArOn_Crud_Grid_Column_JoinOne("Страна",array('Db_Companies', 'Db_LocationCities'),'countries_id',null,false,'200'),
+			'cities_id' => new ArOn_Crud_Grid_Column_JoinOne("Город",array('Db_Companies'),'cities_id',null,false,'200'),
 		);
 
 		$this->filters->setPrefix(false);
@@ -56,6 +60,40 @@ class Crud_Grid_CompanyNews extends ArOn_Crud_Grid {
 				),
 			)),
 			'companies_id' => new ArOn_Crud_Grid_Filter_Field_Value('companies_id','ID',ArOn_Db_Filter_Field::EQ),
+
+			'search' => new ArOn_Crud_Grid_Filter_Field_Search('search','Язык бренда',array(
+				array(
+					'path' => array('Db_Lang_CompanyNewsData'),
+					'filters' => array(
+						'name' => ArOn_Db_Filter_Search::LIKE,
+					),
+				),
+			)),
+			'region' => new ArOn_Crud_Grid_Filter_Field_Search('regions_id','Регион', array(
+				array(
+					'path' => array('Db_Companies', 'Db_LocationCities','Db_LocationCountries'),
+					'filters' => array(
+						'regions_id' => ArOn_Db_Filter_Search::EQ,
+					),
+				),
+			)),
+			'country' => new ArOn_Crud_Grid_Filter_Field_Search('countries_id','Страна',array(
+				array(
+					'path' => array('Db_Companies', 'Db_LocationCities'),
+					'filters' => array(
+						'countries_id' => ArOn_Db_Filter_Search::EQ,
+					),
+				),
+			)),
+			'city' => new ArOn_Crud_Grid_Filter_Field_Search('cities_id','Город',array(
+				array(
+					'path' => array('Db_Companies'),
+					'filters' => array(
+						'cities_id' => ArOn_Db_Filter_Search::EQ,
+					),
+				),
+			)),
+			'category' => new ArOn_Crud_Grid_Filter_Field_Select2('id','Категория', 'Db_BrandsCategories', array('Db_Companies', 'Db_Companies2Categories', 'Db_BrandsCategories')),
 		);
 		$this->_params['active'] = 1;
 		$this->_params['active_languages_id'] = DEFAULT_LANG_ID;

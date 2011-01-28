@@ -88,6 +88,7 @@ class Abstract_Controller_InitController extends Zend_Controller_Action {
 		//exit((($redirect)?'Have':'No').' redirect to '.$uri);
 		if ($redirect) $this->_redirect($uri);
 		define ('DEFAULT_LANG_ID', $langId);
+		define ('DEFAULT_LANG_CODE', $lang);
 		$this->view->lang->setLocale($lang);
 	}
 	

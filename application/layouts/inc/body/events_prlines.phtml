@@ -1,0 +1,41 @@
+<?php
+	//$regions = Zend_Registry::get("regions".Tools_Events::$cacheSuffix['id']);
+	$countries = Zend_Registry::get("countries".Tools_Events::$cacheSuffix['id']);
+	$cities = Zend_Registry::get("cities".Tools_Events::$cacheSuffix['id']);
+	$l = $this->lang->getLocale();
+?>
+<div class="body_events_prlines_content cl">
+<?php foreach ($this->layoutsData['body']['body_events_prlines_box']['data'] as $item){ $url=Tools_Banner::getClickerUrl($item['bannerData']['id'], $item);?>
+	<h3>
+		<div class="body_events_prlines_boxes cl">
+			<div class="body_events_prlines_one_box cl">
+				<div class="body_events_prlines_box_content fl">
+					<div class="body_events_prlines_box_content_left_col fl">
+						<div class="title cl"><a href="<?php echo $url; ?>"><?php echo $item['brands_name']; ?></a></div>
+						<div class="date cl">
+							<?php
+								echo
+								Tools_Events::date($l, 'd F',   strtotime($item['date_from']))
+								.' &mdash; '.
+								Tools_Events::date($l, 'd F Y', strtotime($item['date_to']))
+								;
+							?>
+						</div>
+					</div>
+					<div class="body_events_prlines_box_content_right_col fr">
+						<div class="city cl">
+							<?php
+								echo
+								$countries[$item['regions_id']][$item['countries_id']]['name_'.$l]
+								.', '.
+								$cities[$item['regions_id']][$item['countries_id']][$item['cities_id']]['name_'.$l];
+							?>
+						</div>
+						<?php /* <a href="#"><?php echo $this->lang->translate("add to favorites"); ?></a> */ ?>
+					</div>
+				</div>
+			</div>
+		</div>
+	</h3>
+<?php } ?>
+</div>

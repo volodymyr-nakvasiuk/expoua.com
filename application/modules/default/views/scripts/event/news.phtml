@@ -1,0 +1,39 @@
+<?php
+	//$regions = Zend_Registry::get("regions".Tools_Events::$cacheSuffix['id']);
+	//$countries = Zend_Registry::get("countries".Tools_Events::$cacheSuffix['id']);
+	//$cities = Zend_Registry::get("cities".Tools_Events::$cacheSuffix['id']);
+	$l = $this->lang->getLocale();
+?>
+<div class="events_search_all_content_box cl">
+	<div class="events_search_title_box cl">
+		<div class="title cl"><?php echo $this->lang->translate('Catalogue of news and press-releases');?></div>
+	</div>
+	<div class="search_all_events_box cl">
+<?php
+		foreach($this->data['data'] as $item){ $url= '/'.$l.'/event'.($item['events_id']?'/card/'.$item['events_id'].'/'.Init_Event_News::$tab_name.'/card/':'/news-card/').$item['id'].'/';
+	?>
+	<div class="search_one_event_box <?php /*vip_event_bg */ ?>cl">
+		<div class="one_event_date cl">
+			<?php echo date('d.m.Y', strtotime($item['date_public']));?>
+		</div>
+		<div class="one_event_title cl">
+			<a href="<?php echo $url;?>">
+				<?php echo $item['name'];?>
+			</a>
+		</div>
+		<div class="one_event_content_box cl">
+			<div class="one_event_text_box fl">
+				<div class="text cl">
+					<?php echo $item['preambula']; ?>
+				</div>
+			</div>
+		</div>
+	</div>
+	<?php
+		}
+	?>
+	</div>
+	<div class="paging clr">
+		<?php echo Tools_View::getPages($this->requestUri, $this->data['array_pages'], 'p'); ?>
+	</div>
+</div>

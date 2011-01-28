@@ -1,0 +1,72 @@
+.events_search_all_content_box {margin: 10px 0;}
+.events_search_title_box {}
+.events_search_title_box .title{
+	color: #dd5500;
+	font-size: 20px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+.events_search_title_box a {
+	margin-left: 20px;
+	float: left;
+	clear: none;
+}
+.search_all_events_box {
+	margin-top: 10px;
+	width: 510px;
+}
+.search_one_event_box {
+	border-bottom: 1px dashed #cccccc;
+	padding: 10px;
+}
+.one_event_date {
+	font-weight:bold;
+}
+.one_event_title a {
+	font-size: 14px;
+	font-weight: bold;
+	color: #dd5500;
+	float: left;
+	clear: none;
+}
+.zirochka {
+	background: url(/img/events/top_event_star.png) no-repeat 0px center scroll;
+	width: 16px;
+	height: 15px;
+}
+.top_ico {
+	background: url(/img/events/top_event_ico.png) no-repeat 0px center scroll;
+	width: 19px;
+	height: 11px;
+}
+.vip_event_bg {
+	background: #fef9df;
+}
+.one_event_content_box {
+	margin-top:10px
+}
+.one_event_text_box {
+	width: 400px;
+	margin-left:10px
+}
+.one_event_place .country,
+.one_event_place .city {
+	color: #333333;
+	font-size: 12px;
+}
+
+.one_event_place .city {
+	font-weight: bold;
+}
+.one_event_text_box .text {
+	margin-top: 10px;
+}
+.one_event_text_box span {
+	font-weight: bold;
+	margin: 10px 10px 0 0;
+	float: left;
+	clear: none;
+}
+.one_event_text_box span em {
+	font-style: normal;
+}

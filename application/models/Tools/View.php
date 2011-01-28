@@ -275,4 +275,18 @@ class Tools_View{
 		$str .= $next.$last;
 		return($str);
 	}
+
+	static function createShortText($html, $length, $encoding='UTF-8', $startFrom=0, $etcText='...'){
+		$html = html_entity_decode(trim(strip_tags($html)), ENT_QUOTES, $encoding);
+		$short= mb_substr(
+			$html,
+			$startFrom,
+			$startFrom+$length,
+			$encoding
+		);
+		if (mb_strlen($short, $encoding)<mb_strlen($html, $encoding)){
+			$short .= $etcText;
+		}
+		return htmlentities($short, ENT_COMPAT, $encoding);
+	}
 }

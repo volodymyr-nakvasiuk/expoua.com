@@ -5,11 +5,13 @@
 			$lnk = $this->data['link'].Init_Companies_News::$tab_name.'/card/'.$item['id'].'/';
 ?>
 <div class="companies_card_one_news cl">
-	<?php if ($item['logo']){ ?>
-	<a href="<?php echo $lnk;?>">
-		<img src="http://admin.expopromoter.com/data/images/companies/<?php echo $this->data['id']; ?>/news/logo/<?php echo $item['id'];?>_small.jpg">
-	</a>
-	<?php } ?>
+	<div class="companies_card_one_news_img fl">
+		<?php if ($item['logo']){ ?>
+		<a href="<?php echo $lnk;?>">
+			<img src="http://admin.expopromoter.com/data/images/companies/<?php echo $this->data['id']; ?>/news/logo/<?php echo $item['id'];?>_small.jpg">
+		</a>
+		<?php } ?>
+	</div>
 	<div class="companies_card_one_news_desc fl">
 		<div class="companies_card_news_date cl"><?php echo date('d.m.Y', strtotime($item['date_public']));?></div>
 		<div class="companies_card_one_news_desc_title cl">
@@ -18,7 +20,7 @@
 			</a>
 		</div>
 		<div class="companies_card_one_news_desc_text cl">
-			<?php $d=mb_substr(strip_tags($item['content']), 0, 220, 'UTF-8'); echo $d.(mb_strlen($d, 'UTF-8')!=mb_strlen($item['content'], 'UTF-8')?'...':''); ?>
+			<?php echo Tools_View::createShortText($item['content'], 220); ?>
 		</div>
 	</div>
 </div>

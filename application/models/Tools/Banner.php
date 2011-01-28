@@ -1,6 +1,6 @@
 <?php
 class Tools_Banner{
-	protected $_type = false;
+	protected $_types = false;
 	protected $_module = false;
 	protected $_categoryId = false;
 	protected $_limit = false;
@@ -9,8 +9,23 @@ class Tools_Banner{
 	protected $_params = false;
 	protected $_data = false;
 
-	function __construct($type=null, $module=null, $categoryId=null, $limit=5){
-		$this->_type = $type;
+	static function getClickerUrl($id, $data=array(), $type=0){ //type [0 - simple banner, 1 - advert banner]
+		if ($type){
+			$subData = $data['bt']=='normal'?'v2pbl':'v2pblg';
+			$publisherId = SITE_ID;
+		}
+		else {
+			$publisherId = PUBLISHER_ID;
+			$subData = 'v2';
+			if ($data){
+				$subData .= '_dummy?go='.HOST_NAME.'/'.DEFAULT_LANG_CODE."/event/card/".$data['id']."-".Tools_View::getUrlAlias($data['brands_name'], true)."/";
+			}
+		}
+		return PATH_CLICKER. $id . "_" . $publisherId . "_" . DEFAULT_LANG_ID. "_".$subData;
+	}
+
+	function __construct($types=null, $module=null, $categoryId=null, $limit=5){
+		$this->_types = $types?(is_array($types)?$types:array($types)):null;
 		$this->_module = $module;
 		$this->_categoryId = $categoryId;
 		$this->_limit = $limit;
@@ -83,16 +98,16 @@ updateStat($data, $ids, $publisher_id);
 
 	protected function _setParams() {
 		$places = array();
-		if ($this->_type){
-			$types = array();
-			for($i=1; $i<=$this->_limit; $i++) $types[] = "'".$this->_type.$i."'";
+		if ($this->_types){
+			//$types = array();
+			//for($i=1; $i<=$this->_limit; $i++) $types[] = "'".$this->_type.$i."'";
 			$query = "
 					SELECT
 						id AS places_id
 					FROM
 						places
 					WHERE
-						code IN (" . implode(', ',$types) . ")
+						code IN (" . implode(', ',$this->_types) . ")
 				;
 			";
 			$res = $this->_db->fetchAll($query);
@@ -105,7 +120,7 @@ updateStat($data, $ids, $publisher_id);
 				SELECT
 					id AS modules_id
 				FROM
-					modules
+					".($this->_types?"":"pbl_")."modules
 				WHERE
 					code='" . $this->_module . "'
 			;
@@ -125,7 +140,7 @@ updateStat($data, $ids, $publisher_id);
 
 	protected function _setData() {
 		$this->getParams();
-		$this->_data = $this->_type?$this->_getBannerData():$this->_getPblBannerData();
+		$this->_data = $this->_types?$this->_getBannerData():$this->_getPblBannerData();
 	}
 
 	protected function _getBannerData() {
@@ -150,7 +165,7 @@ updateStat($data, $ids, $publisher_id);
 				WHERE
 					languages_id=" . intval($this->_params['lang_id']) . "
 					AND places_id IN (" . implode(',', $this->_params['places_id']) . ")
-					AND (modules_id IS NULL" . ($this->_params['modules_id'] ? " OR modules_id=" . intval($this->_params['modules_id']):"") . ")" . "
+					AND (" . ($this->_params['modules_id'] ? "modules_id=" . intval($this->_params['modules_id']):"modules_id IS NULL") . ")" . "
 					AND (categories_id IS NULL " . ($this->_categoryId ? "OR categories_id=" . intval($this->_categoryId):"") . ")" . "
 					AND (publishers_id IS NULL OR publishers_id=" . intval($this->_params['publisher_id']) . ")
 				ORDER BY
@@ -238,7 +253,7 @@ updateStat($data, $ids, $publisher_id);
 
 	public function updateStat() {
 		$this->getData();
-		if ($this->_type){
+		if ($this->_types){
 			$this->_updateBannerStat();
 		}
 		else {

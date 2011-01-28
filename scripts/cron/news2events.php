@@ -34,7 +34,7 @@ foreach ($result as $r){
 		$brands[$r['brands_id']] = $r;
 	}
 }
-print_r($brands);
+//print_r($brands);
 
 $sql = "
 	SELECT
@@ -47,12 +47,15 @@ $sql = "
 	;";
 $result = $db->getAdapter()->fetchAll($sql);
 foreach ($result as $r){
-	$db->getAdapter()->query("
-		UPDATE
-			`news`
-		SET
-			`events_id`=".$brands[$r['brands_id']]['events_id']."
-		WHERE
-			`id`=".$r['id']."
-		;");
+	$events_id = $brands[$r['brands_id']]['events_id'];
+	if ($events_id){
+		$db->getAdapter()->query("
+			UPDATE
+				`news`
+			SET
+				`events_id`=".$events_id."
+			WHERE
+				`id`=".$r['id']."
+			;");
+	}
 }

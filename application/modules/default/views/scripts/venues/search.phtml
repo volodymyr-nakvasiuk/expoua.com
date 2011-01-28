@@ -1,0 +1,44 @@
+<?php
+	//$regions = Zend_Registry::get("regions".Tools_Events::$cacheSuffix['id']);
+	$countries = Zend_Registry::get("countries".Tools_Events::$cacheSuffix['id']);
+	$cities = Zend_Registry::get("cities".Tools_Events::$cacheSuffix['id']);
+	$l = $this->lang->getLocale();
+?>
+<div class="venues_search_all_content_box cl">
+	<div class="venues_search_title_box cl">
+		<div class="title cl"><?php echo $this->lang->translate('Catalogue of expo venues');?></div>
+	</div>
+	<div class="search_all_venues_box cl">
+<?php
+		foreach($this->data['data'] as $item){ $url= '/'.$l.'/venues/card/'.$item['id'].'/';
+	?>
+	<div class="search_one_venue_box <?php /*vip_venue_bg */ ?>cl">
+		<div class="one_venue_date cl">
+			<?php
+				echo
+				$countries[$item['regions_id']][$item['countries_id']]['name_'.$l]
+				.', '.
+				$cities[$item['regions_id']][$item['countries_id']][$item['cities_id']]['name_'.$l];
+			?>
+		</div>
+		<div class="one_venue_title cl">
+			<a href="<?php echo $url;?>">
+				<?php echo $item['name'];?>
+			</a>
+		</div>
+		<div class="one_venue_content_box cl">
+			<div class="one_venue_text_box fl">
+				<div class="text cl">
+					<?php echo Tools_View::createShortText($item['description'], 220); ?>
+				</div>
+			</div>
+		</div>
+	</div>
+	<?php
+		}
+	?>
+	</div>
+	<div class="paging clr">
+		<?php echo Tools_View::getPages($this->requestUri, $this->data['array_pages'], 'p'); ?>
+	</div>
+</div>

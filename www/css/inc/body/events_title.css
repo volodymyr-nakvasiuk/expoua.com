@@ -1,0 +1,23 @@
+.body_events_title_content div {
+	line-height: 25px;
+	font-size:18px;
+	color: #ff5500;
+}
+.body_events_title_content .lnk a {
+	padding-left: 15px;
+	background: url(/img/index/calendar_ico.png) no-repeat 0 center scroll transparent;
+	font-size: 11px;
+	color: #0d74c4;
+	text-decoration: underline;
+	margin: 0 12px;
+}
+.body_events_title_content .add a {
+	padding-left: 25px;
+	color: #ff5500;
+	background: url(/img/index/add_ex.png) no-repeat 0 center scroll transparent;
+	text-decoration: underline;
+}
+.body_events_title_content .add a:hover,
+.body_events_title_content .lnk a:hover {
+	text-decoration: none
+}

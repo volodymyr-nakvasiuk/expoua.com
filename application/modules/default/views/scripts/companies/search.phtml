@@ -39,7 +39,7 @@
 						<div class="city fl">&nbsp;<?php echo $cities[$item['regions_id']][$item['countries_id']][$item['cities_id']]['name_'.$l]; ?></div>
 					</div>
 					<div class="text cl">
-						<?php $d=mb_substr(strip_tags($item['description']), 0, 220, 'UTF-8'); echo $d.(mb_strlen($d, 'UTF-8')!=mb_strlen($item['description'], 'UTF-8')?'...':''); ?>
+						<?php echo Tools_View::createShortText($item['description'], 220); ?>
 					</div>
 					<?php /*
 					<span>Новостей: <em>0</em></span>

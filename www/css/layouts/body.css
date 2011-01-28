@@ -1,4 +1,14 @@
+.body_events_title_box {
+	clear:both;
+	float:none;
+	width:510px;
+}
 .body_events_accordion_box {
+	clear:both;
+	float:none;
+	width:510px;
+}
+.body_events_prlines_box {
 	clear:both;
 	float:none;
 	width:510px;

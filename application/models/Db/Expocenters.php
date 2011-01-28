@@ -21,5 +21,10 @@ class Db_Expocenters extends ArOn_Db_Table {
 			'refTableClass'     => 'Db_Lang_LocationCitiesData',
 			'refColumns'        => 'id'
 		),
+		'Module' => array(
+			'columns'           => 'id',
+			'refTableClass'     => 'Db_Lang_ExpocentersData',
+			'refColumns'        => 'id'
+		)
 	);
 }

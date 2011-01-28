@@ -60,9 +60,10 @@ class Init_Banner {
 	}
 	
 	protected function getLocalBanner(){
-		$banner = new Tools_Banner(STATIC_HOST_NAME, HOST_NAME, $this->_width, $this->_height, $this->_controller->usedBanners);
-		$this->_controller->usedBanners[] = $banner->getFileName();
-		return $banner->getJavascriptCode();
+		//$banner = new Tools_Banner(STATIC_HOST_NAME, HOST_NAME, $this->_width, $this->_height, $this->_controller->usedBanners);
+		//$this->_controller->usedBanners[] = $banner->getFileName();
+		//return $banner->getJavascriptCode();
+		return '';
 	}
 	
 	protected function getAdvertariumBanner(){

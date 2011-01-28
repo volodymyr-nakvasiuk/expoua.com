@@ -205,6 +205,14 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 						'url'=>HOST_NAME.'/'.$lang.'/events/',
 						'title'=>$this->view->lang->translate('Exhibitions in the world'),
 					),
+					'news'=>array(
+						'url'=>HOST_NAME.'/'.$lang.'/event/news/',
+						'title'=>$this->view->lang->translate('News, press-releases'),
+					),
+					'venues'=>array(
+						'url'=>HOST_NAME.'/'.$lang.'/venues/search/'.DEFAULT_SEARCH,
+						'title'=>$this->view->lang->translate('Expo venues'),
+					),
 				),
 			),
 			'online'=>array(

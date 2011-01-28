@@ -1,0 +1,14 @@
+div.news_full_header {
+	font-size: 18px;
+	color: #dd5500;
+	margin: 10px 0;
+}
+div.news_full span {
+	color: #666666;
+}
+div.news_full span p {
+	margin-top: 10px;
+}
+div.news_full a {
+	color: #999999;
+}
