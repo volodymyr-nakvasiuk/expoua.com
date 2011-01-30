@@ -194,24 +194,25 @@ class ArOn_Crud_Form_ExtJs extends ArOn_Crud_Form {
 											var desktop = " . $this->_ExjDestopName . ".getModule('" . $this->_grid_id . "').app.getDesktop();
 											var win = desktop.getWindow('" . ($this->_parent_grid_id?$this->_parent_grid_id:$this->_grid_id) . "');
 											if (win){
-												var items = win.items;
-												var i;
-												for (i=0;i<items.getCount();i++){
-													var xtype = items.get(i).getXType();
-													if (xtype == 'editorgrid' || xtype == 'grid'){
-														items.get(i).getStore().reload();
-													}
-													if (xtype = 'tabpanel'){
-														var tabs = items.get(i).items;
-														var j;
-														for (j=0;j<tabs.getCount();j++){
-															var tabxtype = tabs.get(j).getXType();
-															if (tabxtype == 'editorgrid' || tabxtype == 'grid'){
-																tabs.get(j).getStore().reload();
-															}
+												var reload = function (items){
+													var i;
+													for (i=0;i<items.getCount();i++){
+														var xtype = items.get(i).getXType();
+														switch (xtype) {
+															case 'editorgrid':
+															case 'grid':
+																items.get(i).getStore().reload();
+																break;
+															case 'tabpanel':
+															case 'panel':
+																var subitems = items.get(i).items;
+																reload(subitems);
+																break;
 														}
 													}
 												}
+												var items = win.items;
+												reload(items);
 											}
 											var win = desktop.getWindow('" . $this->_form_id . "');
 											win.close();
