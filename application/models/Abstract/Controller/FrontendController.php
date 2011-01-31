@@ -263,7 +263,14 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 	}
 	
 	protected function setupLayouts(){
-		$this->view->banners = array();
+		$this->view->banners = array(
+			'250x250' => array(),
+			'200x100' => array(),
+		);
+
+		$tool = new Tools_Banner(array('top_image4', 'top_image3'), $this->moduleName, true, $this->brandsCategoryId, 2);
+		$this->view->banners['200x100']['header_banner_box'] = array($tool->getData(), 100);
+		$tool->updateStat();
 	}
 	
 	protected function initCache() {
@@ -295,7 +302,7 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 
 		$this->view->layouts['head'] = array(
 			"header_left_box"=>array('inc/header/logo', 100),
-			"header_banner_box"=>array('inc/header/banner', 100),
+			"header_banner_box"=>array('inc/banners/banner200x100', 100),
 			"header_user_box"=>array('inc/header/user', 100),
 		);
 

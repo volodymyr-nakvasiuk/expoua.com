@@ -4,7 +4,7 @@
 	<div class="rf fl"></div>
 </div>
 <div class="right_advert_content_box cl">
-	<?php foreach ($this->layoutsData['right']['right_advert_box'] as $item){ $url = Tools_Banner::getClickerUrl($item['id'], $item, 1);?>
+	<?php foreach ($this->layoutsData['right']['right_banners_advert_box'] as $item){ $url = Tools_Banner::getClickerUrl($item['id'], $item, 1);?>
 	<div class="right_advert_one_row cl">
 		<a href="<?php echo $url;?>">
 			<img src="<?php echo ($item['bt']=='normal'?PATH_DATA_PBLBANNERS:PATH_DATA_PBLGAGBANNERS).$item['file_name'];?>">

@@ -1,23 +1,34 @@
 <?php
 class Init_Services{
-	protected $_modules = array(
-		'Hotels_Advert',
-		'Stands_Advert',
-		'Translators_Advert',
-		'Polygraphy_Advert',
-	);
-
-	protected $_module = false;
-	protected $_categoryId = false;
-	protected $_count = false;
-
-	protected $_bannersData = false;
+	protected $_modulesData = false;
+	protected $_modules = false;
 	protected $_data = false;
 
-	public function __construct($module=null, $categoryId=null, $count=4){
-		$this->_module = $module;
-		$this->_categoryId = $categoryId;
-		$this->_count = $count;
+	public function __construct($modules=array()){
+		$modules = is_array($modules)?$modules:array($modules);
+		$translator = Zend_Registry::get ( 'Zend_Translate');
+		$this->_modulesData=array(
+			'Hotels_Advert'=>array(
+				'title'=>$translator->translate('Hotels'),
+			),
+			'Stands_Advert'=>array(
+				'title'=>$translator->translate('Stands'),
+			),
+			'Translators_Advert'=>array(
+				'title'=>$translator->translate('Translators'),
+			),
+			'Polygraphy_Advert'=>array(
+				'title'=>$translator->translate('Polygraphy'),
+			),
+		);
+
+		$this->_modules = array();
+		foreach ($modules as $module){
+			$key = $module.'_Advert';
+			if (array_key_exists($key, $this->_modulesData)){
+				$this->_modules[$key] = $this->_modulesData[$key];
+			}
+		}
 	}
 
 	public function getData(){
@@ -26,24 +37,11 @@ class Init_Services{
 	}
 
 	protected function _setData() {
-		$types = array();
-		for($i=1; $i<=$this->_count; $i++) $types[] = "'".$this->_typeName.$i."'";
-		$tool = new Tools_Banner($types, $this->_module, $this->_categoryId, $this->_count);
-		$this->_bannersData = $tool->getData();
-		$tool->updateStat();
-
-		$eventsIds = array();
-		$bannerData = array();
-		foreach ($this->_bannersData as $banner){
-			$eventsIds[] = $banner['pline_events_id'];
-			$bannerData[$banner['pline_events_id']] = $banner;
-		}
-
-		$grid = new Crud_Grid_Event(null, array('id'=>$eventsIds, 'limit'=>$this->_count));
-		$this->_data = $grid->getData();
-
-		foreach ($this->_data['data'] as &$data){
-			$data['bannerData'] = $bannerData[$data['id']];
+		$this->_data = array();
+		foreach ($this->_modules as $module=>$moduleData){
+			$tool = new Tools_Banner(null, $module);
+			$this->_data[$module] = array('module'=>$moduleData, 'data'=>$tool->getData());
+			$tool->updateStat();
 		}
 	}
 }

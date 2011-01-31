@@ -22,8 +22,8 @@ class Init_Prlines{
 
 	protected function _setData() {
 		$types = array();
-		for($i=1; $i<=$this->_count; $i++) $types[] = "'".$this->_typeName.$i."'";
-		$tool = new Tools_Banner($types, $this->_module, $this->_categoryId, $this->_count);
+		for($i=1; $i<=$this->_count; $i++) $types[] = $this->_typeName.$i;
+		$tool = new Tools_Banner($types, $this->_module, true, $this->_categoryId, $this->_count);
 		$this->_bannersData = $tool->getData();
 		$tool->updateStat();
 
