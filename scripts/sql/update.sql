@@ -66,3 +66,11 @@ ALTER TABLE `online_places`  ADD COLUMN `logo` TINYINT(1) UNSIGNED NOT NULL DEFA
 ALTER TABLE `online_showrooms`  ADD COLUMN `brands_categories_id` SMALLINT(5) UNSIGNED NULL DEFAULT NULL AFTER `id`,  ADD INDEX `brands_categories_id` (`brands_categories_id`),  ADD CONSTRAINT `online_showrooms_ibfk_1` FOREIGN KEY (`brands_categories_id`) REFERENCES `brands_categories` (`id`) ON UPDATE CASCADE ON DELETE SET NULL;
 
 UPDATE `online_showrooms` SET `brands_categories_id`=24;
+
+#2011.02.01
+UPDATE `types` SET `name`='Изображение 250x120', `height`=120, `width`=250 WHERE `id`=5 LIMIT 1;
+UPDATE `types` SET `name`='Flash 250x120', `height`=120, `width`=250 WHERE `id`=6 LIMIT 1;
+UPDATE `places` SET `name`='Центральный левый 250x120' WHERE `id`=3 LIMIT 1;
+UPDATE `places` SET `name`='Центральный правый 250x120' WHERE `id`=4 LIMIT 1;
+UPDATE `places` SET `name`='Ниже по списку левый 250x120' WHERE `id`=23 LIMIT 1;
+UPDATE `places` SET `name`='Ниже по списку правый 250x120' WHERE `id`=24 LIMIT 1;

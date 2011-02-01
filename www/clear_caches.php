@@ -47,5 +47,6 @@ function rmDirRecursively($dir){
 	return $result;
 }
 
-rmDirRecursively($cacheDir);
-mkdir($cacheDir, 0777, true);
+rmDirRecursively($cacheDir.'/html');
+rmDirRecursively($cacheDir.'/js');
+rmDirRecursively($cacheDir.'/css');

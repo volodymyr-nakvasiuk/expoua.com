@@ -29,3 +29,7 @@
 	width:510px;
 	margin-bottom:10px;
 }
+.body_companies_goods_box {
+	clear:both;
+	float:none;
+}

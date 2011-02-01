@@ -1,0 +1,9 @@
+<?php
+	$l = $this->lang->getLocale();
+	$cache = Zend_Registry::get('categories'.Tools_Events::$cacheSuffix['id']);
+?>
+<?php foreach($cache as $category){ ?>
+<div class="lnk cl">
+	<a href="<?php echo "/".$l."/events/".DEFAULT_SEARCH."category-".$category['alias']."/"; ?>"><?php echo $category['name'];?></a>
+</div>
+<?php } ?>
