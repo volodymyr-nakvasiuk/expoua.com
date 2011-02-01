@@ -2,8 +2,17 @@
 	$l = $this->lang->getLocale();
 	$cache = Zend_Registry::get('categories'.Tools_Events::$cacheSuffix['id']);
 ?>
-<?php foreach($cache as $category){ ?>
-<div class="lnk cl">
-	<a href="<?php echo "/".$l."/events/".DEFAULT_SEARCH."category-".$category['alias']."/"; ?>"><?php echo $category['name'];?></a>
+<div class="center_events_by_categories_head cl">
+	<div class="lf fl"></div>
+	<div class="center_f fl"><span><?php echo $this->lang->translate('Exhibitions by categories');?></span></div>
+	<div class="rf fl"></div>
 </div>
-<?php } ?>
+<div class="center_events_by_categories_content_box cl">
+	<?php foreach($cache as $category){ ?>
+	<div class="center_events_by_categories_one_row">
+		<div class="center_events_by_categories_text_box">
+			<a href="<?php echo "/".$l."/events/".DEFAULT_SEARCH."category-".$category['alias']."/"; ?>"><?php echo $category['name_'.$l];?></a>
+		</div>
+	</div>
+	<?php } ?>
+</div>

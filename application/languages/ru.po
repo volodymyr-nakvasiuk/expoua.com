@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: expoua.com\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-28 15:39+0200\n"
-"PO-Revision-Date: 2010-12-28 15:42+0200\n"
+"POT-Creation-Date: 2011-02-01 16:16+0200\n"
+"PO-Revision-Date: 2011-02-01 16:30+0200\n"
 "Last-Translator: Владимир <djtheme@gmail.com>\n"
 "Language-Team: Volodymyr Nakvasiuk <volodymyr.nakvasiuk@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -17,6 +17,22 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: D:\\WebServer\\home\\expoua-my.com\\application\n"
 
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/banners/advert.phtml:3
+msgid "ExpoAdvert"
+msgstr "ExpoAdvert"
+
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/banners/advert.phtml:23
+msgid "add an ad"
+msgstr "добавить объявление"
+
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/banners/advert.phtml:23
+msgid "become a partner"
+msgstr "стать партнером"
+
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/banners/recommends.phtml:6
+msgid "recommends"
+msgstr "рекомендует"
+
 #: D:\WebServer\home\expoua-my.com\application/layouts/inc/body/companies.phtml:5
 msgid "Best companies"
 msgstr ""
@@ -25,79 +41,104 @@ msgstr ""
 msgid "Add company"
 msgstr ""
 
-#: D:\WebServer\home\expoua-my.com\application/layouts/inc/body/events_accordion.phtml:9
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/body/events_title.phtml:8
 msgid "Upcoming events"
 msgstr ""
 
-#: D:\WebServer\home\expoua-my.com\application/layouts/inc/body/events_accordion.phtml:11
-#, fuzzy
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/body/events_title.phtml:10
 msgid "Exhibition's calendar"
-msgstr "Выставки"
+msgstr "Календарь выставок"
 
-#: D:\WebServer\home\expoua-my.com\application/layouts/inc/body/events_accordion.phtml:14
-#, fuzzy
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/body/events_title.phtml:13
 msgid "Add new exhibition"
-msgstr "Выставки"
+msgstr "Добавить выставку"
 
-#: D:\WebServer\home\expoua-my.com\application/layouts/inc/body/events_accordion.phtml:44
-msgid "add to favorites"
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/body/goods_slider.phtml:10
+msgid "Products and services"
+msgstr ""
+
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/body/goods_slider.phtml:13
+msgid "of"
 msgstr ""
 
 #: D:\WebServer\home\expoua-my.com\application/layouts/inc/center/company_news.phtml:6
 msgid "Companies news"
 msgstr ""
 
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/center/events_by_categories.phtml:7
+msgid "Exhibitions by categories"
+msgstr "Выставки по категориям"
+
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/center/events_by_countries.phtml:53
+msgid "Exhibitions by countries"
+msgstr "Выставки по странам"
+
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/center/events_by_countries.phtml:60
+msgid "Exhibitions in"
+msgstr "Выставки в"
+
 #: D:\WebServer\home\expoua-my.com\application/layouts/inc/center/event_news.phtml:6
-#, fuzzy
 msgid "Exhibitions news"
-msgstr "Выставки"
-
-#: D:\WebServer\home\expoua-my.com\application/layouts/inc/extra/goods_slider.phtml:10
-msgid "Products and services"
-msgstr ""
-
-#: D:\WebServer\home\expoua-my.com\application/layouts/inc/extra/goods_slider.phtml:13
-msgid "of"
-msgstr ""
+msgstr "Новости выставок"
 
 #: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/companies.phtml:7
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/companies_news.phtml:7
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/companies_services.phtml:7
 #: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/events.phtml:7
-#: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/index.phtml:7
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/events_news.phtml:38
 msgid "search by keyword..."
 msgstr "поиск по слову..."
 
 #: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/companies.phtml:11
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/companies_news.phtml:11
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/companies_services.phtml:11
 #: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/events.phtml:16
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/events_news.phtml:8
 msgid "Region"
 msgstr "Регион"
 
 #: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/companies.phtml:24
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/companies_news.phtml:24
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/companies_services.phtml:24
 #: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/events.phtml:29
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/events_news.phtml:21
 msgid "Country"
 msgstr "Страна"
 
 #: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/companies.phtml:37
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/companies_news.phtml:37
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/companies_services.phtml:37
 #: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/events.phtml:48
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/events_news.phtml:42
 msgid "Category"
 msgstr "Тематика"
 
 #: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/companies.phtml:50
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/companies_news.phtml:50
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/companies_services.phtml:50
 #: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/events.phtml:61
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/events_news.phtml:26
 msgid "City"
 msgstr "Город"
 
 #: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/companies.phtml:54
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/companies_news.phtml:54
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/companies_services.phtml:54
 #: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/events.phtml:65
-#: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/index.phtml:16
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/events_news.phtml:59
 msgid "Search"
 msgstr "Найти"
 
 #: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/companies.phtml:57
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/companies_news.phtml:57
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/companies_services.phtml:57
 #: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/events.phtml:68
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/events_news.phtml:62
 msgid "Advanced Search"
 msgstr "Расширенный поиск"
 
 #: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/events.phtml:11
+#: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/events_news.phtml:55
 msgid "Subcategory"
 msgstr "Подтематика"
 
@@ -110,14 +151,12 @@ msgid "Ending date"
 msgstr "Дата завершения"
 
 #: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/index.phtml:11
-#, fuzzy
 msgid "search through exhibitions"
-msgstr "поиск по слову..."
+msgstr "искать в выставках"
 
 #: D:\WebServer\home\expoua-my.com\application/layouts/inc/filter/index.phtml:12
-#, fuzzy
 msgid "search among companies"
-msgstr "поиск по слову..."
+msgstr "искать среди компаний"
 
 #: D:\WebServer\home\expoua-my.com\application/layouts/inc/header/logo.phtml:29
 msgid "record total"
@@ -142,18 +181,6 @@ msgstr "Подписка"
 msgid "My Office"
 msgstr "Мой кабинет"
 
-#: D:\WebServer\home\expoua-my.com\application/layouts/inc/right/advert.phtml:3
-msgid "ExpoAdvert"
-msgstr ""
-
-#: D:\WebServer\home\expoua-my.com\application/layouts/inc/right/advert.phtml:23
-msgid "add an ad"
-msgstr ""
-
-#: D:\WebServer\home\expoua-my.com\application/layouts/inc/right/advert.phtml:23
-msgid "become a partner"
-msgstr ""
-
 #: D:\WebServer\home\expoua-my.com\application/layouts/inc/right/top_companies.phtml:9
 msgid "Top companies"
 msgstr ""
@@ -162,15 +189,15 @@ msgstr ""
 msgid "Companies"
 msgstr ""
 
-#: D:\WebServer\home\expoua-my.com\application/modules/default/views/scripts/companies/card.phtml:33
+#: D:\WebServer\home\expoua-my.com\application/modules/default/views/scripts/companies/card.phtml:37
 msgid "Address"
 msgstr ""
 
-#: D:\WebServer\home\expoua-my.com\application/modules/default/views/scripts/companies/card.phtml:46
+#: D:\WebServer\home\expoua-my.com\application/modules/default/views/scripts/companies/card.phtml:50
 msgid "Phone"
 msgstr ""
 
-#: D:\WebServer\home\expoua-my.com\application/modules/default/views/scripts/companies/card.phtml:51
+#: D:\WebServer\home\expoua-my.com\application/modules/default/views/scripts/companies/card.phtml:55
 msgid "Fax"
 msgstr ""
 
@@ -178,15 +205,18 @@ msgstr ""
 msgid "Companies catalog by categories"
 msgstr ""
 
-#: D:\WebServer\home\expoua-my.com\application/modules/default/views/scripts/companies/online.phtml:7
-#, fuzzy
-msgid "Welcome to online trade show"
-msgstr "Выставка онлайн: Компании, товары, услуги"
+#: D:\WebServer\home\expoua-my.com\application/modules/default/views/scripts/companies/news.phtml:9
+#: D:\WebServer\home\expoua-my.com\application/modules/default/views/scripts/companies/services.phtml:9
+msgid "to categories list"
+msgstr ""
 
-#: D:\WebServer\home\expoua-my.com\application/modules/default/views/scripts/companies/online.phtml:10
-#, fuzzy
-msgid "Trade show Online"
-msgstr "Видео выставок"
+#: D:\WebServer\home\expoua-my.com\application/modules/default/views/scripts/companies/news.phtml:12
+msgid "Catalogue of news and press-releases"
+msgstr ""
+
+#: D:\WebServer\home\expoua-my.com\application/modules/default/views/scripts/companies/online.phtml:7
+msgid "Welcome to online trade show"
+msgstr "Добро пожаловать на онлайн выставку"
 
 #: D:\WebServer\home\expoua-my.com\application/modules/default/views/scripts/companies/online.phtml:15
 msgid "company total"
@@ -194,6 +224,10 @@ msgid_plural "companies total"
 msgstr[0] "компания в базе"
 msgstr[1] "компании в базе"
 msgstr[2] "компаний в базе"
+
+#: D:\WebServer\home\expoua-my.com\application/modules/default/views/scripts/companies/online.phtml:40
+msgid "More details >>>"
+msgstr ""
 
 #: D:\WebServer\home\expoua-my.com\application/modules/default/views/scripts/companies/search.phtml:9
 msgid "back to categories list"
@@ -203,12 +237,16 @@ msgstr ""
 msgid "Catalogue of companies"
 msgstr ""
 
-#: D:\WebServer\home\expoua-my.com\application/modules/default/views/scripts/companies/tabs/news.phtml:72
-msgid "back to news list"
+#: D:\WebServer\home\expoua-my.com\application/modules/default/views/scripts/companies/services.phtml:12
+msgid "Catalogue of products and services"
+msgstr "Каталог товаров и услуг"
+
+#: D:\WebServer\home\expoua-my.com\application/modules/default/views/scripts/companies/tabs/news.phtml:74
+msgid "to news of this company"
 msgstr ""
 
-#: D:\WebServer\home\expoua-my.com\application/modules/default/views/scripts/companies/tabs/services.phtml:72
-msgid "back to services list"
+#: D:\WebServer\home\expoua-my.com\application/modules/default/views/scripts/companies/tabs/services.phtml:74
+msgid "to services of this company"
 msgstr ""
 
 #: D:\WebServer\home\expoua-my.com\application/modules/default/views/scripts/event/card.phtml:10
@@ -259,8 +297,16 @@ msgstr ""
 msgid "File type"
 msgstr ""
 
+#: D:\WebServer\home\expoua-my.com\application/modules/default/views/scripts/event/tabs/news.phtml:66
+msgid "to news of this trade show"
+msgstr "перейти к новостям этой выставки"
+
 #: D:\WebServer\home\expoua-my.com\application/modules/default/views/scripts/events/index.phtml:49
 msgid "Free ticket for buyer"
+msgstr ""
+
+#: D:\WebServer\home\expoua-my.com\application/modules/default/views/scripts/venues/search.phtml:9
+msgid "Catalogue of expo venues"
 msgstr ""
 
 #: D:\WebServer\home\expoua-my.com\application/config/modules/auth.php:25
@@ -281,9 +327,8 @@ msgid "Re-enter password"
 msgstr ""
 
 #: D:\WebServer\home\expoua-my.com\application/config/modules/auth.php:56
-#, fuzzy
 msgid "Logging to"
-msgstr "Вход"
+msgstr "Вход в"
 
 #: D:\WebServer\home\expoua-my.com\application/config/modules/auth.php:64
 msgid "Enter password"
@@ -349,49 +394,88 @@ msgstr ""
 msgid "Exhibitions in the world"
 msgstr ""
 
-#: D:\WebServer\home\expoua-my.com\application/models/Abstract/Controller/FrontendController.php:213
+#: D:\WebServer\home\expoua-my.com\application/models/Abstract/Controller/FrontendController.php:210
+msgid "News, press-releases"
+msgstr ""
+
+#: D:\WebServer\home\expoua-my.com\application/models/Abstract/Controller/FrontendController.php:214
+msgid "Expo venues"
+msgstr ""
+
+#: D:\WebServer\home\expoua-my.com\application/models/Abstract/Controller/FrontendController.php:221
 msgid "Trade show Online: Companies, Products, Services"
 msgstr "Выставка онлайн: Компании, товары, услуги"
 
-#: D:\WebServer\home\expoua-my.com\application/models/Abstract/Controller/FrontendController.php:217
-#, fuzzy
-msgid "Online trade show"
-msgstr "Видео выставок"
-
 #: D:\WebServer\home\expoua-my.com\application/models/Abstract/Controller/FrontendController.php:225
-msgid "All companies"
+msgid "Online trade show plan"
+msgstr "План онлайн выставки"
+
+#: D:\WebServer\home\expoua-my.com\application/models/Abstract/Controller/FrontendController.php:233
+msgid "List of all companies"
+msgstr "Список всех компаний"
+
+#: D:\WebServer\home\expoua-my.com\application/models/Abstract/Controller/FrontendController.php:241
+msgid "News and press releases"
 msgstr ""
 
-#: D:\WebServer\home\expoua-my.com\application/models/Abstract/Controller/FrontendController.php:232
+#: D:\WebServer\home\expoua-my.com\application/models/Abstract/Controller/FrontendController.php:248
 msgid "Trade shows videos"
 msgstr "Видео выставок"
 
-#: D:\WebServer\home\expoua-my.com\application/models/Abstract/Controller/FrontendController.php:238
+#: D:\WebServer\home\expoua-my.com\application/models/Abstract/Controller/FrontendController.php:254
 msgid "Business tours"
 msgstr "Бизнес-туры"
 
+#: D:\WebServer\home\expoua-my.com\application/models/Init/Services.php:12
+msgid "Hotels"
+msgstr ""
+
+#: D:\WebServer\home\expoua-my.com\application/models/Init/Services.php:15
+msgid "Stands"
+msgstr ""
+
+#: D:\WebServer\home\expoua-my.com\application/models/Init/Services.php:18
+msgid "Translators"
+msgstr ""
+
+#: D:\WebServer\home\expoua-my.com\application/models/Init/Services.php:21
+msgid "Polygraphy"
+msgstr ""
+
 #: D:\WebServer\home\expoua-my.com\application/modules/default/controllers/CompaniesController.php:54
 #: D:\WebServer\home\expoua-my.com\application/modules/default/controllers/EventController.php:46
-#, fuzzy
+#: D:\WebServer\home\expoua-my.com\application/modules/default/controllers/VenuesController.php:57
 msgid "Description"
-msgstr "Регистрация"
+msgstr "Описание"
 
 #: D:\WebServer\home\expoua-my.com\application/modules/default/controllers/CompaniesController.php:58
 #: D:\WebServer\home\expoua-my.com\application/modules/default/controllers/EventController.php:50
+#: D:\WebServer\home\expoua-my.com\application/modules/default/controllers/VenuesController.php:61
 msgid "News"
 msgstr ""
 
+#: D:\WebServer\home\expoua-my.com\application/modules/default/controllers/CompaniesController.php:118
+msgid "Select online trade show"
+msgstr "Выберите онлайн выставку"
+
 #: D:\WebServer\home\expoua-my.com\application/modules/default/controllers/EventController.php:54
+#: D:\WebServer\home\expoua-my.com\application/modules/default/controllers/VenuesController.php:65
 msgid "Photo"
 msgstr ""
 
 #: D:\WebServer\home\expoua-my.com\application/modules/default/controllers/EventController.php:58
+#: D:\WebServer\home\expoua-my.com\application/modules/default/controllers/VenuesController.php:69
 msgid "Files"
 msgstr ""
 
 #: D:\WebServer\home\expoua-my.com\application/modules/default/controllers/EventController.php:62
+#: D:\WebServer\home\expoua-my.com\application/modules/default/controllers/VenuesController.php:73
 msgid "Get additional information"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Trade show Online"
+#~ msgstr "Видео выставок"
 
 #~ msgid "Main page"
 #~ msgstr "Главная страница"
