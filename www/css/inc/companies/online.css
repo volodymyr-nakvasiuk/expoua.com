@@ -23,6 +23,7 @@
 	zoom:1;
 	//display:inline;
 	position: relative;
+	cursor: pointer;
 }
 
 .exhib_cat_back_lnk a { color: #999999;}

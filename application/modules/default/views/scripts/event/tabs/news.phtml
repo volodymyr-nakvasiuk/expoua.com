@@ -6,7 +6,7 @@
 	<div class="card_one_news cl">
 		<div class="card_one_news_desc fl">
 			<div class="card_one_news_desc_title cl">
-				<a href="<?php echo $this->data['link'].Init_Event_News::$tab_name.'/card/'.$item['id'].'/';?>">
+				<a href="<?php echo $this->data['link'].Init_Event_News::$tab_name.'/card/'.$item['id'].'-'.Tools_View::getUrlAlias($item['name'], true).'/';?>">
 					<?php echo $item['name']; ?>
 				</a>
 			</div>

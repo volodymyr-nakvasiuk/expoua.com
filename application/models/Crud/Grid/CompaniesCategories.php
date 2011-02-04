@@ -42,7 +42,7 @@ class Crud_Grid_CompaniesCategories extends ArOn_Crud_Grid {
 				"c" => new Zend_Db_Expr("COUNT(*)")
 			)
 		);
-		
-		return $select;
+
+		return parent::updateCurrentSelect($select);
 	}
 }

@@ -2,11 +2,11 @@
 	//$regions = Zend_Registry::get("regions".Tools_Events::$cacheSuffix['id']);
 	//$countries = Zend_Registry::get("countries".Tools_Events::$cacheSuffix['id']);
 	//$cities = Zend_Registry::get("cities".Tools_Events::$cacheSuffix['id']);
-	$l = $this->lang->getLocale();
+	$l = DEFAULT_LANG_CODE;
 ?>
 <div class="companies_search_all_content_box cl">
 	<div class="companies_search_back_lnk cl">
-		&larr;&nbsp;<a href="/companies/"><?php echo $this->lang->translate('to categories list');?></a>
+		&larr;&nbsp;<a href="/companies/online/category-<?php echo $this->jsParams['filter']['category'];?>/"><?php echo $this->lang->translate('back to online trade show plan');?></a>
 	</div>
 	<div class="companies_search_title_box cl">
 		<div class="title cl"><?php echo $this->lang->translate('Catalogue of products and services');?></div>

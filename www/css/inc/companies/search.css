@@ -42,6 +42,8 @@
 	margin-top:10px
 }
 .one_company_image_box {
+	background: url(/img/companies_logo_bg.png) no-repeat;
+	border: 1px solid #c2d1de;
 	width: 80px;
 	height: 80px;
 	vertical-align: middle;
@@ -58,7 +60,7 @@
 }
 .one_company_text_box {
 	width: 400px;
-	margin-left:10px
+	margin-left:8px
 }
 .one_company_place .country,
 .one_company_place .city {
@@ -80,4 +82,5 @@
 }
 .one_company_text_box span em {
 	font-style: normal;
+	font-weight: normal;
 }

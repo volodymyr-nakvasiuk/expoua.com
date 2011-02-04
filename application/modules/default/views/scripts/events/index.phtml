@@ -2,7 +2,7 @@
 	//$regions = Zend_Registry::get("regions".Tools_Events::$cacheSuffix['id']);
 	$countries = Zend_Registry::get("countries".Tools_Events::$cacheSuffix['id']);
 	$cities = Zend_Registry::get("cities".Tools_Events::$cacheSuffix['id']);
-	$l = $this->lang->getLocale();
+	$l = DEFAULT_LANG_CODE;
 ?>
 <div class="events_index_box fl">
 	<div class="events_index_title cl">
@@ -38,9 +38,9 @@
 							<div class="events_index_item_info_location cl">
 								<?php
 									echo
-									$countries[$item['regions_id']][$item['countries_id']]['name_'.$l]
+									$countries[$item['regions_id']][$item['countries_id']]['name']
 									.', '.
-									$cities[$item['regions_id']][$item['countries_id']][$item['cities_id']]['name_'.$l];
+									$cities[$item['regions_id']][$item['countries_id']][$item['cities_id']]['name'];
 								?>
 							</div>
 						</div>

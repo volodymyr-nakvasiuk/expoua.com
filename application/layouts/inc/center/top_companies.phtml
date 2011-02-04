@@ -4,14 +4,14 @@
 	$cities = Zend_Registry::get("cities".Tools_Events::$cacheSuffix['id']);
 	$l = DEFAULT_LANG_CODE;
 ?>
-<div class="right_companies_head cl">
+<div class="center_companies_head cl">
 	<div class="lf fl"></div>
-	<div class="center_f fl center_f_right"><span><?php echo $this->lang->translate("Top companies");?></span></div>
+	<div class="center_f fl"><span><?php echo $this->lang->translate("Top companies");?></span></div>
 	<div class="rf fl"></div>
 </div>
-<div class="right_top_comp_content_box cl">
-<?php foreach ($this->layoutsData['right']['right_companies_box']['data'] as $item){ $url="/".$l."/companies/card/".$item['id']."-".Tools_View::getUrlAlias($item['name'], true)."/";?>
-	<div class="right_top_comp_text_box cl">
+<div class="center_top_comp_content_box cl">
+<?php foreach ($this->layoutsData['center']['center_companies_box']['data'] as $item){ $url="/".$l."/companies/card/".$item['id']."-".Tools_View::getUrlAlias($item['name'], true)."/";?>
+	<div class="center_top_comp_text_box cl">
 		<a href="<?php echo $url; ?>"><?php echo $item['name'];?></a>
 		<span>
 			<?php

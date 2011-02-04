@@ -1,5 +1,6 @@
+<?php $bodyClass = $this->noSubMenu?' noSubMenu':'';?>
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js<?php echo $bodyClass; ?>">
 <head>
 	<script type="text/javascript">
 <?php if (APPLICATION_ERROR_MODE=='on'){?>
@@ -43,16 +44,16 @@
 		var host_name = '<?php echo $this->http_host;?>';
 		var main_host_name = '<?php echo HOST_NAME;?>';
 		var cookie_host_name = '<?php echo COOKIE_HOST_NAME;?>';
-		var lang_id = '<?php echo $this->lang->getLocale();?>';
+		var lang_id = '<?php echo DEFAULT_LANG_CODE;?>';
 		var default_search = '<?php echo DEFAULT_SEARCH; ?>';
 		var phpParams = <?php echo Zend_Json_Encoder::encode($this->jsParams);?>;
 	</script>
 </head>
-<!--[if lt IE 7 ]> <body class="ie6"> <![endif]-->
-<!--[if IE 7 ]>    <body class="ie7"> <![endif]-->
-<!--[if IE 8 ]>    <body class="ie8"> <![endif]-->
-<!--[if IE 9 ]>    <body class="ie9"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <body> <!--<![endif]-->
+<!--[if lt IE 7 ]> <body class="ie6<?php echo $bodyClass; ?>"> <![endif]-->
+<!--[if IE 7 ]>    <body class="ie7<?php echo $bodyClass; ?>"> <![endif]-->
+<!--[if IE 8 ]>    <body class="ie8<?php echo $bodyClass; ?>"> <![endif]-->
+<!--[if IE 9 ]>    <body class="ie9<?php echo $bodyClass; ?>"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <body class="not-ie<?php echo $bodyClass; ?>"> <!--<![endif]-->
 <?php if (VIEW_EXTRAINFO_MODE=='on'){?>
 <div style="display:none;"><?php echo $this->fullAction?></div>
 <?php }?>

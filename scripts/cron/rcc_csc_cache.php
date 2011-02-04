@@ -6,15 +6,16 @@ $langArray = array(
 	array('id'=>2, 'alias'=>'en'),
 	array('id'=>1, 'alias'=>'ru'),
 );
+$aliasLangId = 2;
 
 echo '<pre>';
-
+foreach ($langArray as $langData){
 $cacheArrayName = 'globalFilterCacheArray';
 
 $file = '<?php'."\n".
 		'$'.$cacheArrayName.' = array();'."\n";
 
-Db_Lang::$globalLangId = $langArray[0]['id'];
+Db_Lang::$globalLangId = $langData['id'];
 $db = new Db_Lang_LocationRegionsData();
 $select = $db->select('Db_Lang_LocationRegionsData');
 $select
@@ -25,17 +26,17 @@ $select
 		->where('Db_LocationRegions.active=?',1)
 		->columnsJoinOne(array('Db_LocationRegions'), array ('active'=>'active'));
 $regions = $db->fetchAll($select)->toArray();
-//print_r($regions);
+//print_r($regions); //exit();
 
 $active = array('regions'=>array(), 'countries'=>array());
 $location = array();
 foreach ($regions as $region){
-	Db_Lang::$globalLangId = $langArray[1]['id'];
+	Db_Lang::$globalLangId = $aliasLangId;
 	$db = new Db_Lang_LocationRegionsData();
-	$tr = $db->fetchRow($db->getPrimary().'='.$region['id'])->toArray();
-	$location[$region['id']] = array('region'=>array_merge($region, array('trName'=>$tr['name'])),'countries'=>array());
+	$alias = $db->fetchRow($db->getPrimary().'='.$region['id'])->toArray();
+	$location[$region['id']] = array('region'=>array_merge($region, array('alias'=>$alias['name'])),'countries'=>array());
 	//echo "\n-------------------\n\n".$region['id']." - ".$region['name']."\n";
-	Db_Lang::$globalLangId = $langArray[0]['id'];
+	Db_Lang::$globalLangId = $langData['id'];
 	$db = new Db_Lang_LocationCountriesData();
 	$select = $db->select('Db_Lang_LocationCountriesData');
 	$select
@@ -47,15 +48,15 @@ foreach ($regions as $region){
 		->where('Db_LocationCountries.active=?',1)
 		->columnsJoinOne(array('Db_LocationCountries'), array ('regions_id' => 'regions_id','active'=>'active'));
 	$countries = $db->fetchAll($select)->toArray();
-	//print_r($countries);
+	//print_r($countries); //exit();
 
 	foreach ($countries as $country){
-		Db_Lang::$globalLangId = $langArray[1]['id'];
+		Db_Lang::$globalLangId = $aliasLangId;
 		$db = new Db_Lang_LocationCountriesData();
-		$tr = $db->fetchRow($db->getPrimary().'='.$country['id'])->toArray();
-		$location[$region['id']]['countries'][$country['id']] = array('country'=>array_merge($country, array('trName'=>$tr['name'])),'cities'=>array());
+		$alias = $db->fetchRow($db->getPrimary().'='.$country['id'])->toArray();
+		$location[$region['id']]['countries'][$country['id']] = array('country'=>array_merge($country, array('alias'=>$alias['name'])),'cities'=>array());
 		//echo "\n==================\n\n\t".$country['id']." - ".$country['name']."\n";
-		Db_Lang::$globalLangId = $langArray[0]['id'];
+		Db_Lang::$globalLangId = $langData['id'];
 		$db = new Db_Lang_LocationCitiesData();
 		$select = $db->select('Db_Lang_LocationCitiesData');
 		$select
@@ -77,13 +78,13 @@ foreach ($regions as $region){
 			if ($result){
 				$active['regions'][$region['id']] = 1;
 				$active['countries'][$country['id']] = 1;
-				Db_Lang::$globalLangId = $langArray[1]['id'];
+				Db_Lang::$globalLangId = $aliasLangId;
 				$db = new Db_Lang_LocationCitiesData();
-				$tr = $db->fetchRow($db->getPrimary().'='.$city['id'])->toArray();
-				$location[$region['id']]['countries'][$country['id']]['cities'][$city['id']] = array('city'=>array_merge($city, array('trName'=>$tr['name'])));
+				$alias = $db->fetchRow($db->getPrimary().'='.$city['id'])->toArray();
+				$location[$region['id']]['countries'][$country['id']]['cities'][$city['id']] = array('city'=>array_merge($city, array('alias'=>$alias['name'])));
 			}
 		}
-		//print_r($cities);
+		//print_r($cities); //exit();
 	}
 }
 
@@ -122,39 +123,36 @@ $fileCountries .= '$'.$cacheArrayName.'["'.$countriesCacheByIdsArrayName.'"] = a
 $fileCities .= '$'.$cacheArrayName.'["'.$citiesCacheByIdsArrayName.'"] = array();'."\n";
 
 foreach ($location as $regionId=>$region){
-	$regionAlias = Tools_View::getUrlAlias($region['region']['name']);
+	$regionAlias = Tools_View::getUrlAlias($region['region']['alias']);
 	$fileRegions .= '$'.$cacheArrayName.'["'.$regionsCacheByIdsArrayName.'"]["'.$region['region']['id'].'"] = $'.$cacheArrayName.'["'.$regionsCacheByNamesArrayName.'"]["'.$regionAlias.'"] = array('."\n";
 	$fileRegions .= "\t".'"id"=>"'.$region['region']['id'].'",'."\n";
-	$fileRegions .= "\t".'"name_'.$langArray[0]['alias'].'"=>"'.$region['region']['name'].'",'."\n";
-	$fileRegions .= "\t".'"name_'.$langArray[1]['alias'].'"=>"'.$region['region']['trName'].'",'."\n";
+	$fileRegions .= "\t".'"name"=>"'.$region['region']['name'].'",'."\n";
 	$fileRegions .= "\t".'"alias"=>"'.$regionAlias.'",'."\n";
 	$fileRegions .= ');'."\n";
 
 	$fileCountries .= '$'.$cacheArrayName.'["'.$countriesCacheByIdsArrayName.'"]["'.$region['region']['id'].'"] = $'.$cacheArrayName.'["'.$countriesCacheByNamesArrayName.'"]["'.$regionAlias.'"] = array();'."\n";
 	$fileCities .= '$'.$cacheArrayName.'["'.$citiesCacheByIdsArrayName.'"]["'.$region['region']['id'].'"] = $'.$cacheArrayName.'["'.$citiesCacheByNamesArrayName.'"]["'.$regionAlias.'"] = array();'."\n";
 	foreach($region['countries'] as $countryId=>$country){
-		$countryAlias = Tools_View::getUrlAlias($country['country']['name']);
+		$countryAlias = Tools_View::getUrlAlias($country['country']['alias']);
 		$fileCountries .= '$'.$cacheArrayName.'["'.$countriesCacheByIdsArrayName.'"]["'.$region['region']['id'].'"]["'.$country['country']['id'].'"] = $'.$cacheArrayName.'["'.$countriesCacheByNamesArrayName.'"]["'.$regionAlias.'"]["'.$countryAlias.'"] = array('."\n";
 		$fileCountries .= "\t".'"id"=>"'.$country['country']['id'].'",'."\n";
-		$fileCountries .= "\t".'"name_'.$langArray[0]['alias'].'"=>"'.$country['country']['name'].'",'."\n";
-		$fileCountries .= "\t".'"name_'.$langArray[1]['alias'].'"=>"'.$country['country']['trName'].'",'."\n";
+		$fileCountries .= "\t".'"name"=>"'.$country['country']['name'].'",'."\n";
 		$fileCountries .= "\t".'"alias"=>"'.$countryAlias.'",'."\n";
 		$fileCountries .= ');'."\n";
 
 		$fileCities .= '$'.$cacheArrayName.'["'.$citiesCacheByIdsArrayName.'"]["'.$region['region']['id'].'"]["'.$country['country']['id'].'"] = $'.$cacheArrayName.'["'.$citiesCacheByNamesArrayName.'"]["'.$regionAlias.'"]["'.$countryAlias.'"] = array();'."\n";
 		foreach($country['cities'] as $cityId=>$city){
-			$cityAlias = Tools_View::getUrlAlias($city['city']['name']);
+			$cityAlias = Tools_View::getUrlAlias($city['city']['alias']);
 			$fileCities .= '$'.$cacheArrayName.'["'.$citiesCacheByIdsArrayName.'"]["'.$region['region']['id'].'"]["'.$country['country']['id'].'"]["'.$city['city']['id'].'"] = $'.$cacheArrayName.'["'.$citiesCacheByNamesArrayName.'"]["'.$regionAlias.'"]["'.$countryAlias.'"]["'.$cityAlias.'"] = array('."\n";
 			$fileCities .= "\t".'"id"=>"'.$city['city']['id'].'",'."\n";
-			$fileCities .= "\t".'"name_'.$langArray[0]['alias'].'"=>"'.$city['city']['name'].'",'."\n";
-			$fileCities .= "\t".'"name_'.$langArray[1]['alias'].'"=>"'.$city['city']['trName'].'",'."\n";
+			$fileCities .= "\t".'"name"=>"'.$city['city']['name'].'",'."\n";
 			$fileCities .= "\t".'"alias"=>"'.$cityAlias.'",'."\n";
 			$fileCities .= ');'."\n";
 		}
 	}
 }
 
-Db_Lang::$globalLangId = $langArray[0]['id'];
+Db_Lang::$globalLangId = $langData['id'];
 $db = new Db_Lang_BrandsCategoriesData();
 $select = $db->select('Db_Lang_BrandsCategoriesData');
 $select
@@ -169,12 +167,12 @@ $categories = $db->fetchAll($select)->toArray();
 
 $brands = array();
 foreach ($categories as $category){
-	Db_Lang::$globalLangId = $langArray[1]['id'];
+	Db_Lang::$globalLangId = $aliasLangId;
 	$db = new Db_Lang_BrandsCategoriesData();
-	$tr = $db->fetchRow($db->getPrimary().'='.$category['id'])->toArray();
-	$brands[$category['id']] = array('category'=>array_merge($category, array('trName'=>$tr['name'])),'subcategories'=>array());
+	$alias = $db->fetchRow($db->getPrimary().'='.$category['id'])->toArray();
+	$brands[$category['id']] = array('category'=>array_merge($category, array('alias'=>$alias['name'])),'subcategories'=>array());
 	//echo "\n-------------------\n\n".$region['id']." - ".$region['name']."\n";
-	Db_Lang::$globalLangId = $langArray[0]['id'];
+	Db_Lang::$globalLangId = $langData['id'];
 	$db = new Db_Lang_BrandsSubcategoriesData();
 	$select = $db->select('Db_Lang_BrandsSubcategoriesData');
 	$select
@@ -189,10 +187,10 @@ foreach ($categories as $category){
 	//print_r($subcategories); //exit();
 
 	foreach ($subcategories as $subcategory){
-		Db_Lang::$globalLangId = $langArray[1]['id'];
+		Db_Lang::$globalLangId = $aliasLangId;
 		$db = new Db_Lang_BrandsSubcategoriesData();
-		$tr = $db->fetchRow($db->getPrimary().'='.$subcategory['id'])->toArray();
-		$brands[$category['id']]['subcategories'][$subcategory['id']] = array('subcategory'=>array_merge($subcategory, array('trName'=>$tr['name'])));
+		$alias = $db->fetchRow($db->getPrimary().'='.$subcategory['id'])->toArray();
+		$brands[$category['id']]['subcategories'][$subcategory['id']] = array('subcategory'=>array_merge($subcategory, array('alias'=>$alias['name'])));
 	}
 }
 
@@ -214,28 +212,26 @@ $fileCategories .= '$'.$cacheArrayName.'["'.$categoriesCacheByIdsArrayName.'"] =
 $fileSubcategories .= '$'.$cacheArrayName.'["'.$subcategoriesCacheByIdsArrayName.'"] = array();'."\n";
 
 foreach ($brands as $categoryId=>$category){
-	$categoryAlias = Tools_View::getUrlAlias($category['category']['name']);
+	$categoryAlias = Tools_View::getUrlAlias($category['category']['alias']);
 	$fileCategories .= '$'.$cacheArrayName.'["'.$categoriesCacheByIdsArrayName.'"]["'.$category['category']['id'].'"] = $'.$cacheArrayName.'["'.$categoriesCacheByNamesArrayName.'"]["'.$categoryAlias.'"] = array('."\n";
 	$fileCategories .= "\t".'"id"=>"'.$category['category']['id'].'",'."\n";
-	$fileCategories .= "\t".'"name_'.$langArray[0]['alias'].'"=>"'.$category['category']['name'].'",'."\n";
-	$fileCategories .= "\t".'"name_'.$langArray[1]['alias'].'"=>"'.$category['category']['trName'].'",'."\n";
+	$fileCategories .= "\t".'"name"=>"'.$category['category']['name'].'",'."\n";
 	$fileCategories .= "\t".'"alias"=>"'.$categoryAlias.'",'."\n";
 	$fileCategories .= ');'."\n";
 
 	$fileSubcategories .= '$'.$cacheArrayName.'["'.$subcategoriesCacheByIdsArrayName.'"]["'.$category['category']['id'].'"] = $'.$cacheArrayName.'["'.$subcategoriesCacheByNamesArrayName.'"]["'.$categoryAlias.'"] = array();'."\n";
 	foreach($category['subcategories'] as $subcategoryId=>$subcategory){
-		$subcategoryAlias = Tools_View::getUrlAlias($subcategory['subcategory']['name']);
+		$subcategoryAlias = Tools_View::getUrlAlias($subcategory['subcategory']['alias']);
 		$fileSubcategories .= '$'.$cacheArrayName.'["'.$subcategoriesCacheByIdsArrayName.'"]["'.$category['category']['id'].'"]["'.$subcategory['subcategory']['id'].'"] = $'.$cacheArrayName.'["'.$subcategoriesCacheByNamesArrayName.'"]["'.$categoryAlias.'"]["'.$subcategoryAlias.'"] = array('."\n";
 		$fileSubcategories .= "\t".'"id"=>"'.$subcategory['subcategory']['id'].'",'."\n";
-		$fileSubcategories .= "\t".'"name_'.$langArray[0]['alias'].'"=>"'.$subcategory['subcategory']['name'].'",'."\n";
-		$fileSubcategories .= "\t".'"name_'.$langArray[1]['alias'].'"=>"'.$subcategory['subcategory']['trName'].'",'."\n";
+		$fileSubcategories .= "\t".'"name"=>"'.$subcategory['subcategory']['name'].'",'."\n";
 		$fileSubcategories .= "\t".'"alias"=>"'.$subcategoryAlias.'",'."\n";
 		$fileSubcategories .= ');'."\n";
 	}
 }
 
 file_put_contents(
-	ROOT_PATH."/data/cache/file/rcc_csc.php",
+	ROOT_PATH."/data/cache/file/rcc_csc_".$langData['alias'].".php",
 	$file.
 	$fileRegions.
 	$fileCountries.
@@ -244,3 +240,4 @@ file_put_contents(
 	$fileSubcategories
 	//."\n print_r(".'$'.$cacheArrayName.");"
 );
+}

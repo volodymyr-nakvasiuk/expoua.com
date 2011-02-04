@@ -24,7 +24,6 @@ class Crud_Grid_Company extends ArOn_Crud_Grid {
 			'regions_id' => new ArOn_Crud_Grid_Column_JoinOne("Регион",array('Db_LocationCities','Db_LocationCountries'),'regions_id',null,false,'200'),
 			'countries_id' => new ArOn_Crud_Grid_Column_JoinOne("Страна",array('Db_LocationCities'),'countries_id',null,false,'200'),
 			'cities_id' => new ArOn_Crud_Grid_Column_Numeric("Город",null,true,false,'50'),
-			//'active' => new ArOn_Crud_Grid_Column_Numeric('Активный',null,true,false,'50'),
 			'category' => new ArOn_Crud_Grid_Column_JoinOne('Категория', array('Db_Companies2Categories', 'Db_BrandsCategories'), null, array('id')),
 
 			'email' => new ArOn_Crud_Grid_Column_Default("Дата до",null,true,false,'100'),
@@ -34,8 +33,9 @@ class Crud_Grid_Company extends ArOn_Crud_Grid {
 			'postcode' => new ArOn_Crud_Grid_Column_Default("Дата до",null,true,false,'100'),
 			'address' => new ArOn_Crud_Grid_Column_JoinOne("Название компании",array('Db_Lang_CompaniesData'),'address',null,false,'200'),
 			'logo' => new ArOn_Crud_Grid_Column_Numeric("Город",null,true,false,'50'),
+
+			'active' => new ArOn_Crud_Grid_Column_JoinOne("Активный",array('Db_CompaniesActive'),'active',null,false,'200'),
 		);
-		//$this->fields['active']->options = array('1'=>"+", '0'=>"-");
 
 		$this->filters->setPrefix(false);
 		$this->filters->fields = array(
@@ -48,8 +48,26 @@ class Crud_Grid_Company extends ArOn_Crud_Grid {
 					),
 				),
 			)),
+			'active_languages_id' => new ArOn_Crud_Grid_Filter_Field_Search('active_languages_id','Язык выставки',array(
+				array(
+					'path' => array('Db_CompaniesActive'),
+					'filters' => array(
+						'languages_id' => ArOn_Db_Filter_Search::EQ,
+					),
+				),
+			)),
+			'active' => new ArOn_Crud_Grid_Filter_Field_Search('active','Язык выставки',array(
+				array(
+					'path' => array('Db_CompaniesActive'),
+					'filters' => array(
+						'active' => ArOn_Db_Filter_Search::EQ,
+					),
+				),
+			)),
 		);
 		$this->_params['languages_id'] = DEFAULT_LANG_ID;
+		$this->_params['active_languages_id'] = DEFAULT_LANG_ID;
+		$this->_params['active'] = 1;
 
 		parent::init();
 	}

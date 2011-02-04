@@ -11,7 +11,7 @@ class EventsController extends Abstract_Controller_FrontendController {
 	
 	public function indexAction(){
 		$this->view->layouts['top']['filter'] = array('inc/filter/events', 100);
-		$events = new Tools_Events($this->view->requestUrl, $this->view->lang->getLocale(), $this->_request->getParam('p'));
+		$events = new Tools_Events($this->view->requestUrl, DEFAULT_LANG_CODE, $this->_request->getParam('p'));
 		$filterData = $events->getFilterData();
 		if ($filterData['url']!=$this->view->requestUrl) $this->_redirect($filterData['url']);
 
@@ -34,16 +34,6 @@ class EventsController extends Abstract_Controller_FrontendController {
 
 		$this->view->layouts['center']['center_events_by_countries'] = array('inc/center/events_by_countries', 100);
 		$this->view->layouts['center']['center_events_by_categories'] = array('inc/center/events_by_categories', 100);
-
-		$tool = new Tools_Banner('side250', $this->moduleName, true, $this->brandsCategoryId, 1);
-		$this->view->banners['250x250']['right_banners_250x250_box'] = array($tool->getData(), 100);
-		$tool->updateStat();
-		$this->view->layouts['right']['right_banners_250x250_box'] = array('inc/banners/banner250x250', 100);
-
-		$tool = new Tools_Banner(null, $this->moduleName, true, $this->brandsCategoryId);
-		$this->view->layoutsData['right']['right_banners_advert_box'] = $tool->getData();
-		$tool->updateStat();
-		$this->view->layouts['right']['right_banners_advert_box'] = array('inc/banners/advert', 100);
 
 		if ($filterData['params']['country']==COUNTRY_SEARCH){
 			$this->view->activeSubmenu = COUNTRY_ABBR;

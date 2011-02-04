@@ -2,7 +2,7 @@
 	//$regions = Zend_Registry::get("regions".Tools_Events::$cacheSuffix['id']);
 	//$countries = Zend_Registry::get("countries".Tools_Events::$cacheSuffix['id']);
 	//$cities = Zend_Registry::get("cities".Tools_Events::$cacheSuffix['id']);
-	$l = $this->lang->getLocale();
+	$l = DEFAULT_LANG_CODE;
 ?>
 <div class="events_search_all_content_box cl">
 	<div class="events_search_title_box cl">
@@ -10,7 +10,7 @@
 	</div>
 	<div class="search_all_events_box cl">
 <?php
-		foreach($this->data['data'] as $item){ $url= '/'.$l.'/event'.($item['events_id']?'/card/'.$item['events_id'].'/'.Init_Event_News::$tab_name.'/card/':'/news-card/').$item['id'].'/';
+		foreach($this->data['data'] as $item){ $url= '/'.$l.'/event'.($item['events_id']?'/card/'.$item['events_id'].'/'.Init_Event_News::$tab_name.'/card/':'/news-card/').$item['id'].'-'.Tools_View::getUrlAlias($item['name'], true).'/';
 	?>
 	<div class="search_one_event_box <?php /*vip_event_bg */ ?>cl">
 		<div class="one_event_date cl">

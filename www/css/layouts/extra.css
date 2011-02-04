@@ -1,9 +1,10 @@
 .extra_companies_goods_box {
 	clear:both;
 	float:none;
+	margin-bottom:10px;
 }
 .extra_events_companies_tabs_box{
 	clear:both;
 	float:none;
-	margin-top: 10px;
+	margin-bottom:10px;
 }

@@ -132,6 +132,9 @@ span.bottom_dashed {
 body, html {
 	background: url(/img/body_bg.png) repeat-x;
 }
+body.noSubMenu, html.noSubMenu {
+	background: url(/img/body_bg_1.png) repeat-x;
+}
 #siteBox {
 	position:absolute;
 	top: 0;
@@ -286,6 +289,9 @@ div.rc_bl_trans {
 	background: url(/img/site/center_f.png) repeat-x 0 0 scroll transparent;
 	height: 28px;
 	width: 183px;
+}
+.center_f_right {
+	width: 238px;
 }
 .center_f span{
 	margin-left: 10px;

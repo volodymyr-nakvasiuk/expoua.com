@@ -16,7 +16,7 @@ class EventController extends Abstract_Controller_FrontendController {
 			$this->view->data = $grid->getData();
 			if (isset($this->view->data['data'][0])){
 				$this->view->data = $this->view->data['data'][0];
-				$url = '/'.$this->view->lang->getLocale().'/event/card/'.$this->view->data['id'].'-'.Tools_View::getUrlAlias($this->view->data['brands_name'], true).'/';
+				$url = '/'.DEFAULT_LANG_CODE.'/event/card/'.$this->view->data['id'].'-'.Tools_View::getUrlAlias($this->view->data['brands_name'], true).'/';
 				$tab = $this->_request->getParam('tab');
 				$tab_action = $this->_request->getParam('tab_action');
 				$tab_id = $this->_request->getParam('tab_id');
@@ -24,6 +24,10 @@ class EventController extends Abstract_Controller_FrontendController {
 					$url .= $tab.'/'.$tab_action.'/'.($tab_id?$tab_id:TAB_DEFAULT_ID).'/';
 				}
 				if ($url!=$this->view->requestUrl) $this->_redirect($url);
+
+				$tab_id = explode('-', $tab_id);
+				$tab_id = (int)$tab_id[0];
+
 				if ($this->view->data['countries_id']==52){
 					$this->view->activeSubmenu = 'ukr';
 				}
@@ -77,7 +81,7 @@ class EventController extends Abstract_Controller_FrontendController {
 		$this->view->activeSubmenu = 'news';
 		$this->view->layouts['top']['filter'] = array('inc/filter/events_news', 100);
 
-		$services = new Tools_EventNews($this->view->requestUrl, $this->view->lang->getLocale(), $this->_request->getParam('p'));
+		$services = new Tools_EventNews($this->view->requestUrl, DEFAULT_LANG_CODE, $this->_request->getParam('p'));
 		$filterData = $services->getFilterData();
 		if ($filterData['url']!=$this->view->requestUrl) $this->_redirect($filterData['url']);
 
@@ -86,6 +90,13 @@ class EventController extends Abstract_Controller_FrontendController {
 
 		$grid = new Crud_Grid_EventNews(null, $filterData['filter']);
 		$this->view->data = $grid->getData();
+
+		$init = new Init_Services(array('Hotels','Stands','Translators','Polygraphy'));
+		$this->view->layoutsData['center']['center_banners_recommends_box'] = $init->getData();
+		$this->view->layouts['center']['center_banners_recommends_box'] = array('inc/banners/recommends', 100);
+
+		$this->view->layouts['center']['center_events_by_countries'] = array('inc/center/events_by_countries', 100);
+		$this->view->layouts['center']['center_events_by_categories'] = array('inc/center/events_by_categories', 100);
 	}
 
 	public function newsCardAction(){

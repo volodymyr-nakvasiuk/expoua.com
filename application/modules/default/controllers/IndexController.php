@@ -55,16 +55,6 @@ class IndexController extends Abstract_Controller_FrontendController {
 		$this->view->layoutsData['extra']['extra_events_companies_tabs_box'] = $init->getData();
 		$this->view->layouts['extra']['extra_events_companies_tabs_box'] = array('inc/extra/events_companies_tabs', 100);
 
-		$tool = new Tools_Banner('side250', $this->moduleName, true, $this->brandsCategoryId, 1);
-		$this->view->banners['250x250']['right_banners_250x250_box'] = array($tool->getData(), 100);
-		$tool->updateStat();
-		$this->view->layouts['right']['right_banners_250x250_box'] = array('inc/banners/banner250x250', 100);
-
-		$tool = new Tools_Banner(null, $this->moduleName, true, $this->brandsCategoryId);
-		$this->view->layoutsData['right']['right_banners_advert_box'] = $tool->getData();
-		$tool->updateStat();
-		$this->view->layouts['right']['right_banners_advert_box'] = array('inc/banners/advert', 100);
-
 		$grid = new Crud_Grid_Companies(null, array('country'=>52,'limit'=>20));
 		$this->view->layoutsData['right']['right_companies_box'] = $grid->getData();
 		$this->view->layouts['right']['right_companies_box'] = array('inc/right/top_companies', 100);

@@ -47,10 +47,9 @@ class AjaxController extends Abstract_Controller_FrontendController {
 						'success'=>true,
 						'data'=>array(),
 					);
-					$l = $this->view->lang->getLocale();
 					foreach($cache as $item){
-						if (isset($item['name_'.$l]) && isset($item['alias'])){
-							$data['data'][$item['alias']] = $item['name_'.$l];
+						if (isset($item['name']) && isset($item['alias'])){
+							$data['data'][$item['alias']] = $item['name'];
 						}
 					}
 				}

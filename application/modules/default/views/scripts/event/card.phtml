@@ -3,7 +3,7 @@
 	$regions = Zend_Registry::get("regions".Tools_Events::$cacheSuffix['id']);
 	$countries = Zend_Registry::get("countries".Tools_Events::$cacheSuffix['id']);
 	$cities = Zend_Registry::get("cities".Tools_Events::$cacheSuffix['id']);
-	$l = $this->lang->getLocale();
+	$l = DEFAULT_LANG_CODE;
 	$link = '/'.$l.'/';
 	$t = time();
 	if ($t>strtotime($item['date_to'].' 23:59:59')){
@@ -20,11 +20,11 @@
 <div class="card_crumbs cl">
 	<?php $link.='events/'; $name=$this->lang->translate('Exhibitions');?>
 	<a href="<?php echo $link;?>"><?php echo $name;?></a>&nbsp;&rarr;&nbsp;
-	<?php $link.='region-europe/'; $name=$regions[$item['regions_id']]['name_'.$l];?>
+	<?php $link.='region-europe/'; $name=$regions[$item['regions_id']]['name'];?>
 	<a href="<?php echo $link;?>"><?php echo $name;?></a>&nbsp;&rarr;&nbsp;
-	<?php $link.='country-ukraine/'; $name=$countries[$item['regions_id']][$item['countries_id']]['name_'.$l];?>
+	<?php $link.='country-ukraine/'; $name=$countries[$item['regions_id']][$item['countries_id']]['name'];?>
 	<a href="<?php echo $link;?>"><?php echo $name;?></a>&nbsp;&rarr;&nbsp;
-	<?php $link.='city-kiev/'; $name=$cities[$item['regions_id']][$item['countries_id']][$item['cities_id']]['name_'.$l];?>
+	<?php $link.='city-kiev/'; $name=$cities[$item['regions_id']][$item['countries_id']][$item['cities_id']]['name'];?>
 	<a href="<?php echo $link;?>"><?php echo $name;?></a>&nbsp;&rarr;&nbsp;
 	<?php $link='/'.$l.'/event/card/'.$item['id'].'-'.Tools_View::getUrlAlias($item['brands_name'], true).'/'; $name=$item['brands_name']; ?>
 	<a href="<?php echo $link;?>"><?php echo $name;?></a>
@@ -56,9 +56,9 @@
 			<div class="place">
 			<?php
 				echo
-					$countries[$item['regions_id']][$item['countries_id']]['name_'.$l]
+					$countries[$item['regions_id']][$item['countries_id']]['name']
 					.', '.
-					$cities[$item['regions_id']][$item['countries_id']][$item['cities_id']]['name_'.$l];
+					$cities[$item['regions_id']][$item['countries_id']][$item['cities_id']]['name'];
 			?>
 			</div>
 			<div class="span_box cb" style="margin-top: 15px;">

@@ -1,0 +1,22 @@
+<?php $l = DEFAULT_LANG_CODE;?>
+<div class="filter_main">
+	<div class="filter_left">
+	</div>
+	<div class="filter_center">
+		<div class="filter_item">
+			<select id="filter_category" name="category">
+				<option value=""><?php echo $this->lang->translate('Select online trade show');?></option>
+				<?php
+					$cache = Zend_Registry::get("categories".Tools_Events::$cacheSuffix['alias']);
+					foreach ($cache as $alias=>$item){
+				?>
+						<option value="<?php echo $alias;?>"><?php echo $item['name'];?></option>
+				<?php
+					}
+				?>
+			</select>
+		</div>
+	</div>
+	<div class="filter_right">
+	</div>
+</div>

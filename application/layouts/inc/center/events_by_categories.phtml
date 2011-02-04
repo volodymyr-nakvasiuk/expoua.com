@@ -1,5 +1,5 @@
 <?php
-	$l = $this->lang->getLocale();
+	$l = DEFAULT_LANG_CODE;
 	$cache = Zend_Registry::get('categories'.Tools_Events::$cacheSuffix['id']);
 ?>
 <div class="center_events_by_categories_head cl">
@@ -11,7 +11,7 @@
 	<?php foreach($cache as $category){ ?>
 	<div class="center_events_by_categories_one_row">
 		<div class="center_events_by_categories_text_box">
-			<a href="<?php echo "/".$l."/events/".DEFAULT_SEARCH."category-".$category['alias']."/"; ?>"><?php echo $category['name_'.$l];?></a>
+			<a href="<?php echo "/".$l."/events/".DEFAULT_SEARCH."category-".$category['alias']."/"; ?>"><?php echo $category['name'];?></a>
 		</div>
 	</div>
 	<?php } ?>
