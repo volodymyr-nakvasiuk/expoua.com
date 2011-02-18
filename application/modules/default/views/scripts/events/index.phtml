@@ -23,7 +23,8 @@
 					<a href="<?php echo $url;?>">
 						<img src="http://ws.expopromoter.com/file/event_logo.php?id=<?php echo $item['id'];?>&lang=<?php echo DEFAULT_LANG_ID;?>"/>
 					</a>
-				</div><div class="events_index_item_content fl">
+				</div>
+				<div class="events_index_item_content fl">
 					<div class="events_index_item_info_box cl">
 						<div class="events_index_item_info fl">
 							<div class="events_index_item_info_date cl">
@@ -54,6 +55,12 @@
 						<?php echo Tools_View::createShortText($item['description'], 220); ?>
 					</div>
 				</div>
+			</div>
+			<div class="events_index_links_box cl">
+				<div class="events_index_links_text fl"><?php echo $this->lang->translate('Order');?>:</div>
+				<div class="events_index_links_aeroticket fl"><a href="#"><?php echo $this->lang->translate('air ticket');?></a></div>
+				<div class="events_index_links_hostel fl"><a href="#"><?php echo $this->lang->translate('hotel');?></a></div>
+				<div class="events_index_links_bussines fl"><a href="#"><?php echo $this->lang->translate('business tour');?></a></div>
 			</div>
 		</div>
 	<?php

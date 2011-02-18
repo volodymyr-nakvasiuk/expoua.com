@@ -1,0 +1,12 @@
+<?php
+	$l = DEFAULT_LANG_CODE;
+	$cache = Zend_Registry::get('serviceCategories'.Tools_Events::$cacheSuffix['id']);
+?>
+<div class="services_index_main_content_box cl">
+	<div class="title cl"><?php echo $this->lang->translate('Select category of service suppliers');?></div>
+	<?php foreach($this->data as $category){ $this->allCount += $category['c'];?>
+	<div class="lnk cl">
+		<a href="<?php echo "/".$l."/services/search/category-".$cache[$category['name_id']]['alias']."/"; ?>"><?php echo $category['name'];?></a> <em>(<?php echo $category['c'];?>)</em>
+	</div>
+	<?php } ?>
+</div>

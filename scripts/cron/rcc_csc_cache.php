@@ -230,6 +230,45 @@ foreach ($brands as $categoryId=>$category){
 	}
 }
 
+Db_Lang::$globalLangId = $langData['id'];
+$db = new Db_Lang_ServicesCategoriesData();
+$select = $db->select('Db_Lang_ServicesCategoriesData');
+$select
+		->reset(ArOn_Db_TableSelect::COLUMNS)
+		->columns()
+		->reset(ArOn_Db_TableSelect::ORDER)
+		->order('Db_Lang_ServicesCategoriesData.name ASC')
+		->where('Db_ServicesCategories.active=?',1)
+		->columnsJoinOne(array('Db_ServicesCategories'), array ('active'=>'active'));
+$serviceCategories = $db->fetchAll($select)->toArray();
+	//print_r($serviceCategories); //exit();
+
+$services = array();
+foreach ($serviceCategories as $category){
+	Db_Lang::$globalLangId = $aliasLangId;
+	$db = new Db_Lang_ServicesCategoriesData();
+	$alias = $db->fetchRow($db->getPrimary().'='.$category['id'])->toArray();
+	$services[$category['id']] = array('category'=>array_merge($category, array('alias'=>$alias['name'])));
+}
+
+	//print_r($services); //exit();
+
+$serviceCategoriesCacheByNamesArrayName = 'serviceCategoriesCacheByNames';
+$serviceCategoriesCacheByIdsArrayName = 'serviceCategoriesCacheByIds';
+
+$fileServiceCategories = "\n";
+$fileServiceCategories .= '$'.$cacheArrayName.'["'.$serviceCategoriesCacheByNamesArrayName.'"] = array();'."\n";
+$fileServiceCategories .= '$'.$cacheArrayName.'["'.$serviceCategoriesCacheByIdsArrayName.'"] = array();'."\n";
+
+foreach ($services as $categoryId=>$category){
+	$categoryAlias = Tools_View::getUrlAlias($category['category']['alias']);
+	$fileServiceCategories .= '$'.$cacheArrayName.'["'.$serviceCategoriesCacheByIdsArrayName.'"]["'.$category['category']['id'].'"] = $'.$cacheArrayName.'["'.$serviceCategoriesCacheByNamesArrayName.'"]["'.$categoryAlias.'"] = array('."\n";
+	$fileServiceCategories .= "\t".'"id"=>"'.$category['category']['id'].'",'."\n";
+	$fileServiceCategories .= "\t".'"name"=>"'.$category['category']['name'].'",'."\n";
+	$fileServiceCategories .= "\t".'"alias"=>"'.$categoryAlias.'",'."\n";
+	$fileServiceCategories .= ');'."\n";
+}
+
 file_put_contents(
 	ROOT_PATH."/data/cache/file/rcc_csc_".$langData['alias'].".php",
 	$file.
@@ -237,7 +276,8 @@ file_put_contents(
 	$fileCountries.
 	$fileCities.
 	$fileCategories.
-	$fileSubcategories
+	$fileSubcategories.
+	$fileServiceCategories
 	//."\n print_r(".'$'.$cacheArrayName.");"
 );
 }

@@ -25,7 +25,7 @@ class CompaniesController extends Abstract_Controller_FrontendController {
 		$this->view->statistics['company_count'] = $statistics->getCompaniesCount();
 		$this->view->layouts['center']['center_companies_title_box'] = array('inc/center/companies_title', 100);
 
-		$grid = new Crud_Grid_Companies(null, array('country'=>52,'limit'=>20));
+		$grid = new Crud_Grid_Companies(null, array('country'=>COUNTRY_ID,'limit'=>20));
 		$this->view->layoutsData['center']['center_companies_box'] = $grid->getData();
 		$this->view->layouts['center']['center_companies_box'] = array('inc/center/top_companies', 100);
 	}
@@ -78,6 +78,12 @@ class CompaniesController extends Abstract_Controller_FrontendController {
 					   $tabObject->tab_title = $this->view->lang->translate('Get additional information');
 					   $this->view->tabsData[Init_Event_Messages::$tab_name] = $tabObject->getData();
 	   */
+				$paramName = 'category';
+				$cache = Zend_Registry::get(Tools_Events::$filterParams[$paramName].Tools_Events::$cacheSuffix['id']);
+
+				foreach($this->view->menuLinks[$this->view->activeMenu]['submenu'] as &$submenu){
+					$submenu['url'] .= $paramName.'-'.$cache[$this->view->data['category_id']]['alias'].'/';
+				}
 			}
 			else {
 				$this->_forward('error', 'error');
@@ -141,7 +147,7 @@ class CompaniesController extends Abstract_Controller_FrontendController {
 		$this->view->statistics['company_count'] = $statistics->getCompaniesCount();
 		$this->view->layouts['center']['center_companies_title_box'] = array('inc/center/companies_title', 100);
 
-		$grid = new Crud_Grid_Companies(null, array('country'=>52,'limit'=>20));
+		$grid = new Crud_Grid_Companies(null, array('country'=>COUNTRY_ID,'limit'=>20));
 		$this->view->layoutsData['center']['center_companies_box'] = $grid->getData();
 		$this->view->layouts['center']['center_companies_box'] = array('inc/center/top_companies', 100);
 
@@ -173,7 +179,7 @@ class CompaniesController extends Abstract_Controller_FrontendController {
 		$this->view->statistics['company_count'] = $statistics->getCompaniesCount();
 		$this->view->layouts['center']['center_companies_title_box'] = array('inc/center/companies_title', 100);
 
-		$grid = new Crud_Grid_Companies(null, array('country'=>52,'limit'=>20));
+		$grid = new Crud_Grid_Companies(null, array('country'=>COUNTRY_ID,'limit'=>20));
 		$this->view->layoutsData['center']['center_companies_box'] = $grid->getData();
 		$this->view->layouts['center']['center_companies_box'] = array('inc/center/top_companies', 100);
 
@@ -205,7 +211,7 @@ class CompaniesController extends Abstract_Controller_FrontendController {
 		$this->view->statistics['company_count'] = $statistics->getCompaniesCount();
 		$this->view->layouts['center']['center_companies_title_box'] = array('inc/center/companies_title', 100);
 
-		$grid = new Crud_Grid_Companies(null, array('country'=>52,'limit'=>20));
+		$grid = new Crud_Grid_Companies(null, array('country'=>COUNTRY_ID,'limit'=>20));
 		$this->view->layoutsData['center']['center_companies_box'] = $grid->getData();
 		$this->view->layouts['center']['center_companies_box'] = array('inc/center/top_companies', 100);
 

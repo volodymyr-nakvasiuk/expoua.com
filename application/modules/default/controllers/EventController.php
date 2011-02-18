@@ -28,8 +28,8 @@ class EventController extends Abstract_Controller_FrontendController {
 				$tab_id = explode('-', $tab_id);
 				$tab_id = (int)$tab_id[0];
 
-				if ($this->view->data['countries_id']==52){
-					$this->view->activeSubmenu = 'ukr';
+				if ($this->view->data['countries_id']==COUNTRY_ID){
+					$this->view->activeSubmenu = COUNTRY_ABBR;
 				}
 				/*
 				$tabs = array(

@@ -1,0 +1,42 @@
+<?php
+	$l = DEFAULT_LANG_CODE;
+	$cache = Zend_Registry::get("serviceCategories".Tools_Events::$cacheSuffix['alias']);
+?>
+<div class="center_exhib_service_head cl">
+	<div class="lf fl"></div>
+	<div class="center_f fl"><span><?php echo $this->lang->translate('Services for exhibitions');?></span></div>
+	<div class="rf fl"></div>
+</div>
+<div class="center_exhib_service_content_box cl">
+<?php foreach ($cache as $alias=>$category){?>
+	<div class="center_exhib_service_one_item cl">
+		<div class="center_exhib_service_one_item_ico <?php echo $alias; ?> fl"></div><a href="<?php echo "/".$l."/services/search/category-".$alias."/"; ?>"><?php echo $category['name'];?></a>
+	</div>
+<?php } ?>
+<?php /*
+	<div class="center_exhib_service_one_item cl">
+		<div class="center_exhib_service_one_item_ico consult fl"></div><a href="#">Marketing and consulting services</a>
+	</div>
+	<div class="center_exhib_service_one_item cl">
+		<div class="center_exhib_service_one_item_ico models fl"></div><a href="#">Models, Exhibition stands</a>
+	</div>
+	<div class="center_exhib_service_one_item cl">
+		<div class="center_exhib_service_one_item_ico translators fl"></div><a href="#">Professional translation and interpretation equipment</a>
+	</div>
+	<div class="center_exhib_service_one_item cl">
+		<div class="center_exhib_service_one_item_ico polygraf fl"></div><a href="#">Hotels, Real Estate Agencies</a>
+	</div>
+	<div class="center_exhib_service_one_item cl">
+		<div class="center_exhib_service_one_item_ico equipment fl"></div><a href="#">Hotels, Real Estate Agencies</a>
+	</div>
+	<div class="center_exhib_service_one_item cl">
+		<div class="center_exhib_service_one_item_ico constuctions fl"></div><a href="#">Hotels, Real Estate Agencies</a>
+	</div>
+	<div class="center_exhib_service_one_item cl">
+		<div class="center_exhib_service_one_item_ico transport fl"></div><a href="#">Hotels, Real Estate Agencies</a>
+	</div>
+	<div class="center_exhib_service_one_item cl">
+		<div class="center_exhib_service_one_item_ico tourism fl"></div><a href="#">Hotels, Real Estate Agencies</a>
+	</div>
+ */ ?>
+</div>

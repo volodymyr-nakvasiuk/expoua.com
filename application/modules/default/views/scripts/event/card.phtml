@@ -129,6 +129,7 @@
 			$activeTabId = false;
 			$tabIndex = 0;
 			foreach ($this->tabsData as $tab_id=>$tab_data){
+				if (!$tab_data['data']) continue;
 				if ($tab_data['active']) $activeTabId = $tabIndex;
 				$tabsContent .= '<div class="card_card_tab_box card_'.$tab_id.'_tab" id="'.$tab_id.'">'.$this->render('/event/tabs/'.$tab_id.'.phtml').'</div>';
 		?>

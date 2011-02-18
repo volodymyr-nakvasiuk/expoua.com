@@ -1,0 +1,9 @@
+js.module("inc.events.index");
+$(function(){
+	$(".events_index_item").hover(function(){
+		$(this).addClass("events_index_item_hover");
+	},
+	function(){
+		$(this).removeClass("events_index_item_hover");
+	});
+});

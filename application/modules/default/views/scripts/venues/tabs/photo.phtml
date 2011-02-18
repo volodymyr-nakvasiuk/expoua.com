@@ -1,0 +1,19 @@
+<div class="photoslider" id="photoSliderBox"></div>
+<?php
+	$tabData = $this->tabsData[Init_Venues_Gallery::$tab_name];
+	$ids = array();
+	foreach ($tabData['data'] as $item){
+		$ids[] = '"'.$item['image'].'"';
+	}
+?>
+<script type="text/javascript">
+	$(document).ready(function(){
+		FOTO.Slider.baseURL = 'http://admin.expopromoter.com/data/images/expocenters/<?php echo $tabData['venue_id'];?>/';
+		FOTO.Slider.thumbURL = '{ID}';
+		FOTO.Slider.mainURL = '{ID}';
+		var ids = new Array(<?php echo implode(', ', $ids);?>);
+		FOTO.Slider.importBucketFromIds('photoSliderBox',ids);
+		FOTO.Slider.reload('photoSliderBox');
+		//FOTO.Slider.enableSlideshow('photoSliderBox');
+	});
+</script>

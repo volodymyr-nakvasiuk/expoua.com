@@ -12,7 +12,7 @@
 }
 .events_index_item{
 	border-bottom: 1px dashed #cccccc;
-	padding-bottom:10px;
+	padding:0 10px 7px;
 }
 .events_index_item_title, .events_index_item_title a{
 	font-size:14px;
@@ -40,7 +40,7 @@
 }
 .events_index_item_content{
 	margin-left:10px;
-	width:420px;
+	width:400px;
 }
 .events_index_item_info_box{
 }
@@ -63,11 +63,45 @@
 	background:url("/img/free_ticket_ico.gif") no-repeat 0 1px scroll;
 	padding-left: 20px;
 }
-
 .events_index_item_free_ticket{
 	margin-top:7px;
 }
 .events_index_item_description{
 	margin-top:15px;
 	text-align:justify;
+}
+.events_index_links_box {
+	display:none;
+}
+.events_index_item_hover .events_index_links_box {
+	display:block;
+}
+.events_index_item_hover .events_index_item_content_box{
+	border-bottom: 1px solid #CCCCCC;
+	padding-bottom: 7px;
+	margin-bottom: 7px;
+}
+.events_index_item_hover{
+	background-color: #fef9df;
+}
+.events_index_links_box,
+.events_index_links_box a{
+	line-height: 20px;
+	color: #0d74c4;
+}
+.events_index_links_text {}
+.events_index_links_aeroticket {
+	background: url(/img/events/aeroticket.png) no-repeat 0 center;
+	padding-left: 20px;
+	margin-left: 10px;
+}
+.events_index_links_hostel {
+	background: url(/img/events/hostel.png) no-repeat 0 center;
+	padding-left: 15px;
+	margin-left: 10px;
+}
+.events_index_links_bussines {
+	background: url(/img/events/bussines-tour.png) no-repeat 0 center;
+	padding-left: 15px;
+	margin-left: 10px;
 }

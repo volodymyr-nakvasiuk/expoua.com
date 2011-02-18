@@ -32,6 +32,7 @@ class EventsController extends Abstract_Controller_FrontendController {
 		$this->view->layoutsData['center']['center_events_news_box'] = $grid->getData();
 		$this->view->layouts['center']['center_events_news_box'] = array('inc/center/event_news', 100);
 
+		$this->view->layouts['center']['center_services'] = array('inc/center/services', 100);
 		$this->view->layouts['center']['center_events_by_countries'] = array('inc/center/events_by_countries', 100);
 		$this->view->layouts['center']['center_events_by_categories'] = array('inc/center/events_by_categories', 100);
 

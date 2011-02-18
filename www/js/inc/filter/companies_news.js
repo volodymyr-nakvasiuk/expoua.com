@@ -1,4 +1,4 @@
-js.module("inc.filter.news");
+js.module("inc.filter.companies_news");
 $(function(){
 	$("#sub_filter_flipper").click(function(){
 		var $sub = $("#filter_sub");

@@ -34,11 +34,11 @@ class VenuesController extends Abstract_Controller_FrontendController {
 		$id = explode('-', $this->_request->getParam('id',''));
 		$id = (int)$id[0];
 		if ($id){
-			$grid = new Crud_Grid_Event(null, array('id'=>$id, 'limit'=>1));
+			$grid = new Crud_Grid_Venue(null, array('id'=>$id, 'limit'=>1));
 			$this->view->data = $grid->getData();
 			if (isset($this->view->data['data'][0])){
 				$this->view->data = $this->view->data['data'][0];
-				$url = '/'.DEFAULT_LANG_CODE.'/event/card/'.$this->view->data['id'].'-'.Tools_View::getUrlAlias($this->view->data['brands_name'], true).'/';
+				$url = '/'.DEFAULT_LANG_CODE.'/venues/card/'.$this->view->data['id'].'-'.Tools_View::getUrlAlias($this->view->data['name'], true).'/';
 				$tab = $this->_request->getParam('tab');
 				$tab_action = $this->_request->getParam('tab_action');
 				$tab_id = $this->_request->getParam('tab_id');
@@ -50,43 +50,35 @@ class VenuesController extends Abstract_Controller_FrontendController {
 				$tab_id = explode('-', $tab_id);
 				$tab_id = (int)$tab_id[0];
 
-				if ($this->view->data['countries_id']==52){
-					$this->view->activeSubmenu = 'ukr';
-				}
-				/*
-				$tabs = array(
-					'description'=>$this->lang->translate('Description'),
-					'news'=>$this->lang->translate('News'),
-					//'video'=>$this->lang->translate('Video'),
-					'photo'=>$this->lang->translate('Photo'),
-					//'hotels'=>$this->lang->translate('Hotels'),
-					'files'=>$this->lang->translate('Files'),
-					//'map'=>$this->lang->translate('Map'),
-					'messages'=>$this->lang->translate('Get additional information'),
-				);
-				*/
-
 				$this->view->tabsData = array();
 
-				$tabObject = new Init_Event_Description($this->view->data['brands_name_id'],$this->view->data['id'], $tab, $tab_action, $tab_id, $this->view->data['description']);
+				$tabObject = new Init_Venues_Description($this->view->data['id'], $tab, $tab_action, $tab_id, $this->view->data['description']);
 				$tabObject->tab_title = $this->view->lang->translate('Description');
-				$this->view->tabsData[Init_Event_Description::$tab_name] = $tabObject->getData();
+				$this->view->tabsData[Init_Venues_Description::$tab_name] = $tabObject->getData();
 
-				$tabObject = new Init_Event_News($this->view->data['brands_name_id'],$this->view->data['id'], $tab, $tab_action, $tab_id);
-				$tabObject->tab_title = $this->view->lang->translate('News');
-				$this->view->tabsData[Init_Event_News::$tab_name] = $tabObject->getData();
+				$tabObject = new Init_Venues_Gallery($this->view->data['id'], $tab, $tab_action, $tab_id, array($this->view->data['image_map'],$this->view->data['image_plan'],$this->view->data['image_view']));
+				$tabObject->tab_title = $this->view->lang->translate('Scheme & Photo');
+				$this->view->tabsData[Init_Venues_Gallery::$tab_name] = $tabObject->getData();
 
-				$tabObject = new Init_Event_Gallery($this->view->data['brands_name_id'],$this->view->data['id'], $tab, $tab_action, $tab_id);
-				$tabObject->tab_title = $this->view->lang->translate('Photo');
-				$this->view->tabsData[Init_Event_Gallery::$tab_name] = $tabObject->getData();
+				$tabObject = new Init_Venues_Events($this->view->data['id'], $tab, $tab_action, $tab_id);
+				$tabObject->tab_title = $this->view->lang->translate('Trade shows');
+				$this->view->tabsData[Init_Venues_Events::$tab_name] = $tabObject->getData();
 
+				$tabObject = new Init_Venues_Map($this->view->data['id'], $tab, $tab_action, $tab_id, $this->view->data);
+				$tabObject->tab_title = $this->view->lang->translate('Map');
+				$this->view->tabsData[Init_Venues_Map::$tab_name] = $tabObject->getData();
+				if ($this->view->tabsData[Init_Venues_Map::$tab_name]['data']){
+					$this->view->headScript()->appendFile('http://maps.google.com/maps/api/js?sensor=false', 'text/javascript', array('non-cache'=>true));
+				}
+
+				$tabObject = new Init_Venues_Messages($this->view->data['id'], $tab, $tab_action, $tab_id, $this->view->data);
+				$tabObject->tab_title = $this->view->lang->translate('Get additional information');
+				$this->view->tabsData[Init_Venues_Messages::$tab_name] = $tabObject->getData();
+/*
 				$tabObject = new Init_Event_Files($this->view->data['brands_name_id'],$this->view->data['id'], $tab, $tab_action, $tab_id);
 				$tabObject->tab_title = $this->view->lang->translate('Files');
 				$this->view->tabsData[Init_Event_Files::$tab_name] = $tabObject->getData();
-
-				$tabObject = new Init_Event_Messages($this->view->data['brands_name_id'],$this->view->data['id'], $tab, $tab_action, $tab_id);
-				$tabObject->tab_title = $this->view->lang->translate('Get additional information');
-				$this->view->tabsData[Init_Event_Messages::$tab_name] = $tabObject->getData();
+*/
 			}
 			else {
 				$this->_forward('error', 'error');
@@ -98,5 +90,29 @@ class VenuesController extends Abstract_Controller_FrontendController {
 			return;
 		}
 	}
+
+	/* request
+	 $host = !empty($this->sessParams['clientIP']) ? $this->sessParams['clientIP'] : $_SERVER['REMOTE_ADDR'];
+
+    //Подготавливаем запрос для сохранения в базе
+    $stmt_req = DB_PDO::getInst()->prepare(
+        "INSERT INTO requests SET type=:type, parent=:parent, child=:child, countries_id=:country, sites_id='" .
+        $this->sessParams['siteID'] . "', languages_id='" . $this->sessParams['langId'] . "', host=INET_ATON('" . $host . "')");
+
+	$res = $stmt_req->execute(array(':type' => $requestType, ':parent' => intval($data['centerId']), ':child' => intval($data['centerId']), ':country' => 0));
+
+	if ($res) {
+		$request_id = DB_PDO::getInst()->lastInsertId();
+		//Подготавливаем запрос для сохранения данных, связанных с запросом
+		$stmt_req_data = DB_PDO::getInst()->prepare("INSERT INTO requests_data (requests_id, type, value) VALUES ('" . $request_id . "', :type, :value)");
+
+		$stmt_req_data->execute(array(':type' => 'name', ':value' => $data['companyName']));
+		$stmt_req_data->execute(array(':type' => 'contact_person', ':value' => $data['contactPerson']));
+		$stmt_req_data->execute(array(':type' => 'phone', ':value' => $data['phone']));
+		$stmt_req_data->execute(array(':type' => 'email', ':value' => $data['email']));
+		$stmt_req_data->execute(array(':type' => 'address', ':value' => $data['address']));
+		$stmt_req_data->execute(array(':type' => 'message', ':value' => $data['extraInfo']));
+	 }
+	 */
 
 }

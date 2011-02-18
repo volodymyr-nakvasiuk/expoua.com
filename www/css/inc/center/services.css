@@ -1,0 +1,26 @@
+.center_exhib_service_content_box {
+	border: 1px solid #bfcedc;
+	padding: 10px;
+}
+.center_exhib_service_one_item {
+	margin-top: 5px;
+}
+
+.center_exhib_service_one_item .accommodation-real-estate-agencies { background: url(/img/events/realty.png) no-repeat center center; }
+.center_exhib_service_one_item .marketing-services { background: url(/img/events/consult_serv.png) no-repeat center center; }
+.center_exhib_service_one_item .models-promoters { background: url(/img/events/models.png) no-repeat center center; }
+.center_exhib_service_one_item .interpreters-translators-equipment { background: url(/img/events/translators.png) no-repeat center center; }
+.center_exhib_service_one_item .print-services-advertising { background: url(/img/events/polygraf.png) no-repeat center center; }
+.center_exhib_service_one_item .light-sound-projecting-equipment { background: url(/img/events/equipment.png) no-repeat center center; }
+.center_exhib_service_one_item .exhibition-stands-equipment { background: url(/img/events/constuctions.png) no-repeat center center; }
+.center_exhib_service_one_item .customs-transport-services { background: url(/img/events/transport.png) no-repeat center center; }
+.center_exhib_service_one_item .travel-services { background: url(/img/events/tourism.png) no-repeat center center; }
+
+.center_exhib_service_one_item_ico {
+	width: 40px;
+	height: 30px;
+}
+.center_exhib_service_one_item_link {
+}
+.center_exhib_service_one_item_link a {
+}

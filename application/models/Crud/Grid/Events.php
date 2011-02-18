@@ -81,6 +81,7 @@ class Crud_Grid_Events extends ArOn_Crud_Grid {
 			'till' => new ArOn_Crud_Grid_Filter_Field_Text('date_from', 'Дата до',ArOn_Db_Filter_Field::LESS),
 			'category' => new ArOn_Crud_Grid_Filter_Field_Select2('id','Категория', 'Db_BrandsCategories', array('Db_Brands', 'Db_Brands2Categories', 'Db_BrandsCategories')),
 			'subcategory' => new ArOn_Crud_Grid_Filter_Field_Select2('id','Подкатегория', 'Db_BrandsSubcategories', array('Db_Brands', 'Db_Brands2Subcategories', 'Db_BrandsSubcategories')),
+			'expocenters_id' => new ArOn_Crud_Grid_Filter_Field_Value('expocenters_id','ID',ArOn_Db_Filter_Field::EQ),
 		);
 		$this->_params['brands_languages_id'] = DEFAULT_LANG_ID;
 		$this->_params['languages_id'] = DEFAULT_LANG_ID;

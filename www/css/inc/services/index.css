@@ -1,0 +1,18 @@
+.services_index_main_content_box {}
+.services_index_main_content_box .title {
+	font-size: 18px;
+	font-weight: bold;
+	color: #dd5500;
+	margin: 10px 0;
+}
+.services_index_main_content_box .lnk {
+	line-height: 20px;
+}
+.services_index_main_content_box .lnk a {
+	color: #0d74c4;
+}
+.services_index_main_content_box .lnk em {
+	font-size: 9px;
+	font-style: normal;
+	color: #999999;
+}

@@ -24,7 +24,7 @@ class Crud_Grid_Company extends ArOn_Crud_Grid {
 			'regions_id' => new ArOn_Crud_Grid_Column_JoinOne("Регион",array('Db_LocationCities','Db_LocationCountries'),'regions_id',null,false,'200'),
 			'countries_id' => new ArOn_Crud_Grid_Column_JoinOne("Страна",array('Db_LocationCities'),'countries_id',null,false,'200'),
 			'cities_id' => new ArOn_Crud_Grid_Column_Numeric("Город",null,true,false,'50'),
-			'category' => new ArOn_Crud_Grid_Column_JoinOne('Категория', array('Db_Companies2Categories', 'Db_BrandsCategories'), null, array('id')),
+			'category_id' => new ArOn_Crud_Grid_Column_JoinOne('Категория', array('Db_Companies2Categories2'), 'brands_categories_id',null,false,'200'),
 
 			'email' => new ArOn_Crud_Grid_Column_Default("Дата до",null,true,false,'100'),
 			'web_address' => new ArOn_Crud_Grid_Column_Default("Дата до",null,true,false,'100'),

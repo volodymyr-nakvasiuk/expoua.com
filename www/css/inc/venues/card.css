@@ -1,0 +1,534 @@
+.all_venues_card_content_box {
+	margin: 10px;
+	color: #999999;
+}
+.all_venues_card_content_box div {
+	position: relative;
+}
+
+.all_venues_card_content_box a {
+	text-decoration: underline;
+	color: #999999;
+}
+.all_venues_card_content_box a:hover {
+	text-decoration: none;
+}
+.venues_card_crumbs {
+	padding: 5px 0;
+}
+.venues_card_desc_box {}
+.venues_card_desc_box .left_col {}
+.venues_card_desc_box .right_col {
+	width: 190px;
+}
+.venues_card_title_box {
+	color: #dd5500;
+	font-size: 18px;
+	line-height: 18px;
+	padding: 5px 0 10px;
+	font-weight: bold;
+}
+.venues_card_title_box span {float:left;clear:none;}
+.venues_card_title_box a {
+	font-size: 11px;
+	color: #999999;
+	float: left;
+	clear: none;
+}
+.venues_card_title_box div.fav_ico {
+	background: url(/img/index/star.png) no-repeat;
+	width: 12px;
+	height: 11px;
+	margin:5px 2px 0 10px;
+}
+.venues_card_main_info {}
+.venues_card_info_img {
+	width: 130px;
+	height: 130px;
+	vertical-align: middle;
+	line-height: 127px;
+	text-align: center;
+	border: 1px solid #cccccc;
+}
+.venues_card_info_img img {
+	max-height: 130px;
+	max-width: 130px;
+	display:-moz-inline-box;
+	display:inline-block;
+	vertical-align:middle;
+	zoom:1;
+	//display:inline;
+	position: relative;
+}
+.venues_card_info {
+	font-size: 12px;
+}
+.venues_card_info .text{
+	text-align: right;
+	width: 65px;
+}
+.venues_card_info .contact .place{
+	color: #333333;
+	font-weight: bold;
+}
+.venues_card_info .contact .address{
+	color: #333333;
+	width: 500px;
+}
+.venues_card_outer {
+	background: #ebf6ff;
+}
+.venues_card_inner {
+	padding: 10px;
+}
+.venues_card_right_lnk_row {
+	margin-top: 5px;
+}
+.venues_card_right_lnk_row a {
+	font-size: 12px;
+	margin-left: 5px;
+	color: #0054a6 !important;
+}
+/*
+.venues_card_send_msg_ico,
+.venues_card_star_ico,
+.venues_card_map_ico {
+	background: url(/img/venues/send_msg_ico.png) no-repeat center center;
+	width: 17px;
+	height: 16px;
+}
+.venues_card_star_ico {  background: url(/img/venues/top_venue_star.png) no-repeat center center;}
+.venues_card_map_ico {  background: url(/img/venues/map_ico.png) no-repeat center center; }
+*/
+.subscribe_box {
+	padding: 10px 0;
+	width: 100%;
+}
+.card_tabs_box {
+	margin-top: 10px;
+}
+
+.venues_card_description_box {
+	color: #333333;
+}
+.venues_card_description_box .title {
+	font-size: 18px;
+}
+.venues_card_description_box .text {
+	margin-top: 10px;
+	font-size: 12px;
+	text-align: justify;
+}
+.venues_card_news_tab {
+	padding: 10px 10px 0;
+}
+.venues_card_one_news {
+	margin-top: 15px;
+}
+.venues_card_one_news_img {
+	margin-top: 7px;
+	width: 54px;
+	height: 50px;
+	vertical-align: middle;
+	line-height: 47px;
+	text-align: center;
+}
+.venues_card_one_news_img img {
+	display:-moz-inline-box;
+	display:inline-block;
+	vertical-align:middle;
+	zoom:1;
+	//display:inline;
+	position: relative;
+	max-width:54px;
+	max-height:50px;
+}
+.venues_card_one_news_desc {
+	margin-left:10px;
+	width:595px;
+}
+.venues_card_one_news_desc_title a {
+	color: #0054a6;
+	font-weight: bold;
+	margin-top: 10px;
+	font-size: 14px;
+}
+.venues_card_one_news_desc_text {
+	color: #333333;
+	font-size: 12px;
+}
+.venues_card_news_date {
+	font-size: 10px;
+	color: #999999;
+}
+div.news_full_header {
+	font-size: 18px;
+	color: #dd5500;
+	margin: 10px 0;
+}
+div.news_full span {
+	color: #666666;
+}
+div.news_full span p {
+	margin-top: 10px;
+}
+div.news_full a {
+	color: #999999;
+}
+.venues_card_services_tab {
+	padding: 10px 10px 0;
+}
+.venues_card_one_services {
+	margin-top: 15px;
+}
+.venues_card_one_services_img {
+	margin-top: 7px;
+	width: 54px;
+	height: 50px;
+	vertical-align: middle;
+	line-height: 47px;
+	text-align: center;
+}
+.venues_card_one_services_img img {
+	display:-moz-inline-box;
+	display:inline-block;
+	vertical-align:middle;
+	zoom:1;
+	//display:inline;
+	position: relative;
+	max-width:54px;
+	max-height:50px;
+}
+.venues_card_one_services_desc {
+	margin-left:10px;
+	width:500px;
+}
+.venues_card_one_services_desc_title a {
+	color: #0054a6;
+	font-weight: bold;
+	margin-top: 10px;
+	font-size: 14px;
+}
+.venues_card_one_services_desc_text {
+	color: #333333;
+	font-size: 12px;
+}
+.venues_card_services_date {
+	font-size: 10px;
+	color: #999999;
+}
+div.services_full_header {
+	font-size: 18px;
+	color: #dd5500;
+	margin: 10px 0;
+}
+div.services_full span {
+	color: #666666;
+}
+div.services_full span p {
+	margin-top: 10px;
+}
+div.services_full a {
+	color: #999999;
+}
+/*                          PHOTO TAB                                */
+div.card_photo_tab {}
+div.main_photo_box img{
+	width: 680px;
+	height: 520px;
+	margin: 10px 0;
+}
+/*
+div.card_photo_tab_nav {
+	margin-top:10px;
+	overflow-x:auto !important;
+	height: 105px;
+}
+div.card_photo_tab_nav ul {
+	margin-left: 0px;
+}
+div.card_photo_tab_nav ul li {
+	float: left;
+	clear: none;
+}
+div.card_photo_tab_nav ul li a img {
+	width: 110px;
+	height: 85px;
+	margin-right: 10px;
+}
+*/
+.photoslider {
+
+}
+
+.photoslider_nav {
+	position: relative;
+/*border: solid black 1px;*/
+	overflow: hidden;
+	height: 142px;
+	width: 655px;
+	margin: auto;
+}
+
+.photoslider_thumbBar {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	display: block;
+	margin: 0px;
+	padding: 0px;
+	height:142px;
+}
+
+.photoslider_thumb {
+	position: relative;
+/*border: solid black 1px;*/
+	float: left;
+	margin: 5px;
+	cursor: pointer;
+	height:110px;
+	line-height:107px;
+	vertical-align: middle;
+	max-height: 110px;
+}
+.photoslider_thumb img {
+	max-height: 110px;
+	max-width: 110px;
+	display:-moz-inline-box;
+	display:inline-block;
+	vertical-align: middle;
+	zoom:1;
+	//display:inline;
+	margin: 5px;
+}
+
+.photoslider_thumb_active img{
+	border: solid 5px #f1ff83;
+}
+
+.photoslider_clear {
+	clear: both;
+}
+
+.photoslider_main  {
+	position: relative;
+	padding-bottom: 5px;
+	cursor:pointer;
+}
+
+.photoslider_main img {
+	position: relative;
+	border: solid #000 10px;
+	display: block;
+	margin: auto;
+}
+
+.photoslider_caption {
+	font-weight: bold;
+	text-align: center;
+}
+
+.photoslider_control {
+	display: none;
+	text-align: center;
+	font-weight: bold;
+	padding-top: 10px;
+	margin: auto;
+	height: 30px;
+	width: 52px;
+}
+
+.photoslider_play, .photoslider_stop {
+	width: 18px;
+	height: 19px;
+	margin: auto;
+	padding: 3px;
+	cursor: pointer;
+	text-align: center;
+	border: solid #fff 1px;
+	float: left;
+}
+
+.photoslider_play {
+	background: url('/img/play_pause.gif') no-repeat 0px 0px;
+}
+
+.photoslider_stop {
+	background: url('/img/play_pause.gif') no-repeat -25px 0px;
+}
+
+.slideshow_disabled {
+	border-bottom: solid #919191 2px;
+}
+/*                          END PHOTO TAB                                */
+/*                           EVENTS TAB                                  */
+.events_index_box{
+	width: 510px;
+	margin-top:20px;
+}
+.events_index_title, .events_index_title a{
+	font-size:14px;
+	font-weight:bold;
+	font-family:Arial;
+	color: #0054a6;
+}
+.events_index_content{
+}
+.events_index_item{
+	border-bottom: 1px dashed #cccccc;
+	padding:0 10px 7px;
+}
+.events_index_item_title, .events_index_item_title a{
+	font-size:14px;
+	font-weight:bold;
+	font-family:Arial;
+	color: #dd5500;
+}
+.events_index_item_title{
+	margin-top:15px;
+}
+.events_index_item_content_box{
+	margin-top:10px;
+}
+.events_index_item_logo{
+	background: url(/img/events_logo_bg.png) no-repeat;
+	border: 1px solid #c2d1de;
+	width:78px;
+	height:78px;
+	vertical-align:middle;
+	line-height:78px;
+	text-align:center;
+}
+.events_index_item_logo img{
+	vertical-align:middle;
+}
+.events_index_item_content{
+	margin-left:10px;
+	width:400px;
+}
+.events_index_item_info_box{
+}
+.events_index_item_info{
+}
+.events_index_item_info_date{
+	font-size:12px;
+	font-weight:bold;
+	color: #000000;
+	margin-top:5px;
+}
+.events_index_item_info_location{
+	font-size:12px;
+	font-weight:bold;
+	color: #999999;
+	margin-top:10px;
+}
+.events_index_item_free_ticket a{
+	color: #0d74c4;
+	background:url("/img/free_ticket_ico.gif") no-repeat 0 1px scroll;
+	padding-left: 20px;
+}
+.events_index_item_free_ticket{
+	margin-top:7px;
+}
+.events_index_item_description{
+	margin-top:15px;
+	text-align:justify;
+}
+/*                          END EVENTS TAB                                */
+/*                              MAP TAB                                   */
+#venue_map {
+	height: 500px;
+	width: 100%;
+}
+#venue_map div {
+	overflow: visible;
+}
+.ui-tabs .ui-tabs-hide {
+	position: absolute !important;
+	left: -10000px !important;
+}
+/*                           END MAP TAB                                 */
+/*                           MESSAGES TAB                                */
+.adm_msg_box {
+	background: #f1f6fb;
+	border: 1px solid #d2e2f2;
+}
+.adm_msg_title {
+	text-align: center;
+	color: #0054a6;
+	font-size: 14px;
+	margin-top: 10px;
+}
+.adm_msg_content {
+	padding: 0;
+}
+.adm_msg_content .adm_msg_field {}
+.adm_msg_content .adm_msg_field .adm_msg_field_content input,
+.adm_msg_content .adm_msg_field .adm_msg_field_content select,
+.adm_msg_content .adm_msg_field .adm_msg_field_content textarea {
+	margin-bottom: 5px;
+	width: 290px;
+}
+.adm_msg_content .adm_msg_field .adm_msg_field_content input,
+.adm_msg_content .adm_msg_field .adm_msg_field_content select{
+	height: 15px;
+}
+.adm_msg_content .adm_msg_field .adm_msg_field_content textarea {
+	height: 60px;
+}
+.adm_msg_content .adm_msg_content_right .adm_msg_field .adm_msg_field_content textarea {
+	height: 155px;
+}
+.adm_msg_content_left {
+	width: 340px;
+	float: left;
+	clear: none;
+}
+.adm_msg_content_right {
+	width: 315px;
+}
+.adm_msg_content .adm_msg_field .adm_msg_field_title {
+	font-size: 12px;
+	line-height: 20px;
+	color: #666666;
+	float: left;
+	clear: none;
+}
+.adm_msg_content .adm_msg_field .adm_msg_field_title span {
+	color: red;
+}
+.adm_msg_content_submit {
+	text-align:center;
+}
+.adm_msg_content .captcha_box .captcha_title {
+	width:130px;
+}
+.adm_msg_content .captcha_box .captcha_title .adm_msg_field_content input{
+	float: left;
+	margin-left: 15px;
+	margin-top: 16px;
+	width: 90px;
+}
+.adm_msg_content .captcha_box .captcha_img{
+	width: 185px;
+	height: 80px;
+	vertical-align: middle;
+	line-height: 77px;
+	text-align: center;
+}
+.adm_msg_content .captcha_box .captcha_img img{
+	display:-moz-inline-box;
+	display:inline-block;
+	vertical-align:middle;
+	zoom:1;
+	//display:inline;
+	position: relative;
+}
+li.tab_title_messages {
+	float: right !important;
+	margin-right: 0 !important;
+}
+.card_tabs_box .ui-tabs .ui-tabs-panel {
+	-moz-border-radius-topright: 0;
+}
+/*                         END MESSAGES TAB                              */

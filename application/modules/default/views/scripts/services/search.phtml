@@ -1,0 +1,51 @@
+<?php
+	//$regions = Zend_Registry::get("regions".Tools_Events::$cacheSuffix['id']);
+	$countries = Zend_Registry::get("countries".Tools_Events::$cacheSuffix['id']);
+	$cities = Zend_Registry::get("cities".Tools_Events::$cacheSuffix['id']);
+	$l = DEFAULT_LANG_CODE;
+?>
+<div class="services_search_all_content_box cl">
+	<div class="services_search_title_box cl">
+		<div class="title cl"><?php echo $this->dataTitle.date(' Y'); ?></div>
+	</div>
+	<div class="search_all_services_box cl">
+	<?php
+		foreach($this->data['data'] as $item){ $url="/".$l."/services/card/".$item['id']."-".Tools_View::getUrlAlias($item['name'], true)."/";
+	?>
+		<div class="search_one_service_box <?php /*vip_service_bg */ ?>cl">
+			<div class="one_service_title cl">
+				<a href="<?php echo $url;?>">
+					<?php echo $item['name'];?>
+				</a>
+				<?php /*
+				<div class="zirochka fl"></div>
+				<div class="top_ico fr"></div>
+				*/ ?>
+			</div>
+			<div class="one_service_content_box cl">
+				<div class="one_service_image_box fl">
+				<?php if ($item['logo']){ ?>
+				<a href="<?php echo $url;?>">
+					<img src="http://admin.expopromoter.com/data/images/service_companies/logo/<?php echo DEFAULT_LANG_ID.'/'.$item['id'];?>.jpg"/>
+				</a>
+				<?php } ?>
+				</div>
+				<div class="one_service_text_box fl">
+					<div class="one_service_place cl">
+						<div class="country fl"><?php echo $countries[$item['regions_id']][$item['countries_id']]['name']; ?>,&nbsp;</div>
+						<div class="city fl">&nbsp;<?php echo $cities[$item['regions_id']][$item['countries_id']][$item['cities_id']]['name']; ?></div>
+					</div>
+					<div class="text cl">
+						<?php echo Tools_View::createShortText($item['description'], 220); ?>
+					</div>
+				</div>
+			</div>
+		</div>
+	<?php
+		}
+	?>
+	</div>
+	<div class="paging clr">
+		<?php echo Tools_View::getPages($this->requestUri, $this->data['array_pages'], 'p'); ?>
+	</div>
+</div>

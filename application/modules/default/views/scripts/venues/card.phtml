@@ -1,0 +1,151 @@
+<?php
+	$item = $this->data;
+	$regions = Zend_Registry::get("regions".Tools_Events::$cacheSuffix['id']);
+	$countries = Zend_Registry::get("countries".Tools_Events::$cacheSuffix['id']);
+	$cities = Zend_Registry::get("cities".Tools_Events::$cacheSuffix['id']);
+	//$categories = Zend_Registry::get("categories".Tools_Events::$cacheSuffix['id']);
+	$l = DEFAULT_LANG_CODE;
+	$link = '/'.$l.'/';
+?>
+<div class="all_venues_card_content_box cl">
+	<div class="venues_card_crumbs cl">
+		<?php $link.='venues/search/'; $name=$this->lang->translate('Venues');?>
+		<a href="<?php echo $link;?>"><?php echo $name;?></a>&nbsp;&rarr;&nbsp;
+		<?php $link.='region-'.$regions[$item['regions_id']]['alias'].'/'; $name=$regions[$item['regions_id']]['name'];?>
+		<a href="<?php echo $link;?>"><?php echo $name;?></a>&nbsp;&rarr;&nbsp;
+		<?php $link.='country-'.$countries[$item['regions_id']][$item['countries_id']]['alias'].'/'; $name=$countries[$item['regions_id']][$item['countries_id']]['name'];?>
+		<a href="<?php echo $link;?>"><?php echo $name;?></a>&nbsp;&rarr;&nbsp;
+		<?php $link.='city-'.$cities[$item['regions_id']][$item['countries_id']][$item['cities_id']]['alias'].'/'; $name=$cities[$item['regions_id']][$item['countries_id']][$item['cities_id']]['name'];?>
+		<a href="<?php echo $link;?>"><?php echo $name;?></a>&nbsp;&rarr;&nbsp;
+		<?php $link='/'.$l.'/venues/card/'.$item['id'].'-'.Tools_View::getUrlAlias($item['name'], true).'/'; $name=$item['name']; ?>
+		<a href="<?php echo $link;?>"><?php echo $name;?></a>
+		<?php $this->data['link'] = $link; ?>
+	</div>
+	<div class="venues_card_desc_box cl">
+		<div class="left_col fl">
+
+			<div class="venues_card_title_box cl">
+				<span><?php  echo $item['name'];?></span>
+			</div>
+			<div class="venues_card_main_info cb">
+				<div class="venues_card_info_img fl">
+					<?php if($item['logo']){ ?>
+					<img src="http://admin.expopromoter.com/data/images/expocenters/logo/<?php echo DEFAULT_LANG_ID.'/'.$item['id'];?>.jpg"/>
+					<?php } ?>
+				</div>
+				<div class="venues_card_info fl">
+					<div class="text fl"><?php echo $this->lang->translate('Address'); ?>:</div>
+					<div class="contact fl">
+						<div class="place cl">&nbsp;
+<?php
+	echo
+		$countries[$item['regions_id']][$item['countries_id']]['name']
+		.', '.
+		$cities[$item['regions_id']][$item['countries_id']][$item['cities_id']]['name'];
+?>
+						</div>
+						<?php if ($item['address']){ ?><div class="address cl">&nbsp;&nbsp;&nbsp;<?php echo $item['address'];?></div><?php } ?>
+					</div>
+					<?php if ($item['postcode']){ ?>
+					<div class="clr"></div>
+					<div class="text fl"><?php echo $this->lang->translate('Postcode'); ?>:</div>
+					<div class="contact fl">
+						<div class="address cl">&nbsp;
+							<?php echo $item['postcode'];?>
+						</div>
+					</div>
+					<?php } ?>
+					<?php if ($item['email']){ ?>
+					<div class="clr"></div>
+					<div class="text fl"><?php echo $this->lang->translate('E-mail'); ?>:</div>
+					<div class="contact fl">
+						<div class="address cl">&nbsp;
+							<script type="text/javascript">
+								document.write('<?php echo implode("'+'@'+'",explode('@',implode("'+'.'+'",explode('.', trim($item['email'])))));?>');
+							</script>
+						</div>
+					</div>
+					<?php } ?>
+					<?php if ($item['web_address']){ ?>
+					<div class="clr"></div>
+					<div class="text fl"><?php echo $this->lang->translate('Website'); ?>:</div>
+					<div class="contact fl">
+						<div class="address cl">&nbsp;
+							<script type="text/javascript">
+								document.write('<?php echo implode("'+'/'+'",explode('/',implode("'+'.'+'",explode('.', trim($item['web_address'])))));?>');
+							</script>
+						</div>
+					</div>
+					<?php } ?>
+					<?php if ($item['phone']){ ?>
+					<div class="clr"></div>
+					<div class="text fl"><?php echo $this->lang->translate('Phone'); ?>:</div>
+					<div class="contact fl">
+						<div class="address cl">&nbsp;<?php echo $item['phone'];?></div>
+					</div>
+					<?php } ?>
+					<?php if ($item['fax']){ ?>
+					<div class="clr"></div>
+					<div class="text fl"><?php echo $this->lang->translate('Fax'); ?>:</div>
+					<div class="contact fl">
+						<div class="address cl">&nbsp;<?php echo $item['fax'];?></div>
+					</div>
+					<?php } ?>
+				</div>
+			</div>
+		</div>
+		<?php /*
+		<div class="right_col fl">
+			<div class="venues_card_outer cl">
+				<div class="rc_t"><div class="rc_r"><div class="rc_b"><div class="rc_l">
+					<div class="rc_tl"><div class="rc_tr"><div class="rc_br"><div class="rc_bl">
+						<div class="venues_card_inner cl">
+							<div class="venues_card_right_lnk_row cl" style="margin-top: 0px;">
+								<div class="venues_card_send_msg_ico fl"></div>
+								<a href="#">Отправить</a>
+							</div>
+							<div class="venues_card_right_lnk_row cl">
+								<div class="venues_card_star_ico fl"></div>
+								<a href="#">В избранное</a>
+							</div>
+							<div class="venues_card_right_lnk_row cl">
+								<div class="venues_card_map_ico fl"></div>
+								<a href="#">Посмотреть на карте</a>
+							</div>
+						</div>
+					</div></div></div></div>
+				</div></div></div></div>
+			</div>
+		</div>
+		*/ ?>
+	</div>
+
+	<div class="card_tabs_box cl">
+		<div class="card_tabs_body_box cl">
+			<div class="cl" id="tabs">
+				<ul>
+<?php
+	$tabsContent = '';
+	$activeTabId = false;
+	$tabIndex = 0;
+	foreach ($this->tabsData as $tab_id=>$tab_data){
+		if (!$tab_data['data']) continue;
+		if ($tab_data['active']) $activeTabId = $tabIndex;
+		$tabsContent .= '<div class="venues_card_tab_box venues_card_'.$tab_id.'_tab" id="'.$tab_id.'">'.$this->render('/venues/tabs/'.$tab_id.'.phtml').'</div>';
+		?>
+		<li class="tab_title_<?php echo $tab_id;?>"><a href="#<?php echo $tab_id;?>"><?php echo $tab_data['title'];?></a></li>
+		<?php
+				$tabIndex++;
+	}
+	?>
+				</ul>
+				<?php echo $tabsContent; ?>
+			</div>
+		</div>
+		<script type="text/javascript">
+			$(function() {
+				$('#tabs').tabs(<?php echo $activeTabId?'{"selected":'.$activeTabId.'}':'';?>);
+			});
+		</script>
+	</div>
+</div>

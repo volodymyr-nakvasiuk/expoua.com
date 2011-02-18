@@ -1,4 +1,4 @@
-js.module("inc.filter.companies");
+js.module("inc.filter.companies_by_categories");
 $(function(){
 	$("#filter_category").change(function(){
 		var $filter =$("#top .filter");

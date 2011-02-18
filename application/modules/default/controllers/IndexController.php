@@ -25,7 +25,7 @@ class IndexController extends Abstract_Controller_FrontendController {
 		$this->view->layoutsData['body']['body_events_prlines_box'] = $init->getData();
 		$this->view->layouts['body']['body_events_prlines_box'] = array('inc/body/events_prlines', 100);
 
-		$grid = new Crud_Grid_Companies(null, array('country'=>52,'logo'=>1,'limit'=>8));
+		$grid = new Crud_Grid_Companies(null, array('country'=>COUNTRY_ID,'logo'=>1,'limit'=>8));
 		$this->view->layoutsData['body']['body_companies_box'] = $grid->getData();
 		$this->view->layouts['body']['body_companies_box'] = array('inc/body/companies', 100);
 
@@ -55,7 +55,7 @@ class IndexController extends Abstract_Controller_FrontendController {
 		$this->view->layoutsData['extra']['extra_events_companies_tabs_box'] = $init->getData();
 		$this->view->layouts['extra']['extra_events_companies_tabs_box'] = array('inc/extra/events_companies_tabs', 100);
 
-		$grid = new Crud_Grid_Companies(null, array('country'=>52,'limit'=>20));
+		$grid = new Crud_Grid_Companies(null, array('country'=>COUNTRY_ID,'limit'=>20));
 		$this->view->layoutsData['right']['right_companies_box'] = $grid->getData();
 		$this->view->layouts['right']['right_companies_box'] = array('inc/right/top_companies', 100);
 	}
