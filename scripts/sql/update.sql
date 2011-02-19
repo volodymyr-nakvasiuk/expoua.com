@@ -66,3 +66,272 @@ ALTER TABLE `online_places`  ADD COLUMN `logo` TINYINT(1) UNSIGNED NOT NULL DEFA
 ALTER TABLE `online_showrooms`  ADD COLUMN `brands_categories_id` SMALLINT(5) UNSIGNED NULL DEFAULT NULL AFTER `id`,  ADD INDEX `brands_categories_id` (`brands_categories_id`),  ADD CONSTRAINT `online_showrooms_ibfk_1` FOREIGN KEY (`brands_categories_id`) REFERENCES `brands_categories` (`id`) ON UPDATE CASCADE ON DELETE SET NULL;
 
 UPDATE `online_showrooms` SET `brands_categories_id`=24;
+
+#2011.02.01
+UPDATE `types` SET `name`='Изображение 250x120', `height`=120, `width`=250 WHERE `id`=5 LIMIT 1;
+UPDATE `types` SET `name`='Flash 250x120', `height`=120, `width`=250 WHERE `id`=6 LIMIT 1;
+UPDATE `places` SET `name`='Центральный левый 250x120' WHERE `id`=3 LIMIT 1;
+UPDATE `places` SET `name`='Центральный правый 250x120' WHERE `id`=4 LIMIT 1;
+UPDATE `places` SET `name`='Ниже по списку левый 250x120' WHERE `id`=23 LIMIT 1;
+UPDATE `places` SET `name`='Ниже по списку правый 250x120' WHERE `id`=24 LIMIT 1;
+
+#2011.02.03
+ALTER TABLE `companies_data`
+ADD COLUMN `news_count` MEDIUMINT(8) UNSIGNED NOT NULL DEFAULT '0',
+ADD COLUMN `services_count` MEDIUMINT(8) UNSIGNED NOT NULL DEFAULT '0';
+UPDATE companies_data AS cd SET cd.news_count=(
+	SELECT
+		COUNT(*)
+	FROM
+		companies_news AS cn
+	LEFT JOIN
+		companies_news_active AS cna ON cna.id=cn.id
+	WHERE
+		cna.languages_id=cd.languages_id AND
+		cna.active=1 AND
+		cn.companies_id=cd.id
+);
+UPDATE companies_data AS cd SET cd.services_count=(
+	SELECT
+		COUNT(*)
+	FROM
+		companies_services AS cs
+	LEFT JOIN
+		companies_services_active AS csa ON csa.id=cs.id
+	WHERE
+		csa.languages_id=cd.languages_id AND
+		csa.active=1 AND
+		cs.companies_id=cd.id
+);
+
+DROP TRIGGER IF EXISTS `companies_news_active_insert`;
+DROP TRIGGER IF EXISTS `companies_news_active_delete`;
+DROP TRIGGER IF EXISTS `companies_news_active_update`;
+DROP TRIGGER IF EXISTS `companies_news_update`;
+delimiter |
+CREATE TRIGGER `companies_news_active_insert` AFTER INSERT ON `companies_news_active`
+	FOR EACH ROW BEGIN
+		DECLARE companies_id MEDIUMINT;
+		SET companies_id = (
+			SELECT
+				cn.companies_id
+			FROM
+				companies_news as cn
+			WHERE
+				cn.id = NEW.id
+		);
+		UPDATE companies_data AS cd SET cd.news_count=(
+			SELECT
+				COUNT(*)
+			FROM
+				companies_news AS cn
+			LEFT JOIN
+				companies_news_active AS cna ON cna.id=cn.id
+			WHERE
+				cna.languages_id=cd.languages_id AND
+				cna.active=1 AND
+				cn.companies_id=cd.id
+		)
+		WHERE
+			cd.id=companies_id
+			AND cd.languages_id=NEW.languages_id
+		;
+	END;
+|
+CREATE TRIGGER `companies_news_active_delete` AFTER DELETE ON `companies_news_active`
+	FOR EACH ROW BEGIN
+		DECLARE companies_id MEDIUMINT;
+		SET companies_id = (
+			SELECT
+				cn.companies_id
+			FROM
+				companies_news as cn
+			WHERE
+				cn.id = OLD.id
+		);
+		UPDATE companies_data AS cd SET cd.news_count=(
+			SELECT
+				COUNT(*)
+			FROM
+				companies_news AS cn
+			LEFT JOIN
+				companies_news_active AS cna ON cna.id=cn.id
+			WHERE
+				cna.languages_id=cd.languages_id AND
+				cna.active=1 AND
+				cn.companies_id=cd.id
+		)
+		WHERE
+			cd.id=companies_id
+			AND cd.languages_id=OLD.languages_id
+		;
+	END;
+|
+CREATE TRIGGER `companies_news_active_update` AFTER UPDATE ON `companies_news_active`
+	FOR EACH ROW BEGIN
+		DECLARE companies_id MEDIUMINT;
+		SET companies_id = (
+			SELECT
+				cn.companies_id
+			FROM
+				companies_news as cn
+			WHERE
+				cn.id = NEW.id
+		);
+		UPDATE companies_data AS cd SET cd.news_count=(
+			SELECT
+				COUNT(*)
+			FROM
+				companies_news AS cn
+			LEFT JOIN
+				companies_news_active AS cna ON cna.id=cn.id
+			WHERE
+				cna.languages_id=cd.languages_id AND
+				cna.active=1 AND
+				cn.companies_id=cd.id
+		)
+		WHERE
+			cd.id=companies_id
+			AND cd.languages_id=NEW.languages_id
+		;
+	END;
+|
+CREATE TRIGGER `companies_news_update` AFTER UPDATE ON `companies_news`
+	FOR EACH ROW BEGIN
+		IF NEW.companies_id != OLD.companies_id THEN
+			UPDATE companies_data AS cd SET cd.news_count=(
+				SELECT
+					COUNT(*)
+				FROM
+					companies_news AS cn
+				LEFT JOIN
+					companies_news_active AS cna ON cna.id=cn.id
+				WHERE
+					cna.languages_id=cd.languages_id AND
+					cna.active=1 AND
+					cn.companies_id=cd.id
+			)
+			WHERE
+				cd.id=NEW.companies_id
+				OR cd.id=OLD.companies_id
+			;
+		END IF;
+	END;
+|
+delimiter ;
+
+DROP TRIGGER IF EXISTS `companies_services_active_insert`;
+DROP TRIGGER IF EXISTS `companies_services_active_delete`;
+DROP TRIGGER IF EXISTS `companies_services_active_update`;
+DROP TRIGGER IF EXISTS `companies_services_update`;
+delimiter |
+CREATE TRIGGER `companies_services_active_insert` AFTER INSERT ON `companies_services_active`
+	FOR EACH ROW BEGIN
+		DECLARE companies_id MEDIUMINT;
+		SET companies_id = (
+			SELECT
+				cn.companies_id
+			FROM
+				companies_services as cn
+			WHERE
+				cn.id = NEW.id
+		);
+		UPDATE companies_data AS cd SET cd.services_count=(
+			SELECT
+				COUNT(*)
+			FROM
+				companies_services AS cs
+			LEFT JOIN
+				companies_services_active AS csa ON csa.id=cs.id
+			WHERE
+				csa.languages_id=cd.languages_id AND
+				csa.active=1 AND
+				cs.companies_id=cd.id
+		)
+		WHERE
+			cd.id=companies_id
+			AND cd.languages_id=NEW.languages_id
+		;
+	END;
+|
+CREATE TRIGGER `companies_services_active_delete` AFTER DELETE ON `companies_services_active`
+	FOR EACH ROW BEGIN
+		DECLARE companies_id MEDIUMINT;
+		SET companies_id = (
+			SELECT
+				cn.companies_id
+			FROM
+				companies_services as cn
+			WHERE
+				cn.id = OLD.id
+		);
+		UPDATE companies_data AS cd SET cd.services_count=(
+			SELECT
+				COUNT(*)
+			FROM
+				companies_services AS cs
+			LEFT JOIN
+				companies_services_active AS csa ON csa.id=cs.id
+			WHERE
+				csa.languages_id=cd.languages_id AND
+				csa.active=1 AND
+				cs.companies_id=cd.id
+		)
+		WHERE
+			cd.id=companies_id
+			AND cd.languages_id=OLD.languages_id
+		;
+	END;
+|
+CREATE TRIGGER `companies_services_active_update` AFTER UPDATE ON `companies_services_active`
+	FOR EACH ROW BEGIN
+		DECLARE companies_id MEDIUMINT;
+		SET companies_id = (
+			SELECT
+				cn.companies_id
+			FROM
+				companies_services as cn
+			WHERE
+				cn.id = NEW.id
+		);
+		UPDATE companies_data AS cd SET cd.services_count=(
+			SELECT
+				COUNT(*)
+			FROM
+				companies_services AS cs
+			LEFT JOIN
+				companies_services_active AS csa ON csa.id=cs.id
+			WHERE
+				csa.languages_id=cd.languages_id AND
+				csa.active=1 AND
+				cs.companies_id=cd.id
+		)
+		WHERE
+			cd.id=companies_id
+			AND cd.languages_id=NEW.languages_id
+		;
+	END;
+|
+CREATE TRIGGER `companies_services_update` AFTER UPDATE ON `companies_services`
+	FOR EACH ROW BEGIN
+		IF NEW.companies_id != OLD.companies_id THEN
+			UPDATE companies_data AS cd SET cd.services_count=(
+				SELECT
+					COUNT(*)
+				FROM
+					companies_services AS cs
+				LEFT JOIN
+					companies_services_active AS csa ON csa.id=cs.id
+				WHERE
+					csa.languages_id=cd.languages_id AND
+					csa.active=1 AND
+					cs.companies_id=cd.id
+			)
+			WHERE
+				cd.id=NEW.companies_id
+				OR cd.id=OLD.companies_id
+			;
+		END IF;
+	END;
+|
+delimiter ;

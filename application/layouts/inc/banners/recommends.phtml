@@ -1,0 +1,24 @@
+<?php
+	$l = DEFAULT_LANG_CODE;
+?>
+<div class="center_banner_recommends_head cl">
+	<div class="lf fl"></div>
+	<div class="center_f fl"><span>EXPO<span class="highlight">UA</span>.com <span class="normal"><?php echo $this->lang->translate('recommends');?></span></span></div>
+	<div class="rf fl"></div>
+</div>
+<div class="center_banner_recommends_content_box cl">
+	<?php foreach($this->layoutsData['center']['center_banners_recommends_box'] as $adv){ if ($adv['data']){?>
+		<div class="center_banner_recommends_advert_box cl">
+			<div class="center_banner_recommends_advert_title cl"><?php echo $adv['module']['title'];?></div>
+			<?php foreach($adv['data'] as $item){ ?>
+				<div class="center_banner_recommends_one_row">
+					<div class="center_banner_recommends_text_box">
+						<a href="<?php echo Tools_Banner::getClickerUrl($item['id'], $item, 1);?>">
+							<?php echo $item['file_alt']; ?>&nbsp;<span class="date"><?php echo $item['company']; ?></span>
+						</a>
+					</div>
+				</div>
+			<?php } ?>
+		</div>
+	<?php } } ?>
+</div>

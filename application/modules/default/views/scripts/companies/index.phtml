@@ -1,9 +1,9 @@
 <?php
-	$l = $this->lang->getLocale();
+	$l = DEFAULT_LANG_CODE;
 	$cache = Zend_Registry::get('categories'.Tools_Events::$cacheSuffix['id']);
 ?>
 <div class="companies_index_main_content_box cl">
-	<div class="title cl"><?php echo $this->lang->translate('Companies catalog by categories');?></div>
+	<div class="title cl"><?php echo $this->lang->translate('Select online trade show');?></div>
 	<?php foreach($this->data as $category){ $this->allCount += $category['c'];?>
 	<div class="lnk cl">
 		<a href="<?php echo "/".$l."/companies/online/category-".$cache[$category['brands_categories_id']]['alias']."/"; ?>"><?php echo $category['name'];?></a> <em>(<?php echo $category['c'];?>)</em>

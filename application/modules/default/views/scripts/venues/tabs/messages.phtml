@@ -1,0 +1,77 @@
+<?php
+	$item = $this->tabsData[Init_Venues_Messages::$tab_name]['data'];
+?>
+<div class="adm_msg_title cl">
+	<?php echo $this->lang->translate('Send a message to').' '.$item['venueName'];?>
+</div>
+<div class="adm_msg_content">
+	<div class="adm_msg_content_left fl">
+		<div class="adm_msg_field cl">
+			<div class="adm_msg_field_title cl">
+				<?php echo $this->lang->translate('Company name');?>:<span>*</span>
+			</div>
+			<div class="adm_msg_field_content cl">
+				<input type="text" name="companyName" />
+			</div>
+		</div>
+		<div class="adm_msg_field cl">
+			<div class="adm_msg_field_title cl">
+				<?php echo $this->lang->translate('Contact person');?>:<span>*</span>
+			</div>
+			<div class="adm_msg_field_content cl">
+				<input type="text" name="contactPerson" />
+			</div>
+		</div>
+		<div class="adm_msg_field cl">
+			<div class="adm_msg_field_title cl">
+				<?php echo $this->lang->translate('Phone number');?>:<span>*</span>
+			</div>
+			<div class="adm_msg_field_content cl">
+				<input type="text" name="phone" />
+			</div>
+		</div>
+		<div class="adm_msg_field cl">
+			<div class="adm_msg_field_title cl">
+				<?php echo $this->lang->translate('E-mail');?>:<span>*</span>
+			</div>
+			<div class="adm_msg_field_content cl">
+				<input type="text" name="email" />
+			</div>
+		</div>
+		<div class="adm_msg_field cl">
+			<div class="adm_msg_field_title cl">
+				<?php echo $this->lang->translate('Address');?>:<span>*</span>
+			</div>
+			<div class="adm_msg_field_content cl">
+				<textarea rows="3" cols="50" name="address"></textarea>
+			</div>
+		</div>
+	</div>
+	<div class="adm_msg_content_right fl">
+		<div class="adm_msg_field cl">
+			<div class="adm_msg_field_title cl">
+				<?php echo $this->lang->translate('Your question');?>:<span>*</span>
+			</div>
+			<div class="adm_msg_field_content cl">
+				<textarea rows="10" cols="55" name="extraInfo"></textarea>
+			</div>
+		</div>
+		<div class="captcha_box cl">
+			<div class="adm_msg_field captcha_title fl">
+				<div class="adm_msg_field_title cl">
+					<?php echo $this->lang->translate('Verification code');?>:<span>*</span>
+				</div>
+				<div class="adm_msg_field_content cl">
+					<input type="text" name="captcha[input]" />
+					<input type="hidden" name="captcha[id]" value="<?php echo $item['captcha']['id']; ?>" />
+				</div>
+			</div>
+			<div class="captcha_img fr">
+				<?php echo $item['captcha']['img']; ?>
+			</div>
+		</div>
+	</div>
+	<div class="adm_msg_content_submit cl">
+		<input type="button" value="<?php echo $this->lang->translate('Send');?>" />
+	</div>
+</div>

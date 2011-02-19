@@ -28,5 +28,15 @@ class Db_Companies extends ArOn_Db_Table {
 			'refTableClass'     => 'Db_Lang_CompaniesData',
 			'refColumns'        => 'id'
 		),
+		'Active' => array(
+			'columns'           => 'id',
+			'refTableClass'     => 'Db_CompaniesActive',
+			'refColumns'        => 'id'
+		),
+		'Companies2Categories' => array(
+			'columns'           => 'id',
+			'refTableClass'     => 'Db_Companies2Categories2',
+			'refColumns'        => 'companies_id'
+		),
 	);
 }

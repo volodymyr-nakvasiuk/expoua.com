@@ -43,6 +43,6 @@ class Crud_Grid_BrandsCategories extends ArOn_Crud_Grid {
 			)
 		);
 		
-		return $select;
+		return parent::updateCurrentSelect($select);
 	}
 }

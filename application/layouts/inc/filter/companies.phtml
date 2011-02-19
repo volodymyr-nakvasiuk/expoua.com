@@ -1,4 +1,4 @@
-<?php $l = $this->lang->getLocale();?>
+<?php $l = DEFAULT_LANG_CODE;?>
 <div class="filter_sub" id="filter_sub" vis="0">
 	<div class="filter_left">
 	</div>
@@ -13,7 +13,7 @@
 					$cache = Zend_Registry::get("regions".Tools_Events::$cacheSuffix['alias']);
 					foreach ($cache as $alias=>$item){
 				?>
-						<option value="<?php echo $alias;?>"><?php echo $item['name_'.$l];?></option>
+						<option value="<?php echo $alias;?>"><?php echo $item['name'];?></option>
 				<?php
 		  			}
 				?>
@@ -39,7 +39,7 @@
 					$cache = Zend_Registry::get("categories".Tools_Events::$cacheSuffix['alias']);
 					foreach ($cache as $alias=>$item){
 				?>
-						<option value="<?php echo $alias;?>"><?php echo $item['name_'.$l];?></option>
+						<option value="<?php echo $alias;?>"><?php echo $item['name'];?></option>
 				<?php
 					}
 				?>

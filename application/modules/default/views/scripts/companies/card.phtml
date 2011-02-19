@@ -1,21 +1,17 @@
 <?php
 	$item = $this->data;
-	$regions = Zend_Registry::get("regions".Tools_Events::$cacheSuffix['id']);
+	//$regions = Zend_Registry::get("regions".Tools_Events::$cacheSuffix['id']);
 	$countries = Zend_Registry::get("countries".Tools_Events::$cacheSuffix['id']);
 	$cities = Zend_Registry::get("cities".Tools_Events::$cacheSuffix['id']);
-	//$categories = Zend_Registry::get("categories".Tools_Events::$cacheSuffix['id']);
-	$l = $this->lang->getLocale();
+	$categories = Zend_Registry::get("categories".Tools_Events::$cacheSuffix['id']);
+	$l = DEFAULT_LANG_CODE;
 	$link = '/'.$l.'/';
 ?>
 <div class="all_companies_card_content_box cl">
 <div class="companies_card_crumbs cl">
-	<?php $link.='companies/search/'; $name=$this->lang->translate('Companies');?>
+	<?php $link.='companies/'; $name=$this->lang->translate('Companies');?>
 	<a href="<?php echo $link;?>"><?php echo $name;?></a>&nbsp;&rarr;&nbsp;
-	<?php $link.='region-'.$regions[$item['regions_id']]['alias'].'/'; $name=$regions[$item['regions_id']]['name_'.$l];?>
-	<a href="<?php echo $link;?>"><?php echo $name;?></a>&nbsp;&rarr;&nbsp;
-	<?php $link.='country-'.$countries[$item['regions_id']][$item['countries_id']]['alias'].'/'; $name=$countries[$item['regions_id']][$item['countries_id']]['name_'.$l];?>
-	<a href="<?php echo $link;?>"><?php echo $name;?></a>&nbsp;&rarr;&nbsp;
-	<?php $link.='city-'.$cities[$item['regions_id']][$item['countries_id']][$item['cities_id']]['alias'].'/'; $name=$cities[$item['regions_id']][$item['countries_id']][$item['cities_id']]['name_'.$l];?>
+	<?php $link.='online/category-'.$categories[$item['category_id']]['alias'].'/'; $name=$categories[$item['category_id']]['name'];?>
 	<a href="<?php echo $link;?>"><?php echo $name;?></a>&nbsp;&rarr;&nbsp;
 	<?php $link='/'.$l.'/companies/card/'.$item['id'].'-'.Tools_View::getUrlAlias($item['name'], true).'/'; $name=$item['name']; ?>
 	<a href="<?php echo $link;?>"><?php echo $name;?></a>
@@ -39,27 +35,62 @@
 					<div class="place cl">&nbsp;
 <?php
 	echo
-		$countries[$item['regions_id']][$item['countries_id']]['name_'.$l]
+		$countries[$item['regions_id']][$item['countries_id']]['name']
 		.', '.
-		$cities[$item['regions_id']][$item['countries_id']][$item['cities_id']]['name_'.$l];
+		$cities[$item['regions_id']][$item['countries_id']][$item['cities_id']]['name'];
 ?>
 					</div>
-					<div class="address cl">&nbsp;<?php echo $item['adress'];?></div>
+					<?php if ($item['address']){ ?><div class="address cl">&nbsp;&nbsp;&nbsp;<?php echo $item['address'];?></div><?php } ?>
 				</div>
+				<?php if ($item['postcode']){ ?>
+				<div class="clr"></div>
+				<div class="text fl"><?php echo $this->lang->translate('Postcode'); ?>:</div>
+				<div class="contact fl">
+					<div class="address cl">&nbsp;
+						<?php echo $item['postcode'];?>
+					</div>
+				</div>
+				<?php } ?>
+				<?php if ($item['email']){ ?>
+				<div class="clr"></div>
+				<div class="text fl"><?php echo $this->lang->translate('E-mail'); ?>:</div>
+				<div class="contact fl">
+					<div class="address cl">&nbsp;
+						<script type="text/javascript">
+							document.write('<?php echo implode("'+'@'+'",explode('@',implode("'+'.'+'",explode('.', trim($item['email'])))));?>');
+						</script>
+					</div>
+				</div>
+				<?php } ?>
+				<?php if ($item['web_address']){ ?>
+				<div class="clr"></div>
+				<div class="text fl"><?php echo $this->lang->translate('Website'); ?>:</div>
+				<div class="contact fl">
+					<div class="address cl">&nbsp;
+						<script type="text/javascript">
+							document.write('<?php echo implode("'+'/'+'",explode('/',implode("'+'.'+'",explode('.', trim($item['web_address'])))));?>');
+						</script>
+					</div>
+				</div>
+				<?php } ?>
+				<?php if ($item['phone']){ ?>
 				<div class="clr"></div>
 				<div class="text fl"><?php echo $this->lang->translate('Phone'); ?>:</div>
 				<div class="contact fl">
 					<div class="address cl">&nbsp;<?php echo $item['phone'];?></div>
 				</div>
+				<?php } ?>
+				<?php if ($item['fax']){ ?>
 				<div class="clr"></div>
 				<div class="text fl"><?php echo $this->lang->translate('Fax'); ?>:</div>
 				<div class="contact fl">
 					<div class="address cl">&nbsp;<?php echo $item['fax'];?></div>
 				</div>
+				<?php } ?>
 			</div>
 		</div>
 	</div>
-
+	<?php /*
 	<div class="right_col fl">
 		<div class="companies_card_outer cl">
 			<div class="rc_t"><div class="rc_r"><div class="rc_b"><div class="rc_l">
@@ -82,6 +113,7 @@
 			</div></div></div></div>
 		</div>
 	</div>
+	*/ ?>
 </div>
 <div class="companies_card_something cl">
 	<div class="left_border fl"></div>
@@ -94,310 +126,31 @@
 
 
 <div class="card_tabs_box cl">
-<?php /*
-<div class="tabs cl">
-	<div class="tab current fl">
-		<div class="tab_left fl"></div>
-		<div class="tab_center fl">Описание</div>
-		<div class="tab_right fl"></div>
-	</div>
-	<div class="tab fl">
-		<div class="tab_left fl"></div>
-		<div class="tab_center fl">Новости/Пресс-релизы</div>
-		<div class="tab_right fl"></div>
-	</div>
-	<div class="tab fl">
-		<div class="tab_left fl"></div>
-		<div class="tab_center fl">Товары и услуги</div>
-		<div class="tab_right fl"></div>
-	</div>
-	<div class="tab fl">
-		<div class="tab_left fl"></div>
-		<div class="tab_center fl">Участие в выставках</div>
-		<div class="tab_right fl"></div>
-	</div>
-	<div class="tab fl">
-		<div class="tab_left fl"></div>
-		<div class="tab_center fl">Сотрудники</div>
-		<div class="tab_right fl"></div>
-	</div>
-	<div class="tab fl">
-		<div class="tab_left fl"></div>
-		<div class="tab_center fl">Файлы</div>
-		<div class="tab_right fl"></div>
-	</div>
-</div>
- */ ?>
-<div class="card_tabs_body_box cl">
-	<div class="cl" id="tabs">
-		<ul>
-<?php
-	$tabsContent = '';
-	$activeTabId = false;
-	$tabIndex = 0;
-	foreach ($this->tabsData as $tab_id=>$tab_data){
-		if ($tab_data['active']) $activeTabId = $tabIndex;
-		$tabsContent .= '<div class="companies_card_tab_box companies_card_'.$tab_id.'_tab" id="'.$tab_id.'">'.$this->render('/companies/tabs/'.$tab_id.'.phtml').'</div>';
+	<div class="card_tabs_body_box cl">
+		<div class="cl" id="tabs">
+			<ul>
+	<?php
+		$tabsContent = '';
+		$activeTabId = false;
+		$tabIndex = 0;
+		foreach ($this->tabsData as $tab_id=>$tab_data){
+			if (!$tab_data['data']) continue;
+			if ($tab_data['active']) $activeTabId = $tabIndex;
+			$tabsContent .= '<div class="companies_card_tab_box companies_card_'.$tab_id.'_tab" id="'.$tab_id.'">'.$this->render('/companies/tabs/'.$tab_id.'.phtml').'</div>';
+			?>
+			<li class="tab_title_<?php echo $tab_id;?>"><a href="#<?php echo $tab_id;?>"><?php echo $tab_data['title'];?></a></li>
+			<?php
+					$tabIndex++;
+		}
 		?>
-		<li class="tab_title_<?php echo $tab_id;?>"><a href="#<?php echo $tab_id;?>"><?php echo $tab_data['title'];?></a></li>
-		<?php
-				$tabIndex++;
-	}
-	?>
-		</ul>
-		<?php echo $tabsContent; ?>
-	</div>
-</div>
-<script type="text/javascript">
-	$(function() {
-		$('#tabs').tabs(<?php echo $activeTabId?'{"selected":'.$activeTabId.'}':'';?>);
-	});
-</script>
-<?php /*
-<style>
-</style>
-<div class="box companies_card_news_tab">
-</div>
-
-<style>
-	.companies_card_take_part_tab {
-		padding: 0 10px 10px 0;
-	}
-	.companies_card_one_take_part {
-		padding: 10px 0;
-		border-bottom: 1px dashed #cccccc;
-	}
-	.companies_card_one_take_part img {
-		float: left;
-		clear: none;
-		width: 80px;
-		height: 80px;
-		margin-top: 10px;
-	}
-	.companies_card_one_take_part_desc {
-		margin:10px 0 0 10px;
-		width:550px;
-	}
-	.companies_card_one_take_part_desc_title a {
-		color: #dd5500;
-		font-weight: bold;
-		font-size: 14px;
-	}
-	.companies_card_one_take_part_desc_text {
-		color: #333333;
-		margin-top: 10px;
-		font-size: 12px;
-	}
-	.companies_card_take_part_date {
-		font-weight: bold;
-		color: #000000;
-	}
-	.companies_card_take_part_place {
-		margin-top: 10px;
-		font-weight: bold;
-		color: #dd5500;
-	}
-	.companies_card_take_part_last {
-		background: #ffffcc;
-		padding: 0 5px;
-		width: 105px;
-		color:#333333;
-	}
-	.add_to_fav {
-		background: url(/img/companies/top_company_star.png) no-repeat;
-		padding-left: 23px;
-	}
-	.add_to_fav a {
-		color: #999999;
-		line-height: 16px;
-	}
-
-</style>
-
-<div class="box companies_card_take_part_tab">
-	<div class="companies_card_one_take_part cl">
-		<div class="companies_card_one_take_part_desc_title cl">
-			<a href="#">
-				Выставка «Крым. Стройиндустрия. Энергосбережение.
-			</a>
-		</div>
-		<img src="/img/companies/test_img.png">
-		<div class="companies_card_one_take_part_desc fl">
-			<div class="companies_card_take_part_date cl">01 мая — 31 октября 2010</div>
-			<div class="cl">
-				<div class="companies_card_take_part_place fl">Украина, Одесса</div>
-				<div class="add_to_fav fr">
-					<a href="#">в избранное</a>
-				</div>
-			</div>
-			<div class="companies_card_one_take_part_desc_text cl">
-				С 28 по 30 октября 2010 года в  г. Симферополе по адресу: ул. Киевская, 115, СК "Дружба" (ДКП), проводится 17–я межрегиональная специализированная выставка «Крым. Стройиндустрия. Энергосбережение. Осень – 2010». Она стала эффективным маркетинговым инструментом для многих предприятий, работающих в строительной и энергетической отраслях промышленности.
-			</div>
+			</ul>
+			<?php echo $tabsContent; ?>
 		</div>
 	</div>
-
-	<div class="companies_card_one_take_part cl">
-		<div class="companies_card_one_take_part_desc_title cl">
-			<a href="#">
-				Выставка «Крым. Стройиндустрия. Энергосбережение.
-			</a>
-		</div>
-		<img src="/img/companies/test_img.png">
-		<div class="companies_card_one_take_part_desc fl">
-			<div class="companies_card_take_part_last cl">Выставка завершена</div>
-			<div class="cl">
-				<div class="companies_card_take_part_place fl">Украина, Одесса</div>
-				<div class="add_to_fav fr">
-					<a href="#">в избранное</a>
-				</div>
-			</div>
-			<div class="companies_card_one_take_part_desc_text cl">
-				С 28 по 30 октября 2010 года в  г. Симферополе по адресу: ул. Киевская, 115, СК "Дружба" (ДКП), проводится 17–я межрегиональная специализированная выставка «Крым. Стройиндустрия. Энергосбережение. Осень – 2010». Она стала эффективным маркетинговым инструментом для многих предприятий, работающих в строительной и энергетической отраслях промышленности.
-			</div>
-		</div>
+	<script type="text/javascript">
+		$(function() {
+			$('#tabs').tabs(<?php echo $activeTabId?'{"selected":'.$activeTabId.'}':'';?>);
+		});
+	</script>
 	</div>
-
-</div>
-<style>
-	.companies_card_emp_box {}
-	.companies_card_one_emp {
-		padding: 10px;
-		border-bottom: 1px dashed #cccccc;
-		color: #333333;
-	}
-	.companies_card_one_emp img {
-		float: left;
-		clear: none;
-		width: 80px;
-		height: 80px;
-	}
-	.companies_card_one_emp_info .name {
-		font-size: 16px;
-		margin: 0 10px 10px;
-
-	}
-	.companies_card_one_emp_info {}
-	.companies_card_one_emp_info .one_row {}
-	.companies_card_one_emp_info .one_row .text {
-		width: 70px;
-		text-align: right;
-		color: #999999;
-	}
-	.companies_card_one_emp_info .one_row .val {
-		margin-left: 5px;
-	}
-	.companies_card_one_emp_contact {
-		margin-top: 50px;
-	}
-	.companies_card_one_emp_contact a {
-		display: block;
-		color: #0054a6 !important;
-	}
-	.vip_emp { background: #fef9df; }
-</style>
-<div class="box companies_card_emp_box cl">
-	<div class="companies_card_one_emp vip_emp cl">
-		<img src="/img/companies/test_img.png">
-		<div class="companies_card_one_emp_info fl">
-			<div class="name cl">Александр Овчаренко</div>
-			<div class="one_row cl">
-				<div class="text fl">Должность</div>
-				<div class="val fl">Топ-менеджер</div>
-			</div>
-			<div class="one_row cl">
-				<div class="text fl">Тел.:</div>
-				<div class="val fl">+3 (044) 444 33 23</div>
-			</div>
-			<div class="one_row cl">
-				<div class="text fl">E-mail:</div>
-				<div class="val fl">top@info.info</div>
-			</div>
-		</div>
-		<div class="companies_card_one_emp_contact fr">
-			<a href="#">Написать сообщение</a>
-			<a href="#">Добавить в контакты</a>
-		</div>
-	</div>
-</div>
-
-
-
-
-
-</div>
-</div>
-
-
-
-
-
-<div class="adm_msg_box cl">
-	<div class="adm_msg_title cl">Отправить сообщение организатору мероприятия</div>
-	<div class="adm_msg_content">
-
-		<div class="adm_msg_content_left fl">
-			<span>Название компании:</span>
-			<span style="color: red">*</span>
-			<div class="clr"></div>
-			<input type="text">
-			<div class="clr"></div>
-			<span>Контактное лицо:</span><span style="color: red">*</span>
-			<div class="clr"></div>
-			<input type="text">
-			<div class="clr"></div>
-			<span>Телефон:</span>
-			<span style="color: red">*</span>
-			<div class="clr"></div>
-			<input type="text" style="width: 200px;">
-			<div class="clr"></div>
-			<span>E-mail:</span>
-			<span style="color: red">*</span>
-			<div class="clr"></div>
-			<input type="text" style="width: 200px;">
-			<div class="clr"></div>
-			<span>Страна:</span>
-			<span style="color: red">*</span>
-			<div class="clr"></div>
-			<select><option>-- выбирете страну-- </option></select>
-			<div class="clr"></div>
-			<span>Адрес:</span>
-			<span style="color: red">*</span>
-			<div class="clr"></div>
-			<input type="text">
-			<div class="clr"></div>
-			<span>Цель Вашего запроса:</span>
-			<div class="clr"></div>
-			<input type="radio" style="width: 13px; height: 15px;"><span> для посещения </span>
-			<input type="radio" style="width: 13px; height: 15px;"><span> для возможного участия </span>
-			<input type="radio" style="width: 13px; height: 15px;"><span> другое </span>
-		</div>
-		<style>
-			.capt {}
-			.capt_img img {
-				width: 100px;
-				height: 50px;
-				margin-top: 5px;
-			}
-		</style>
-		<div class="adm_msg_content_right fl">
-			<span>Ваш вопрос:</span>
-			<span style="color: red">*</span>
-			<div class="clr"></div>
-			<textarea rows="10" cols="55" name="text">qwq</textarea>
-			<div class="clr"></div>
-			<div class="capt fl">
-				<span>Код подтверждения:</span><span style="color: red">*</span><div class="clr"></div>
-				<input type="text" style="width: 75px;">
-			</div>
-			<div class="capt_img fr">
-				<img src="/img/card/capt.png">
-			</div>
-		</div>
-		<div class="adm_msg_content_submit cl">
-			<input type="button" value="Submit">
-		</div>
-	</div>
- */
-		?>
-</div>
 </div>

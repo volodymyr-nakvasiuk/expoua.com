@@ -17,9 +17,7 @@
 	padding: 5px 0;
 }
 .companies_card_desc_box {}
-.companies_card_desc_box .left_col {
-	width: 510px;
-}
+.companies_card_desc_box .left_col {}
 .companies_card_desc_box .right_col {
 	width: 190px;
 }
@@ -65,7 +63,7 @@
 }
 .companies_card_info .text{
 	text-align: right;
-	width: 50px;
+	width: 65px;
 }
 .companies_card_info .contact .place{
 	color: #333333;
@@ -73,7 +71,7 @@
 }
 .companies_card_info .contact .address{
 	color: #333333;
-	width: 200px;
+	width: 500px;
 }
 .companies_card_outer {
 	background: #ebf6ff;
@@ -89,6 +87,7 @@
 	margin-left: 5px;
 	color: #0054a6 !important;
 }
+/*
 .companies_card_send_msg_ico,
 .companies_card_star_ico,
 .companies_card_map_ico {
@@ -98,6 +97,7 @@
 }
 .companies_card_star_ico {  background: url(/img/companies/top_company_star.png) no-repeat center center;}
 .companies_card_map_ico {  background: url(/img/companies/map_ico.png) no-repeat center center; }
+*/
 .subscribe_box {
 	padding: 10px 0;
 	width: 100%;

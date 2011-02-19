@@ -1,4 +1,4 @@
-js.module("inc.filter.services");
+js.module("inc.filter.companies_services");
 $(function(){
 	$("#sub_filter_flipper").click(function(){
 		var $sub = $("#filter_sub");

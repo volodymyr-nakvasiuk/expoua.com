@@ -2,6 +2,8 @@
 class Tools_Banner{
 	protected $_types = false;
 	protected $_module = false;
+	protected $_noModule = true;
+
 	protected $_categoryId = false;
 	protected $_limit = false;
 
@@ -24,66 +26,14 @@ class Tools_Banner{
 		return PATH_CLICKER. $id . "_" . $publisherId . "_" . DEFAULT_LANG_ID. "_".$subData;
 	}
 
-	function __construct($types=null, $module=null, $categoryId=null, $limit=5){
+	function __construct($types=null, $module=null, $noModule=false, $categoryId=null, $limit=5){
 		$this->_types = $types?(is_array($types)?$types:array($types)):null;
 		$this->_module = $module;
+		$this->_noModule = $noModule;
 		$this->_categoryId = $categoryId;
 		$this->_limit = $limit;
 		$databases = Zend_Registry::get('databases');
 		$this->_db = $databases['banners'];
-
-		/*
-bplace=pr_line1
-id=EP_BP5
-module=Mainpage
-partner=2
-lang=ru
-country=52
-flash=1
-r=0.6580156432654425
-
-$bplace = $_GET['bplace'];
-$module = (isset($_GET['module']) ? $_GET['module']:null);
-$catId = (isset($_GET['category']) ? $_GET['category']:null);
-
-$lang_id = langid;
-$publisher_id = partnerid;
-$site_id = siteid;
-$countryId = countryid;
-
-$ids = getIds($lang, $bplace, $module, $site_id);
-$data = getBannerData($ids, $catId, $publisher_id);
-
-$data['url_clicker'] = PATH_CLICKER . $data['id'] . "_" . $publisher_id . "_" . $ids['lang_id'] . "_v2";
-
-switch ($data['media']) {
-	case "text":
-		echo getTextBanner($data);
-		break;
-	case "image":
-		echo getImageBanner($data);
-		break;
-	case "pline":
-		require_once("Zend/Json/Encoder.php");
-
-		$event = getPLineBanner($data, $lang, $ids['lang_id']);
-		$json = Zend_Json_Encoder::encode(array('exhibition' => $event));
-
-		if (!empty($_GET['callBack'])) {
-			echo $_GET['callBack'] . "(" . $json . ");";
-		} else {
-			echo 'EPBANNER.show(' . $json . ', ' . $data['id'] . ', "' . $_GET['id'] . '");';
-		}
-		break;
-	default:
-		exit;
-		//unknown banner type
-}
-
-//Статистика
-updateStat($data, $ids, $publisher_id);
-
-		 */
 	}
 
 	public function getData(){
@@ -107,7 +57,7 @@ updateStat($data, $ids, $publisher_id);
 					FROM
 						places
 					WHERE
-						code IN (" . implode(', ',$this->_types) . ")
+						code IN ('" . implode("', '",$this->_types) . "')
 				;
 			";
 			$res = $this->_db->fetchAll($query);
@@ -164,10 +114,22 @@ updateStat($data, $ids, $publisher_id);
 					mview_banners
 				WHERE
 					languages_id=" . intval($this->_params['lang_id']) . "
-					AND places_id IN (" . implode(',', $this->_params['places_id']) . ")
-					AND (" . ($this->_params['modules_id'] ? "modules_id=" . intval($this->_params['modules_id']):"modules_id IS NULL") . ")" . "
-					AND (categories_id IS NULL " . ($this->_categoryId ? "OR categories_id=" . intval($this->_categoryId):"") . ")" . "
-					AND (publishers_id IS NULL OR publishers_id=" . intval($this->_params['publisher_id']) . ")
+					AND (
+						places_id IN (" . implode(',', $this->_params['places_id']) . ")
+					)
+					AND ("
+						.($this->_noModule?
+							"modules_id IS NULL".($this->_params['modules_id'] ? " OR modules_id=" . intval($this->_params['modules_id']):""):
+							($this->_params['modules_id'] ? "modules_id=" . intval($this->_params['modules_id']):"modules_id IS NULL")
+						).
+
+					")
+					AND (
+						categories_id IS NULL " . ($this->_categoryId ? "OR categories_id=" . intval($this->_categoryId):"") . "
+					)
+					AND (
+						publishers_id IS NULL OR publishers_id=" . intval($this->_params['publisher_id']) . "
+					)
 				ORDER BY
 					ord ASC
 				LIMIT
@@ -195,7 +157,8 @@ updateStat($data, $ids, $publisher_id);
 					b.text_content,
 					b.file_alt,
 					b.file_name,
-					'normal' AS bt
+					'normal' AS bt,
+					u.company
 				FROM (
 					SELECT
 						banners_id
@@ -203,9 +166,12 @@ updateStat($data, $ids, $publisher_id);
 						pbl_mview_banners
 					WHERE
 						languages_id=" . intval($this->_params['lang_id']) ."
-				 		AND (
-				 			modules_id IS NULL" . ($this->_params['modules_id'] ? " OR modules_id=" . intval($this->_params['modules_id']):"") . "
-				 		)
+				 		AND ("
+							.($this->_noModule?
+								"modules_id IS NULL".($this->_params['modules_id'] ? " OR modules_id=" . intval($this->_params['modules_id']):""):
+								($this->_params['modules_id'] ? "modules_id=" . intval($this->_params['modules_id']):"modules_id IS NULL")
+							).
+						")
 				 		AND (
 				 			categories_id IS NULL" . ($this->_categoryId ? " OR categories_id=" . intval($this->_categoryId):"") . "
 				 		)
@@ -222,6 +188,8 @@ updateStat($data, $ids, $publisher_id);
 					pbl_banners AS b ON (sq.banners_id = b.id)
 				JOIN
 					types AS t ON (b.types_id = t.id)
+				JOIN
+					pbl_users AS u ON (b.users_id = u.id)
 			)
 		UNION
 			(
@@ -233,7 +201,8 @@ updateStat($data, $ids, $publisher_id);
 					b.text_content,
 					b.file_alt,
 					b.file_name,
-					'gag' AS bt
+					'gag' AS bt,
+					'' AS company
 				FROM
 					pbl_banners_gags AS b
 				JOIN

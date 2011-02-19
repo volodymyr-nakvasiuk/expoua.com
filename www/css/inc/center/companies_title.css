@@ -1,0 +1,14 @@
+.center_companies_title_content {
+	background: url(/img/index/add_ex.png) no-repeat 0 0px scroll;
+	padding-left: 30px;
+}
+.center_companies_title_content a {
+	color: #dd5500;
+	font-size: 14px;
+	display: block;
+	font-weight: bold;
+}
+.center_companies_title_content em {
+	color: #0054a6;
+	font-style: normal;
+}

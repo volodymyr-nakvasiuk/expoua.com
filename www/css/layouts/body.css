@@ -2,19 +2,35 @@
 	clear:both;
 	float:none;
 	width:510px;
+	margin-bottom:10px;
 }
 .body_events_accordion_box {
 	clear:both;
 	float:none;
 	width:510px;
+	margin-bottom:10px;
 }
 .body_events_prlines_box {
 	clear:both;
 	float:none;
 	width:510px;
+	margin-bottom:10px;
 }
 .body_companies_box {
 	clear:both;
 	float:none;
 	width:510px;
+	margin-bottom:10px;
+}
+.body_banners_250x120_box1,
+.body_banners_250x120_box2 {
+	clear:both;
+	float:none;
+	width:510px;
+	margin-bottom:10px;
+}
+.body_companies_goods_box {
+	clear:both;
+	float:none;
+	margin-bottom:10px;
 }

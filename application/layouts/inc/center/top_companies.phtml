@@ -1,0 +1,27 @@
+<?php
+	//$regions = Zend_Registry::get("regions".Tools_Events::$cacheSuffix['id']);
+	$countries = Zend_Registry::get("countries".Tools_Events::$cacheSuffix['id']);
+	$cities = Zend_Registry::get("cities".Tools_Events::$cacheSuffix['id']);
+	$l = DEFAULT_LANG_CODE;
+?>
+<div class="center_companies_head cl">
+	<div class="lf fl"></div>
+	<div class="center_f fl"><span><?php echo $this->lang->translate("Top companies");?></span></div>
+	<div class="rf fl"></div>
+</div>
+<div class="center_top_comp_content_box cl">
+<?php foreach ($this->layoutsData['center']['center_companies_box']['data'] as $item){ $url="/".$l."/companies/card/".$item['id']."-".Tools_View::getUrlAlias($item['name'], true)."/";?>
+	<div class="center_top_comp_text_box cl">
+		<a href="<?php echo $url; ?>"><?php echo $item['name'];?></a>
+		<span>
+			<?php
+				echo
+					$cities[$item['regions_id']][$item['countries_id']][$item['cities_id']]['name']
+					.' / '.
+					$countries[$item['regions_id']][$item['countries_id']]['name']
+				;
+			?>
+		</span>
+	</div>
+<?php } ?>
+</div>

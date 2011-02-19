@@ -1,4 +1,4 @@
-js.module("inc.filter.events");
+js.module("inc.filter.events_news");
 $(function(){
 	$("#sub_filter_flipper").click(function(){
 		var $sub = $("#filter_sub");

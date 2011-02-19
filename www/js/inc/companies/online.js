@@ -1,5 +1,5 @@
-js.module("inc.companies.card");
-js.include("jquery.tooltip");
+js.module("inc.companies.online");
+js.include("jquery.tooltip_online");
 function tooltip_init(){
 	$(".tooltip_box").tooltip({
 		track: false,

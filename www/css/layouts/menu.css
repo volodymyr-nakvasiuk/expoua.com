@@ -5,6 +5,9 @@
 	float: none;
 	font-family: arial;
 }
+body.noSubMenu #menu, html.noSubMenu #menu{
+	height: 30px;
+}
 .main_menu {
 	width: 980px;
 	height: 30px;

@@ -135,7 +135,7 @@ class ArOn_Db_TableSelect extends Zend_Db_Table_Select {
 		return $this;
 	}
 
-	public function columnsJoinOne($path, $columns) {
+	public function columnsJoinOne($path, $columns=null) {
 		$joinPath = $this->_table->getJoinPath ( $path );
 
 		$current_table = $this->_alias;

@@ -140,6 +140,11 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 		$this->initSeo();
 		$this->initCssJs();
 		//$this->updateStats();
+
+		$this->view->noSubMenu = true;
+		if ($this->view->dropdownMenu || ($this->view->activeMenu && $this->view->menuLinks[$this->view->activeMenu]['submenu'])){
+			$this->view->noSubMenu = false;
+		}
 	}
 	
 	protected function _sortArray($mass){
@@ -190,7 +195,7 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 	}
 	
 	protected function initMenu(){
-		$lang = $this->view->lang->getLocale();
+		$lang = DEFAULT_LANG_CODE;
 		$this->view->menuLinks = array(
 			'events'=>array(
 				'lang'=>array('ru','en'),
@@ -213,6 +218,10 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 						'url'=>HOST_NAME.'/'.$lang.'/venues/search/'.DEFAULT_SEARCH,
 						'title'=>$this->view->lang->translate('Expo venues'),
 					),
+					'services'=>array(
+						'url'=>HOST_NAME.'/'.$lang.'/services/',
+						'title'=>$this->view->lang->translate('Services for exhibitions'),
+					),
 				),
 			),
 			'online'=>array(
@@ -229,15 +238,15 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 					//	'title'=>$this->view->lang->translate('Companies catalog by categories'),
 					//),
 					'search'=>array(
-						'url'=>HOST_NAME.'/'.$lang.'/companies/search/'.DEFAULT_SEARCH,
+						'url'=>HOST_NAME.'/'.$lang.'/companies/search/',//.DEFAULT_SEARCH,
 						'title'=>$this->view->lang->translate('List of all companies'),
 					),
 					'services'=>array(
-						'url'=>HOST_NAME.'/'.$lang.'/companies/services/'.DEFAULT_SEARCH,
+						'url'=>HOST_NAME.'/'.$lang.'/companies/services/',//.DEFAULT_SEARCH,
 						'title'=>$this->view->lang->translate('Products and services'),
 					),
 					'news'=>array(
-						'url'=>HOST_NAME.'/'.$lang.'/companies/news/'.DEFAULT_SEARCH,
+						'url'=>HOST_NAME.'/'.$lang.'/companies/news/',//.DEFAULT_SEARCH,
 						'title'=>$this->view->lang->translate('News and press releases'),
 					),
 				),
@@ -263,11 +272,28 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 	}
 	
 	protected function setupLayouts(){
-		$this->view->banners = array();
+		$this->view->banners = array(
+			'250x250' => array(),
+			'200x100' => array(),
+		);
+
+		$tool = new Tools_Banner(array('top_image4', 'top_image3'), $this->moduleName, true, $this->brandsCategoryId, 2);
+		$this->view->banners['200x100']['header_banner_box'] = array($tool->getData(), 100);
+		$tool->updateStat();
+
+		$tool = new Tools_Banner('side250', $this->moduleName, true, $this->brandsCategoryId, 1);
+		$this->view->banners['250x250']['right_banners_250x250_box'] = array($tool->getData(), 50);
+		$tool->updateStat();
+		$this->view->layouts['right']['right_banners_250x250_box'] = array('inc/banners/banner250x250', 50);
+
+		$tool = new Tools_Banner(null, $this->moduleName, true, $this->brandsCategoryId);
+		$this->view->layoutsData['right']['right_banners_advert_box'] = $tool->getData();
+		$tool->updateStat();
+		$this->view->layouts['right']['right_banners_advert_box'] = array('inc/banners/advert', 50);
 	}
 	
 	protected function initCache() {
-		include ROOT_PATH."/data/cache/file/rcc_csc.php";
+		include ROOT_PATH."/data/cache/file/rcc_csc_".DEFAULT_LANG_CODE.".php";
 		foreach($globalFilterCacheArray as $key=>$data){
 			Zend_Registry::set ($key, $data);
 		}
@@ -295,7 +321,7 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 
 		$this->view->layouts['head'] = array(
 			"header_left_box"=>array('inc/header/logo', 100),
-			"header_banner_box"=>array('inc/header/banner', 100),
+			"header_banner_box"=>array('inc/banners/banner200x100', 100),
 			"header_user_box"=>array('inc/header/user', 100),
 		);
 

@@ -14,20 +14,20 @@ class CompaniesController extends Abstract_Controller_FrontendController {
 		$this->view->data = $grid->getData(null, array('limit'=>'all'));
 		$this->view->data = $this->view->data['data'];
 		$this->view->allCount = 0;
-	}
 
-	public function searchAction(){
-		$this->view->activeSubmenu = 'search';
-		$this->view->layouts['top']['filter'] = array('inc/filter/companies', 100);
-		
-		$companies = new Tools_Companies($this->view->requestUrl, $this->view->lang->getLocale(), $this->_request->getParam('p'));
-		$filterData = $companies->getFilterData();
-		if ($filterData['url']!=$this->view->requestUrl) $this->_redirect($filterData['url']);
+		$this->view->menuLinks[$this->view->activeMenu]['submenu'] = array();
 
-		$this->view->jsParams['filter'] = $filterData['params'];
-		$this->view->jsParams['filterParams'] = Tools_Companies::$filterParams;
-		$grid = new Crud_Grid_Companies(null, $filterData['filter']);
-		$this->view->data = $grid->getData();
+		$this->view->layouts['top']['filter'] = array('inc/filter/companies_by_categories', 100);
+		$this->view->jsParams['filter'] = array();
+		$this->view->jsParams['filterParams'] = array('category'=>Tools_Companies::$filterParams['category']);
+
+		$statistics = new Init_Statistics();
+		$this->view->statistics['company_count'] = $statistics->getCompaniesCount();
+		$this->view->layouts['center']['center_companies_title_box'] = array('inc/center/companies_title', 100);
+
+		$grid = new Crud_Grid_Companies(null, array('country'=>COUNTRY_ID,'limit'=>20));
+		$this->view->layoutsData['center']['center_companies_box'] = $grid->getData();
+		$this->view->layouts['center']['center_companies_box'] = array('inc/center/top_companies', 100);
 	}
 
 	public function cardAction(){
@@ -39,7 +39,7 @@ class CompaniesController extends Abstract_Controller_FrontendController {
 			$this->view->data = $grid->getData();
 			if (isset($this->view->data['data'][0])){
 				$this->view->data = $this->view->data['data'][0];
-				$url = '/'.$this->view->lang->getLocale().'/companies/card/'.$this->view->data['id'].'-'.Tools_View::getUrlAlias($this->view->data['name'], true).'/';
+				$url = '/'.DEFAULT_LANG_CODE.'/companies/card/'.$this->view->data['id'].'-'.Tools_View::getUrlAlias($this->view->data['name'], true).'/';
 				$tab = $this->_request->getParam('tab');
 				$tab_action = $this->_request->getParam('tab_action');
 				$tab_id = $this->_request->getParam('tab_id');
@@ -47,6 +47,9 @@ class CompaniesController extends Abstract_Controller_FrontendController {
 					$url .= $tab.'/'.$tab_action.'/'.($tab_id?$tab_id:TAB_DEFAULT_ID).'/';
 				}
 				if ($url!=$this->view->requestUrl) $this->_redirect($url);
+
+				$tab_id = explode('-', $tab_id);
+				$tab_id = (int)$tab_id[0];
 
 				$this->view->tabsData = array();
 
@@ -75,6 +78,12 @@ class CompaniesController extends Abstract_Controller_FrontendController {
 					   $tabObject->tab_title = $this->view->lang->translate('Get additional information');
 					   $this->view->tabsData[Init_Event_Messages::$tab_name] = $tabObject->getData();
 	   */
+				$paramName = 'category';
+				$cache = Zend_Registry::get(Tools_Events::$filterParams[$paramName].Tools_Events::$cacheSuffix['id']);
+
+				foreach($this->view->menuLinks[$this->view->activeMenu]['submenu'] as &$submenu){
+					$submenu['url'] .= $paramName.'-'.$cache[$this->view->data['category_id']]['alias'].'/';
+				}
 			}
 			else {
 				$this->_forward('error', 'error');
@@ -92,7 +101,7 @@ class CompaniesController extends Abstract_Controller_FrontendController {
 		$this->view->layoutsData['right'] = array();
 		$this->view->layouts['right'] = array();
 
-		$online = new Tools_Online($this->view->requestUrl, $this->view->lang->getLocale());
+		$online = new Tools_Online($this->view->requestUrl, DEFAULT_LANG_CODE);
 		$filterData = $online->getFilterData();
 
 		if ($filterData['url']!=$this->view->requestUrl) $this->_redirect($filterData['url']);
@@ -103,58 +112,115 @@ class CompaniesController extends Abstract_Controller_FrontendController {
 		$init = new Init_OnlineExpo($filterData['filter']);
 		$this->view->data = $init->getData();
 
-		$lang = $this->view->lang->getLocale();
-		$paramName = 'category';
-		$cache = Zend_Registry::get(Tools_Events::$filterParams[$paramName].Tools_Events::$cacheSuffix['id']);
-		$content = array();
-		foreach($cache as $id=>$category){
-			$content[$category['alias']] = array(
-				'url'=>HOST_NAME.'/'.$lang.'/companies/online/'.$paramName.'-'.$category['alias'].'/',
-				'title'=>$category['name_'.$lang],
-				'selected'=>($id==$filterData['filter']['category']),
-			);
-		}
-		$this->view->dropdownMenu = array(
-			'title'=>$this->view->translate('Select online trade show'),
-			'content'=>$content,
-		);
-		$this->view->dataTitle = $cache[$filterData['filter']['category']]['name_'.$lang];
+		$this->view->layouts['top']['filter'] = array('inc/filter/companies_by_categories', 100);
+		$this->view->jsParams['filter'] = $filterData['params'];
+		$this->view->jsParams['filterParams'] = array('category'=>Tools_Companies::$filterParams['category']);
 
 		$statistics = new Init_Statistics();
 		$this->view->statistics['company_count'] = $statistics->getCompaniesCount();
 
-		foreach($this->view->menuLinks['online']['submenu'] as &$submenu){
+		$paramName = 'category';
+		$cache = Zend_Registry::get(Tools_Events::$filterParams[$paramName].Tools_Events::$cacheSuffix['id']);
+		$this->view->dataTitle = $cache[$filterData['filter']['category']]['name'];
+
+		foreach($this->view->menuLinks[$this->view->activeMenu]['submenu'] as &$submenu){
+			$submenu['url'] .= $paramName.'-'.$cache[$filterData['filter']['category']]['alias'].'/';
+		}
+	}
+
+	public function searchAction(){
+		$this->view->activeSubmenu = 'search';
+		$this->view->layouts['top']['filter'] = array('inc/filter/companies_by_categories', 100);
+
+		$companies = new Tools_Companies($this->view->requestUrl, DEFAULT_LANG_CODE, $this->_request->getParam('p'));
+		$filterData = $companies->getFilterData();
+		if ($filterData['url']!=$this->view->requestUrl) $this->_redirect($filterData['url']);
+
+		$this->view->jsParams['filter'] = $filterData['params'];
+		$this->view->jsParams['filterParams'] = Tools_Companies::$filterParams;
+
+		$filterData['filter']['country'] = COUNTRY_ID;
+		$grid = new Crud_Grid_Companies(null, $filterData['filter']);
+		$this->view->data = $grid->getData();
+
+		$statistics = new Init_Statistics();
+		$this->view->statistics['company_count'] = $statistics->getCompaniesCount();
+		$this->view->layouts['center']['center_companies_title_box'] = array('inc/center/companies_title', 100);
+
+		$grid = new Crud_Grid_Companies(null, array('country'=>COUNTRY_ID,'limit'=>20));
+		$this->view->layoutsData['center']['center_companies_box'] = $grid->getData();
+		$this->view->layouts['center']['center_companies_box'] = array('inc/center/top_companies', 100);
+
+		$paramName = 'category';
+		$cache = Zend_Registry::get(Tools_Events::$filterParams[$paramName].Tools_Events::$cacheSuffix['id']);
+		$this->view->dataTitle = $cache[$filterData['filter']['category']]['name'];
+
+		foreach($this->view->menuLinks[$this->view->activeMenu]['submenu'] as &$submenu){
 			$submenu['url'] .= $paramName.'-'.$cache[$filterData['filter']['category']]['alias'].'/';
 		}
 	}
 
 	public function servicesAction(){
 		$this->view->activeSubmenu = 'services';
-		$this->view->layouts['top']['filter'] = array('inc/filter/companies_services', 100);
+		$this->view->layouts['top']['filter'] = array('inc/filter/companies_by_categories', 100);
 
-		$services = new Tools_CompanyServices($this->view->requestUrl, $this->view->lang->getLocale(), $this->_request->getParam('p'));
+		$services = new Tools_CompanyServices($this->view->requestUrl, DEFAULT_LANG_CODE, $this->_request->getParam('p'));
 		$filterData = $services->getFilterData();
 		if ($filterData['url']!=$this->view->requestUrl) $this->_redirect($filterData['url']);
 
 		$this->view->jsParams['filter'] = $filterData['params'];
 		$this->view->jsParams['filterParams'] = Tools_CompanyServices::$filterParams;
 
+		$filterData['filter']['country'] = COUNTRY_ID;
 		$grid = new Crud_Grid_CompanyServices(null, $filterData['filter']);
 		$this->view->data = $grid->getData();
+
+		$statistics = new Init_Statistics();
+		$this->view->statistics['company_count'] = $statistics->getCompaniesCount();
+		$this->view->layouts['center']['center_companies_title_box'] = array('inc/center/companies_title', 100);
+
+		$grid = new Crud_Grid_Companies(null, array('country'=>COUNTRY_ID,'limit'=>20));
+		$this->view->layoutsData['center']['center_companies_box'] = $grid->getData();
+		$this->view->layouts['center']['center_companies_box'] = array('inc/center/top_companies', 100);
+
+		$paramName = 'category';
+		$cache = Zend_Registry::get(Tools_Events::$filterParams[$paramName].Tools_Events::$cacheSuffix['id']);
+		$this->view->dataTitle = $cache[$filterData['filter']['category']]['name'];
+
+		foreach($this->view->menuLinks[$this->view->activeMenu]['submenu'] as &$submenu){
+			$submenu['url'] .= $paramName.'-'.$cache[$filterData['filter']['category']]['alias'].'/';
+		}
 	}
 
 	public function newsAction(){
 		$this->view->activeSubmenu = 'news';
-		$this->view->layouts['top']['filter'] = array('inc/filter/companies_news', 100);
+		$this->view->layouts['top']['filter'] = array('inc/filter/companies_by_categories', 100);
 
-		$services = new Tools_CompanyNews($this->view->requestUrl, $this->view->lang->getLocale(), $this->_request->getParam('p'));
+		$services = new Tools_CompanyNews($this->view->requestUrl, DEFAULT_LANG_CODE, $this->_request->getParam('p'));
 		$filterData = $services->getFilterData();
 		if ($filterData['url']!=$this->view->requestUrl) $this->_redirect($filterData['url']);
 
 		$this->view->jsParams['filter'] = $filterData['params'];
 		$this->view->jsParams['filterParams'] = Tools_CompanyNews::$filterParams;
 
+		$filterData['filter']['country'] = COUNTRY_ID;
 		$grid = new Crud_Grid_CompanyNews(null, $filterData['filter']);
 		$this->view->data = $grid->getData();
+
+		$statistics = new Init_Statistics();
+		$this->view->statistics['company_count'] = $statistics->getCompaniesCount();
+		$this->view->layouts['center']['center_companies_title_box'] = array('inc/center/companies_title', 100);
+
+		$grid = new Crud_Grid_Companies(null, array('country'=>COUNTRY_ID,'limit'=>20));
+		$this->view->layoutsData['center']['center_companies_box'] = $grid->getData();
+		$this->view->layouts['center']['center_companies_box'] = array('inc/center/top_companies', 100);
+
+		$paramName = 'category';
+		$cache = Zend_Registry::get(Tools_Events::$filterParams[$paramName].Tools_Events::$cacheSuffix['id']);
+		$this->view->dataTitle = $cache[$filterData['filter']['category']]['name'];
+
+		foreach($this->view->menuLinks[$this->view->activeMenu]['submenu'] as &$submenu){
+			$submenu['url'] .= $paramName.'-'.$cache[$filterData['filter']['category']]['alias'].'/';
+		}
 	}
 }

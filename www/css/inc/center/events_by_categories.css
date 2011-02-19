@@ -1,0 +1,19 @@
+.center_events_by_categories_content_box {
+	border: 1px solid #bfcedc;
+	padding: 10px;
+}
+.center_events_by_categories_one_row {
+	margin-top: 5px;
+}
+.center_events_by_categories_text_box {
+}
+.center_events_by_categories_text_box a {
+	display: block;
+	color: #333333;
+	font-size: 12px;
+	text-decoration: none;
+}
+.center_events_by_categories_text_box a:hover {
+	color: #0d74c4;
+	text-decoration: underline;
+}

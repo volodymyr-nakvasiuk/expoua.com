@@ -53,10 +53,11 @@ input[type="checkbox"] { vertical-align: bottom; *vertical-align: baseline; }
 .ie6 input { vertical-align: text-bottom; }
 label, input[type=button], input[type=submit], button { cursor: pointer; }
 
-::-moz-selection{ background: #FF5E99; color:#fff; text-shadow: none; }
-::selection { background:#FF5E99; color:#fff; text-shadow: none; }
+::-moz-selection{ background: #0A246A; color:#fff; text-shadow: none; }
+::selection { background:#0A246A; color:#fff; text-shadow: none; }
+::-webkit-selection {background:#0A246A; color:#fff; text-shadow: none;}
 
-a:link { -webkit-tap-highlight-color: #FF5E99; }
+a:link { -webkit-tap-highlight-color: #0A246A; }
 
 html { overflow-y: scroll; }
 button {  width: auto; overflow: visible; }
@@ -130,6 +131,9 @@ span.bottom_dashed {
 /*start front*/
 body, html {
 	background: url(/img/body_bg.png) repeat-x;
+}
+body.noSubMenu, html.noSubMenu {
+	background: url(/img/body_bg_1.png) repeat-x;
 }
 #siteBox {
 	position:absolute;
@@ -285,6 +289,9 @@ div.rc_bl_trans {
 	background: url(/img/site/center_f.png) repeat-x 0 0 scroll transparent;
 	height: 28px;
 	width: 183px;
+}
+.center_f_right {
+	width: 238px;
 }
 .center_f span{
 	margin-left: 10px;

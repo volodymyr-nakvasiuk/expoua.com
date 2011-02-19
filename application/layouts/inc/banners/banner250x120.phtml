@@ -1,0 +1,10 @@
+<?php
+	$bannersData = array_shift($this->banners['250x120']);
+	foreach ($bannersData as $banner){
+?>
+		<div class="banner_250x120">
+			<?php echo Tools_Banner_Local::getBanner($banner); ?>
+		</div>
+<?php
+	}
+?>

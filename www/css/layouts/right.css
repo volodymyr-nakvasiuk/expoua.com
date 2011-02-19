@@ -1,20 +1,16 @@
-.center_events_news_box {
-	clear:both;
-	float:none;
-	margin-bottom:10px;
-}
-.center_companies_news_box {
-	clear:both;
-	float:none;
-	margin-bottom:10px;
-}
-div.right_advert_box {
+.right_banners_advert_box {
 	width: 250px;
 	clear:both;
 	float:none;
 	margin-bottom:10px;
 }
-.right_banner_box {
+.right_banners_250x250_box {
+	float: none;
+	clear: both;
+	margin-bottom: 10px;
+	width: 250px;
+}
+.right_companies_box {
 	float: none;
 	clear: both;
 	margin-bottom: 10px;

@@ -1,0 +1,8 @@
+div.banner_200x100 {
+	float: left;
+	clear: none;
+	margin-left: 10px;
+	border: solid 1px #bac8d3;
+	width: 200px;
+	height: 100px;
+}

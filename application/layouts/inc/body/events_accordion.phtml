@@ -2,7 +2,7 @@
 	//$regions = Zend_Registry::get("regions".Tools_Events::$cacheSuffix['id']);
 	$countries = Zend_Registry::get("countries".Tools_Events::$cacheSuffix['id']);
 	$cities = Zend_Registry::get("cities".Tools_Events::$cacheSuffix['id']);
-	$l = $this->lang->getLocale();
+	$l = DEFAULT_LANG_CODE;
 ?>
 <div class="body_events_accordion_content cl">
 <?php foreach ($this->layoutsData['body']['body_events_accordion_box']['data'] as $item){ $url=Tools_Banner::getClickerUrl($item['bannerData']['id'], $item);?>
@@ -26,9 +26,9 @@
 						<div class="city cl">
 							<?php
 								echo
-								$countries[$item['regions_id']][$item['countries_id']]['name_'.$l]
+								$countries[$item['regions_id']][$item['countries_id']]['name']
 								.', '.
-								$cities[$item['regions_id']][$item['countries_id']][$item['cities_id']]['name_'.$l];
+								$cities[$item['regions_id']][$item['countries_id']][$item['cities_id']]['name'];
 							?>
 						</div>
 						<?php /* <a href="#"><?php echo $this->lang->translate("add to favorites"); ?></a> */ ?>
@@ -53,9 +53,9 @@
 			<div class="desc cl">
 				<?php
 					echo
-					$countries[$item['regions_id']][$item['countries_id']]['name_'.$l]
+					$countries[$item['regions_id']][$item['countries_id']]['name']
 					.', '.
-					$cities[$item['regions_id']][$item['countries_id']][$item['cities_id']]['name_'.$l];
+					$cities[$item['regions_id']][$item['countries_id']][$item['cities_id']]['name'];
 				?>
 			</div>
 			<div class="desc cl">

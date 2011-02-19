@@ -27,6 +27,10 @@ class Crud_Grid_Companies extends ArOn_Crud_Grid {
 			//'active' => new ArOn_Crud_Grid_Column_Numeric('Активный',null,true,false,'50'),
 			'category' => new ArOn_Crud_Grid_Column_JoinOne('Категория', array('Db_Companies2Categories', 'Db_BrandsCategories'), null, array('id')),
 			'logo' => new ArOn_Crud_Grid_Column_Numeric("Город",null,true,false,'50'),
+
+			'active' => new ArOn_Crud_Grid_Column_JoinOne("Активный",array('Db_CompaniesActive'),'active',null,false,'200'),
+			'news_count'=>new ArOn_Crud_Grid_Column_JoinOne("Количество новостей",array('Db_Lang_CompaniesData'),'news_count',null,false,'200'),
+			'services_count'=>new ArOn_Crud_Grid_Column_JoinOne("Количество продуктов и сервисов",array('Db_Lang_CompaniesData'),'services_count',null,false,'200'),
 		);
 		//$this->fields['active']->options = array('1'=>"+", '0'=>"-");
 
@@ -67,8 +71,26 @@ class Crud_Grid_Companies extends ArOn_Crud_Grid {
 				),
 			)),
 			'category' => new ArOn_Crud_Grid_Filter_Field_Select2('id','Категория', 'Db_BrandsCategories', array('Db_Companies2Categories', 'Db_BrandsCategories')),
+			'active_languages_id' => new ArOn_Crud_Grid_Filter_Field_Search('active_languages_id','Язык выставки',array(
+				array(
+					'path' => array('Db_CompaniesActive'),
+					'filters' => array(
+						'languages_id' => ArOn_Db_Filter_Search::EQ,
+					),
+				),
+			)),
+			'active' => new ArOn_Crud_Grid_Filter_Field_Search('active','Язык выставки',array(
+				array(
+					'path' => array('Db_CompaniesActive'),
+					'filters' => array(
+						'active' => ArOn_Db_Filter_Search::EQ,
+					),
+				),
+			)),
 		);
 		$this->_params['languages_id'] = DEFAULT_LANG_ID;
+		$this->_params['active_languages_id'] = DEFAULT_LANG_ID;
+		$this->_params['active'] = 1;
 
 		parent::init();
 	}

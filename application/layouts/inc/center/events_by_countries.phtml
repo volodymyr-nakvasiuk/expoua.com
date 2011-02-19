@@ -1,0 +1,73 @@
+<?php
+	$l = DEFAULT_LANG_CODE;
+	$cache = array(
+		array(
+			"name_en"=>" Ukraine",
+			"name_ru"=>" Украине",
+			"region"=>"europe",
+			"alias"=>"ukraine",
+		),
+		array(
+			"name_en"=>" China",
+			"name_ru"=>" Китае",
+			"region"=>"asia",
+			"alias"=>"china",
+		),
+		array(
+			"name_en"=>" Russia",
+			"name_ru"=>" России",
+			"region"=>"europe",
+			"alias"=>"russia",
+		),
+		array(
+			"name_en"=>" Germany",
+			"name_ru"=>" Германии",
+			"region"=>"europe",
+			"alias"=>"germany",
+		),
+		array(
+			"name_en"=>" Italy",
+			"name_ru"=>" Италии",
+			"region"=>"europe",
+			"alias"=>"italy",
+		),
+		array(
+			"name_en"=>" France",
+			"name_ru"=>"о Франции",
+			"region"=>"europe",
+			"alias"=>"france",
+		),
+		array(
+			"name_en"=>" USA",
+			"name_ru"=>" США",
+			"region"=>"america",
+			"alias"=>"usa",
+		),
+		array(
+			"name_en"=>" Spain",
+			"name_ru"=>" Испании",
+			"region"=>"europe",
+			"alias"=>"spain",
+		),
+		array(
+			"name_en"=>" India",
+			"name_ru"=>" Индии",
+			"region"=>"asia",
+			"alias"=>"india",
+		),
+	);
+?>
+<div class="center_events_by_countries_head cl">
+	<div class="lf fl"></div>
+	<div class="center_f fl"><span><?php echo $this->lang->translate('Exhibitions by countries');?></span></div>
+	<div class="rf fl"></div>
+</div>
+<div class="center_events_by_countries_content_box cl">
+	<?php foreach($cache as $category){ ?>
+	<div class="center_events_by_countries_one_row">
+		<div class="center_events_by_countries_text_box">
+			<a href="<?php echo "/".$l."/events/region-".$category['region']."/country-".$category['alias']."/"; ?>"><?php echo $this->lang->translate('Exhibitions in').$category['name_'.$l];?></a>
+		</div>
+	</div>
+	<?php } ?>
+</div>

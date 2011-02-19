@@ -83,7 +83,7 @@ class Crud_Grid_Event extends ArOn_Crud_Grid {
 		);
 		$this->_params['brands_languages_id'] = DEFAULT_LANG_ID;
 		$this->_params['languages_id'] = DEFAULT_LANG_ID;
-		$this->_params['period_languages_id'] = DEFAULT_LANG_ID;
+		$this->_params['period_languages_id'] = DEFAULT_LANG_ID.';NULL';
 		$this->_params['expocenter_languages_id'] = DEFAULT_LANG_ID;
 		$this->_params['organizer_languages_id'] = DEFAULT_LANG_ID;
 
