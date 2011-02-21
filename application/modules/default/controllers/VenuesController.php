@@ -90,29 +90,4 @@ class VenuesController extends Abstract_Controller_FrontendController {
 			return;
 		}
 	}
-
-	/* request
-	 $host = !empty($this->sessParams['clientIP']) ? $this->sessParams['clientIP'] : $_SERVER['REMOTE_ADDR'];
-
-    //Подготавливаем запрос для сохранения в базе
-    $stmt_req = DB_PDO::getInst()->prepare(
-        "INSERT INTO requests SET type=:type, parent=:parent, child=:child, countries_id=:country, sites_id='" .
-        $this->sessParams['siteID'] . "', languages_id='" . $this->sessParams['langId'] . "', host=INET_ATON('" . $host . "')");
-
-	$res = $stmt_req->execute(array(':type' => $requestType, ':parent' => intval($data['centerId']), ':child' => intval($data['centerId']), ':country' => 0));
-
-	if ($res) {
-		$request_id = DB_PDO::getInst()->lastInsertId();
-		//Подготавливаем запрос для сохранения данных, связанных с запросом
-		$stmt_req_data = DB_PDO::getInst()->prepare("INSERT INTO requests_data (requests_id, type, value) VALUES ('" . $request_id . "', :type, :value)");
-
-		$stmt_req_data->execute(array(':type' => 'name', ':value' => $data['companyName']));
-		$stmt_req_data->execute(array(':type' => 'contact_person', ':value' => $data['contactPerson']));
-		$stmt_req_data->execute(array(':type' => 'phone', ':value' => $data['phone']));
-		$stmt_req_data->execute(array(':type' => 'email', ':value' => $data['email']));
-		$stmt_req_data->execute(array(':type' => 'address', ':value' => $data['address']));
-		$stmt_req_data->execute(array(':type' => 'message', ':value' => $data['extraInfo']));
-	 }
-	 */
-
 }

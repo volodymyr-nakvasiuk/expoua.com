@@ -1,7 +1,8 @@
 <?php
-class Client_DriverController extends Client_AjaxController  {
+class Client_DriverController extends Abstract_Controller_AjaxController  {
 	
 	public $resultJSON = array('success'=>false);
+	protected $_redirectUrl = '/client/';
 	
 	public function __call($function, $params){
 		$count = preg_match('/(.*?)Action/',$function,$matches);

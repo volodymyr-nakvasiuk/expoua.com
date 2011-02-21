@@ -1,7 +1,8 @@
 <?php
-class Client_ClientController extends Client_AjaxController  {
+class Client_ClientController extends Abstract_Controller_AjaxController  {
 	
 	public $resultJSON = array();
+	protected $_redirectUrl = '/client/';
 	
 	public function carsAction() {
 		$this->view->mark_caches = Zend_Registry::get ('marks');

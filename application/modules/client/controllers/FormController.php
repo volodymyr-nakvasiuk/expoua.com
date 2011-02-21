@@ -1,8 +1,9 @@
 <?php
-class Client_FormController extends Client_AjaxController {
+class Client_FormController extends Abstract_Controller_AjaxController {
 
 	protected $_form;
 	public $resultJSON = array();
+	protected $_redirectUrl = '/client/';
 
 	public function __call($function, $params){
 		$count = preg_match('/(.*?)Action/',$function,$matches);

@@ -531,4 +531,19 @@ li.tab_title_messages {
 .card_tabs_box .ui-tabs .ui-tabs-panel {
 	-moz-border-radius-topright: 0;
 }
+.statusBox,
+.statusBox div,
+.statusBox div h3{
+	width: 100%;
+	color: green !important;
+	font-size: 14px;
+	text-align: center;
+	font-weight:bold;
+	margin-top:5px;
+}
+#requestForm .error{
+	margin-bottom:10px;
+	clear:both;
+	float:none;
+}
 /*                         END MESSAGES TAB                              */

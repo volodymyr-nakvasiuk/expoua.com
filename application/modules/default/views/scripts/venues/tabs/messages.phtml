@@ -1,6 +1,9 @@
 <?php
 	$item = $this->tabsData[Init_Venues_Messages::$tab_name]['data'];
 ?>
+<div id="statusBox" class="statusBox cl"></div>
+<form action="/requests/exhibition-center-info/" method="post" id="requestForm">
+<input type="hidden" value="<?php echo $item['venue_id']; ?>" name="venue_id">
 <div class="adm_msg_title cl">
 	<?php echo $this->lang->translate('Send a message to').' '.$item['venueName'];?>
 </div>
@@ -11,7 +14,7 @@
 				<?php echo $this->lang->translate('Company name');?>:<span>*</span>
 			</div>
 			<div class="adm_msg_field_content cl">
-				<input type="text" name="companyName" />
+				<input type="text" name="name" />
 			</div>
 		</div>
 		<div class="adm_msg_field cl">
@@ -19,7 +22,7 @@
 				<?php echo $this->lang->translate('Contact person');?>:<span>*</span>
 			</div>
 			<div class="adm_msg_field_content cl">
-				<input type="text" name="contactPerson" />
+				<input type="text" name="contact_person" />
 			</div>
 		</div>
 		<div class="adm_msg_field cl">
@@ -53,7 +56,7 @@
 				<?php echo $this->lang->translate('Your question');?>:<span>*</span>
 			</div>
 			<div class="adm_msg_field_content cl">
-				<textarea rows="10" cols="55" name="extraInfo"></textarea>
+				<textarea rows="10" cols="55" name="message"></textarea>
 			</div>
 		</div>
 		<div class="captcha_box cl">
@@ -72,6 +75,56 @@
 		</div>
 	</div>
 	<div class="adm_msg_content_submit cl">
-		<input type="button" value="<?php echo $this->lang->translate('Send');?>" />
+		<input type="submit" value="<?php echo $this->lang->translate('Send');?>" />
 	</div>
 </div>
+<script type="text/javascript">
+	js.include("jquery.form");
+	function submitStatus(text){
+		box = '#statusBox';
+		var $statusBox = $(box);
+		if ($statusBox.height()==0) $statusBox.html('');
+		var $div = $('<div style="display:none;"/>').html(text+"<hr/>").prependTo($statusBox);
+		$div.slideDown('slow').delay(3000).hide('slow');
+		return text;
+	}
+	$('#requestForm').ajaxForm({
+		resetForm: false,
+		url: "/<?php echo DEFAULT_LANG_CODE; ?>/requests/exhibition-center-info/",
+		type: 'POST',
+		beforeSerialize: function($form, options) {
+			$('#loading').show();
+			$form.find('[errorFor]').remove();
+			return true;
+		},
+		complete: function(data) {
+			$('#loading').hide();
+			var form = $('#requestForm');
+			form.find('.captcha_img .captcha_reload').click();
+			form.find('[name="captcha[input]"]').val('');
+			if (data.status != 200) return submitStatus('<?php echo $this->lang->translate('ERROR! Server is unavailable');?>');
+			var response = data.responseText;
+			if (response.isJSON()) response = eval('('+response+')');
+			else return submitStatus('<?php echo $this->lang->translate('Error! Please contact the server administrator for an explanation');?>');
+			var b=e='';
+			if (!response.success){
+				b='<span class="error">';
+				e='</span>';
+				if (response.errors){
+					for (var filedName in response.errors){
+						for (var errorId in response.errors[filedName]){
+							var $errorDiv = form.find('[errorFor="'+filedName+'"]');
+							if (!$errorDiv.length) $errorDiv = $('<div class="error" errorFor="'+filedName+'"></div>');
+							$errorDiv.html(response.errors[filedName][errorId]);
+							form.find('[name="'+filedName+'"]').after($errorDiv);
+						}
+					}
+				}
+			}
+			else {
+				form.resetForm();
+			}
+			if (response.message) submitStatus(b+response.message+e);
+		}
+	});
+</script>

@@ -445,8 +445,8 @@ class ArOn_Zend_Captcha_Image extends Zend_Captcha_Word {
 		$id = $this->getId();
 		$imgUrl = $this->getImgUrl() . '?id=' . $id;
 		$reload = $this->getReloadImg();
-		return '<img id="captcha_'.$id.'" width="'.$this->getWidth().'" height="'.$this->getHeight().'" alt="'.$this->getImgAlt().'" src="' . $imgUrl . '&r='.rand(1,1000000).'"/>'
-				.($reload?'<img onClick="javascript:document.getElementById(\'captcha_'.$id.'\').src = \''.$imgUrl.'&r=\'+Math.floor(Math.random()*1000000);" alt="" src="' . $reload . '"/>':'')
+		return '<img class="captcha" id="captcha_'.$id.'" width="'.$this->getWidth().'" height="'.$this->getHeight().'" alt="'.$this->getImgAlt().'" src="' . $imgUrl . '&r='.rand(1,1000000).'"/>'
+				.($reload?'<img class="captcha_reload" onClick="javascript:document.getElementById(\'captcha_'.$id.'\').src = \''.$imgUrl.'&r=\'+Math.floor(Math.random()*1000000);" alt="" src="' . $reload . '"/>':'')
 				;
 	}
 }

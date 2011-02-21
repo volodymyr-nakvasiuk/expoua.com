@@ -41,17 +41,11 @@ class Zend_Validate_Regex extends Zend_Validate_Abstract
     /**
      * @var array
      */
-    /*
     protected $_messageTemplates = array(
         self::INVALID   => "Invalid type given, value should be string, integer or float",
         self::NOT_MATCH => "'%value%' does not match against pattern '%pattern%'"
     );
-	*/
-    protected $_messageTemplates = array(
-        self::INVALID   => "Неверный тип данных",
-        self::NOT_MATCH => "'%value%' не соответствует патерну '%pattern%'"
-    );
-    
+
     /**
      * @var array
      */

@@ -317,3 +317,26 @@ div.paginator div.selected {
 	background: #0054a6;
 	color: #ffffff;
 }
+
+.error {
+	color:red;
+}
+#loading {
+	position: fixed;
+	left: 45%;
+	top: 40%;
+	padding: 2px;
+	z-index: 20001;
+	height: auto;
+	color: #555;
+	font: bold 13px tahoma, arial, helvetica;
+	text-align: center;
+}
+
+#loading .loading-indicator {
+	margin: 0;
+	padding: 0;
+	width: 125px;
+	height: 125px;
+	background: url(/img/spiner/7.gif) 0 0 no-repeat;
+}

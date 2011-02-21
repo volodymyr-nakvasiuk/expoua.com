@@ -1,52 +1,42 @@
 <?php
-class ArOn_Zend_Validate_CompareToField extends Zend_Validate_Abstract
-{
-    const NOT_MATCH = 'notMatch';
-	/*
-	protected $_messageTemplates = array(
-		self::NOT_MATCH => 'Fields do not match.'
-	);
-	*/
-    protected $_messageTemplates = array(
-		self::NOT_MATCH => 'Поля не совпадают'
-	);
-    
-    
-    protected $_field;
+class ArOn_Zend_Validate_CompareToField extends Zend_Validate_Abstract {
+	const NOT_MATCH = 'notMatch';
 
-    public function __construct($field = null)
-    {
-        $this->setField($field);
-    }
+	protected $_field;
 
-    public function getField()
-    {
-        return $this->_field;
-    }
+	public function __construct($translator = null, $field = null) {
+		if ($translator && $translator instanceof Zend_Translate){
+			$this->_messageTemplates = array(
+				self::NOT_MATCH => $translator->translate("Fields do not match."),
+			);
+		}
+		$this->setField($field);
+	}
 
-    public function setField($field)
-    {
-        $this->_field = $field;
-        return $this;
-    }
+	public function getField() {
+		return $this->_field;
+	}
 
-    public function isValid($value, $context = null)
-    {
-        $value = (string) $value;
-        $this->_setValue($value);
+	public function setField($field) {
+		$this->_field = $field;
+		return $this;
+	}
 
-        if (is_array($context)) {
-            if (isset($context[$this->_field])
-                && ($value === $context[$this->_field]))
-            {
-                return true;
-            }
-        } elseif (is_string($context) && ($value === $context)) {
-            return true;
-        }
+	public function isValid($value, $context = null) {
+		$value = (string) $value;
+		$this->_setValue($value);
 
-        $this->_error(self::NOT_MATCH);
-        return false;
-    }
+		if (is_array($context)) {
+			if (isset($context[$this->_field])
+					&& ($value === $context[$this->_field]))
+			{
+				return true;
+			}
+		} elseif (is_string($context) && ($value === $context)) {
+			return true;
+		}
+
+		$this->_error(self::NOT_MATCH);
+		return false;
+	}
 }
-?> 

@@ -1,7 +1,8 @@
 <?php
-class Client_LoginController extends Client_AjaxController  {
+class Client_LoginController extends Abstract_Controller_AjaxController  {
 	
 	public $resultJSON = array();
+	protected $_redirectUrl = '/client/';
 
 	public function indexAction(){
 		$params = $this->_request->getParams();

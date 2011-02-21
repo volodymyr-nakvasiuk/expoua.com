@@ -1,8 +1,9 @@
 <?php
-class Client_GridController extends Client_AjaxController {
+class Client_GridController extends Abstract_Controller_AjaxController {
 
 	protected $_grid;
 	public $resultJSON = array();
+	protected $_redirectUrl = '/client/';
 
 	public function __call($function, $params){
 

@@ -5,7 +5,10 @@
 		Bootstrap::setupSelfConst();
 		Bootstrap::setupPhpIni();
 		Bootstrap::setupRegistry ();
+		Bootstrap::setupConfiguration ();
+		Bootstrap::setupDatabase ();
 		Bootstrap::setupTranslation();
+		Bootstrap::setupSessions ();
 
 		$startImagesDir = ROOT_PATH.'/data/captcha/150x80';
 		$startImageName = rand(1, 29).'.png';
@@ -26,5 +29,5 @@
 			'wordlen'   => 6,
 		));
 
-		$captcha->generateImage(intval($_GET['id']));
+		$captcha->generateImage($_GET['id']);
 	}
