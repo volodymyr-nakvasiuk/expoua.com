@@ -2,7 +2,7 @@ js.module("inc.venues.card");
 js.include("jquery.ui.tabs");
 js.include("jquery.photoslider");
 
-$(window).load(function () {
+$(function () {
 	var mapDiv = document.getElementById("venue_map");
 	if (mapDiv){
 		var map = 0;

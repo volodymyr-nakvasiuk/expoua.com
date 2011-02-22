@@ -1,5 +1,8 @@
-<div id="mapCore">
-</div>
-<div class="box card_adm_msg_tab">
-	Adm_Msg
-</div>
+<div id="venue_map"></div>
+<?php
+	$item = $this->tabsData[Init_Event_Map::$tab_name]['data'];
+?>
+<script type="text/javascript">
+	var venue_map_info = {title:'<?php echo $item['title']; ?>', address:'<?php echo $item['address']; ?>'};
+	var latlng = {lat:<?php echo $item['lat']; ?>, lng:<?php echo $item['lng']; ?>};
+</script>

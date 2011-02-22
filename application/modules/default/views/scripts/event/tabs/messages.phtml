@@ -1,50 +1,165 @@
-<div class="adm_msg_title cl">Отправить сообщение организатору мероприятия</div>
-<div class="adm_msg_content">
-
-	<div class="adm_msg_content_left fl">
-		<span>Название компании:</span><span style="color: red">*</span>
-		<input type="text">
-		<span>Контактное лицо:</span><span style="color: red">*</span>
-		<input type="text">
-		<span>Телефон:</span><span style="color: red">*</span><div class="clr"></div>
-		<input type="text" style="width: 200px;"><div class="clr"></div>
-		<span>E-mail:</span><span style="color: red">*</span><div class="clr"></div>
-		<input type="text" style="width: 200px;"><div class="clr"></div>
-		<span>Страна:</span><span style="color: red">*</span><div class="clr"></div>
-		<select>
-			<option>-- выбирете страну-- </option>
-			<?php //foreach(){?>
-				<option>-- выбирете страну-- </option>
-			<?php //} ?>
-		</select>
-		<div class="clr"></div>
-		<span>Адрес:</span><span style="color: red">*</span><div class="clr"></div>
-		<input type="text"><div class="clr"></div>
-		<span>Цель Вашего запроса:</span><div class="clr"></div>
-		<input type="radio" style="width: 13px; height: 15px;"><span> для посещения </span>
-		<input type="radio" style="width: 13px; height: 15px;"><span> для возможного участия </span>
-		<input type="radio" style="width: 13px; height: 15px;"><span> другое </span>
+<?php
+	$tabData = $this->tabsData[Init_Event_Messages::$tab_name];
+	$item = $tabData['data'];
+	$regions = Zend_Registry::get("regions".Tools_Events::$cacheSuffix['id']);
+	$countries = Zend_Registry::get("countries".Tools_Events::$cacheSuffix['id']);
+?>
+<div id="statusBox" class="statusBox cl"></div>
+<form method="post" id="requestForm">
+	<input type="hidden" value="<?php echo $tabData['event_id']; ?>" name="event_id">
+	<input type="hidden" value="<?php echo $item['organizerId']; ?>" name="organizer_id">
+	<div class="adm_msg_title cl">
+		<?php echo $this->lang->translate('Send a message to').' '.$item['organizerName'];?>
 	</div>
-	<style>
-		div.capt {}
-		div.capt_img img {
-			width: 100px;
-			height: 50px;
-			margin-top: 5px;
+	<div class="adm_msg_content">
+		<div class="adm_msg_content_left fl">
+			<div class="adm_msg_field cl">
+				<div class="adm_msg_field_title cl">
+					<?php echo $this->lang->translate('Company name');?>:<span>*</span>
+				</div>
+				<div class="adm_msg_field_content cl">
+					<input type="text" name="name" />
+				</div>
+			</div>
+			<div class="adm_msg_field cl">
+				<div class="adm_msg_field_title cl">
+					<?php echo $this->lang->translate('Contact person');?>:<span>*</span>
+				</div>
+				<div class="adm_msg_field_content cl">
+					<input type="text" name="contact_person" />
+				</div>
+			</div>
+			<div class="adm_msg_field cl">
+				<div class="adm_msg_field_title cl">
+					<?php echo $this->lang->translate('Phone number');?>:<span>*</span>
+				</div>
+				<div class="adm_msg_field_content cl">
+					<input type="text" name="phone" />
+				</div>
+			</div>
+			<div class="adm_msg_field cl">
+				<div class="adm_msg_field_title cl">
+					<?php echo $this->lang->translate('E-mail');?>:<span>*</span>
+				</div>
+				<div class="adm_msg_field_content cl">
+					<input type="text" name="email" />
+				</div>
+			</div>
+			<div class="adm_msg_field cl">
+				<div class="adm_msg_field_title cl">
+					<?php echo $this->lang->translate('Country');?>:
+				</div>
+				<div class="adm_msg_field_content cl">
+					<select name="country_id">
+						<option value=""><?php echo $this->lang->translate('Select country');?></option>
+						<?php foreach ($regions as $region){ ?>
+							<optgroup label="<?php echo $region['name']; ?>">
+								<?php foreach ($countries[$region['id']] as $country){ ?>
+									<option value="<?php echo $country['id']; ?>"><?php echo $country['name']; ?></option>
+								<?php } ?>
+							</optgroup>
+						<?php } ?>
+					</select>
+				</div>
+			</div>
+			<div class="adm_msg_field cl">
+				<div class="adm_msg_field_title cl">
+					<?php echo $this->lang->translate('Address');?>:<span>*</span>
+				</div>
+				<div class="adm_msg_field_content cl">
+					<textarea rows="3" cols="50" name="address"></textarea>
+				</div>
+			</div>
+		</div>
+		<div class="adm_msg_content_right fl">
+			<div class="adm_msg_field cl">
+				<div class="adm_msg_field_title cl">
+					<?php echo $this->lang->translate('Request purpose');?>:<span>*</span>
+				</div>
+				<div class="adm_msg_field_content cl">
+					<input class="radio_button" type="radio" value="1" name="purpose" id="purpose_1" selected="selected" />
+					<label for="purpose_1"><?php echo $this->lang->translate('for visiting');?></label><br />
+					<input class="radio_button" type="radio" value="2" name="purpose" id="purpose_2" />
+					<label for="purpose_2"><?php echo $this->lang->translate('for possible participation');?></label><br />
+					<input class="radio_button" type="radio" value="3" name="purpose" id="purpose_3" />
+					<label for="purpose_3"><?php echo $this->lang->translate('other');?></label><br />
+				</div>
+			</div>
+			<div class="adm_msg_field cl">
+				<div class="adm_msg_field_title cl">
+					<?php echo $this->lang->translate('Your question');?>:<span>*</span>
+				</div>
+				<div class="adm_msg_field_content cl">
+					<textarea rows="10" cols="55" name="message"></textarea>
+				</div>
+			</div>
+			<div class="captcha_box cl">
+				<div class="adm_msg_field captcha_title fl">
+					<div class="adm_msg_field_title cl">
+						<?php echo $this->lang->translate('Verification code');?>:<span>*</span>
+					</div>
+					<div class="adm_msg_field_content cl">
+						<input type="text" name="captcha[input]" />
+						<input type="hidden" name="captcha[id]" value="<?php echo $item['captcha']['id']; ?>" />
+					</div>
+				</div>
+				<div class="captcha_img fr">
+					<?php echo $item['captcha']['img']; ?>
+				</div>
+			</div>
+		</div>
+		<div class="adm_msg_content_submit cl">
+			<input type="submit" value="<?php echo $this->lang->translate('Send');?>" />
+		</div>
+	</div>
+</form>
+<script type="text/javascript">
+	js.include("jquery.form");
+	function submitStatus(text){
+		box = '#statusBox';
+		var $statusBox = $(box);
+		if ($statusBox.height()==0) $statusBox.html('');
+		var $div = $('<div style="display:none;"/>').html(text+"<hr/>").prependTo($statusBox);
+		$div.slideDown('slow').delay(3000).hide('slow');
+		return text;
+	}
+	$('#requestForm').ajaxForm({
+		resetForm: false,
+		url: "/<?php echo DEFAULT_LANG_CODE; ?>/requests/exhibition-extra-info/",
+		type: 'POST',
+		beforeSerialize: function($form, options) {
+			$('#loading').show();
+			$form.find('[errorFor]').remove();
+			return true;
+		},
+		complete: function(data) {
+			$('#loading').hide();
+			var form = $('#requestForm');
+			form.find('.captcha_img .captcha_reload').click();
+			form.find('[name="captcha[input]"]').val('');
+			if (data.status != 200) return submitStatus('<?php echo $this->lang->translate('ERROR! Server is unavailable');?>');
+			var response = data.responseText;
+			if (response.isJSON()) response = eval('('+response+')');
+			else return submitStatus('<?php echo $this->lang->translate('Error! Please contact the server administrator for an explanation');?>');
+			var b=e='';
+			if (!response.success){
+				b='<span class="error">';
+				e='</span>';
+				if (response.errors){
+					for (var filedName in response.errors){
+						for (var errorId in response.errors[filedName]){
+							var $errorDiv = form.find('[errorFor="'+filedName+'"]');
+							if (!$errorDiv.length) $errorDiv = $('<div class="error" errorFor="'+filedName+'"></div>');
+							$errorDiv.html(response.errors[filedName][errorId]);
+							form.find('[name="'+filedName+'"]').after($errorDiv);
+						}
+					}
+				}
+			}
+			else {
+				form.resetForm();
+			}
+			if (response.message) submitStatus(b+response.message+e);
 		}
-	</style>
-	<div class="adm_msg_content_right fl">
-		<span>Ваш вопрос:</span><span style="color: red">*</span><div class="clr"></div>
-		<textarea rows="10" cols="55" name="text"></textarea>
-		<div class="capt fl">
-			<span>Код подтверждения:</span><span style="color: red">*</span><div class="clr"></div>
-			<input type="text" style="width: 75px;">
-		</div>
-		<div class="capt_img fr">
-			<img src="/img/card/capt.png">
-		</div>
-	</div>
-	<div class="adm_msg_content_submit cl">
-		<input type="button" value="Submit">
-	</div>
-</div>
+	});
+</script>

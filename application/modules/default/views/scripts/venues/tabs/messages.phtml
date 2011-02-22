@@ -1,9 +1,10 @@
 <?php
-	$item = $this->tabsData[Init_Venues_Messages::$tab_name]['data'];
+	$tabData = $this->tabsData[Init_Venues_Messages::$tab_name];
+	$item = $tabData['data'];
 ?>
 <div id="statusBox" class="statusBox cl"></div>
-<form action="/requests/exhibition-center-info/" method="post" id="requestForm">
-<input type="hidden" value="<?php echo $item['venue_id']; ?>" name="venue_id">
+<form method="post" id="requestForm">
+<input type="hidden" value="<?php echo $tabData['venue_id']; ?>" name="venue_id">
 <div class="adm_msg_title cl">
 	<?php echo $this->lang->translate('Send a message to').' '.$item['venueName'];?>
 </div>
@@ -78,6 +79,7 @@
 		<input type="submit" value="<?php echo $this->lang->translate('Send');?>" />
 	</div>
 </div>
+</form>
 <script type="text/javascript">
 	js.include("jquery.form");
 	function submitStatus(text){
@@ -90,7 +92,7 @@
 	}
 	$('#requestForm').ajaxForm({
 		resetForm: false,
-		url: "/<?php echo DEFAULT_LANG_CODE; ?>/requests/exhibition-center-info/",
+		url: "/<?php echo DEFAULT_LANG_CODE; ?>/requests/exhibition-info/",
 		type: 'POST',
 		beforeSerialize: function($form, options) {
 			$('#loading').show();

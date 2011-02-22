@@ -469,9 +469,11 @@ div.card_photo_tab_nav ul li a img {
 	margin-bottom: 5px;
 	width: 290px;
 }
-.adm_msg_content .adm_msg_field .adm_msg_field_content input,
-.adm_msg_content .adm_msg_field .adm_msg_field_content select{
+.adm_msg_content .adm_msg_field .adm_msg_field_content input{
 	height: 15px;
+}
+.adm_msg_content .adm_msg_field .adm_msg_field_content select {
+	height: 21px;
 }
 .adm_msg_content .adm_msg_field .adm_msg_field_content textarea {
 	height: 60px;

@@ -1,55 +1,92 @@
-<div class="video_tab_one_row cl">
-	<object type="image" data="/img/card/video_ico.png">
-	</object>
-	<div class="video_tab_desc_box fl">
-		<div class="video_tab_desc_title cl">
-			<a href="#">Furniture China</a>
+<?php
+	$tabData = $this->tabsData[Init_Event_Video::$tab_name];
+	if ($tabData['action']=='page'){
+		foreach($tabData['data'] as $item){$url = $this->data['link'].Init_Event_Video::$tab_name.'/card/'.$item['id'].'-'.Tools_View::getUrlAlias($item['title'], true).'/';
+?>
+	<div class="video_tab_one_row cl">
+		<div class="video_tab_img">
+			<a href="<?php echo $url; ?>">
+				<img src="<?php echo '/uploads/video/'.date('Y/m/d/', $item['date_added']).$item['video_file_id'].'.jpg'; ?>" />
+				<img class="arrow" src="/img/arrow.gif" />
+			</a>
 		</div>
-		<span>Загружено 23.07.2010</span><span>Продолжительность: 4:49</span><span>Размер - 10.06 MБ</span>
-		<div class="video_tab_desc_text cl">Furniture China is a professional international furniture exhibition with an excellent reputation for more than 16 years, launched in 1993.</div>
-	</div>
-</div>
-<div class="video_tab_one_row cl">
-	<object type="image" data="/img/card/video_ico.png">
-	</object>
-	<div class="video_tab_desc_box fl">
-		<div class="video_tab_desc_title cl">
-			<a href="#">Furniture China</a>
+		<div class="video_tab_desc_box fl">
+			<a href="<?php echo $url; ?>">
+				<?php echo $item['title'];?>
+			</a><br/>
+			<span><?php echo $this->lang->translate('uploaded').': '.date('d.m.Y', $item['date_added']);?></span>
+			<span><?php echo $this->lang->translate('duration').': '.date('i:s', $item['duration']); ?></span>
+			<div class="video_tab_desc_text cl">
+				<?php echo Tools_View::createShortText($item['description'], 220); ?>
+			</div>
 		</div>
-		<span>Загружено 23.07.2010</span>Продолжительность: 4:49<span></span><span>Размер - 10.06 MБ</span>
-		<div class="video_tab_desc_text cl">Furniture China is a professional international furniture exhibition with an excellent reputation for more than 16 years, launched in 1993.</div>
 	</div>
-</div>
-
+<?php
+		}
+?>
+<div class="paginator cl">
+<?php
+	echo Tools_View::getPages(
+	array(
+		'url'=>Tools_View::setUrlByTemplate(
+			array(
+				'url'=>$this->requestUri,
+				'template'=>DEFAULT_ROUTE,
+			),
+			array(
+				'tab'=>Init_Event_Video::$tab_name,
+				'tab_action'=>'page',
+			)
+		),
+		'template'=>DEFAULT_ROUTE,
+	),
+	$this->tabsData[Init_Event_Video::$tab_name]['array_pages'],
+	'tab_id',
+	array(
+		'urlFunctionName'=>'setUrlByTemplate',
+		'linkTag'=>array('start'=>'<div class="one_page fl">', 'end'=>'</div>'),
+		'selectedTag'=>array('start'=>'<div class="one_page selected fl">', 'end'=>'</div>'),
+		'first'=>false, 'prev'=>false, 'next'=>false, 'last'=>false,
+	)
+);
+?>
+	</div>
+<?php
+	}
+	elseif($tabData['action']=='card') {
+		$item = $tabData['data'];
+		$listUrl = Tools_View::setUrlByTemplate(
+			array(
+				'url'=>$this->requestUri,
+				'template'=>DEFAULT_ROUTE
+			),
+			array(
+				'tab'=>Init_Event_Video::$tab_name,
+				'tab_action'=>'page',
+				'tab_id'=>'1',
+			)
+		);
+?>
 <div class="card_video_full cl">
-	&rarr;<a href="#">назад к списку видеороликов</a>
-	<div class="card_video_title cl">Дневник выставки "Автосалон. Крым." - 2010</div>
+	&larr;&nbsp;<a href="<?php echo $listUrl;?>"><?php echo $this->lang->translate('to videos of this trade show');?></a>
+	<div class="card_video_title cl"><?php echo $item['title'];?></div>
 	<object type="image" data = "/img/card/big_video_ico.png"></object>
 	<div class="cl">
 		<div class="video_info_box_left fl">
-			<span>Выставка:</span><a href="#">Крым. Автосалон</a><div class="clr"></div>
-			<span>Место проведения:</span><span style="color: #333333;">Симферополь, Украина</span><div class="clr"></div>
-			<span>Дата съемки:</span><span style="color: #333333;"> 18.06.2010</span><div class="clr"></div>
+			<span><?php echo $this->lang->translate('uploaded').':';?></span>
+			<span style="color: #333333;"> <?php echo date('d.m.Y', $item['date_added']);?></span>
+			<div class="clr"></div>
 		</div>
 		<div class="right fr">
-			<span>Загружено:</span><span style="color: #333333;">14.07.2010 </span><div class="clr"></div>
-			<span>Размер:</span><span style="color: #333333;"> 21 мб</span><div class="clr"></div>
+			<span><?php echo $this->lang->translate('duration').':';?></span>
+			<span style="color: #333333;"> <?php echo date('i:s', $item['duration']);?></span>
+			<div class="clr"></div>
 		</div>
 	</div>
 	<div class="video_full_tab_text cl">
-		В Украине впервые состоится конференция такого уровня: в течение двух дней признанные специалисты крупнейших мировых компаний представят свое видение и отношение к наиболее обсуждаемым вопросам и новейшим тенденциям в сфере информационных и телекоммуникационных технологий.
+		<?php echo $item['description']; ?>
 	</div>
-
 </div>
-
-<div class="subscribe_box cl">
-	<div class="left_border fl"></div>
-	<div class="body_center fl" style="width: 500px;">
-		<div class="insert_code fl">
-			<span>Код для вставки:</span>
-			<input type="text" style="width: 270px; margin: 8px 15px;">
-			<a href="#">скопировать в буфер</a>
-		</div>
-	</div>
-	<div class="right_border fl"></div>
-</div>
+<?php
+	}
+?>

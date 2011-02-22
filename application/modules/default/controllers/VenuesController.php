@@ -74,11 +74,6 @@ class VenuesController extends Abstract_Controller_FrontendController {
 				$tabObject = new Init_Venues_Messages($this->view->data['id'], $tab, $tab_action, $tab_id, $this->view->data);
 				$tabObject->tab_title = $this->view->lang->translate('Get additional information');
 				$this->view->tabsData[Init_Venues_Messages::$tab_name] = $tabObject->getData();
-/*
-				$tabObject = new Init_Event_Files($this->view->data['brands_name_id'],$this->view->data['id'], $tab, $tab_action, $tab_id);
-				$tabObject->tab_title = $this->view->lang->translate('Files');
-				$this->view->tabsData[Init_Event_Files::$tab_name] = $tabObject->getData();
-*/
 			}
 			else {
 				$this->_forward('error', 'error');

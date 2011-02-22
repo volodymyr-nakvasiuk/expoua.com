@@ -33,6 +33,10 @@ class Crud_Grid_Event extends ArOn_Crud_Grid {
 			//'subcategory' => new ArOn_Crud_Grid_Column_JoinOne('Подкатегория', array('Db_Brands', 'Db_Brands2Subcategories', 'Db_BrandsSubcategories'), null, array('id')),
 			'period' => new ArOn_Crud_Grid_Column_JoinOne("Период проведения",array('Db_EventsCommon','Db_Lang_PeriodsData'),'name',null,false,'200'),
 			'expocenter' => new ArOn_Crud_Grid_Column_JoinOne("Место проведения",array('Db_Lang_ExpocentersData'),'name',null,false,'200'),
+			'longitude' =>  new ArOn_Crud_Grid_Column_JoinOne("Долгота",array('Db_Expocenters'),'longitude',null,false,'200'),
+			'latitude' =>  new ArOn_Crud_Grid_Column_JoinOne("Широта",array('Db_Expocenters'),'latitude',null,false,'200'),
+			'address' =>  new ArOn_Crud_Grid_Column_JoinOne("Адрес",array('Db_Lang_ExpocentersData'),'address',null,false,'200'),
+
 			'organizer' => new ArOn_Crud_Grid_Column_JoinOne("Организатор",array('Db_Brands','Db_Lang_OrganizersData'),'name',null,false,'200'),
 		);
 		//$this->fields['active']->options = array('1'=>"+", '0'=>"-");

@@ -163,90 +163,38 @@ div.card_tabs_box div.tab_right {
 	height:25px;
 }
 /*                          END GENERAL TAB STYLES                          */
-
-
-/*                          FILES TAB                                   */
-div.card_files_tab {}
-div.card_files_title_box div.files_title {
+/*                          DESCRIPTION TAB                                */
+div.card_description_tab {
 	color: #333333;
+	font-size: 12px
 }
-div.document_info_box {
-	width: 100px;
-	text-align: center;
-	color: #999999;
-}
-div.doc_ico {
-	background: url(/img/card/tabs/files_word_ico.png) no-repeat;
-	width: 16px;
-	height: 16px;
-	margin-right: 5px;
-}
-div.xls_ico {
-	background: url(/img/card/tabs/files_excel_ico.png) no-repeat;
-	width: 16px;
-	height: 16px;
-	margin-right: 5px;
-}
-div.pdf_ico {
-	background: url(/img/card/tabs/files_pdf_ico.png) no-repeat;
-	width: 16px;
-	height: 16px;
-	margin-right: 5px;
-}
-div.card_news_one_row {
-	padding: 10px 0;
-	border-bottom: 1px dashed #c5c5c5;
-}
-div.card_news_one_row a {
+div.card_description_tab div.title{
+	margin: 10px 0;
+	font-weight: bold;
 	color: #0054a6;
-	font-size: 12px;
-	text-decoration: underline;
 }
-div.card_news_one_row a:hover { text-decoration: none; }
-/*                         END FILES TAB                                   */
-
-/*                         HOSTELS TAB                                   *
-div.card_hostels_tab {
-	padding: 10px;
+div.card_description_tab div.text {
 }
-div.card_one_hostel_tab {
+div.card_description_tab p {
 	margin-top: 10px;
 }
-div.card_one_hostel_tab img {
-	width: 105px;
-	height: 105px;
-	float: left;
-	clear: none;
-
-}
-div.card_hostels_tab_desc_box {
-	margin-left: 10px;
-	width: 200px;
-}
-div.card_hostel_name a {
-	color: #0054a6;
-	font-size: 14px;
-	font-weight: bold;
-}
-div.card_hostel_address {
-	font-size: 12px;
-	color: #333333;
-}
-div.contents_btn {
-	background: url(/img/card/contents_btn.png) no-repeat;
-	width: 78px;
-	height: 19px;
+/*                          END DESCRIPTION TAB                                  */
+/*                       NEWS_FULL TAB                           */
+div.news_full_header {
+	font-size: 18px;
+	color: #dd5500;
 	margin: 10px 0;
 }
-/*                        END HOSTELS TAB                                   */
-/*                        MAP TAB                                   */
-#map {
-	width: 685px;
-	height:440px;
-	background:#999999;
+div.news_full span {
+	color: #666666;
 }
-/*                        END MAP TAB                                   */
-
+div.news_full span p {
+	margin-top: 10px;
+}
+div.news_full a {
+	color: #999999;
+}
+/*                      END NEWS_FULL TAB                           */
 /*                          NEWS PAD                                */
 div.card_news_tab {
 	padding: 10px 10px 0;
@@ -272,22 +220,6 @@ div.card_one_news_date {
 	margin-left:20px;
 }
 /*                         END NEWS PAD                                */
-/*                          DESCRIPTION TAB                                */
-div.card_description_tab {
-	color: #333333;
-	font-size: 12px
-}
-div.card_description_tab div.title{
-	margin: 10px 0;
-	font-weight: bold;
-	color: #0054a6;
-}
-div.card_description_tab div.text {
-}
-div.card_description_tab p {
-	margin-top: 10px;
-}
-/*                          END DESCRIPTION TAB                                  */
 /*                          PHOTO TAB                                */
 div.card_photo_tab {}
 div.main_photo_box img{
@@ -315,7 +247,6 @@ div.card_photo_tab_nav ul li a img {
 }
 */
 .photoslider {
-
 }
 
 .photoslider_nav {
@@ -329,11 +260,11 @@ div.card_photo_tab_nav ul li a img {
 
 .photoslider_thumbBar {
 	position: absolute;
-	left: 0px;
-	top: 0px;
+	left: 0;
+	top: 0;
 	display: block;
-	margin: 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
 	height:142px;
 }
 
@@ -356,7 +287,6 @@ div.card_photo_tab_nav ul li a img {
 	//display:inline;
 	margin: 5px;
 }
-
 .photoslider_thumb_active img{
 	border: solid 5px #f1ff83;
 }
@@ -416,21 +346,186 @@ div.card_photo_tab_nav ul li a img {
 	border-bottom: solid #919191 2px;
 }
 /*                          END PHOTO TAB                                */
+/*                          FILES TAB                                   */
+div.card_files_tab {}
+div.card_files_title_box div.files_title {
+	color: #333333;
+}
+div.document_info_box {
+	width: 100px;
+	text-align: center;
+	color: #999999;
+}
+div.doc_ico {
+	background: url(/img/card/tabs/files_word_ico.png) no-repeat;
+	width: 16px;
+	height: 16px;
+	margin-right: 5px;
+}
+div.xls_ico {
+	background: url(/img/card/tabs/files_excel_ico.png) no-repeat;
+	width: 16px;
+	height: 16px;
+	margin-right: 5px;
+}
+div.pdf_ico {
+	background: url(/img/card/tabs/files_pdf_ico.png) no-repeat;
+	width: 16px;
+	height: 16px;
+	margin-right: 5px;
+}
+div.card_news_one_row {
+	padding: 10px 0;
+	border-bottom: 1px dashed #c5c5c5;
+}
+div.card_news_one_row a {
+	color: #0054a6;
+	font-size: 12px;
+	text-decoration: underline;
+}
+div.card_news_one_row a:hover { text-decoration: none; }
+/*                         END FILES TAB                                   */
+/*                              MAP TAB                                   */
+#venue_map {
+	height: 500px;
+	width: 100%;
+}
+#venue_map div {
+	overflow: visible;
+}
+.ui-tabs .ui-tabs-hide {
+	position: absolute !important;
+	left: -10000px !important;
+}
+/*                           END MAP TAB                                 */
+/*                           MESSAGES TAB                                */
+.adm_msg_box {
+	background: #f1f6fb;
+	border: 1px solid #d2e2f2;
+}
+.adm_msg_title {
+	text-align: center;
+	color: #0054a6;
+	font-size: 14px;
+	margin-top: 10px;
+}
+.adm_msg_content {
+	padding: 0;
+}
+.adm_msg_content .adm_msg_field {}
+.adm_msg_content .adm_msg_field .adm_msg_field_content input,
+.adm_msg_content .adm_msg_field .adm_msg_field_content select,
+.adm_msg_content .adm_msg_field .adm_msg_field_content textarea {
+	margin-bottom: 5px;
+	width: 290px;
+}
+.adm_msg_content .adm_msg_field .adm_msg_field_content input{
+	height: 15px;
+}
+.adm_msg_content .adm_msg_field .adm_msg_field_content input.radio_button{
+	width: 13px;
+	height: 13px;
+	margin: 0 0 0 15px;
+}
+.adm_msg_content .adm_msg_field .adm_msg_field_content select {
+	height: 21px;
+}
+.adm_msg_content .adm_msg_field .adm_msg_field_content textarea {
+	height: 60px;
+}
+.adm_msg_content .adm_msg_content_right .adm_msg_field .adm_msg_field_content textarea {
+	height: 155px;
+}
+.adm_msg_content_left {
+	width: 340px;
+	float: left;
+	clear: none;
+}
+.adm_msg_content_right {
+	width: 315px;
+}
+.adm_msg_content .adm_msg_field .adm_msg_field_title {
+	font-size: 12px;
+	line-height: 20px;
+	color: #666666;
+	float: left;
+	clear: none;
+}
+.adm_msg_content .adm_msg_field .adm_msg_field_title span {
+	color: red;
+}
+.adm_msg_content_submit {
+	text-align:center;
+}
+.adm_msg_content .captcha_box .captcha_title {
+	width:130px;
+}
+.adm_msg_content .captcha_box .captcha_title .adm_msg_field_content input{
+	float: left;
+	margin-left: 15px;
+	margin-top: 16px;
+	width: 90px;
+}
+.adm_msg_content .captcha_box .captcha_img{
+	width: 185px;
+	height: 80px;
+	vertical-align: middle;
+	line-height: 77px;
+	text-align: center;
+}
+.adm_msg_content .captcha_box .captcha_img img{
+	display:-moz-inline-box;
+	display:inline-block;
+	vertical-align:middle;
+	zoom:1;
+//display:inline;
+	position: relative;
+}
+li.tab_title_messages {
+	float: right !important;
+	margin-right: 0 !important;
+}
+.card_tabs_box .ui-tabs .ui-tabs-panel {
+	-moz-border-radius-topright: 0;
+}
+.statusBox,
+.statusBox div,
+.statusBox div h3{
+	width: 100%;
+	color: green !important;
+	font-size: 14px;
+	text-align: center;
+	font-weight:bold;
+	margin-top:5px;
+}
+#requestForm .error{
+	margin-bottom:10px;
+	clear:both;
+	float:none;
+}
+/*                         END MESSAGES TAB                              */
 /*                          VIDEO TAB                                   */
 div.video_tab_one_row{
 	margin-bottom: 10px;
 }
-div.video_tab_one_row object {
+div.video_tab_one_row .video_tab_img{
 	width: 120px;
 	height: 90px;
 	float: left;
 	clear: none;
 }
+div.video_tab_one_row .video_tab_img img.arrow{
+	position:absolute;
+	left: 40px;
+	top: 25px;
+	opacity: .7;
+	filter:Alpha(Opacity=70);
+}
 div.video_tab_desc_box{
 	width: 520px;
 	margin-left: 10px;
 }
-div.video_tab_desc_title a {
+div.video_tab_desc_box a {
 	font-size:14px;
 	font-weight: bold;
 	color:#0054a6;
@@ -445,24 +540,7 @@ div.video_tab_desc_text {
 	margin-top:5px;
 }
 /*                          END VIDEO TAB                                   */
-/*                       NEWS_FULL TAB                           */
-div.news_full_header {
-	font-size: 18px;
-	color: #dd5500;
-	margin: 10px 0;
-}
-div.news_full span {
-	color: #666666;
-}
-div.news_full span p {
-	margin-top: 10px;
-}
-div.news_full a {
-	color: #999999;
-}
-
-/*                      END NEWS_FULL TAB                           */
-/*                      VIDEO_FULL TAB                           */
+/*                      VIDEO_FULL TAB                                   */
 div.card_video_full {
 	width: 510px;
 }
@@ -474,7 +552,7 @@ div.card_video_title {
 	color: #dd5500;
 	text-decoration: underline;
 }
-div.card_video_full object {
+div.card_video_full img {
 	width: 510px;
 	height: 415px;
 }
@@ -491,58 +569,37 @@ div.video_full_tab_text {
 	margin-top:10px;
 }
 /*                      END VIDEO_FULL TAB                           */
-/*                           MESSAGES TAB                                */
-div.adm_msg_box {
-	background: #f1f6fb;
-	border: 1px solid #d2e2f2;
+/*                         HOSTELS TAB                                   *
+div.card_hostels_tab {
+	padding: 10px;
 }
-div.adm_msg_title {
-	text-align: center;
-	color: #0054a6;
-	font-size: 14px;
+div.card_one_hostel_tab {
 	margin-top: 10px;
 }
-div.adm_msg_content {
-	padding: 0;
-}
-div.adm_msg_content input,select {
-	margin-bottom: 5px;
-	width: 290px;
-	height: 15px;
+div.card_one_hostel_tab img {
+	width: 105px;
+	height: 105px;
 	float: left;
 	clear: none;
+
 }
-div.adm_msg_content select {height: 20px;}
-div.adm_msg_content_left {
-	width: 340px;
-	float: left;
-	clear: none;
+div.card_hostels_tab_desc_box {
+	margin-left: 10px;
+	width: 200px;
 }
-div.adm_msg_content span {
+div.card_hostel_name a {
+	color: #0054a6;
+	font-size: 14px;
+	font-weight: bold;
+}
+div.card_hostel_address {
 	font-size: 12px;
-	line-height: 20px;
-	color: #666666;
-	float: left;
-	clear: none;
+	color: #333333;
 }
-div.adm_msg_content em {
-	color: red;
+div.contents_btn {
+	background: url(/img/card/contents_btn.png) no-repeat;
+	width: 78px;
+	height: 19px;
+	margin: 10px 0;
 }
-div.adm_msg_content_right {
-	width: 315px;
-}
-div.adm_msg_content_submit input {
-	float: right;
-	clear: none;
-	width: 58px;
-	height: 20px;
-	margin-right: 20px;
-}
-.card_tabs_box .ui-tabs .ui-tabs-panel {
-	-moz-border-radius-topright: 0;
-}
-li.tab_title_messages {
-	float:right !important;
-	margin-right:0 !important;
-}
-/*                         END MESSAGES TAB                              */
+/*                        END HOSTELS TAB                                   */

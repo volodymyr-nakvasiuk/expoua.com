@@ -33,7 +33,7 @@ class Bootstrap {
 	
 	public static $root = '';
 	public static $registry = null;
-	public static $dbConfigs = array('opt','banners');
+	public static $dbConfigs = array('opt','banners', 'video');
 	public static $defaultDbConfig = 'opt';
 
 	public static function prepareFileName($fileName) {

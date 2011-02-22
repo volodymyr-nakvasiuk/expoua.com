@@ -58,13 +58,24 @@ class EventController extends Abstract_Controller_FrontendController {
 				$tabObject->tab_title = $this->view->lang->translate('Photo');
 				$this->view->tabsData[Init_Event_Gallery::$tab_name] = $tabObject->getData();
 
+				$tabObject = new Init_Event_Map($this->view->data['brands_name_id'],$this->view->data['id'], $tab, $tab_action, $tab_id, $this->view->data);
+				$tabObject->tab_title = $this->view->lang->translate('Map');
+				$this->view->tabsData[Init_Event_Map::$tab_name] = $tabObject->getData();
+				if ($this->view->tabsData[Init_Event_Map::$tab_name]['data']){
+					$this->view->headScript()->appendFile('http://maps.google.com/maps/api/js?sensor=false', 'text/javascript', array('non-cache'=>true));
+				}
+
 				$tabObject = new Init_Event_Files($this->view->data['brands_name_id'],$this->view->data['id'], $tab, $tab_action, $tab_id);
 				$tabObject->tab_title = $this->view->lang->translate('Files');
 				$this->view->tabsData[Init_Event_Files::$tab_name] = $tabObject->getData();
 
-				$tabObject = new Init_Event_Messages($this->view->data['brands_name_id'],$this->view->data['id'], $tab, $tab_action, $tab_id);
+				$tabObject = new Init_Event_Messages($this->view->data['brands_name_id'],$this->view->data['id'], $tab, $tab_action, $tab_id, $this->view->data);
 				$tabObject->tab_title = $this->view->lang->translate('Get additional information');
 				$this->view->tabsData[Init_Event_Messages::$tab_name] = $tabObject->getData();
+
+				$tabObject = new Init_Event_Video($this->view->data['brands_name_id'],$this->view->data['id'], $tab, $tab_action, $tab_id);
+				$tabObject->tab_title = $this->view->lang->translate('Video');
+				$this->view->tabsData[Init_Event_Video::$tab_name] = $tabObject->getData();
 			}
 			else {
 				$this->_forward('error', 'error');
