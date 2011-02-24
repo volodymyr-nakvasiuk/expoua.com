@@ -13,7 +13,7 @@ class Init_Venues_Messages extends Init_VenuesTab {
 		$captcha = new ArOn_Zend_Captcha_Image(array(
 			'reloadImg' => '/img/reload-captcha.png',
 			'imgUrl'    => '/captcha.php',
-			'imgAlt'    => 'Капча',
+			'imgAlt'    => '',
 			'width'     => 150,
 			'height'    => 80,
 		));

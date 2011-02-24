@@ -31,6 +31,8 @@ class Crud_Grid_Events extends ArOn_Crud_Grid {
 			'free_tickets' => new ArOn_Crud_Grid_Column_Numeric('Бесплатный пригласительный',null,true,false,'50'),
 			'category' => new ArOn_Crud_Grid_Column_JoinOne('Категория', array('Db_Brands', 'Db_Brands2Categories', 'Db_BrandsCategories'), null, array('id')),
 			'subcategory' => new ArOn_Crud_Grid_Column_JoinOne('Подкатегория', array('Db_Brands', 'Db_Brands2Subcategories', 'Db_BrandsSubcategories'), null, array('id')),
+
+			'active' => new ArOn_Crud_Grid_Column_JoinOne("Активный",array('Db_EventsActive'),'active',null,false,'200'),
 		);
 		//$this->fields['active']->options = array('1'=>"+", '0'=>"-");
 
@@ -77,12 +79,30 @@ class Crud_Grid_Events extends ArOn_Crud_Grid {
 					),
 				),
 			)),
+			'active_languages_id' => new ArOn_Crud_Grid_Filter_Field_Search('active_languages_id','Язык выставки',array(
+				array(
+					'path' => array('Db_EventsActive'),
+					'filters' => array(
+						'languages_id' => ArOn_Db_Filter_Search::EQ,
+					),
+				),
+			)),
+			'active' => new ArOn_Crud_Grid_Filter_Field_Search('active','Язык выставки',array(
+				array(
+					'path' => array('Db_EventsActive'),
+					'filters' => array(
+						'active' => ArOn_Db_Filter_Search::EQ,
+					),
+				),
+			)),
 			'from' => new ArOn_Crud_Grid_Filter_Field_Text('date_to', 'Дата от',ArOn_Db_Filter_Field::MORE),
 			'till' => new ArOn_Crud_Grid_Filter_Field_Text('date_from', 'Дата до',ArOn_Db_Filter_Field::LESS),
 			'category' => new ArOn_Crud_Grid_Filter_Field_Select2('id','Категория', 'Db_BrandsCategories', array('Db_Brands', 'Db_Brands2Categories', 'Db_BrandsCategories')),
 			'subcategory' => new ArOn_Crud_Grid_Filter_Field_Select2('id','Подкатегория', 'Db_BrandsSubcategories', array('Db_Brands', 'Db_Brands2Subcategories', 'Db_BrandsSubcategories')),
 			'expocenters_id' => new ArOn_Crud_Grid_Filter_Field_Value('expocenters_id','ID',ArOn_Db_Filter_Field::EQ),
 		);
+		$this->_params['active_languages_id'] = DEFAULT_LANG_ID;
+		$this->_params['active'] = 1;
 		$this->_params['brands_languages_id'] = DEFAULT_LANG_ID;
 		$this->_params['languages_id'] = DEFAULT_LANG_ID;
 		if (!isset($this->_params['from']) && !isset($this->_params['till'])) $this->_params['from'] = date("Y-m-d");

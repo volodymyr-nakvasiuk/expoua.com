@@ -1,57 +1,57 @@
-.all_venues_card_content_box {
+.all_services_card_content_box {
 	margin: 10px;
 	color: #999999;
 }
-.all_venues_card_content_box div {
+.all_services_card_content_box div {
 	position: relative;
 }
 
-.all_venues_card_content_box a {
+.all_services_card_content_box a {
 	text-decoration: underline;
 	color: #999999;
 }
-.all_venues_card_content_box a:hover {
+.all_services_card_content_box a:hover {
 	text-decoration: none;
 }
-.venues_card_crumbs {
+.services_card_crumbs {
 	padding: 5px 0;
 }
-.venues_card_desc_box {}
-.venues_card_desc_box .left_col {}
-.venues_card_desc_box .right_col {
+.services_card_desc_box {}
+.services_card_desc_box .left_col {}
+.services_card_desc_box .right_col {
 	width: 190px;
 }
-.venues_card_title_box {
+.services_card_title_box {
 	color: #dd5500;
 	font-size: 18px;
 	line-height: 18px;
 	padding: 5px 0 10px;
 	font-weight: bold;
 }
-.venues_card_title_box span {float:left;clear:none;}
-.venues_card_title_box a {
+.services_card_title_box span {float:left;clear:none;}
+.services_card_title_box a {
 	font-size: 11px;
 	color: #999999;
 	float: left;
 	clear: none;
 }
-.venues_card_title_box div.fav_ico {
+.services_card_title_box div.fav_ico {
 	background: url(/img/index/star.png) no-repeat;
 	width: 12px;
 	height: 11px;
 	margin:5px 2px 0 10px;
 }
-.venues_card_main_info {}
-.venues_card_info_img {
-	background: url(/img/venues_logo_big_bg.png) no-repeat;
-	width: 130px;
-	height: 130px;
+.services_card_main_info {}
+.services_card_info_img {
+	background: url(/img/services_logo_bg.png) no-repeat;
+	width: 100px;
+	height: 100px;
 	vertical-align: middle;
-	line-height: 127px;
+	line-height: 97px;
 	text-align: center;
 	border: 1px solid #cccccc;
 }
-.venues_card_info_img img {
+.services_card_info_img img {
 	max-height: 130px;
 	max-width: 130px;
 	display:-moz-inline-box;
@@ -61,45 +61,45 @@
 	//display:inline;
 	position: relative;
 }
-.venues_card_info {
+.services_card_info {
 	font-size: 12px;
 }
-.venues_card_info .text{
+.services_card_info .text{
 	text-align: right;
 	width: 65px;
 }
-.venues_card_info .contact .place{
+.services_card_info .contact .place{
 	color: #333333;
 	font-weight: bold;
 }
-.venues_card_info .contact .address{
+.services_card_info .contact .address{
 	color: #333333;
 	width: 500px;
 }
-.venues_card_outer {
+.services_card_outer {
 	background: #ebf6ff;
 }
-.venues_card_inner {
+.services_card_inner {
 	padding: 10px;
 }
-.venues_card_right_lnk_row {
+.services_card_right_lnk_row {
 	margin-top: 5px;
 }
-.venues_card_right_lnk_row a {
+.services_card_right_lnk_row a {
 	font-size: 12px;
 	margin-left: 5px;
 	color: #0054a6 !important;
 }
 /*
-.venues_card_send_msg_ico,
-.venues_card_star_ico,
-.venues_card_map_ico {
-	background: url(/img/venues/send_msg_ico.png) no-repeat center center;
+.services_card_send_msg_ico,
+.services_card_star_ico,
+.services_card_map_ico {
+	background: url(/img/services/send_msg_ico.png) no-repeat center center;
 	width: 17px;
 	height: 16px;
 }
-.venues_card_star_ico {  background: url(/img/venues/top_venue_star.png) no-repeat center center;}
-.venues_card_map_ico {  background: url(/img/venues/map_ico.png) no-repeat center center; }
+.services_card_star_ico {  background: url(/img/services/top_service_star.png) no-repeat center center;}
+.services_card_map_ico {  background: url(/img/services/map_ico.png) no-repeat center center; }
 */
 .subscribe_box {
 	padding: 10px 0;
@@ -109,24 +109,24 @@
 	margin-top: 10px;
 }
 
-.venues_card_description_box {
+.services_card_description_box {
 	color: #333333;
 }
-.venues_card_description_box .title {
+.services_card_description_box .title {
 	font-size: 18px;
 }
-.venues_card_description_box .text {
+.services_card_description_box .text {
 	margin-top: 10px;
 	font-size: 12px;
 	text-align: justify;
 }
-.venues_card_news_tab {
+.services_card_news_tab {
 	padding: 10px 10px 0;
 }
-.venues_card_one_news {
+.services_card_one_news {
 	margin-top: 15px;
 }
-.venues_card_one_news_img {
+.services_card_one_news_img {
 	margin-top: 7px;
 	width: 54px;
 	height: 50px;
@@ -134,7 +134,7 @@
 	line-height: 47px;
 	text-align: center;
 }
-.venues_card_one_news_img img {
+.services_card_one_news_img img {
 	display:-moz-inline-box;
 	display:inline-block;
 	vertical-align:middle;
@@ -144,21 +144,21 @@
 	max-width:54px;
 	max-height:50px;
 }
-.venues_card_one_news_desc {
+.services_card_one_news_desc {
 	margin-left:10px;
 	width:595px;
 }
-.venues_card_one_news_desc_title a {
+.services_card_one_news_desc_title a {
 	color: #0054a6;
 	font-weight: bold;
 	margin-top: 10px;
 	font-size: 14px;
 }
-.venues_card_one_news_desc_text {
+.services_card_one_news_desc_text {
 	color: #333333;
 	font-size: 12px;
 }
-.venues_card_news_date {
+.services_card_news_date {
 	font-size: 10px;
 	color: #999999;
 }
@@ -176,13 +176,13 @@ div.news_full span p {
 div.news_full a {
 	color: #999999;
 }
-.venues_card_services_tab {
+.services_card_services_tab {
 	padding: 10px 10px 0;
 }
-.venues_card_one_services {
+.services_card_one_services {
 	margin-top: 15px;
 }
-.venues_card_one_services_img {
+.services_card_one_services_img {
 	margin-top: 7px;
 	width: 54px;
 	height: 50px;
@@ -190,7 +190,7 @@ div.news_full a {
 	line-height: 47px;
 	text-align: center;
 }
-.venues_card_one_services_img img {
+.services_card_one_services_img img {
 	display:-moz-inline-box;
 	display:inline-block;
 	vertical-align:middle;
@@ -200,21 +200,21 @@ div.news_full a {
 	max-width:54px;
 	max-height:50px;
 }
-.venues_card_one_services_desc {
+.services_card_one_services_desc {
 	margin-left:10px;
 	width:500px;
 }
-.venues_card_one_services_desc_title a {
+.services_card_one_services_desc_title a {
 	color: #0054a6;
 	font-weight: bold;
 	margin-top: 10px;
 	font-size: 14px;
 }
-.venues_card_one_services_desc_text {
+.services_card_one_services_desc_text {
 	color: #333333;
 	font-size: 12px;
 }
-.venues_card_services_date {
+.services_card_services_date {
 	font-size: 10px;
 	color: #999999;
 }
@@ -363,93 +363,6 @@ div.card_photo_tab_nav ul li a img {
 	border-bottom: solid #919191 2px;
 }
 /*                          END PHOTO TAB                                */
-/*                           EVENTS TAB                                  */
-.events_index_box{
-	width: 510px;
-	margin-top:20px;
-}
-.events_index_title, .events_index_title a{
-	font-size:14px;
-	font-weight:bold;
-	font-family:Arial;
-	color: #0054a6;
-}
-.events_index_content{
-}
-.events_index_item{
-	border-bottom: 1px dashed #cccccc;
-	padding:0 10px 7px;
-}
-.events_index_item_title, .events_index_item_title a{
-	font-size:14px;
-	font-weight:bold;
-	font-family:Arial;
-	color: #dd5500;
-}
-.events_index_item_title{
-	margin-top:15px;
-}
-.events_index_item_content_box{
-	margin-top:10px;
-}
-.events_index_item_logo{
-	background: url(/img/events_logo_bg.png) no-repeat;
-	border: 1px solid #c2d1de;
-	width:78px;
-	height:78px;
-	vertical-align:middle;
-	line-height:78px;
-	text-align:center;
-}
-.events_index_item_logo img{
-	vertical-align:middle;
-}
-.events_index_item_content{
-	margin-left:10px;
-	width:400px;
-}
-.events_index_item_info_box{
-}
-.events_index_item_info{
-}
-.events_index_item_info_date{
-	font-size:12px;
-	font-weight:bold;
-	color: #000000;
-	margin-top:5px;
-}
-.events_index_item_info_location{
-	font-size:12px;
-	font-weight:bold;
-	color: #999999;
-	margin-top:10px;
-}
-.events_index_item_free_ticket a{
-	color: #0d74c4;
-	background:url("/img/free_ticket_ico.gif") no-repeat 0 1px scroll;
-	padding-left: 20px;
-}
-.events_index_item_free_ticket{
-	margin-top:7px;
-}
-.events_index_item_description{
-	margin-top:15px;
-	text-align:justify;
-}
-/*                          END EVENTS TAB                                */
-/*                              MAP TAB                                   */
-#venue_map {
-	height: 500px;
-	width: 100%;
-}
-#venue_map div {
-	overflow: visible;
-}
-.ui-tabs .ui-tabs-hide {
-	position: absolute !important;
-	left: -10000px !important;
-}
-/*                           END MAP TAB                                 */
 /*                           MESSAGES TAB                                */
 .adm_msg_box {
 	background: #f1f6fb;

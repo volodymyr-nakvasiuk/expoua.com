@@ -31,18 +31,6 @@ class EventController extends Abstract_Controller_FrontendController {
 				if ($this->view->data['countries_id']==COUNTRY_ID){
 					$this->view->activeSubmenu = COUNTRY_ABBR;
 				}
-				/*
-				$tabs = array(
-					'description'=>$this->lang->translate('Description'),
-					'news'=>$this->lang->translate('News'),
-					//'video'=>$this->lang->translate('Video'),
-					'photo'=>$this->lang->translate('Photo'),
-					//'hotels'=>$this->lang->translate('Hotels'),
-					'files'=>$this->lang->translate('Files'),
-					//'map'=>$this->lang->translate('Map'),
-					'messages'=>$this->lang->translate('Get additional information'),
-				);
-				*/
 
 				$this->view->tabsData = array();
 
@@ -69,13 +57,13 @@ class EventController extends Abstract_Controller_FrontendController {
 				$tabObject->tab_title = $this->view->lang->translate('Files');
 				$this->view->tabsData[Init_Event_Files::$tab_name] = $tabObject->getData();
 
-				$tabObject = new Init_Event_Messages($this->view->data['brands_name_id'],$this->view->data['id'], $tab, $tab_action, $tab_id, $this->view->data);
-				$tabObject->tab_title = $this->view->lang->translate('Get additional information');
-				$this->view->tabsData[Init_Event_Messages::$tab_name] = $tabObject->getData();
-
 				$tabObject = new Init_Event_Video($this->view->data['brands_name_id'],$this->view->data['id'], $tab, $tab_action, $tab_id);
 				$tabObject->tab_title = $this->view->lang->translate('Video');
 				$this->view->tabsData[Init_Event_Video::$tab_name] = $tabObject->getData();
+
+				$tabObject = new Init_Event_Messages($this->view->data['brands_name_id'],$this->view->data['id'], $tab, $tab_action, $tab_id, $this->view->data);
+				$tabObject->tab_title = $this->view->lang->translate('Get additional information');
+				$this->view->tabsData[Init_Event_Messages::$tab_name] = $tabObject->getData();
 			}
 			else {
 				$this->_forward('error', 'error');
@@ -119,6 +107,51 @@ class EventController extends Abstract_Controller_FrontendController {
 			$this->view->data = $grid->getData();
 			if (isset($this->view->data['data'][0])){
 				$this->view->data = $this->view->data['data'][0];
+			}
+			else {
+				$this->_forward('error', 'error');
+				return;
+			}
+		}
+		else {
+			$this->_forward('error', 'error');
+			return;
+		}
+	}
+
+	public function organizerAction(){
+		$id = explode('-', $this->_request->getParam('id',''));
+		$id = (int)$id[0];
+		if ($id){
+			$grid = new Crud_Grid_Organizer(null, array('id'=>$id, 'limit'=>1));
+			$this->view->data = $grid->getData();
+			if (isset($this->view->data['data'][0])){
+				$this->view->data = $this->view->data['data'][0];
+				$url = '/'.DEFAULT_LANG_CODE.'/event/organizer/'.$this->view->data['id'].'-'.Tools_View::getUrlAlias($this->view->data['name'], true).'/';
+				$tab = $this->_request->getParam('tab');
+				$tab_action = $this->_request->getParam('tab_action');
+				$tab_id = $this->_request->getParam('tab_id');
+				if ($tab){
+					$url .= $tab.'/'.$tab_action.'/'.($tab_id?$tab_id:TAB_DEFAULT_ID).'/';
+				}
+				if ($url!=$this->view->requestUrl) $this->_redirect($url);
+
+				$tab_id = explode('-', $tab_id);
+				$tab_id = (int)$tab_id[0];
+
+				if ($this->view->data['countries_id']==COUNTRY_ID){
+					$this->view->activeSubmenu = COUNTRY_ABBR;
+				}
+
+				$this->view->tabsData = array();
+
+				$tabObject = new Init_Event_Description(0,$this->view->data['id'], $tab, $tab_action, $tab_id, $this->view->data['description']);
+				$tabObject->tab_title = $this->view->lang->translate('Description');
+				$this->view->tabsData[Init_Event_Description::$tab_name] = $tabObject->getData();
+
+				$tabObject = new Init_Event_Messages(0,$this->view->data['id'], $tab, $tab_action, $tab_id, $this->view->data);
+				$tabObject->tab_title = $this->view->lang->translate('Get additional information');
+				$this->view->tabsData[Init_Event_Messages::$tab_name] = $tabObject->getData();
 			}
 			else {
 				$this->_forward('error', 'error');

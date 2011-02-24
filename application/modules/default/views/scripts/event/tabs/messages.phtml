@@ -77,7 +77,7 @@
 					<?php echo $this->lang->translate('Request purpose');?>:<span>*</span>
 				</div>
 				<div class="adm_msg_field_content cl">
-					<input class="radio_button" type="radio" value="1" name="purpose" id="purpose_1" selected="selected" />
+					<input class="radio_button" type="radio" value="1" name="purpose" id="purpose_1" checked="checked" />
 					<label for="purpose_1"><?php echo $this->lang->translate('for visiting');?></label><br />
 					<input class="radio_button" type="radio" value="2" name="purpose" id="purpose_2" />
 					<label for="purpose_2"><?php echo $this->lang->translate('for possible participation');?></label><br />
@@ -114,7 +114,6 @@
 	</div>
 </form>
 <script type="text/javascript">
-	js.include("jquery.form");
 	function submitStatus(text){
 		box = '#statusBox';
 		var $statusBox = $(box);

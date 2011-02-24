@@ -1,6 +1,7 @@
 js.module("inc.event.card");
 js.include("jquery.ui.tabs");
 js.include("jquery.photoslider");
+js.include("jquery.form");
 
 $(function () {
 	var mapDiv = document.getElementById("venue_map");

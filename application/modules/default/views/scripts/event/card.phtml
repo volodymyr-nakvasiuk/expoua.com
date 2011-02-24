@@ -68,7 +68,7 @@
 				<span><?php echo $this->lang->translate('Venue');?>:&nbsp; </span><a href="<?php echo '/'.$l.'/venues/card/'.$item['expocenter_id'].'-'.Tools_View::getUrlAlias($item['expocenter'], true).'/'; ?>"><?php echo $item['expocenter'];?></a>
 			</div>
 			<div class="span_box cb">
-				<span><?php echo $this->lang->translate('Organizer');?>: &nbsp;</span><a href="#"><?php echo $item['organizer'];?></a>
+				<span><?php echo $this->lang->translate('Organizer');?>: &nbsp;</span><a href="<?php echo '/'.$l.'/event/organizer/'.$item['organizer_id'].'-'.Tools_View::getUrlAlias($item['organizer'], true).'/'; ?>"><?php echo $item['organizer'];?></a>
 			</div>
 		</div>
 	</div>
@@ -79,7 +79,7 @@
 		<div class="tabs cl">
 			<div class="right_tab fl">
 				<div class="tab_left fl"></div>
-				<div class="tab_center fl" style="border-bottom: 0 !important;">Описание</div>
+				<div class="tab_center fl" style="border-bottom: 0 !important;"><?php echo $this->lang->translate('Order');?></div>
 				<div class="tab_right fl"></div>
 			</div>
 		</div>
@@ -87,7 +87,7 @@
 			<div class="box visible">
 				<div class="card_right_tab_row cb">
 					<div class="take_part fl"></div>
-					<a href="#">Участие в выставке</a>
+					<a href="#messages" onclick="$('#requestForm').find('[name=purpose]').removeAttr('checked');$('#purpose_2').attr('checked','checked');$('#tabs').tabs('option', 'selected', 'messages');"><?php echo $this->lang->translate('Participation in trade show');?></a>
 				</div>
 				<div class="card_right_tab_row cb">
 					<div class="tiket fl"></div>

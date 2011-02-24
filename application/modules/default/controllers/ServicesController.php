@@ -38,7 +38,7 @@ class ServicesController extends Abstract_Controller_FrontendController {
 		$this->view->dataTitle = $cache[$filterData['filter']['category']]['name'];
 	}
 
-	public function cardAction(){exit('OK-41');
+	public function cardAction(){
 		$id = explode('-', $this->_request->getParam('id',''));
 		$id = (int)$id[0];
 		if ($id){
@@ -46,7 +46,7 @@ class ServicesController extends Abstract_Controller_FrontendController {
 			$this->view->data = $grid->getData();
 			if (isset($this->view->data['data'][0])){
 				$this->view->data = $this->view->data['data'][0];
-				$url = '/'.DEFAULT_LANG_CODE.'/companies/card/'.$this->view->data['id'].'-'.Tools_View::getUrlAlias($this->view->data['name'], true).'/';
+				$url = '/'.DEFAULT_LANG_CODE.'/services/card/'.$this->view->data['id'].'-'.Tools_View::getUrlAlias($this->view->data['name'], true).'/';
 				$tab = $this->_request->getParam('tab');
 				$tab_action = $this->_request->getParam('tab_action');
 				$tab_id = $this->_request->getParam('tab_id');
@@ -60,31 +60,17 @@ class ServicesController extends Abstract_Controller_FrontendController {
 
 				$this->view->tabsData = array();
 
-				$tabObject = new Init_Companies_Description($this->view->data['id'], $tab, $tab_action, $tab_id, $this->view->data['description']);
+				$tabObject = new Init_Services_Description($this->view->data['id'], $tab, $tab_action, $tab_id, $this->view->data['description']);
 				$tabObject->tab_title = $this->view->lang->translate('Description');
-				$this->view->tabsData[Init_Companies_Description::$tab_name] = $tabObject->getData();
+				$this->view->tabsData[Init_Services_Description::$tab_name] = $tabObject->getData();
 
-				$tabObject = new Init_Companies_News($this->view->data['id'], $tab, $tab_action, $tab_id);
-				$tabObject->tab_title = $this->view->lang->translate('News');
-				$this->view->tabsData[Init_Companies_News::$tab_name] = $tabObject->getData();
+				$tabObject = new Init_Services_Gallery($this->view->data['id'], $tab, $tab_action, $tab_id);
+				$tabObject->tab_title = $this->view->lang->translate('Photo');
+				$this->view->tabsData[Init_Services_Gallery::$tab_name] = $tabObject->getData();
 
-				$tabObject = new Init_Companies_Services($this->view->data['id'], $tab, $tab_action, $tab_id);
-				$tabObject->tab_title = $this->view->lang->translate('Products and services');
-				$this->view->tabsData[Init_Companies_Services::$tab_name] = $tabObject->getData();
-
-				/*
-					$tabObject = new Init_Event_Gallery($this->view->data['brands_name_id'],$this->view->data['id'], $tab, $tab_action, $tab_id);
-					$tabObject->tab_title = $this->view->lang->translate('Photo');
-					$this->view->tabsData[Init_Event_Gallery::$tab_name] = $tabObject->getData();
-
-					   $tabObject = new Init_Event_Files($this->view->data['brands_name_id'],$this->view->data['id'], $tab, $tab_action, $tab_id);
-					   $tabObject->tab_title = $this->view->lang->translate('Files');
-					   $this->view->tabsData[Init_Event_Files::$tab_name] = $tabObject->getData();
-
-					   $tabObject = new Init_Event_Messages($this->view->data['brands_name_id'],$this->view->data['id'], $tab, $tab_action, $tab_id);
-					   $tabObject->tab_title = $this->view->lang->translate('Get additional information');
-					   $this->view->tabsData[Init_Event_Messages::$tab_name] = $tabObject->getData();
-	   */
+				$tabObject = new Init_Services_Messages($this->view->data['id'], $tab, $tab_action, $tab_id, $this->view->data);
+				$tabObject->tab_title = $this->view->lang->translate('Get additional information');
+				$this->view->tabsData[Init_Services_Messages::$tab_name] = $tabObject->getData();
 			}
 			else {
 				$this->_forward('error', 'error');

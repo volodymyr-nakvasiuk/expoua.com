@@ -1,0 +1,340 @@
+.all_organizers_card_content_box {
+	margin: 10px;
+	color: #999999;
+}
+.all_organizers_card_content_box div {
+	position: relative;
+}
+
+.all_organizers_card_content_box a {
+	text-decoration: underline;
+	color: #999999;
+}
+.all_organizers_card_content_box a:hover {
+	text-decoration: none;
+}
+.organizers_card_crumbs {
+	padding: 5px 0;
+}
+.organizers_card_desc_box {}
+.organizers_card_desc_box .left_col {}
+.organizers_card_desc_box .right_col {
+	width: 190px;
+}
+.organizers_card_title_box {
+	color: #dd5500;
+	font-size: 18px;
+	line-height: 18px;
+	padding: 5px 0 10px;
+	font-weight: bold;
+}
+.organizers_card_title_box span {float:left;clear:none;}
+.organizers_card_title_box a {
+	font-size: 11px;
+	color: #999999;
+	float: left;
+	clear: none;
+}
+.organizers_card_title_box div.fav_ico {
+	background: url(/img/index/star.png) no-repeat;
+	width: 12px;
+	height: 11px;
+	margin:5px 2px 0 10px;
+}
+.organizers_card_main_info {}
+.organizers_card_info_img {
+	background: url(/img/organizers_logo_bg.png) no-repeat;
+	width: 100px;
+	height: 100px;
+	vertical-align: middle;
+	line-height: 97px;
+	text-align: center;
+	border: 1px solid #cccccc;
+}
+.organizers_card_info_img img {
+	max-height: 130px;
+	max-width: 130px;
+	display:-moz-inline-box;
+	display:inline-block;
+	vertical-align:middle;
+	zoom:1;
+	//display:inline;
+	position: relative;
+}
+.organizers_card_info {
+	font-size: 12px;
+}
+.organizers_card_info .text{
+	text-align: right;
+	width: 65px;
+}
+.organizers_card_info .contact .place{
+	color: #333333;
+	font-weight: bold;
+}
+.organizers_card_info .contact .address{
+	color: #333333;
+	width: 500px;
+}
+.organizers_card_outer {
+	background: #ebf6ff;
+}
+.organizers_card_inner {
+	padding: 10px;
+}
+.organizers_card_right_lnk_row {
+	margin-top: 5px;
+}
+.organizers_card_right_lnk_row a {
+	font-size: 12px;
+	margin-left: 5px;
+	color: #0054a6 !important;
+}
+/*
+.organizers_card_send_msg_ico,
+.organizers_card_star_ico,
+.organizers_card_map_ico {
+	background: url(/img/organizers/send_msg_ico.png) no-repeat center center;
+	width: 17px;
+	height: 16px;
+}
+.organizers_card_star_ico {  background: url(/img/organizers/top_organizer_star.png) no-repeat center center;}
+.organizers_card_map_ico {  background: url(/img/organizers/map_ico.png) no-repeat center center; }
+*/
+.subscribe_box {
+	padding: 10px 0;
+	width: 100%;
+}
+.card_tabs_box {
+	margin-top: 10px;
+}
+
+.organizers_card_description_box {
+	color: #333333;
+}
+.organizers_card_description_box .title {
+	font-size: 18px;
+}
+.organizers_card_description_box .text {
+	margin-top: 10px;
+	font-size: 12px;
+	text-align: justify;
+}
+.organizers_card_news_tab {
+	padding: 10px 10px 0;
+}
+.organizers_card_one_news {
+	margin-top: 15px;
+}
+.organizers_card_one_news_img {
+	margin-top: 7px;
+	width: 54px;
+	height: 50px;
+	vertical-align: middle;
+	line-height: 47px;
+	text-align: center;
+}
+.organizers_card_one_news_img img {
+	display:-moz-inline-box;
+	display:inline-block;
+	vertical-align:middle;
+	zoom:1;
+	//display:inline;
+	position: relative;
+	max-width:54px;
+	max-height:50px;
+}
+.organizers_card_one_news_desc {
+	margin-left:10px;
+	width:595px;
+}
+.organizers_card_one_news_desc_title a {
+	color: #0054a6;
+	font-weight: bold;
+	margin-top: 10px;
+	font-size: 14px;
+}
+.organizers_card_one_news_desc_text {
+	color: #333333;
+	font-size: 12px;
+}
+.organizers_card_news_date {
+	font-size: 10px;
+	color: #999999;
+}
+div.news_full_header {
+	font-size: 18px;
+	color: #dd5500;
+	margin: 10px 0;
+}
+div.news_full span {
+	color: #666666;
+}
+div.news_full span p {
+	margin-top: 10px;
+}
+div.news_full a {
+	color: #999999;
+}
+.organizers_card_organizers_tab {
+	padding: 10px 10px 0;
+}
+.organizers_card_one_organizers {
+	margin-top: 15px;
+}
+.organizers_card_one_organizers_img {
+	margin-top: 7px;
+	width: 54px;
+	height: 50px;
+	vertical-align: middle;
+	line-height: 47px;
+	text-align: center;
+}
+.organizers_card_one_organizers_img img {
+	display:-moz-inline-box;
+	display:inline-block;
+	vertical-align:middle;
+	zoom:1;
+	//display:inline;
+	position: relative;
+	max-width:54px;
+	max-height:50px;
+}
+.organizers_card_one_organizers_desc {
+	margin-left:10px;
+	width:500px;
+}
+.organizers_card_one_organizers_desc_title a {
+	color: #0054a6;
+	font-weight: bold;
+	margin-top: 10px;
+	font-size: 14px;
+}
+.organizers_card_one_organizers_desc_text {
+	color: #333333;
+	font-size: 12px;
+}
+.organizers_card_organizers_date {
+	font-size: 10px;
+	color: #999999;
+}
+div.organizers_full_header {
+	font-size: 18px;
+	color: #dd5500;
+	margin: 10px 0;
+}
+div.organizers_full span {
+	color: #666666;
+}
+div.organizers_full span p {
+	margin-top: 10px;
+}
+div.organizers_full a {
+	color: #999999;
+}
+/*                           MESSAGES TAB                                */
+.adm_msg_box {
+	background: #f1f6fb;
+	border: 1px solid #d2e2f2;
+}
+.adm_msg_title {
+	text-align: center;
+	color: #0054a6;
+	font-size: 14px;
+	margin-top: 10px;
+}
+.adm_msg_content {
+	padding: 0;
+}
+.adm_msg_content .adm_msg_field {}
+.adm_msg_content .adm_msg_field .adm_msg_field_content input,
+.adm_msg_content .adm_msg_field .adm_msg_field_content select,
+.adm_msg_content .adm_msg_field .adm_msg_field_content textarea {
+	margin-bottom: 5px;
+	width: 290px;
+}
+.adm_msg_content .adm_msg_field .adm_msg_field_content input{
+	height: 15px;
+}
+.adm_msg_content .adm_msg_field .adm_msg_field_content input.radio_button{
+	width: 13px;
+	height: 13px;
+	margin: 0 0 0 15px;
+}
+.adm_msg_content .adm_msg_field .adm_msg_field_content select {
+	height: 21px;
+}
+.adm_msg_content .adm_msg_field .adm_msg_field_content textarea {
+	height: 60px;
+}
+.adm_msg_content .adm_msg_content_right .adm_msg_field .adm_msg_field_content textarea {
+	height: 155px;
+}
+.adm_msg_content_left {
+	width: 340px;
+	float: left;
+	clear: none;
+}
+.adm_msg_content_right {
+	width: 315px;
+}
+.adm_msg_content .adm_msg_field .adm_msg_field_title {
+	font-size: 12px;
+	line-height: 20px;
+	color: #666666;
+	float: left;
+	clear: none;
+}
+.adm_msg_content .adm_msg_field .adm_msg_field_title span {
+	color: red;
+}
+.adm_msg_content_submit {
+	text-align:center;
+}
+.adm_msg_content .captcha_box .captcha_title {
+	width:130px;
+}
+.adm_msg_content .captcha_box .captcha_title .adm_msg_field_content input{
+	float: left;
+	margin-left: 15px;
+	margin-top: 16px;
+	width: 90px;
+}
+.adm_msg_content .captcha_box .captcha_img{
+	width: 185px;
+	height: 80px;
+	vertical-align: middle;
+	line-height: 77px;
+	text-align: center;
+}
+.adm_msg_content .captcha_box .captcha_img img{
+	display:-moz-inline-box;
+	display:inline-block;
+	vertical-align:middle;
+	zoom:1;
+//display:inline;
+	position: relative;
+}
+li.tab_title_messages {
+	float: right !important;
+	margin-right: 0 !important;
+}
+.card_tabs_box .ui-tabs .ui-tabs-panel {
+	-moz-border-radius-topright: 0;
+}
+.statusBox,
+.statusBox div,
+.statusBox div h3{
+	width: 100%;
+	color: green !important;
+	font-size: 14px;
+	text-align: center;
+	font-weight:bold;
+	margin-top:5px;
+}
+#requestForm .error{
+	margin-bottom:10px;
+	clear:both;
+	float:none;
+}
+/*                         END MESSAGES TAB                              */

@@ -17,7 +17,9 @@ div.card_crumbs {
 	padding: 5px 0;
 }
 div.card_desc_box {}
-div.card_desc_box div.left_col {}
+div.card_desc_box div.left_col {
+	width: 510px;
+}
 div.card_desc_box div.right_col {
 	width: 190px;
 }
@@ -306,6 +308,7 @@ div.card_photo_tab_nav ul li a img {
 	border: solid #000 10px;
 	display: block;
 	margin: auto;
+	max-width: 630px;
 }
 
 .photoslider_caption {
@@ -542,7 +545,6 @@ div.video_tab_desc_text {
 /*                          END VIDEO TAB                                   */
 /*                      VIDEO_FULL TAB                                   */
 div.card_video_full {
-	width: 510px;
 }
 div.card_video_full a {
 	color: #999999;
@@ -550,11 +552,18 @@ div.card_video_full a {
 div.card_video_title {
 	font-size: 18px;
 	color: #dd5500;
-	text-decoration: underline;
+	margin: 20px 0 10px;
 }
-div.card_video_full img {
-	width: 510px;
-	height: 415px;
+div.card_video_box {
+	width:538px;
+	height:438px;
+	margin:0 auto;
+	padding: 0;
+}
+div.card_video_info {
+	width:538px;
+	margin:0 auto;
+	padding: 0;
 }
 div.video_info_box {}
 div.video_info_box div.left {}

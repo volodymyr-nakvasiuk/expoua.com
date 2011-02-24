@@ -23,5 +23,10 @@ class Db_Organizers extends ArOn_Db_Table {
 			'refTableClass'     => 'Db_Lang_LocationCitiesData',
 			'refColumns'        => 'id'
 		),
+		'Module' => array(
+			'columns'           => 'id',
+			'refTableClass'     => 'Db_Lang_OrganizersData',
+			'refColumns'        => 'id'
+		),
 	);
 }

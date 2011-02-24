@@ -70,8 +70,16 @@
 <div class="card_video_full cl">
 	&larr;&nbsp;<a href="<?php echo $listUrl;?>"><?php echo $this->lang->translate('to videos of this trade show');?></a>
 	<div class="card_video_title cl"><?php echo $item['title'];?></div>
-	<object type="image" data = "/img/card/big_video_ico.png"></object>
-	<div class="cl">
+	<div class="card_video_box cl">
+		<?php
+			echo Tools_FlashVideo::getTemplate(array(
+				'url'=>'/uploads/video/'.date('Y/m/d/', $item['date_added']).$item['video_file_id'].'.flv',
+				'width'=>538,
+				'height'=>438,
+			));
+		?>
+	</div>
+	<div class="card_video_info cl">
 		<div class="video_info_box_left fl">
 			<span><?php echo $this->lang->translate('uploaded').':';?></span>
 			<span style="color: #333333;"> <?php echo date('d.m.Y', $item['date_added']);?></span>

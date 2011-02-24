@@ -182,4 +182,36 @@ class RequestsController extends Abstract_Controller_AjaxController  {
 		);
 		$this->_actionInterface($fieldsAndRules, $data);
 	}
+
+	public function serviceCompanyInfoAction() {
+		$data = array(
+			'type'=>'serviceCompanyRequest',
+			'parent'=>'company_id',
+			'child'=>'company_id',
+			'countries_id'=>0,
+			'fields'=>array(),
+		);
+		$fieldsAndRules = array(
+			'name'=>array(
+				'notEmpty' => true,
+			),
+			'contact_person'=>array(
+				'notEmpty' => true,
+			),
+			'phone'=>array(
+				'notEmpty' => true,
+			),
+			'email'=>array(
+				'notEmpty' => true,
+				'emailAddress' => true,
+			),
+			'address'=>array(
+				'notEmpty' => true,
+			),
+			'message'=>array(
+				'notEmpty' => true,
+			),
+		);
+		$this->_actionInterface($fieldsAndRules, $data);
+	}
 }

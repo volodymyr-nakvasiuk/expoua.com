@@ -13,10 +13,10 @@ class Db_Lang_OrganizersData extends Db_Lang {
 	);
 
 	protected $_referenceMap    = array(
-		'Module' => array(
-			'columns'           => 'id',
-			'refTableClass'     => 'Db_Organizers',
-			'refColumns'        => 'id'
-		)
+		//'Module' => array(
+		//	'columns'           => 'id',
+		//	'refTableClass'     => 'Db_Organizers',
+		//	'refColumns'        => 'id'
+		//)
 	);
 }

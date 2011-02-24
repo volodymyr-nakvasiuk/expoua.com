@@ -1,12 +1,12 @@
 <?php
-class Init_Event_Messages extends Init_EventTab {
+class Init_Services_Messages extends Init_ServicesTab {
 
 	static $tab_name = 'messages';
-	protected $_event = false;
+	protected $_company = false;
 
-	public function __construct($brands_id, $event_id, $tab, $tab_action, $tab_id, $event=array()){
-		parent::__construct($brands_id, $event_id, $tab, $tab_action, $tab_id);
-		$this->_event = $event;
+	public function __construct($venue_id, $tab, $tab_action, $tab_id, $company=array()){
+		parent::__construct($venue_id, $tab, $tab_action, $tab_id);
+		$this->_company = $company;
 	}
 
 	protected function pageAction(){
@@ -19,8 +19,7 @@ class Init_Event_Messages extends Init_EventTab {
 		));
 
 		return array('data'=>array(
-			'organizerId' => $this->_event['organizer_id'],
-			'organizerName' => $this->_event['organizer'],
+			'serviceName' => $this->_company['name'],
 			'captcha' => array(
 				'img' => $captcha->render(),
 				'id' => $captcha->getId(),

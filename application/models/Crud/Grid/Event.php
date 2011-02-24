@@ -2,7 +2,7 @@
 class Crud_Grid_Event extends ArOn_Crud_Grid {
 
 	protected $_idProperty = 'id';
-	public $sort = "date_from";
+	public $sort = "id";
 	public $direction = "ASC";
 	public $editController = 'grid';
 	public $editAction = 'events-tab';
@@ -38,6 +38,7 @@ class Crud_Grid_Event extends ArOn_Crud_Grid {
 			'address' =>  new ArOn_Crud_Grid_Column_JoinOne("Адрес",array('Db_Lang_ExpocentersData'),'address',null,false,'200'),
 
 			'organizer' => new ArOn_Crud_Grid_Column_JoinOne("Организатор",array('Db_Brands','Db_Lang_OrganizersData'),'name',null,false,'200'),
+			'active' => new ArOn_Crud_Grid_Column_JoinOne("Активный",array('Db_EventsActive'),'active',null,false,'200'),
 		);
 		//$this->fields['active']->options = array('1'=>"+", '0'=>"-");
 
@@ -84,7 +85,25 @@ class Crud_Grid_Event extends ArOn_Crud_Grid {
 					),
 				),
 			)),
+			'active_languages_id' => new ArOn_Crud_Grid_Filter_Field_Search('active_languages_id','Язык выставки',array(
+				array(
+					'path' => array('Db_EventsActive'),
+					'filters' => array(
+						'languages_id' => ArOn_Db_Filter_Search::EQ,
+					),
+				),
+			)),
+			'active' => new ArOn_Crud_Grid_Filter_Field_Search('active','Язык выставки',array(
+				array(
+					'path' => array('Db_EventsActive'),
+					'filters' => array(
+						'active' => ArOn_Db_Filter_Search::EQ,
+					),
+				),
+			)),
 		);
+		$this->_params['active_languages_id'] = DEFAULT_LANG_ID;
+		$this->_params['active'] = 1;
 		$this->_params['brands_languages_id'] = DEFAULT_LANG_ID;
 		$this->_params['languages_id'] = DEFAULT_LANG_ID;
 		$this->_params['period_languages_id'] = DEFAULT_LANG_ID.';NULL';

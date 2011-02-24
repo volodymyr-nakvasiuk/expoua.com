@@ -104,7 +104,6 @@ FOTO.Slider = {
 		// we give it 1 extra slot just for buffer
 		$(bar).css('width',((slot+1)*this.data[key]['thumbWidth'])+'px')
 
-
 		$(bar).append(clear);
 	},
 
@@ -115,7 +114,7 @@ FOTO.Slider = {
 			this.data[key] = new Object();
 		}
 
-		this.data[key]['thumbWidth'] = 100;
+		this.data[key]['thumbWidth'] = 110+10;
 		this.data[key]['paused'] = true;
 		this.data[key]['currentSlot'] = 0;
 		this.data[key]['currentId'] = null;

@@ -43,6 +43,7 @@
 }
 .companies_card_main_info {}
 .companies_card_info_img {
+	background: url(/img/companies_logo_big_bg.png) no-repeat;
 	width: 130px;
 	height: 130px;
 	vertical-align: middle;
