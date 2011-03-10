@@ -25,7 +25,7 @@ class IndexController extends Abstract_Controller_FrontendController {
 		$this->view->layoutsData['body']['body_events_prlines_box'] = $init->getData();
 		$this->view->layouts['body']['body_events_prlines_box'] = array('inc/body/events_prlines', 100);
 
-		$grid = new Crud_Grid_Companies(null, array('country'=>COUNTRY_ID,'logo'=>1,'limit'=>8));
+		$grid = new Crud_Grid_Companies(null, array('country'=>COUNTRY_ID,'logo'=>1,'limit'=>8,'sort'=>'RAND()'));
 		$this->view->layoutsData['body']['body_companies_box'] = $grid->getData();
 		$this->view->layouts['body']['body_companies_box'] = array('inc/body/companies', 100);
 
@@ -34,7 +34,7 @@ class IndexController extends Abstract_Controller_FrontendController {
 		$tool->updateStat();
 		$this->view->layouts['body']['body_banners_250x120_box2'] = array('inc/banners/banner250x120', 100);
 
-		$grid = new Crud_Grid_CompanyOneService(null, array('photo'=>1, 'limit'=>32));
+		$grid = new Crud_Grid_CompanyOneService(null, array('country'=>COUNTRY_ID,'photo'=>1,'limit'=>32,'sort'=>'RAND()'));
 		$grid->currentSelect->group('companies_id');
 		$this->view->layoutsData['body']['body_companies_goods_box'] = $grid->getData();
 		$this->view->layouts['body']['body_companies_goods_box'] = array('inc/body/goods_slider', 100);
@@ -55,7 +55,7 @@ class IndexController extends Abstract_Controller_FrontendController {
 		$this->view->layoutsData['extra']['extra_events_companies_tabs_box'] = $init->getData();
 		$this->view->layouts['extra']['extra_events_companies_tabs_box'] = array('inc/extra/events_companies_tabs', 100);
 
-		$grid = new Crud_Grid_Companies(null, array('country'=>COUNTRY_ID,'limit'=>20));
+		$grid = new Crud_Grid_Companies(null, array('country'=>COUNTRY_ID,'limit'=>20,'sort'=>'RAND()'));
 		$this->view->layoutsData['right']['right_companies_box'] = $grid->getData();
 		$this->view->layouts['right']['right_companies_box'] = array('inc/right/top_companies', 100);
 	}

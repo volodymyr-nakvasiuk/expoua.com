@@ -18,13 +18,20 @@
 				<div class="page">
 <?php
 	$i=0;
-	foreach ($this->layoutsData['body']['body_companies_goods_box']['data'] as $item){
+	foreach ($this->layoutsData['body']['body_companies_goods_box']['data'] as $item){ $link = '/'.$l.'/companies/card/'.$item['companies_id'].'/'.Init_Companies_Services::$tab_name.'/card/'.$item['id'].'/';
 ?>
-		<div class="body_products_image_box fl">
-			<a href="<?php echo '/'.$l.'/companies/card/'.$item['companies_id'].'/'.Init_Companies_Services::$tab_name.'/card/'.$item['id'].'/'; ?>">
+	<div class="body_products_one_box fl">
+		<div class="body_products_image_box cl">
+			<a href="<?php echo $link; ?>">
 				<img src="http://admin.expopromoter.com/data/images/companies/<?php echo $item['companies_id']; ?>/services/logo/<?php echo $item['id'];?>.jpg">
 			</a>
 		</div>
+		<div class="body_products_title_box cl">
+			<a href="<?php echo $link; ?>">
+				<?php echo $item['name'];?>
+			</a>
+		</div>
+	</div>
 <?php
 		$i++;
 		if($i%$onPage==0 && $i!=$c){

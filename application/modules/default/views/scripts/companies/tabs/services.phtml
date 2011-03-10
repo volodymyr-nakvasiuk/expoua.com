@@ -73,14 +73,27 @@
 	<div class="services_full cl">
 		&larr;&nbsp;<a href="<?php echo $listUrl;?>"><?php echo $this->lang->translate('to services of this company');?></a>
 		<br/><br/>
-		<?php if ($item['photo']){ ?>
+		<?php if ($item['photo']){ $image = "http://admin.expopromoter.com/data/images/companies/".$this->data['id']."/services/logo/".$item['id']; ?>
 		<div class="services_full_img cl">
-			<img src="http://admin.expopromoter.com/data/images/companies/<?php echo $this->data['id']; ?>/services/logo/<?php echo $item['id'];?>.jpg">
+			<a href="<?php echo $image; ?>_big.jpg">
+				<img src="<?php echo $image; ?>.jpg">
+			</a>
 		</div>
 		<?php } ?>
 		<div class="services_full_header cl"><?php echo $item['name'];?></div>
 		<div class="services_full_content cl"><?php echo $item['content'];?></div>
 	</div>
+	<script type="text/javascript">
+		$(function(){
+			$('.services_full_img a').lightBox({
+				imageLoading: '/img/lightbox/ico-loading.gif',
+				imageBtnClose: '/img/lightbox/btn-close.gif',
+				imageBtnPrev: false,
+				imageBtnNext: false,
+				imageBlank: '/img/lightbox/blank.gif'
+			});
+		});
+	</script>
 	<?php
   	}
 ?>

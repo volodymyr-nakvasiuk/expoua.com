@@ -1,6 +1,7 @@
 <?php
 class Abstract_Controller_ClientController extends Abstract_Controller_FrontendController {
-	
+
+	/*
 	public function init(){
 		parent::init();
 		
@@ -9,4 +10,5 @@ class Abstract_Controller_ClientController extends Abstract_Controller_FrontendC
 			$client->initClientMode();
 		}
 	}
+	*/
 }

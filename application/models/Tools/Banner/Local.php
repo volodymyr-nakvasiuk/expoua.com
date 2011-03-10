@@ -40,8 +40,8 @@ class Tools_Banner_Local{
 		$code .= '<a href="'.Tools_Banner::getClickerUrl($id).'">';
 		$code .= '<img style="';
 		$code .= ' width: '.$width.'px;'; 
-		$code .= ' height: '.$height.'px;"';
-		$code .= ' src="'.PATH_DATA_BANNERS.$file.'" />';
+		//$code .= ' height: '.$height.'px;';
+		$code .= '" src="'.PATH_DATA_BANNERS.$file.'" />';
 		$code .= '</a>';
 		return $code;
 	}

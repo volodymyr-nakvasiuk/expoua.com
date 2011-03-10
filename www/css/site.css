@@ -151,6 +151,7 @@ body.noSubMenu, html.noSubMenu {
 	clear: both;
 	float: none;
 	width: 100%;
+	position:relative;
 }
 #menu {
 	clear: both;
@@ -340,3 +341,28 @@ div.paginator div.selected {
 	height: 125px;
 	background: url(/img/spiner/7.gif) 0 0 no-repeat;
 }
+
+.window{
+	display:none;
+	position:absolute;
+	z-index:4000;
+}
+.window_close {
+	position:absolute;
+	right: 10px;
+	top: 8px;
+	cursor:pointer;
+}
+.window_close a{
+	color:#DD5500;
+	text-decoration:none;
+}
+.window_close a:hover{
+	text-decoration:underline;
+}
+.window_content{
+	border: 1px solid #BFCEDC;
+	padding: 10px;
+	background-color: white;
+}
+.window_header{}

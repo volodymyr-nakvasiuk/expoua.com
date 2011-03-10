@@ -1,14 +1,14 @@
 <div class="user_buttons_box">
 	<div class="user_button_logon">
-		<a href="#"><?php echo $this->lang->translate('Login');?></a>
+		<a href="javascript:void(0);" onclick="$('#login_window').fadeIn();"><?php echo $this->lang->translate('Sign In');?></a>
 	</div>
 	<div class="user_button_reg">
-		<a href="#"><?php echo $this->lang->translate('Registration');?></a>
+		<a href="/<?php echo DEFAULT_LANG_CODE; ?>/register/"><?php echo $this->lang->translate('Registration');?></a>
 	</div>
 </div>
 <div class="user_links_box">
 	<div class="user_link_subscribe">
-		<a href="#"><?php echo $this->lang->translate('Subscribe');?></a>
+		<a href="javascript:void(0);" onclick=""><?php echo $this->lang->translate('Subscribe');?></a>
 	</div>
 	<?php /*
 	<div class="user_links">
@@ -21,3 +21,70 @@
 	</div>
  	*/ ?>
 </div>
+<div class="window login_window" id="login_window">
+	<div class="window_close"><a href="javascript:void(0);" onclick="$(this).parent().parent().fadeOut();">X</a></div>
+	<div class="window_header cl">
+		<div class="lf fl"></div>
+		<div class="center_f fl"><span><?php echo $this->lang->translate('Enter your login and password');?></span></div>
+		<div class="rf fl"></div>
+	</div>
+	<div class="window_content cl">
+		<form id="login_form">
+		<div class="window_field cl">
+			<div class="window_field_label fl"><?php echo $this->lang->translate('Login');?></div>
+			<div class="window_field_content fr"><input name="login" type="text"/></div>
+		</div>
+		<div class="window_field cl">
+			<div class="window_field_label fl"><?php echo $this->lang->translate('Password');?></div>
+			<div class="window_field_content fr"><input name="password" type="password"/></div>
+		</div>
+		<div class="window_field cl">
+			<div class="window_field_content fr">
+				<input type="submit" value="<?php echo $this->lang->translate('Sign In'); ?>" style="width:130px;" />
+			</div>
+		</div>
+		</form>
+	</div>
+</div>
+<script type="text/javascript">
+function submitStatus(text){
+	var window = $('#login_window');
+	$(
+'<div class="window login_window" style="display:none;">'+
+	'<div class="window_header cl">'+
+		'<div class="lf fl"></div>'+
+		'<div class="center_f fl"><span><?php echo $this->lang->translate('Error message');?></span></div>'+
+		'<div class="rf fl"></div>'+
+	'</div>'+
+	'<div class="window_content cl">'+
+		'<div class="window_inner_content error">'+text+'</div>'+
+	'</div>'+
+'</div>'
+	).insertAfter(window).fadeIn();
+	window.fadeOut();
+	return text;
+}
+$('#login_form').ajaxForm({
+	resetForm: false,
+	url: "/client/<?php echo DEFAULT_LANG_CODE; ?>/login/",
+	type: 'POST',
+	beforeSerialize: function($form, options) {
+		$('#loading').show();
+		return true;
+	},
+	complete: function(data) {
+		$('#loading').hide();
+		var form = $('#login_form');
+		if (data.status != 200) return submitStatus('<?php echo $this->lang->translate('ERROR! Server is unavailable');?>');
+		var response = data.responseText;
+		if (response.isJSON()) response = eval('('+response+')');
+		else return submitStatus('<?php echo $this->lang->translate('ERROR! Please contact the server administrator for an explanation');?>');
+		if (response.success){
+			//location.href = "/client/<?php echo DEFAULT_LANG_CODE; ?>/";
+		}
+		else {
+			submitStatus(response.message);
+		}
+	}
+});
+</script>

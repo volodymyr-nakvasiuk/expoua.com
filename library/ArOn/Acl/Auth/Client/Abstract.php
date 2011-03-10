@@ -1,12 +1,12 @@
 <?php
 class ArOn_Acl_Auth_Client_Abstract extends ArOn_Acl_Auth_Abstract {
 	public $loginCookie = 'info_client';
-	protected $userLoginField = 'client_email';
-	protected $userPasswordField = 'client_password';
-	protected $userCredentialTreatment = '(?) AND client_status = \'approved\' ';
+	protected $userLoginField = 'login';
+	protected $userPasswordField = 'passwd';
+	protected $userCredentialTreatment = '(?) AND active = 1 ';
 	
 	protected function initUserAuthAndDb(){
-		$this->userDB = Db_Client::getInstance();
+		$this->userDB = Db_User::getInstance();
  		$this->userAuth = ArOn_Acl_Auth_Client::getDbAuthAdapter();
 	}
  	

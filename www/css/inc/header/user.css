@@ -57,3 +57,31 @@
 .user_link_favorites a {
 	color: #999999;
 }
+.login_window {
+	left: 725px;
+	top: 15px;
+}
+.login_window .window_header {
+	background-color:#dce9f5;
+}
+.login_window .window_header .center_f{
+	width:210px;
+}
+.login_window .window_header .lf {
+	background: url(/img/site/lw/left_f.png) no-repeat 0 0 scroll transparent;
+}
+.login_window .window_header .rf {
+	background: url(/img/site/lw/right_f.png) no-repeat 0 0 scroll transparent;
+}
+.login_window .window_content .window_field .window_field_content input{
+	width: 125px;
+}
+.login_window .window_content {
+	padding:6px;
+}
+.login_window .window_inner_content {
+	width:208px;
+}
+.login_window .error {
+	color:red;
+}

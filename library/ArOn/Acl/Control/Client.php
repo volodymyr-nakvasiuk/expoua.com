@@ -50,63 +50,36 @@ class ArOn_Acl_Control_Client extends ArOn_Acl_Controlv2 {
 		foreach ($roles as $role) {
 			$this->allow($role['acl_role_id'], $role['acl_module_name'].'_'.$role['acl_resource_name'], $role['acl_privilege_name']);
 		}
- 
+
 	}
-	 	
+	
 	public static function toStorage($identity) {
 		$storage = array();
-		$model = Db_Client::getInstance();
+		$model = Db_User::getInstance();
 		$select = $model->select();
 		$select->columnsAll();
-		$select->where('client_email = ?',$identity);
+		$select->where('login = ?',$identity);
 		
-		$sql = "SELECT
-					`users`.*,
-					`users`.`client_id` AS `userid`, 
-					`users`.`client_name` AS `username`,
-					`users`.`acl_role_id` AS `role`
-				FROM
-					`client` `users`
-				WHERE
-					`users`.`client_email` = $uname";
-
 		if (null === ($row = $model->fetchRow($select))) {
 			throw new Exception('Wrong user! Mystical fail!');
 		}
 		$row = $row->toArray();
-		$storage['user']['id'] = $row['client_id'];
-		$storage['user']['name'] = $row['client_name'];
-		$storage['user']['password'] = $row['client_password'];
+		$storage['user']['id'] = $row['id'];
+		$storage['user']['name'] = $row['name'];
+		$storage['user']['password'] = $row['passwd'];
 		//$storage['user']['referal'] = $row['client_referal'];
-		$storage['user']['tel'] = $row['client_tel'];
-		$storage['user']['email'] = $row['client_email'];
-		$storage['user']['url'] = $row['client_url'];
-		$storage['user']['region_id'] = $row['client_region_id'];
-		$storage['user']['place_id'] = $row['client_place_id'];
-		$storage['user']['info'] = $row['client_info'];
-		$storage['user']['addr'] = $row['client_addr'];
-		$storage['user']['photos'] = $row['client_photos'];
-		$storage['user']['priority'] = $row['client_priority'];
-		$storage['user']['role'] =  $row['acl_role_id'];
+		//$storage['user']['tel'] = $row['client_tel'];
+		$storage['user']['email'] = $row['email'];
+		//$storage['user']['url'] = $row['client_url'];
+		//$storage['user']['region_id'] = $row['client_region_id'];
+		//$storage['user']['place_id'] = $row['client_place_id'];
+		//$storage['user']['info'] = $row['client_info'];
+		//$storage['user']['addr'] = $row['client_addr'];
+		//$storage['user']['photos'] = $row['client_photos'];
+		//$storage['user']['priority'] = $row['client_priority'];
+		$storage['user']['role'] = 3; // client
+		$storage['user']['companies_id'] =  $row['companies_id'];
 		
-		$uid = &$storage['user']['id'];
-		$gid = &$storage['group']['id'];
-
-		/*// rules
-		$sql = "SELECT
-					`rules`.`name` as `name`
-				FROM
-					`acl_rules` `rules`
-					INNER JOIN `acl_users_rules` `users_rules` ON `rules`.`id` = `users_rules`.`rule_id`
-				WHERE
-					`users_rules`.`user_id` = $uid
-					AND ISNULL(`rules`.`type`) 
-					AND `rules`.`perm` = 'allow'";
-		$storage['rules']['user']['allow'] = $db->fetchCol($sql);
-
-		*/
-
-
 		return $storage;
 	}
 	

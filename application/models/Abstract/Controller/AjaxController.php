@@ -22,12 +22,12 @@ class Abstract_Controller_AjaxController extends Abstract_Controller_FrontendCon
 			$this->_response->setHeader('Content-type', 'application/json');
 			echo Zend_Json_Encoder::encode($this->resultJSON);
 		}
-		if (!$this->_request->isXmlHttpRequest() && !$this->_request->getParam('PHPSESSID',false)) $this->_redirect($this->_redirectUrl);
+		if (!$this->_request->isXmlHttpRequest() && !$this->_request->getParam('PHPSESSID',false)) $this->_redirect('/'.DEFAULT_LANG_CODE.$this->_redirectUrl);
 	}
 
-	public function emptyAction(){
+	public function errorAction(){
 		$this->resultJSON['success'] = false;
-		$this->resultJSON['message'] = $this->lang->translate('Access denied!');
+		$this->resultJSON['message'] = $this->view->lang->translate('Access denied!');
 	}
 
 }

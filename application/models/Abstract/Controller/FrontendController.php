@@ -393,7 +393,6 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 			$life_time = (defined('COOKIE_LIFE_TIME')) ? time() + COOKIE_LIFE_TIME: TIME() + 60*60*24*7;
 			$crypt = new ArOn_Crud_Tools_Crypt($salt);
 			$code = $crypt->encUserId($this->userData['user']['id']);
-			$myDomain = preg_replace('/^[^\.]*\.([^\.]*)\.(.*)$/i', '$1.$2',$_SERVER['HTTP_HOST']);
 			setcookie(self::$currentAuth->loginCookie,$code,$life_time,'/');
 		}
 		Zend_Session::rememberMe();
@@ -412,11 +411,7 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 	}
 	
 	protected function initUser(){
-		//$this->_isReferal = false;
-		$actionName = $this->getRequest()->getActionName();
 		$this->view->auth = false;
-		//$referal = $this->_request->getCookie('client_referal');
-		//if(!empty($referal)) $this->_isReferal = true;
 		if (self::$currentAuth->hasIdentity()) {
 			$this->userData = self::$currentAuth->getStorage()->read();
 			$this->auth = true;
@@ -425,21 +420,10 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 			$user_session = new Zend_Session_Namespace('client');
 			$user_session->id = $this->userData['user']['id'];
 			ArOn_Db_Table::$authId = $this->userData['user']['id'];
-			$controllerName = $this->getRequest()->getControllerName();
-			$location = '/'.$controllerName.'/'.$actionName;
-			//if(!empty($this->userData['user']['referal'])){
-			//	$referal = new Tools_Referal($this->_request);
-			//	$referal->initReferal($this->userData['user']['referal']);
-			//	$this->_isReferal = true;
-			//}
-		}//else{
-		//	$referal = new Tools_Referal($this->_request);
-		//	if($referal->initReferal())
-		//		$this->_isReferal = true;
-		//}
+
+		}
 		$phpIp2Country = new Tools_Ip2Country(ArOn_Crud_Tools_IpCheck::getClientIp());
 		$this->userData ['ip'] = array( 'address' => ArOn_Crud_Tools_IpCheck::getClientIp(), 'country' => $phpIp2Country->getIsoCode() );
-		//$this->userData ['ip'] = array( 'address' => ArOn_Crud_Tools_IpCheck::getClientIp(), 'country' => "zz" );
 		$this->view->userData = $this->userData;
 	}
 	

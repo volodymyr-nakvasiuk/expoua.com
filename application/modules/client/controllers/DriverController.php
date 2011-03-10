@@ -25,7 +25,6 @@ class Client_DriverController extends Abstract_Controller_AjaxController  {
 			$return['is'] = true;
 			$return['email'] = $this->userData['user']['email'];
 			$return['name'] = $this->userData['user']['name'];
-			$return['tel'] = $this->userData['user']['tel'];
 		}
 		else {
 			$return['is'] = false;
@@ -33,7 +32,8 @@ class Client_DriverController extends Abstract_Controller_AjaxController  {
 		
 		return $return;
 	}
-	
+
+	/*
 	protected function _loadBookmarksData(){
 		$return = array();
 		$url = $this->_request->getParam('link');
@@ -70,4 +70,5 @@ class Client_DriverController extends Abstract_Controller_AjaxController  {
 		$model->update(array('news_viewed' => new Zend_Db_Expr('`news_viewed`+1')),'`news_id`='.$arr[1]);
 		return '{success:true}';
 	}
+	*/
 }

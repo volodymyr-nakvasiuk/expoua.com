@@ -139,7 +139,7 @@
 			if (data.status != 200) return submitStatus('<?php echo $this->lang->translate('ERROR! Server is unavailable');?>');
 			var response = data.responseText;
 			if (response.isJSON()) response = eval('('+response+')');
-			else return submitStatus('<?php echo $this->lang->translate('Error! Please contact the server administrator for an explanation');?>');
+			else return submitStatus('<?php echo $this->lang->translate('ERROR! Please contact the server administrator for an explanation');?>');
 			var b=e='';
 			if (!response.success){
 				b='<span class="error">';
