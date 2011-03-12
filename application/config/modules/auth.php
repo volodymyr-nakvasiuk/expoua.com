@@ -9,7 +9,7 @@ class auth {
 
 		$dir = Bootstrap::$root.'/application/config/admin';
 		if (!is_dir($dir)) mkdir($dir, 0777, true);
-		self::$authFile = $dir.'/'.Bootstrap::prepareFileName(php_uname()).'.ini';
+		self::$authFile = $dir.'/auth.ini';
 
 		if (file_exists(self::$authFile)){
 			self::$config = parse_ini_file(self::$authFile);
@@ -85,7 +85,6 @@ class auth {
 			if ($_POST['config_password'] == $_POST['config_password_re']){
 				$data = array(
 					'password = '.$_POST['config_password'],
-					'test = '.$_POST['config_password'],
 				);
 				file_put_contents(self::$authFile, implode("\r\n", $data));
 			}

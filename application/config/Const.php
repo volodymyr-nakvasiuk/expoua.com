@@ -5,6 +5,8 @@ switch(APPLICATION_ENVIRONMENT){
 		define ( 'IMG_HOST_NAME', 'http://img1.expoua.com' );
 		define ( 'STATIC_HOST_NAME', 'http://static.expoua.com' );
 		define ( 'ADMIN_HOST_NAME', 'http://admin.expoua.com' );
+		define ( 'ADVERT_HOST_NAME', 'http://advertise.expoua.com' );
+		define ( 'EVENT_HOST_NAME', 'http://event.expoua.com' );
 		define ( 'COOKIE_HOST_NAME', 'expoua.com' );
 		break;
 	case 'development':
@@ -12,6 +14,8 @@ switch(APPLICATION_ENVIRONMENT){
 		define ( 'IMG_HOST_NAME', 'http://img1.expoua-my.com' );
 		define ( 'STATIC_HOST_NAME', 'http://static.expoua-my.com' );
 		define ( 'ADMIN_HOST_NAME', 'http://admin.expoua-my.com' );
+		define ( 'ADVERT_HOST_NAME', 'http://advertise.expoua-my.com' );
+		define ( 'EVENT_HOST_NAME', 'http://event.expoua-my.com' );
 		define ( 'COOKIE_HOST_NAME', 'expoua-my.com' );
 		break;
 	case 'test':
@@ -19,6 +23,8 @@ switch(APPLICATION_ENVIRONMENT){
 		define ( 'IMG_HOST_NAME', 'http://img1.test.expoua.com' );
 		define ( 'STATIC_HOST_NAME', 'http://static.test.expoua.com' );
 		define ( 'ADMIN_HOST_NAME', 'http://admin.test.expoua.com' );
+		define ( 'ADVERT_HOST_NAME', 'http://advertise.test.expoua.com' );
+		define ( 'EVENT_HOST_NAME', 'http://event.test.expoua.com' );
 		define ( 'COOKIE_HOST_NAME', 'test.expoua.com' );
 		break;
 	case 'cron':
@@ -27,6 +33,8 @@ switch(APPLICATION_ENVIRONMENT){
 		define ( 'IMG_HOST_NAME', 'http://img1.'.$host );
 		define ( 'STATIC_HOST_NAME', 'http://static.'.$host );
 		define ( 'ADMIN_HOST_NAME', 'http://admin.'.$host );
+		define ( 'ADVERT_HOST_NAME', 'http://advertise.'.$host  );
+		define ( 'EVENT_HOST_NAME', 'http://event.'.$host );
 		define ( 'COOKIE_HOST_NAME', $host );
 		break;
 	default:
@@ -34,6 +42,8 @@ switch(APPLICATION_ENVIRONMENT){
 		define ( 'IMG_HOST_NAME', 'http://img1.expoua.com' );
 		define ( 'STATIC_HOST_NAME', 'http://static.expoua.com' );
 		define ( 'ADMIN_HOST_NAME', 'http://admin.expoua.com' );
+		define ( 'ADVERT_HOST_NAME', 'http://advertise.expoua.com' );
+		define ( 'EVENT_HOST_NAME', 'http://event.expoua.com' );
 		define ( 'COOKIE_HOST_NAME', 'expoua.com' );
 		break;
 }

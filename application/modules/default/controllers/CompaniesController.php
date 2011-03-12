@@ -1,6 +1,8 @@
 <?php
 class CompaniesController extends Abstract_Controller_FrontendController {
 
+	public $moduleName = 'Companies';
+
 	public function init(){
 		parent::init();
 
@@ -39,12 +41,15 @@ class CompaniesController extends Abstract_Controller_FrontendController {
 			$this->view->data = $grid->getData();
 			if (isset($this->view->data['data'][0])){
 				$this->view->data = $this->view->data['data'][0];
-				$url = '/'.DEFAULT_LANG_CODE.'/companies/card/'.$this->view->data['id'].'-'.Tools_View::getUrlAlias($this->view->data['name'], true).'/';
+				$url = '/'.DEFAULT_LANG_CODE.'/companies/card/'.$this->view->data['id'];
 				$tab = $this->_request->getParam('tab');
 				$tab_action = $this->_request->getParam('tab_action');
 				$tab_id = $this->_request->getParam('tab_id');
 				if ($tab){
-					$url .= $tab.'/'.$tab_action.'/'.($tab_id?$tab_id:TAB_DEFAULT_ID).'/';
+					$url .= '/'.$tab.'/'.$tab_action.'/'.($tab_id?$tab_id:TAB_DEFAULT_ID).'/';
+				}
+				else {
+					$url .= '-'.Tools_View::getUrlAlias($this->view->data['name'], true).'/';
 				}
 				if ($url!=$this->view->requestUrl) $this->_redirect($url);
 
@@ -136,6 +141,10 @@ class CompaniesController extends Abstract_Controller_FrontendController {
 		$filterData = $companies->getFilterData();
 		if ($filterData['url']!=$this->view->requestUrl) $this->_redirect($filterData['url']);
 
+		if (isset($filterData['filter']['category'])){
+			$this->brandsCategoryId = $filterData['filter']['category'];
+		}
+
 		$this->view->jsParams['filter'] = $filterData['params'];
 		$this->view->jsParams['filterParams'] = Tools_Companies::$filterParams;
 
@@ -162,11 +171,16 @@ class CompaniesController extends Abstract_Controller_FrontendController {
 
 	public function servicesAction(){
 		$this->view->activeSubmenu = 'services';
+		$this->moduleName = 'CompaniesServices';
 		$this->view->layouts['top']['filter'] = array('inc/filter/companies_by_categories', 100);
 
 		$services = new Tools_CompanyServices($this->view->requestUrl, DEFAULT_LANG_CODE, $this->_request->getParam('p'));
 		$filterData = $services->getFilterData();
 		if ($filterData['url']!=$this->view->requestUrl) $this->_redirect($filterData['url']);
+
+		if (isset($filterData['filter']['category'])){
+			$this->brandsCategoryId = $filterData['filter']['category'];
+		}
 
 		$this->view->jsParams['filter'] = $filterData['params'];
 		$this->view->jsParams['filterParams'] = Tools_CompanyServices::$filterParams;
@@ -194,11 +208,16 @@ class CompaniesController extends Abstract_Controller_FrontendController {
 
 	public function newsAction(){
 		$this->view->activeSubmenu = 'news';
+		$this->moduleName = 'CompaniesNews';
 		$this->view->layouts['top']['filter'] = array('inc/filter/companies_by_categories', 100);
 
 		$services = new Tools_CompanyNews($this->view->requestUrl, DEFAULT_LANG_CODE, $this->_request->getParam('p'));
 		$filterData = $services->getFilterData();
 		if ($filterData['url']!=$this->view->requestUrl) $this->_redirect($filterData['url']);
+
+		if (isset($filterData['filter']['category'])){
+			$this->brandsCategoryId = $filterData['filter']['category'];
+		}
 
 		$this->view->jsParams['filter'] = $filterData['params'];
 		$this->view->jsParams['filterParams'] = Tools_CompanyNews::$filterParams;

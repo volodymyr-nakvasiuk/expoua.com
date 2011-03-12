@@ -2,7 +2,7 @@
 	$tabData = $this->tabsData[Init_Companies_Services::$tab_name];
 	if ($tabData['action']=='page'){
 		foreach($tabData['data'] as $item){
-			$lnk = $this->data['link'].Init_Companies_Services::$tab_name.'/card/'.$item['id'].'/';
+			$lnk = $this->data['link'].'/'.Init_Companies_Services::$tab_name.'/card/'.$item['id'].'/';
 ?>
 <div class="companies_card_one_services cl">
 	<div class="companies_card_one_services_img fl">

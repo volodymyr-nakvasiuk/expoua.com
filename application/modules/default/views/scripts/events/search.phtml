@@ -10,7 +10,7 @@
 	</div>
 	<div class="events_index_content cl">
 	<?php
-		foreach($this->data['data'] as $item){ $url="/".$l."/event/card/".$item['id']."-".Tools_View::getUrlAlias($item['brands_name'], true)."/";
+		foreach($this->data['data'] as $item){ $url="/".$l."/events/card/".$countries[$item['regions_id']][$item['countries_id']]['alias']."/".$cities[$item['regions_id']][$item['countries_id']][$item['cities_id']]['alias']."/".$item['id']."-".Tools_View::getUrlAlias($item['brands_name'], true)."/";
 	?>
 		<div class="events_index_item cl">
 			<div class="events_index_item_title">

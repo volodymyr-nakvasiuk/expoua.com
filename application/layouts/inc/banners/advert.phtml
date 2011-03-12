@@ -20,6 +20,7 @@
 	</div>
 	<?php } ?>
 	<div align="center" style="padding: 5px;">
-		<a href="http://www.expopromoter.com/Static/lang/en/page/registration/type/advertiser/"><?php echo $this->lang->translate("add an ad");?></a>&nbsp;|&nbsp;<a href="http://www.expopromoter.com/Static/lang/en/page/registration/type/webPartner/"><?php echo $this->lang->translate("become a partner");?></a>
+		<?php $link = ADVERT_HOST_NAME.'/'.DEFAULT_LANG_CODE.'/sab_banners_info/expoadvert/module'; ?>
+		<a href="<?php echo $link; ?>"><?php echo $this->lang->translate("add an ad");?></a>&nbsp;|&nbsp;<a href="<?php echo $link; ?>"><?php echo $this->lang->translate("become a partner");?></a>
 	</div>
 </div>

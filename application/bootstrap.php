@@ -237,7 +237,7 @@ class Bootstrap {
 	}
 
 	public static function setupConfiguration() {
-		$dbConfigFile = self::$root . '/application/config/db/'.APPLICATION_ENVIRONMENT.'/'.self::prepareFileName(php_uname()).'.ini';
+		$dbConfigFile = self::$root . '/application/config/db/'.APPLICATION_ENVIRONMENT.'.ini';
 		self::$registry->configurations = array();
 		try {
 			foreach (self::$dbConfigs as $dbConfigName){

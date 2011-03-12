@@ -1,7 +1,7 @@
 <?php
 	$tabData = $this->tabsData[Init_Event_Video::$tab_name];
 	if ($tabData['action']=='page'){
-		foreach($tabData['data'] as $item){$url = $this->data['link'].Init_Event_Video::$tab_name.'/card/'.$item['id'].'-'.Tools_View::getUrlAlias($item['title'], true).'/';
+		foreach($tabData['data'] as $item){$url = $this->data['link'].'/'.Init_Event_Video::$tab_name.'/card/'.$item['id'].'-'.Tools_View::getUrlAlias($item['title'], true).'/';
 ?>
 	<div class="video_tab_one_row cl">
 		<div class="video_tab_img">

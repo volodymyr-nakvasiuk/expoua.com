@@ -1,4 +1,6 @@
 <?php
+	$countries = Zend_Registry::get("countries".Tools_Events::$cacheSuffix['id']);
+	$cities = Zend_Registry::get("cities".Tools_Events::$cacheSuffix['id']);
 	$l = DEFAULT_LANG_CODE;
 ?>
 <div class="center_events_news_head cl">
@@ -11,7 +13,7 @@
 	<div class="center_events_news_one_row">
 		<div class="center_events_news_text_box">
 			<span class="date"><?php echo date('d.m.Y', strtotime($item['date_public']));?></span><br/>
-			<a href="<?php echo "/".$l."/event/card/".$item['events_id']."/".Init_Event_News::$tab_name."/card/".$item['id']."/";?>"><?php echo $item['name']; ?></a>
+			<a href="<?php echo "/".$l."/events/card/".$countries[$item['regions_id']][$item['countries_id']]['alias']."/".$cities[$item['regions_id']][$item['countries_id']][$item['cities_id']]['alias']."/".$item['events_id']."/".Init_Event_News::$tab_name."/card/".$item['id']."-".Tools_View::getUrlAlias($item['name'], true)."/";?>"><?php echo $item['name']; ?></a>
 		</div>
 	</div>
 	<?php } ?>

@@ -4,7 +4,7 @@
 	$countries = Zend_Registry::get("countries".Tools_Events::$cacheSuffix['id']);
 	$cities = Zend_Registry::get("cities".Tools_Events::$cacheSuffix['id']);
 	$l = DEFAULT_LANG_CODE;
-	foreach($tabData['data'] as $item){ $url="/".$l."/event/card/".$item['id']."-".Tools_View::getUrlAlias($item['brands_name'], true)."/"
+	foreach($tabData['data'] as $item){ $url="/".$l."/events/card/".$item['id']."-".Tools_View::getUrlAlias($item['brands_name'], true)."/"
 ?>
 	<div class="events_index_item cl">
 		<div class="events_index_item_title">

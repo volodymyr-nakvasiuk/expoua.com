@@ -8,7 +8,7 @@
 		protected $_url = false;
 		protected $_lang = false;
 		protected $_filterData = false;
-		protected $_urlParts = array('events');
+		protected $_urlParts = array('events', 'search');
 		static $filterParams = array(
 			'region'=>'regions',
 			'country'=>'countries',
@@ -61,14 +61,24 @@
 
 			$paramName = 'from';
 			if (isset($data[$paramName])){
-				$time = strtotime($data[$paramName]);
-				if ($time) $fData[$paramName] = date('Y-m-d', $time);
+				$timeFrom = strtotime($data[$paramName]);
+				if ($timeFrom) $fData[$paramName] = date('Y-m-d', $timeFrom);
 			}
 
 			$paramName = 'till';
 			if (isset($data[$paramName])){
-				$time = strtotime($data[$paramName]);
-				if ($time) $fData[$paramName] = date('Y-m-d', $time);
+				$timeTill = strtotime($data[$paramName]);
+				if ($timeTill) $fData[$paramName] = date('Y-m-d', $timeTill);
+			}
+
+			if (isset($timeFrom) && $timeFrom && isset($timeTill) && $timeTill && ($timeTill<$timeFrom)){
+				//$tmp = $timeTill;
+				//$timeTill = $timeFrom;
+				//$timeFrom = $tmp;
+
+				$tmp = $fData['till'];
+				$fData['till'] = $fData['from'];
+				$fData['from'] = $tmp;
 			}
 
 			$paramName = 'search';

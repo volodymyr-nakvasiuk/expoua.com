@@ -14,18 +14,17 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 	protected $_statModel = false;
 	protected $_statModelId = false;
 
-	//Главная страница         = Mainpage
-	//Список выставок          = Exhibition
-	//Карточка выставки        = Event
-	//Выставочные новости      = News
-	//Выставочные центры       = ExpoCenters
-	//Выставочный сервис       = ServiceCompanies
-	//Компании                 = Companies
-	//Товары и услуги компаний = CompaniesServices
-	//Новости компаний         = CompaniesNews
-	//Сотрудники компаний      = CompaniesEmployer
-	//TV-раздел                = Tv
-	//Бизнес-туры              = TourOrder
+	// + Список выставок          = Exhibition
+	// + Карточка выставки        = Event
+	// + Выставочные новости      = News
+	// + Выставочные центры       = ExpoCenters
+	// + Выставочный сервис       = ServiceCompanies
+	// + Компании                 = Companies
+	// + Товары и услуги компаний = CompaniesServices
+	// + Новости компаний         = CompaniesNews
+	// - Сотрудники компаний      = CompaniesEmployer
+	// - TV-раздел                = Tv
+	// - Бизнес-туры              = TourOrder
 	public $moduleName = 'Mainpage';
 	public $brandsCategoryId = null;
 	
@@ -199,19 +198,19 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 		$this->view->menuLinks = array(
 			'events'=>array(
 				'lang'=>array('ru','en'),
-				'url'=>HOST_NAME.'/'.$lang.'/events/'.DEFAULT_SEARCH,
+				'url'=>HOST_NAME.'/'.$lang.'/events/search/'.DEFAULT_SEARCH,
 				'title'=>$this->view->lang->translate('Trade shows'),
 				'submenu'=>array(
 					COUNTRY_ABBR=>array(
-						'url'=>HOST_NAME.'/'.$lang.'/events/'.DEFAULT_SEARCH,
+						'url'=>HOST_NAME.'/'.$lang.'/events/search/'.DEFAULT_SEARCH,
 						'title'=>$this->view->lang->translate('Exhibitions in Ukraine'),
 					),
 					'all'=>array(
-						'url'=>HOST_NAME.'/'.$lang.'/events/',
+						'url'=>HOST_NAME.'/'.$lang.'/events/search/',
 						'title'=>$this->view->lang->translate('Exhibitions in the world'),
 					),
 					'news'=>array(
-						'url'=>HOST_NAME.'/'.$lang.'/event/news/',
+						'url'=>HOST_NAME.'/'.$lang.'/events/news/',
 						'title'=>$this->view->lang->translate('News, press-releases'),
 					),
 					'venues'=>array(

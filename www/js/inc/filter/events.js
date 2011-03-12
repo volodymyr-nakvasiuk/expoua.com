@@ -125,7 +125,7 @@ $(function(){
 	$("#filter_button").click(function(){
 		var $filter =$("#top .filter");
 		var input;
-		var redirectUrl = '/'+lang_id+'/events/';
+		var redirectUrl = '/'+lang_id+'/events/search/';
 		for(var i in phpParams['filterParams']){
 			input = $filter.find('[name='+i+']');
 			if (input){
@@ -160,23 +160,6 @@ $(function() {
 		dateFormat: 'yy-mm-dd',
 		//showOtherMonths: true,
 		numberOfMonths:1,
-		onSelect: function( selectedDate ) {
-			var option = this.id == "filter_from" ? "minDate" : "maxDate", instance = $( this ).data( "datepicker" );
-			date = $.datepicker.parseDate(
-				instance.settings.dateFormat || $.datepicker._defaults.dateFormat,
-				selectedDate, instance.settings
-			);
-			$( "#filter_from, #filter_till" ).not( this ).datepicker( "option", option, date );
-		}
-	}).each(function(){
-		var selectedDate = phpParams['filter'][this.id.replace('filter_', '')];
-		if (selectedDate){
-			var option = this.id == "filter_from" ? "minDate" : "maxDate", instance = $( this ).data( "datepicker" );
-			date = $.datepicker.parseDate(
-					instance.settings.dateFormat || $.datepicker._defaults.dateFormat,
-					selectedDate, instance.settings
-					);
-			$( "#filter_from, #filter_till" ).not( this ).datepicker( "option", option, date );
-		}
-	});
+		showButtonPanel: true
+	}).val('');
 });

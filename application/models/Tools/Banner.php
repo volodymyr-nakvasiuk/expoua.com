@@ -20,7 +20,9 @@ class Tools_Banner{
 			$publisherId = PUBLISHER_ID;
 			$subData = 'v2';
 			if ($data){
-				$subData .= '_dummy?go='.HOST_NAME.'/'.DEFAULT_LANG_CODE."/event/card/".$data['id']."-".Tools_View::getUrlAlias($data['brands_name'], true)."/";
+				$countries = Zend_Registry::get("countries".Tools_Events::$cacheSuffix['id']);
+				$cities = Zend_Registry::get("cities".Tools_Events::$cacheSuffix['id']);
+				$subData .= '_dummy?go='.HOST_NAME.'/'.DEFAULT_LANG_CODE."/events/card/".$countries[$data['regions_id']][$data['countries_id']]['alias']."/".$cities[$data['regions_id']][$data['countries_id']][$data['cities_id']]['alias']."/".$data['id']."-".Tools_View::getUrlAlias($data['brands_name'], true)."/";
 			}
 		}
 		return PATH_CLICKER. $id . "_" . $publisherId . "_" . DEFAULT_LANG_ID. "_".$subData;

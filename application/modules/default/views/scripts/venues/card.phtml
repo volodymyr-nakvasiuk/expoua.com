@@ -17,8 +17,8 @@
 		<a href="<?php echo $link;?>"><?php echo $name;?></a>&nbsp;&rarr;&nbsp;
 		<?php $link.='city-'.$cities[$item['regions_id']][$item['countries_id']][$item['cities_id']]['alias'].'/'; $name=$cities[$item['regions_id']][$item['countries_id']][$item['cities_id']]['name'];?>
 		<a href="<?php echo $link;?>"><?php echo $name;?></a>&nbsp;&rarr;&nbsp;
-		<?php $link='/'.$l.'/venues/card/'.$item['id'].'-'.Tools_View::getUrlAlias($item['name'], true).'/'; $name=$item['name']; ?>
-		<a href="<?php echo $link;?>"><?php echo $name;?></a>
+		<?php $link='/'.$l.'/venues/card/'.$item['id']; $name=$item['name']; ?>
+		<a href="<?php echo $this->data['fullLink'] = $link.'-'.Tools_View::getUrlAlias($item['name'], true).'/';?>"><?php echo $name;?></a>
 		<?php $this->data['link'] = $link; ?>
 	</div>
 	<div class="venues_card_desc_box cl">

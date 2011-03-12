@@ -42,25 +42,6 @@
 	margin:5px 2px 0 10px;
 }
 .organizers_card_main_info {}
-.organizers_card_info_img {
-	background: url(/img/organizers_logo_bg.png) no-repeat;
-	width: 100px;
-	height: 100px;
-	vertical-align: middle;
-	line-height: 97px;
-	text-align: center;
-	border: 1px solid #cccccc;
-}
-.organizers_card_info_img img {
-	max-height: 130px;
-	max-width: 130px;
-	display:-moz-inline-box;
-	display:inline-block;
-	vertical-align:middle;
-	zoom:1;
-	//display:inline;
-	position: relative;
-}
 .organizers_card_info {
 	font-size: 12px;
 }

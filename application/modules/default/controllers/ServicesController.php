@@ -1,6 +1,8 @@
 <?php
 class ServicesController extends Abstract_Controller_FrontendController {
 
+	public $moduleName = 'ServiceCompanies';
+
 	public function init(){
 		parent::init();
 
@@ -46,12 +48,15 @@ class ServicesController extends Abstract_Controller_FrontendController {
 			$this->view->data = $grid->getData();
 			if (isset($this->view->data['data'][0])){
 				$this->view->data = $this->view->data['data'][0];
-				$url = '/'.DEFAULT_LANG_CODE.'/services/card/'.$this->view->data['id'].'-'.Tools_View::getUrlAlias($this->view->data['name'], true).'/';
+				$url = '/'.DEFAULT_LANG_CODE.'/services/card/'.$this->view->data['id'];
 				$tab = $this->_request->getParam('tab');
 				$tab_action = $this->_request->getParam('tab_action');
 				$tab_id = $this->_request->getParam('tab_id');
 				if ($tab){
-					$url .= $tab.'/'.$tab_action.'/'.($tab_id?$tab_id:TAB_DEFAULT_ID).'/';
+					$url .= '/'.$tab.'/'.$tab_action.'/'.($tab_id?$tab_id:TAB_DEFAULT_ID).'/';
+				}
+				else {
+					$url .= '-'.Tools_View::getUrlAlias($this->view->data['name'], true).'/';
 				}
 				if ($url!=$this->view->requestUrl) $this->_redirect($url);
 

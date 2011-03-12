@@ -38,9 +38,9 @@ class db {
 			),
 		);
 
-		$dir = Bootstrap::$root.'/application/config/db/'.APPLICATION_ENVIRONMENT;
+		$dir = Bootstrap::$root.'/application/config/db';
 		if (!is_dir($dir)) mkdir($dir, 0777, true);
-		self::$configFile = $dir.'/'.Bootstrap::prepareFileName(php_uname()).'.ini';
+		self::$configFile = $dir.'/'.APPLICATION_ENVIRONMENT.'.ini';
 
 		if (file_exists(self::$configFile)){
 			self::$config = parse_ini_file(self::$configFile, true);

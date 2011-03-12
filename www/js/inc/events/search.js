@@ -1,4 +1,4 @@
-js.module("inc.events.index");
+js.module("inc.events.search");
 $(function(){
 	$(".events_index_item").hover(function(){
 		$(this).addClass("events_index_item_hover");

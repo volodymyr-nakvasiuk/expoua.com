@@ -1,4 +1,4 @@
-js.module("inc.event.card");
+js.module("inc.events.card");
 js.include("jquery.ui.tabs");
 js.include("jquery.photoslider");
 js.include("jquery.form");
