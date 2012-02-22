@@ -65,7 +65,7 @@
 				<span><?php echo $this->lang->translate('Frequency');?>:&nbsp;</span><span style="color: #333333;"><?php echo $item['period'];?></span>
 			</div>
 			<div class="span_box cb">
-				<span><?php echo $this->lang->translate('Venue');?>:&nbsp; </span><a href="#"><?php echo $item['expocenter'];?></a>
+				<span><?php echo $this->lang->translate('Venue');?>:&nbsp; </span><a href="<?php echo '/'.$l.'/venues/card/'.$item['expocenter_id'].'-'.Tools_View::getUrlAlias($item['expocenter'], true).'/'; ?>"><?php echo $item['expocenter'];?></a>
 			</div>
 			<div class="span_box cb">
 				<span><?php echo $this->lang->translate('Organizer');?>: &nbsp;</span><a href="#"><?php echo $item['organizer'];?></a>

@@ -10,7 +10,7 @@
 	</div>
 	<div class="search_all_venues_box cl">
 <?php
-		foreach($this->data['data'] as $item){ $url= '/'.$l.'/venues/card/'.$item['id'].'/';
+		foreach($this->data['data'] as $item){ $url= '/'.$l.'/venues/card/'.$item['id'].'-'.Tools_View::getUrlAlias($item['name'], true).'/';
 	?>
 	<div class="search_one_venue_box <?php /*vip_venue_bg */ ?>cl">
 		<div class="one_venue_date cl">
